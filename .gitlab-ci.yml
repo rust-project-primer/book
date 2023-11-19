@@ -1,0 +1,13 @@
+stages:
+  - publish
+
+pages:
+  image: alpine
+  stage: publish
+  script:
+    - apk add mdbook
+    - mdbook build
+    - mv book public
+  artifacts:
+    paths:
+      - public/

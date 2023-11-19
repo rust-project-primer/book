@@ -1,0 +1,41 @@
+# Rustdoc
+
+Code-level documentation in Rust is almost always done using Rustdoc, which is
+an incredible piece of software that makes writing usable documentation several
+orders of magnitude easier than other documentation tools that I have worked
+with.
+
+Rustdoc works by parsing documentation comments that are left in the code and
+turning them into a pretty, searchable HTML output. It understands Markdown for
+simple formatting and is able to link things. There is also a service that
+builds and renders documentation for all published Rust crates, which is
+[docs.rs][docs.rs].
+
+```rust
+/// This is a documentation comment.
+///
+/// In here, it is also possible to link to other types, such as [`Vec`].
+pub fn my_function() {
+    todo!()
+}
+```
+
+What is important about the Rustdoc documentation is that it is only useful if
+it is published somewhere. For that reason, I suggest publishing it in the CI
+on every merge to `master` (or whatever the unstable branch name is that is
+used) to some location where it can be viewed by the team.
+
+## Example
+
+*TODO*
+
+## Usage
+
+*TODO*
+
+## Reading
+
+- [docs.rs][]
+- [Rustdoc Book](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html)
+
+[docs.rs]: https://docs.rs

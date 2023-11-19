@@ -5,6 +5,9 @@ others. But perhaps more importantly, modern software development attempts to
 automate as much as possible in the development workflow. This is where CI systems
 are used.
 
+CI systems are an indispensable part of modern software engineering, because they
+allow you to offload the enforcement of good coding practises to a machine. 
+
 This guide recommends using [GitHub][github] or [GitLab][gitlab] as development
 platforms with their respective CI pipelines.
 

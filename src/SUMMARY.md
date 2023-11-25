@@ -20,6 +20,7 @@
 - [Checks](checks.md)
     - [Formatting](checks/formatting.md)
     - [Style](checks/style.md)
+    - [Spelling](checks/spelling.md)
     - [Unused Dependencies](checks/unused.md)
     - [Dependency Minimum Versions](checks/minimum-version.md)
     - [Dependency Linter](checks/deny.md)

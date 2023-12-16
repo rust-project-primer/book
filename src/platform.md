@@ -1,9 +1,16 @@
 # Platform
 
+
+
 Code is not written in a vacuum, rather it is written in collaboration with
 others. But perhaps more importantly, modern software development attempts to
 automate as much as possible in the development workflow. This is where CI systems
 are used.
+
+Besides just storing code, the requirements are:
+
+- Allowing collaboration with other, such as by making change suggestions, code
+  review, 
 
 CI systems are an indispensable part of modern software engineering, because they
 allow you to offload the enforcement of good coding practises to a machine. 

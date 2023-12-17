@@ -4,3 +4,10 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Rust Project Primer"
+
+[preprocessor.files]
+command = "mdbook-files"
+prefix = "examples"
+
+[output.html]
+additional-css = ["mdbook-files.css"]

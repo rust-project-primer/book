@@ -17,3 +17,7 @@ For this reason, you see a lot of Rust project having two kinds of documentation
 
 In this chapter, I will explain how both of these documentation strategies can
 be employed effectively in a Rust project.
+
+## Reading
+
+- [ARCHITECTURE.md](https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html)

@@ -11,6 +11,15 @@ Finally, it allows for building zero-cost abstractions: you can build extra
 features into your code, but the consumer only pays the cost (in terms of
 compile time and binary size) when they are turned on.
 
+## Examples
+
+```files
+title = "Example of optional features in a crate"
+files = ["crate_features/src/*.rs", "crate_features/Cargo.toml"]
+```
+
+
+
 ## Reading
 
 - The Cargo Book: [Features](https://doc.rust-lang.org/cargo/reference/features.html)

@@ -1,0 +1,53 @@
+
+.mdbook-files {
+    display: flex;
+    background-color: var(--sidebar-bg);
+    margin: 1em 0;
+}
+
+.mdbook-files ul {
+    list-style-type: none;
+    padding: 2mm;
+    margin: 0;
+}
+
+.mdbook-files ul .active {
+    font-weight: 600;
+}
+
+.mdbook-files ul li {
+    cursor: pointer;
+}
+
+.mdbook-files ul li:hover {
+    color: var(--links);
+}
+
+.mdbook-files-left {
+    width: 150px;
+    min-width: 150px;
+    overflow: scroll;
+}
+
+.mdbook-files-right {
+    flex-grow: 1;
+    overflow: scroll;
+}
+
+.mdbook-file {
+    display: none;
+}
+
+.mdbook-file pre {
+    margin: 0;
+    height: 100%;
+}
+
+.mdbook-file pre code {
+    height: 100%;
+}
+
+.mdbook-file.visible {
+    display: block;
+    height: 100%;
+}

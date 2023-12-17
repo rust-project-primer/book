@@ -4,8 +4,10 @@ stages:
 pages:
   image: alpine
   stage: publish
+  before_script:
+    - apk add mdbook cargo
+    - cargo install --git https://github.com/xfbs/mdbook-files
   script:
-    - apk add mdbook
     - mdbook build
     - mv book public
   artifacts:

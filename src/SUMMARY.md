@@ -31,6 +31,7 @@
     - [Measure Coverage](testing/coverage.md)
 	- [Benchmarking](testing/benchmarking.md)
 	- [Fuzzing](testing/fuzzing.md)
+    - [Mutations](testing/mutations.md)
 - [Building](building.md)
 	- [Binary Size](building/size.md)
     - [Caching](building/cache.md)

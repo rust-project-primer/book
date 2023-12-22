@@ -1,17 +1,16 @@
 # Recommended Reading
 
-This guide does not explain the fundamentals of the Rust programming language.
-Rather, it shows some practical things that I have found to be useful to do in
-Rust projects to allow them to scale and be of high quality.
+This guide is not intended to cover the fundamentals of the Rust programming
+language. Instead, it focuses on sharing practical insights and strategies that
+I've found valuable in scaling Rust projects and maintaining high quality. For
+those new to Rust or in need of a more comprehensive understanding, I recommend
+starting with foundational books on the language. These books delve into Rust's
+concepts in greater depth than this guide aims to.
 
-Before reading this guide, if you have not already, I highly recommend reading
-some books that give you a vast understanding of the Rust programming language
-and explain concepts in much more detail than I ever could.
-
-Here is a few books which I consider to be essential for understanding Rust.
-Where possible, I will link to relevant chapters in these books from within
-this guide, so that you may read about topics more in-depth.
-
+Below is a list of essential readings for grasping the intricacies of Rust.
+Throughout this guide, where relevant, I will provide links to specific
+chapters from these books. This will enable you to explore topics more
+thoroughly and deepen your understanding as needed.
 
 | Cover | Description |
 | --- | --- |

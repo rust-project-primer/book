@@ -1,33 +1,30 @@
 # Introduction
 
-This guide is a collection of advice on how to structure and maintain Rust
-projects. Some of this advice is derived from examining how other popular
-Rust projects are structured, some is derived from personal experience.
+This guide offers advice on structuring and maintaining Rust projects, drawing
+from popular Rust projects and personal experience. It should not be viewed as
+a definitive guide, but rather as a collection of potential issues you might
+encounter and various ways to address them. Recognizing that some problems have
+multiple effective solutions, this guide presents a range of options. The hope
+is that it equips you with valuable advice, allowing your projects to benefit
+from the learnings of those that came before. 
 
-This is by no means a definite guide. Think of it more as a set of issues you
-might encounter and suggestions for how they could be solved. Some issues might
-have multiple good solutions. The hope is that this guide can set you up with
-good advice to implement in your projects, such that they can benefit from
-the learnings of projects before yours.
-
-This book is not finished. Instead it is a living document that is occasionally
-updated with new learnings and updated examples.
+This book is a living document, not a finished product. It will be periodically
+updated with new insights and revised examples, reflecting ongoing learnings in
+the field of Rust programming.
 
 ## Motivation
 
-The Rust programming language has tremendous potential to help guide us into
-an era where safety is not added as an afterthought. However, writing robust
-code requires not only good programming languages, it also requires robust
-processes. This book aims to illustrate good practises for Rust projects to
-ensure that the ecosystem is as robust as can be.
+The Rust programming language is fundamentally designed to prioritize safety,
+aiming to thrive in an era where this aspect is integral to software
+engineering, not an afterthought. Yet, writing robust code in Rust requires
+more than just language features; it also demands robust development processes.
+This book aims to showcase best practices in Rust project development, ensuring
+the ecosystem remains as robust as possible.
 
-Additionally, as Rust becomes more popular, there will be many projects that
-grow from being small and maintained by one or a handful of people to becoming
-popular projects with many contributors. The kinds of challenges faced by 
-large projects with hundreds of contributors are vastly different from those
-faced by small projects. 
-
-This guide is intended to share advice between projects to make sure that Rust
-crates continue to deliver the same robustness and stability that they have
-in the past.
+As Rust gains popularity, many projects are evolving from small, individual or
+small-team efforts to large-scale projects with numerous contributors. These
+larger projects face different challenges compared to their smaller
+counterparts.  This guide aims to facilitate the sharing of advice and
+strategies across projects, ensuring that Rust crates maintain their renowned
+robustness and stability.
 

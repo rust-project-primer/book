@@ -9,5 +9,8 @@ title = "Rust Project Primer"
 command = "mdbook-files"
 prefix = "examples"
 
+[preprocessor.mermaid]
+
 [output.html]
 additional-css = ["mdbook-files.css"]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]

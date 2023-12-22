@@ -7,7 +7,9 @@ pages:
   before_script:
     - apk add mdbook cargo
     - cargo install --git https://github.com/xfbs/mdbook-files
-    - ln -s /root/.cargo/bin /usr/bin/mdbook-files
+    - cargo install mdbook-mermaid
+    - ln -s /root/.cargo/bin/mdbook-files /usr/bin/mdbook-files
+    - ln -s /root/.cargo/bin/mdbook-mermaid /usr/bin/mdbook-mermaid
   script:
     - mdbook build
     - mv book public

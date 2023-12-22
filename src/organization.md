@@ -5,8 +5,21 @@
 In Rust, code organization is facilitated through a range of structures:
 *files*, *modules*, *crates*, and *workspaces*. This chapter aims to provide
 guidance on how to best utilize these elements to structure your Rust projects
-effectively. The emphasis will be on achieving two key objectives: enhancing
-development speed and promoting loose coupling for better code maintainability.
+effectively. The emphasis will be on achieving two key objectives: *enhancing
+development speed* and *promoting loose coupling* for better code
+maintainability.
+
+<figure>
+
+![Crate workspace example](images/workspace.svg)
+
+<caption>
+
+*Example of a Rust project's organization, with a single workspace containing multiple
+crates.*
+
+</caption>
+</figure>
 
 ## Development Speed
 
@@ -30,14 +43,18 @@ with optimal runtime performance.
 
 ## Loose Coupling
 
-Nobody wants to work in a giant, monolithic application
-that is tightly coupled and complex to change. Ideally, we want to make it as
-easy as possible to produce code that is composed of small units which can be
-tested individually.
+To ensure a system remains maintainable, testable, and easily adaptable,
+employing a strategy of loose coupling[^coupling] is often useful. Working
+with a large, monolithic application that's tightly coupled can be challenging
+and complex, making changes difficult. The ideal scenario involves creating
+code composed of smaller, independent units that can be tested on an individual
+basis. In this chapter, we'll explore how to achieve this level of modularity
+and loose coupling in Rust, laying out strategies to build systems that are
+both robust and flexible.
 
 ---
 
 [^proc]: For example, procedural macros allow for eliminating a lot of repeated
 code, for example by automatically deriving traits on structures. However, they
 need to be built and executed and thus add to the compilation time.
-
+[^coupling]: See [Loose Coupling](https://en.wikipedia.org/wiki/Loose_coupling) (Wikipedia).

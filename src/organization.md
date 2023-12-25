@@ -52,6 +52,14 @@ basis. In this chapter, we'll explore how to achieve this level of modularity
 and loose coupling in Rust, laying out strategies to build systems that are
 both robust and flexible.
 
+## Reading
+
+- [Project Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html) in *The Cargo Book*
+- [Rust at scale: packages, crates, modules](https://mmapped.blog/posts/03-rust-packages-crates-modules)
+- [Rust compile times](https://endler.dev/2020/rust-compile-times/)
+- [The Dark side of inlining and monomorphization](https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/)
+- [Delete Cargo Integration Tests](https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html)
+
 ---
 
 [^proc]: For example, procedural macros allow for eliminating a lot of repeated

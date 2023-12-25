@@ -14,9 +14,11 @@ mixing and matching multiple languages, similar to Bazel.
 
 ## Reading
 
-- Article: [Using Buck to build Rust Projects](https://steveklabnik.com/writing/using-buck-to-build-rust-projects)
-- GitHub: [facebook/buck2][buck2-repo]
-- [Buck2][buck2]
+- [Buck2 Build Tool][buck2]
+- [facebook/buck2][buck2-repo] on GitHub
+- [Using Buck to build Rust Projects](https://steveklabnik.com/writing/using-buck-to-build-rust-projects) by Steve Klabnik
+- [Using Crates.io with Buck](https://steveklabnik.com/writing/using-cratesio-with-buck) by Steve Klabnik
+- [Updating Buck](https://steveklabnik.com/writing/updating-buck) by Steve Klabnik
 
 [buck2]: https://buck2.build/
 [buck2-repo]: https://github.com/facebook/buck2

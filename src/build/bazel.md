@@ -16,3 +16,6 @@ the output of that into a Rust-based backend.
 ## Reading
 
 - [Bazel rules_rust](https://github.com/bazelbuild/rules_rust)
+- [Scaling Rust builds with Bazel](https://mmapped.blog/posts/17-scaling-rust-builds-with-bazel.html)
+- [Bazel with Rust](https://earthly.dev/blog/bazel-with-rust/)
+- [Building Rust Workspace with Bazel](https://www.tweag.io/blog/2023-07-27-building-rust-workspace-with-bazel/)

@@ -2,7 +2,7 @@
 
 [Rust Project Primer](title.md)
 [Introduction](intro.md)
-[Recommended Reading](reading.md)
+[Reading](reading.md)
 
 - [Platform](platform.md)
 - [Organization](organization.md)
@@ -14,7 +14,7 @@
     - [Cargo](build/cargo.md)
     - [Bazel](build/bazel.md)
     - [Buck2](build/buck2.md)
-	- [Nix]()
+	- [Nix](build/nix.md)
 - [Checks](checks.md)
     - [Formatting](checks/formatting.md)
     - [Style](checks/style.md)
@@ -44,7 +44,8 @@
 - [Documentation](documentation.md)
     - [Rustdoc](documentation/rustdoc.md)
     - [Book](documentation/book.md)
-    - [Diagrams](documentation/diagrams.md)
+    - [Architecture](documentation/architecture.md)
+    - [Examples](documentation/examples.md)
 - [Tools](tools.md)
     - [Just]()
 	- [XTask]()

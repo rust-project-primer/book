@@ -1,5 +1,11 @@
 # Introduction
 
+```admonish info
+This book is still under development. You may find some sections which are
+missing, or not fully written out. If you find sections which are incorrect,
+feel free to send a correction in the form of an issue or pull request.
+```
+
 This guide offers advice on structuring and maintaining Rust projects, drawing
 from popular Rust projects and personal experience. It should not be viewed as
 a definitive guide, but rather as a collection of potential issues you might

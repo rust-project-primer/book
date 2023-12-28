@@ -8,9 +8,15 @@ title = "Rust Project Primer"
 [preprocessor.files]
 command = "mdbook-files"
 prefix = "examples"
+after = ["mermaid"]
 
 [preprocessor.mermaid]
 
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
+after = ["links"]
+
 [output.html]
-additional-css = ["mdbook-files.css"]
+additional-css = ["mdbook-files.css", "./mdbook-admonish.css"]
 additional-js = ["mermaid.min.js", "mermaid-init.js"]

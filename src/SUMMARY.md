@@ -26,6 +26,7 @@
     - [Cargo Manifest](checks/manifest.md)
     - [Crate Features](checks/features.md)
 - [Testing](testing.md)
+    - [Tiers](testing/tiers.md)
     - [Local-First](testing/local-first.md)
     - [Property-Based](testing/propery-based.md)
     - [Measure Coverage](testing/coverage.md)

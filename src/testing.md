@@ -10,17 +10,6 @@ and carefully tested. In my opinion, testing has three purposes:
 Rust recognizes the importance of testing, and as such has several facilities
 built-in for writing unit tests as part of the code base.
 
-## Tiers
-
-Ideally, what we would like to achieve is having different tiers of tests so that local
-development can happen with little friction, but the project is still robus.
-
-| Tier | Description |
-| --- | --- |
-| Local | Tests that are run locally. Only runs tests for the crate that is currently being worked on. |
-| CI | Runs all tests with all features enabled. |
-| Nightly | Runs all tests from Tier 2, plus long-running tests such as fuzzing, extended property testing, async permutation tests. |
-
 ## Reading
 
 - [How SQLite is tested](https://www.sqlite.org/testing.html)[^1]

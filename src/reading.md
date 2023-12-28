@@ -23,7 +23,9 @@ thoroughly and deepen your understanding as needed.
 
 ## Articles
 
-> If you know of a relevant article that should be added here, feel free to reach out.
+```admonish info
+If you know of a relevant article that should be added here, feel free to reach out.
+```
 
 Some people in the Rust community have written articles and guides with a
 similar scope as this book. While some of the takes may be different from those

@@ -1,3 +1,4 @@
+/* style for mdbook-files */
 
 .mdbook-files {
     display: flex;
@@ -11,15 +12,24 @@
     margin: 0;
 }
 
+.mdbook-files li > ul {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.mdbook-files .mdbook-files-folder > span {
+    font-weight: 600;
+}
+
 .mdbook-files ul .active {
     font-weight: 600;
 }
 
-.mdbook-files ul li {
+.mdbook-files ul > li.mdbook-files-button {
     cursor: pointer;
 }
 
-.mdbook-files ul li:hover {
+.mdbook-files ul > li.mdbook-files-button:hover {
     color: var(--links);
 }
 

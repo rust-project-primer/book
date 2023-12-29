@@ -14,8 +14,8 @@ compile time and binary size) when they are turned on.
 ## Examples
 
 ```files
-title = "Example of optional features in a crate"
-files = ["crate_features/src/*.rs", "crate_features/Cargo.toml"]
+path = "crate_features"
+git_ignore = true
 ```
 
 

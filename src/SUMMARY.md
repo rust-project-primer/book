@@ -44,6 +44,7 @@
 	- [Debian Package](releasing/debian.md)
 	- [RPM Package](releasing/rpm.md)
 - [Documentation](documentation.md)
+    - [Readme](documentation/readme.md)
     - [Rustdoc](documentation/rustdoc.md)
     - [Book](documentation/book.md)
     - [Architecture](documentation/architecture.md)

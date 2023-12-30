@@ -1,16 +1,27 @@
 # Unused Dependencies
 
+*After you have been working on your Rust project for a while, you notice
+complaints that the compilation times are slow. You look into it, and discover
+that in multiple crates of the project, several dependencies exist which are
+unused, driving up compilation times. You remove them manually for now,
+but you wonder if there is a way to ensure that your crates do not accumulate
+unused dependencies in the future.*
+
+## Solution
+
 An issue you might run into is having unused dependencies in your Rust crates.
 When this is the case, Cargo will fetch and build those dependencies every time
 your crate is built, and it will not warn if they are not used. This leads to
 unneccessarily long compile times.
 
-> If you need some dependencies only conditionally, consider using [crate
-> features](../organization/features.md) or [conditional
-> dependencies](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#platform-specific-dependencies)
-> to prevent them from being depended on unneccessarily. These let you
-> express that dependencies are only needed if a certain feature is activated
-> or on a specific platform.
+```admonish
+If you need some dependencies only conditionally, consider using [crate
+features](../organization/features.md) or [conditional
+dependencies](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#platform-specific-dependencies)
+to prevent them from being depended on unneccessarily. These let you express
+that dependencies are only needed if a certain feature is activated or on a
+specific platform.
+```
 
 This is something that can easily happen, especially as code is refactored.
 Since there is no warning, it happens silently and can go by undetected.  For
@@ -58,10 +69,13 @@ cargo udeps
 
 ## Examples
 
-> Having unused dependencies only impacts compile time but not the correctness
-> of the project. For that reason, this check could be performed on a schedule
-> (nightly or weekly, for example) rather than on every merge request, or
-> manually by maintainers.
+```admonish
+Having unused dependencies only impacts compile time but not the correctness of
+the project. Running these checks for every merge request might be too
+expensive for your project. For that reason, this check could be performed on a
+schedule (nightly or weekly, for example) rather than on every merge request,
+or manually by maintainers.
+```
 
 *TODO*
 

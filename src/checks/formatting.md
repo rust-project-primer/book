@@ -1,15 +1,25 @@
 # Formatting
 
+*You have noticed that in your project, a lot of time is wasted in code reviews
+on debating over style. You have also noticed that there seems to be an
+inconsistency, whereby different teams produce different-looking code. This
+creates friction for developers switching between teams and when teams try to
+collaborate. How can you ensure that the style issue is settled mechanically?*
+
+## Rustfmt
+
+Generally, Rust code can be formatted using `rustfmt`[^rustfmt], which is a core piece
+of Rust tooling and in general, the whole Rust community uses it.
+
+```admonish
 Ensuring consistent formatting across a project is quite important. It allows
 Code Reviews to focus on the content, and not the formatting of the code. One
 thing the Rust community does very well is have a consistent formatting style,
 which eliminates the surprises you will encounter when reading other people's
 code.
+```
 
-## Rustfmt
-
-Generally, Rust code can be formatted using `rustfmt`, which you can call like
-this:
+You can run `rustfmt` against a crate like this:
 
 ```
 cargo fmt
@@ -22,9 +32,17 @@ In a CI system, you can check if the code is properly formatted using the
 cargo fmt --check
 ```
 
+If the code is not properly formatted, this will return a nonzero exit code
+and cause the CI check to fail.
+
+```admonish
+By incorporating `rustfmt` checks into the CI system, you can make sure that
+issues with formatting are caught before code review.
+```
+
 ### Configuration
 
-Rustfmt can also optionally take some [configuration][rustfmt-conf] in a
+Rustfmt can also optionally take some configuration[^rustfmt-conf] in a
 `rustfmt.toml` file. 
 
 This allows you to override specific behaviour, for example to set how it
@@ -40,6 +58,7 @@ cargo +nightly fmt
 
 ### Examples
 
+~~~admonish example
 Here is one example of a project which has a `rustfmt.toml` to configure
 rustfmt, and some CI steps which enforce the formatting in CI.
 
@@ -47,10 +66,10 @@ rustfmt, and some CI steps which enforce the formatting in CI.
 path = "check-formatting"
 git_ignore = true
 ```
+~~~
 
-## Reading
+---
 
-- [Configuring Rustfmt][rustfmt-conf]
-- GitHub: [rustfmt](https://github.com/rust-lang/rustfmt)
+[^rustfmt-conf]: Overview of `rustfmt` configuration options: <https://rust-lang.github.io/rustfmt/>.
 
-[rustfmt-conf]: https://rust-lang.github.io/rustfmt/
+[^rustfmt]: `rustfmt` repository: <https://github.com/rust-lang/rustfmt>.

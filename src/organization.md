@@ -1,7 +1,5 @@
 # Organization
 
-![rust programming language, code organization, diagram, schematic](images/organization.png)
-
 In Rust, code organization is facilitated through a range of structures:
 *files*, *modules*, *crates*, and *workspaces*. This chapter aims to provide
 guidance on how to best utilize these elements to structure your Rust projects
@@ -54,11 +52,12 @@ both robust and flexible.
 
 ## Reading
 
-- [Project Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html) in *The Cargo Book*
-- [Rust at scale: packages, crates, modules](https://mmapped.blog/posts/03-rust-packages-crates-modules)
-- [Rust compile times](https://endler.dev/2020/rust-compile-times/)
-- [The Dark side of inlining and monomorphization](https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/)
-- [Delete Cargo Integration Tests](https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html)
+- [Chapter 7: Managing Growing Projects with Packages, Crates, and Modules](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html) in *The Rust Programming Language*
+- [Chapter 2.5: Project Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html) in *The Cargo Book*
+- [Rust at scale: packages, crates, modules](https://mmapped.blog/posts/03-rust-packages-crates-modules) by Roman Kashitsyn
+- [Rust compile times](https://endler.dev/2020/rust-compile-times/) by Matthias Endler
+- [The Dark side of inlining and monomorphization](https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/) by Nick Babcock
+- [Delete Cargo Integration Tests](https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html) by Alex Kladov
 
 ---
 

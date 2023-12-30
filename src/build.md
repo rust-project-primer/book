@@ -10,14 +10,14 @@ Rust project, because you have [Cargo][cargo]
 However, build systems become interesting to your Rust project when one of two things
 happen:
 
-- Inside your project, you have multi-language parts. For example, a frontend
+- Inside your project, you have **multi-language components**. For example, a frontend
   written in TypeScript, a backend component written in Kotlin, a C library,
   some Python tooling.
-- Inside your project, you have cross-target dependencies. For example, you
+- Inside your project, you have **cross-target dependencies**. For example, you
   have a project fully written in Rust, and the backend wants to embed the
   frontend compiled to WebAssembly using a tool such as `trunk` for ease of
   deployment.
-- You depend on some external dependency which is not written in Rust, and you
+- You depend on some **external dependency** which is not written in Rust, and you
   want to be sure you can use reproducibly it on all platforms. For example,
   you depend on the presence of `sqlite` in a specific version.
 

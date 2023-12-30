@@ -1,0 +1,8 @@
+stages:
+  - check
+
+formatting:
+  stage: check
+  image: rust
+  script:
+    - cargo +nightly fmt --check

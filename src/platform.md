@@ -1,8 +1,5 @@
 # Platform
 
-![people collaborative programming, software engineering, design, beautiful,
-ultrarealistic, soft lighting, 8k](images/platform.png)
-
 Code is rarely written in isolation. Instead, it is a collaborative effort,
 often taking place in public. Development platforms like [GitHub][github] or
 [GitLab][gitlab] facilitate this collaboration, providing a space where
@@ -25,7 +22,6 @@ graph LR
     monitor[Monitor]
     planning-->|create| issues
     issues---|implement| changes
-
     monitor---|deploy| changes
     planning---|influence| monitor
 ```

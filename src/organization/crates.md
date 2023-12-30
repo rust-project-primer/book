@@ -13,16 +13,22 @@ want to end up in a project where it is easy and encouraged to pull functionalit
 separate crates. This is useful because it encourages good software design, and it has the
 added bonus that it allows for faster compilation and thereby development.
 
-## Organization
+## Workspace
 
 Breaking functionality down into crates and proactively pulling them out encourages good
 software design. It allows you to build useful abstractions, and it avoids ending up with
 a giant, complex monolithic application that is very tightly coupled. This achieves [Loose coupling](https://en.wikipedia.org/wiki/Loose_coupling).
 
 
-## Examples
+### Examples
 
+Here is an example of what a cargo workspace project looks like.
 
+```files
+path = "cargo-workspace"
+git_ignore = true
+default_file = "Cargo.toml"
+```
 
 
 ## Reading

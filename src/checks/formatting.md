@@ -6,6 +6,8 @@ thing the Rust community does very well is have a consistent formatting style,
 which eliminates the surprises you will encounter when reading other people's
 code.
 
+## Rustfmt
+
 Generally, Rust code can be formatted using `rustfmt`, which you can call like
 this:
 
@@ -34,6 +36,16 @@ like this:
 
 ```
 cargo +nightly fmt
+```
+
+### Examples
+
+Here is one example of a project which has a `rustfmt.toml` to configure
+rustfmt, and some CI steps which enforce the formatting in CI.
+
+```files
+path = "check-formatting"
+git_ignore = true
 ```
 
 ## Reading

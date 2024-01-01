@@ -9,7 +9,7 @@ maintainability.
 
 <figure>
 
-![Crate workspace example](images/workspace.svg)
+![Crate workspace example](../images/workspace.svg)
 
 <caption>
 

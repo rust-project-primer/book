@@ -14,9 +14,14 @@ built-in for writing unit tests as part of the code base.
 
 [How to organize Rust tests](https://blog.logrocket.com/how-to-organize-rust-tests/) by Andre Bogus
 
-- [How SQLite is tested](https://www.sqlite.org/testing.html)[^1]
-- [Chapter 11: Writing automated tests](https://doc.rust-lang.org/book/ch11-00-testing.html) in *The Rust Book*
-- [cargo-nextest book](https://nexte.st/index.html)
-- [How to Test](https://matklad.github.io/2021/05/31/how-to-test.html) by Alex Kladov
+[Writing software that's reliable enough for production](https://www.sciagraph.com/docs/understanding/reliable/) by Scigraph
+
+[Chapter 11: Writing automated tests](https://doc.rust-lang.org/book/ch11-00-testing.html) in *The Rust Book*
+
+[How SQLite is tested](https://www.sqlite.org/testing.html)[^1]
+
+[cargo-nextest book](https://nexte.st/index.html)
+
+[How to Test](https://matklad.github.io/2021/05/31/how-to-test.html) by Alex Kladov
 
 [^1]: SQLite is the most-deployed database. You likely have hundreds of SQLite databases in your phone. 

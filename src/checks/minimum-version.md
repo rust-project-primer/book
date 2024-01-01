@@ -55,12 +55,14 @@ It is possible that your crate depends on some feature or fix that was not
 present in `1.2.0`, but only added in `1.2.44`, but since Cargo always tests
 against the latest, you will never know.
 
-
-## (Direct) Minimal Versions
-
 To detect this issue automatically, Cargo has a feature that allows you to
 override the version resolution strategy to always use the minimum possible
 version. You can enable this feature using `-Z minimum-version`.
+
+## `cargo-minimial-versions`
+
+The [`cargo-minimal-versions`][cargo-minimal-versions] tool helps to validate
+whether your crate works with the minimal versions it advertises.
 
 However, an easier approach is to install `cargo-minimal-version` and running
 it to check if your code will compile:
@@ -70,19 +72,33 @@ cargo install cargo-minimal-version
 cargo minimal-version check
 ```
 
-
 ## Reading
 
-- [Semantic Versioning][semver]
+[Semantic Versioning 2.0.0][semver]
 
+*Semantiv Versioning specification which explains the rules of how to apply it.*
 
-- [Cargo Minimal Versions](https://doc.rust-lang.org/cargo/reference/unstable.html#minimal-versions) in *The Cargo Book*
+[Chapter 3.1: Specifying Dependencies](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) in *The Cargo Book*
 
-- [Chapter 3.1: Specifying Dependencies](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) in *The Cargo Book*
-- [Chapter 3.14: Dependency Resolution](https://doc.rust-lang.org/cargo/reference/resolver.html) in *The Cargo Book*
-- [Chapter 3.15: SemVer Compatibility](https://doc.rust-lang.org/cargo/reference/semver.html) in *The Cargo Book*
-- GitHub: [taiki-e/cargo-minimal-versions][cargo-minimal-versions]
-- Article: [Rust minimum versions: SemVer is a lie!](https://blog.illicitonion.com/rust-minimum-versions-semver-is-a-lie/)
+*Explains how Cargo crate dependencies are specified in terms of syntax and
+semantics.*
+
+[Chapter 3.14: Dependency Resolution]( https://doc.rust-lang.org/cargo/reference/resolver.html#semver-compatibility) in *The Cargo Book*
+
+*Explains how Cargo resolves crate dependency versions given the version
+constraints set by the dependencies section of your crate.*
+
+[Chapter 3.18: Unstable Features](https://doc.rust-lang.org/cargo/reference/unstable.html#minimal-versions) in *The Cargo Book*
+
+*Explains the Cargo features `miminal-versions` and `direct-minimal-versions`
+which force Cargo to resolve (direct) dependencies to their minimal versions
+instead of the latest versions.*
+
+[Rust minimum versions: SemVer is a lie!](https://blog.illicitonion.com/rust-minimum-versions-semver-is-a-lie/) by Daniel Wagner-Hall
+
+*Article which argues that a lot of crates are broken, because they do not
+compile with the versions they specify in their manifests. Note that this
+article is rather old.*
 
 [semver]: https://semver.org/
 [cargo-minimal-versions]: https://github.com/taiki-e/cargo-minimal-versions

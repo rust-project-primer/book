@@ -18,3 +18,6 @@ for statistical analysis of the benchmark results.
 
 [criterion]: https://docs.rs/criterion/latest/criterion/
 [^1]: The Rust standard library also has some benchmarking support, but this is currently a nightly-only feature.
+
+
+https://www.justanotherdot.com/posts/benchmark-it

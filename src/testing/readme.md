@@ -25,3 +25,7 @@ built-in for writing unit tests as part of the code base.
 [How to Test](https://matklad.github.io/2021/05/31/how-to-test.html) by Alex Kladov
 
 [^1]: SQLite is the most-deployed database. You likely have hundreds of SQLite databases in your phone. 
+
+
+
+https://xxchan.me/cs/2023/02/17/optimize-rust-comptime-en.html#step-4-single-binary-integration-test

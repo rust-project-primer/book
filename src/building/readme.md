@@ -13,3 +13,13 @@ want to provide builds for multiple architectures.
 
 This chapter discusses some issues you might run into when building Rust code in
 your project, and strategies for how you might solve that.
+
+
+https://endler.dev/2020/rust-compile-times/
+
+
+https://matklad.github.io/2021/09/04/fast-rust-builds.html
+
+
+
+https://xxchan.me/cs/2023/02/17/optimize-rust-comptime-en.html

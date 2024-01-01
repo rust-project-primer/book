@@ -6,18 +6,23 @@ inconsistency, whereby different teams produce different-looking code. This
 creates friction for developers switching between teams and when teams try to
 collaborate. How can you ensure that the style issue is settled mechanically?*
 
+Ensuring consistent formatting across a project is quite important. It allows
+Code Reviews to focus on the content, and not the formatting of the code. One
+thing the Rust community does very well is have a consistent formatting style,
+which eliminates the surprises you will encounter when reading other people's
+code. The canonical tool used for formatting Rust code is `rustfmt`.
+
 ## Rustfmt
 
 Generally, Rust code can be formatted using `rustfmt`[^rustfmt], which is a core piece
 of Rust tooling and in general, the whole Rust community uses it.
 
-```admonish
-Ensuring consistent formatting across a project is quite important. It allows
-Code Reviews to focus on the content, and not the formatting of the code. One
-thing the Rust community does very well is have a consistent formatting style,
-which eliminates the surprises you will encounter when reading other people's
-code.
-```
+~~~admonish
+Usually, `rustfmt` comes preinstalled when you install Rust. However, if you
+do not have it, you can install it using:
+
+    rustup component add rustfmt
+~~~
 
 You can run `rustfmt` against a crate like this:
 

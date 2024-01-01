@@ -32,6 +32,7 @@ similar scope as this book. While some of the takes may be different from those
 presented in this book, it can be valuable to review these to see which conclusions
 others in the Rust community have arrived at.
 
+- [Writing Software that's reliable enough for production](https://www.sciagraph.com/docs/understanding/reliable/) by Sciagraph
 - [My Ideal Rust Workflow](https://fasterthanli.me/articles/my-ideal-rust-workflow#building-checking-testing-linting) by [fasterthanlime](https://fasterthanli.me/)
 - [One Hundred Thousand Lines of Rust](https://matklad.github.io/2021/09/05/Rust100k.html) by [matklad](https://matkld.github.io)
 - [Chapter 5: Continuous Deployment for Rust Applications](https://www.lpalmieri.com/posts/2020-11-01-zero-to-production-5-how-to-deploy-a-rust-application/) in [Zero to Production](https://zero2prod.com)

@@ -12,6 +12,8 @@ built-in for writing unit tests as part of the code base.
 
 ## Reading
 
+[How to organize Rust tests](https://blog.logrocket.com/how-to-organize-rust-tests/) by Andre Bogus
+
 - [How SQLite is tested](https://www.sqlite.org/testing.html)[^1]
 - [Chapter 11: Writing automated tests](https://doc.rust-lang.org/book/ch11-00-testing.html) in *The Rust Book*
 - [cargo-nextest book](https://nexte.st/index.html)

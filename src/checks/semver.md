@@ -1,39 +1,72 @@
 # Semantic Versioning
 
+*The crate you are working on is used by others, either in your own company or externally.
+You often release new versions of it with added functionality. However, sometimes you get
+complaints from downstream users that a newly released version introduces breaking changes.
+Usually, you try to correctly release a new major version when that happens, but sometimes
+you don't notice it. How can you make sure that version numbers are correctly managed?*
+
+
+
 Rust is built heavily on [Semantic Versioning][semver] to make it easy to compose
 software and update dependencies without needing to worry about everything breaking
 when dependencies are updated.
 
-If you don't know what exactly Semantic Versioning is, here is a quick summary of it:
+```admonish title="Semantic Versioning"
+Semantic versioning, often abbreviated as SemVer, is a versioning scheme for
+software that aims to convey meaning about the underlying changes in each
+release. It uses a three-part version number format, *major*.*minor*.*match*
+(e.g., `2.0.1`), where Major versions introduce breaking changes, Minor
+versions add new features without breaking backward compatibility, and Patch
+versions include bug fixes that don't affect the API. 
 
-- Versions consist of three numbers, the *major*, *minor* and *patch* number. Usually, they are written with dots, such as `1.3.4`.
-- Any time you create a breaking change, you must increment the major version.
-- Any time you add a public API, you must increment the minor version.
-- Any time you release a bugfix which does not change the public API or behaviour (besides fixing the bug), you must increment the patch number.
+This system helps developers and users understand the impact of updating to a
+new version, ensuring more predictable and manageable software upgrades.
+```
 
-This also puts some responsibilities on you as a crate author: you have to ensure
-that when you build and publish crates, you do not violate semantic versioning by
-accidentally publishing versions with breaking changes but not marking them as such
-by incrementing the major version.
+This also puts some responsibilities on you as a crate author: you have to
+ensure that when you release new versions of your crates, you do not violate
+semantic versioning by accidentally publishing versions with breaking changes
+but not marking them as such by incrementing the major version.
 
-Doing this manually is very hard. The answer here is to use good tooling.
-`cargo-semver-checks` addresses this by mechanically checking your crate for
-public API changes.
+Doing this manually is possible, but difficult and it does not always scale
+well. The more widely used your crate is, the more frustration it causes when
+you get it wrong. Thankfully, there exists some tooling that can help here by
+automating the process of determining if you are correctly versioning your
+crate.
 
-## Examples
+## `cargo-semver-checks`
 
-## Usage
+`cargo-semver-checks` is an amazing tool designed to detect invalid semantic
+versioning in crates automatically, by parsing both your crate and the current
+latest version and determining if the changes between them can be considered a
+*patch*, a *minor* change or a *major* change.
 
-### GitHub
+As it relies of pulling the latest version of your crate from a registry, it is
+only really useful for crates which are published.
 
-### GitLab
+You can use it by installing it with `cargo`, and running it:
+
+```
+cargo install cargo-semver-checks
+cargo semver-checks
+```
+
+It will check if the version you have currently specified in the crate is
+aligned with what it should be. This is a good check to run in a CI system.
+
+```admonish example
+TODO: example using cargo-semver-checks
+```
 
 ## Reading
 
 - [Semantic Versioning][semver]
-- Article: [Semver violations are common, better tooling is the answer](https://predr.ag/blog/semver-violations-are-common-better-tooling-is-the-answer/)
-- Article: [Checking semver in the presence of doc(hidden) items](https://predr.ag/blog/checking-semver-for-doc-hidden-items/)
-- GitHub: [obi1kenobi][cargo-semver-checks]
+- [Chapter 3.15: SemVer Compatibility](https://doc.rust-lang.org/cargo/reference/semver.html) in *The Cargo Book*
+- [Semver violations are common, better tooling is the answer](https://predr.ag/blog/semver-violations-are-common-better-tooling-is-the-answer/) by Predrag Gruevski
+- [Checking semver in the presence of doc(hidden) items](https://predr.ag/blog/checking-semver-for-doc-hidden-items/) by Predrag Gruevski
+- [cargo-semver-checks][] on GitHub
 
 [semver]: https://semver.org/
 [cargo-semver-checks]: https://github.com/obi1kenobi/cargo-semver-checks
+[crates.io]: https://crates.io/

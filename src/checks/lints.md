@@ -4,6 +4,13 @@
 would like to mechanically prevent these from passing code reviews. How can you
 mechanically detect them?*
 
+In programming, *linting* refers to the process of performing static code
+analysis on a software project to flag programming errors, bugs, stylistic
+errors and suspicious constructs. The term originates from an old UNIX tool
+named `lint`, which was used to check C programs for common mistakes.
+
+The Rust community has an excellent linting tool named Clippy.
+
 ## Clippy
 
 The linter that is typically used in Rust is Clippy[^clippy]. It is commonly

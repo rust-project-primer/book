@@ -16,3 +16,7 @@ and many more.
 In my opinion, software development can only be sustainable and scale if we
 can automate the boring parts. I hope that this book does a good job of teaching
 you just how to do that, in the context of working on Rust software projects. 
+
+
+
+[Ready-to-go CI pipelines](https://www.lpalmieri.com/posts/2020-06-06-zero-to-production-1-setup-toolchain-ides-ci/#6-2-ready-to-go-ci-pipelines)

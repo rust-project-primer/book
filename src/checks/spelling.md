@@ -7,7 +7,9 @@ errors. Sometimes, they are not detected before a new version is released,
 leading to spelling issues in the public documentation. How could spelling
 errors be detected automatically so they do not make it in?*
 
-## Solution
+Using a spell checker for a software projects helps ensure that no silly
+mistakes make it into the `main` branch, without taking resources from
+processes such as code review that better focus on the semantics of the change.
 
 ```admonish
 Good communication is very valuable. Nothing is worse in a complex project than
@@ -18,9 +20,15 @@ existing developers understand unfamiliar parts of a project. See the
 *Documentation* section of this book for more information.
 ```
 
-Avoiding spelling errors is a small part in making sure that documentation
-(which includes comments) is usable. The [`typos-cli`][typos-cli] crate helps
-do just that by providing a spell checker specifically for Rust projects.
+There is one crate in the Rust ecosystem that is specifically designed
+to detect spelling errors: `typos-cli`.
+
+## `typos-cli`
+
+The `typos-cli`[^typos-cli] crate helps do just that by providing a spell
+checker specifically for Rust projects. It is designed to be fast enough to run
+on monorepos and have a low false positive rate so that it can be run for pull
+requests.
 
 It can be installed using Cargo:
 
@@ -34,9 +42,14 @@ Once installed, it can be run against a project:
 typos
 ```
 
-### Examples
+If it detects a spelling error, it outputs a nonzero exit code and a diagnostic
+message explaining what the error was and how it could be remedied.
+This is a good tool to run in a CI job to keep pull requests from containing
+spelling errors.
 
+```admonish example title="Running <code>typos-cli</code> in CI"
+TODO: add CI example here
+```
 
-
-[typos-cli]: https://github.com/crate-ci/typos
+[^typos-cli]: GitHub repository: <https://github.com/crate-ci/typos>
 

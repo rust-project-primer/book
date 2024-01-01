@@ -7,33 +7,28 @@ unused, driving up compilation times. You remove them manually for now,
 but you wonder if there is a way to ensure that your crates do not accumulate
 unused dependencies in the future.*
 
-## Solution
-
-An issue you might run into is having unused dependencies in your Rust crates.
-When this is the case, Cargo will fetch and build those dependencies every time
-your crate is built, and it will not warn if they are not used. This leads to
-unneccessarily long compile times.
+Having unused dependencies in your crates means the compiler needs to do
+extra work to fetch and build them even though they will not be used.
+Ensuring that you don't have any is therefore an important part in making
+sure your compile times are low. 
 
 ```admonish
-If you need some dependencies only conditionally, consider using [crate
-features](../organization/features.md) or [conditional
-dependencies](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#platform-specific-dependencies)
+If you have some some dependencies that you need only conditionally, consider
+using crate features[^feature] or conditional
+dependencies[^conditional-dependencies]
 to prevent them from being depended on unneccessarily. These let you express
 that dependencies are only needed if a certain feature is activated or on a
 specific platform.
 ```
 
-This is something that can easily happen, especially as code is refactored.
-Since there is no warning, it happens silently and can go by undetected.  For
-that reason, it is advisable to have some kind of check (whether automated or
-manual) to detect this situation and remedy it proactively.
+There are two tools in the Rust ecosystem that you can use to detect
+unused dependencies: `cargo-udeps` and `cargo-machete`. These differ in the way
+they attempt to detect unused dependencies, and thereby the time they take
+to make the determination.
 
-There are two tools which can help in this situation: [cargo-udeps][] and
-[cargo-machete][]. These both achieve the same but have different tradeoffs.
+## `cargo-machete`
 
-### `cargo-machete`
-
-The [`cargo-machete`][cargo-machete] tool should be your go-to to solve this.
+The [`cargo-machete`][cargo-machete] tool should be your go-to to solve this[^cargo-machete-quickly].
 It aims to be very fast, at the expense of some precision. For that reason, it
 is very suitable for running in CI for every merge request.
 
@@ -50,7 +45,7 @@ cargo machete
 ```
 
 
-### `cargo-udeps`
+## `cargo-udeps`
 
 The [`cargo-udeps`][cargo-udeps] tool is more accurate, however it is also
 slower as it relies on compiling the crate.
@@ -81,9 +76,17 @@ or manually by maintainers.
 
 ## Reading
 
-- [cargo machete, find unused dependencies quickly](https://blog.benj.me/2022/04/27/cargo-machete/)
-- [Item 25: Manage your dependency graph](https://www.lurklurk.org/effective-rust/dep-graph.html) (Effective Rust)
-- [Finding unused dependencies with `cargo-udeps`](https://fasterthanli.me/series/updating-fasterthanli-me-for-2022/part-1#finding-unused-dependencies-with-cargo-udeps) by [@fasterthanlime](https://fasterthanli.me)
+[cargo machete, find unused dependencies quickly](https://blog.benj.me/2022/04/27/cargo-machete/)
+
+[Item 25: Manage your dependency graph](https://www.lurklurk.org/effective-rust/dep-graph.html) (Effective Rust)
+
+[Finding unused dependencies with `cargo-udeps`](https://fasterthanli.me/series/updating-fasterthanli-me-for-2022/part-1#finding-unused-dependencies-with-cargo-udeps) by [@fasterthanlime](https://fasterthanli.me)
 
 [cargo-udeps]: https://github.com/est31/cargo-udeps
 [cargo-machete]: https://github.com/bnjbvr/cargo-machete
+
+[^feature]: See chapter [Optional Features](../organization/features.md).
+
+[^conditional-dependencies]: A feature of Cargo to let you specify dependencies depending on the circumstance, for example the platform. See <https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#platform-specific-dependencies> for more information.
+
+[^cargo-machete-quickly]: cargo-machete, find unused dependencies quickly: <https://blog.benj.me/2022/04/27/cargo-machete/>

@@ -18,3 +18,6 @@ the minimal set of runtime dependencies.
 - [ipetkov/crane](https://github.com/ipetkov/crane) on GitHub
 - [Building a Rust service with Nix](https://fasterthanli.me/series/building-a-rust-service-with-nix) by fasterthanlime
 - [Building Nix Flakes from Rust Workspaces](https://www.tweag.io/blog/2022-09-22-rust-nix/) by Tor Hovland
+
+
+https://ipetkov.dev/blog/introducing-crane/

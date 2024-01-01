@@ -14,4 +14,4 @@
 
 ## License
 
-[MIT](LICENSE.md)
+[CC BY-NC-SA 4.0](LICENSE.md)

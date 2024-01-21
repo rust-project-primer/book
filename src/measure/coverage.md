@@ -1,4 +1,4 @@
-# Measure Coverage
+# Test Coverage
 
 The only way to ensure that you are doing a good job of testing all the paths in
 the code is by measuring them. 

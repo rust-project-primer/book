@@ -1,4 +1,4 @@
-# Benchmarking
+# Performance
 
 If there is some part of your crate where you care about performance, then you
 should test for it. The way to test the performance of some code in Rust is by writing

@@ -93,6 +93,19 @@ be transferable.
 
 [^ci]: [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) (Wikipedia)
 
+## Reading
+
 [github]: https://github.com
 [gitlab]: https://gitlab.com
 
+[Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html) by Martin Fowler
+
+> Continuous Integration is a software development practice where each member
+> of a team merges their changes into a codebase together with their colleagues
+> changes at least daily. Each of these integrations is verified by an
+> automated build (including test) to detect integration errors as quickly as
+> possible. Teams find that this approach reduces the risk of delivery delays,
+> reduces the effort of integration, and enables practices that foster a
+> healthy codebase for rapid enhancement with new features.
+
+*In this article, Martin summarizes continuous integration practises.*

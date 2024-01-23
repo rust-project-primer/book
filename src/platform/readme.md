@@ -68,6 +68,14 @@ graph LR
 </caption>
 </figure>
 
+```admonish
+A common pattern is to use something like [Trunk-Based
+Development](https://trunkbaseddevelopment.com/), where developers
+develop on and merge changes into the `master` branch, and releases
+are represented by branches or tags (the former if bug fixes need to be
+cherry-picked, the latter for immutable release tags).
+```
+
 A primary focus of this book is exploring how aspects of a Rust software
 project can be efficiently automated using Continuous Integration (CI) jobs.
 Due to the nature of CI systems, the strategies and advice provided here are

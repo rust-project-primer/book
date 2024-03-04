@@ -1,17 +1,14 @@
-# Repositories
+## Workspace
 
-*Following the advice of this book, you have split your project into a set of
-smaller crates which has allowed you to speed up development again, because it
-makes it faster to build and run tests. However, often times developers need to
-run tests of several crates, and they have noticed that Rust seems to compile
-the same dependencies once for every crate. It make you wonder if there is some
-mechanism by which a set of crates can share a single build cache and not need
-that.*
-
-Rust is designed to cope with projects with a lot of crates. In fact, this is
-a pattern that is quite common amongst Rust projects.
+Rust is designed to cope well with projects that contain a lot of crates.  It
+even has a feature catered to exactly this use-case: the *workspace*. When you
+use a workspace, you tell Cargo that group of crates are related and should
+share the same build cache, and optionally some metadata.
 
 ```admonish
+Any time you have a project that contains more than one crate, you should
+create a Cargo Workspace to make sure that they can all share a build cache.
+
 While you can put every crate into its own repository, I recommend that you
 start new Rust projects with a monorepo approach at first, keeping all crates
 that the project consists of in a single repository. This gives you greater
@@ -22,22 +19,8 @@ some individual crates out into their own repository. Only do this if and when
 you think it is worth doing so and paying the cost of doing proper versioning.
 ```
 
-If you have a single repository which contains multiple crates, you can use the
-Cargo workspace feature, which exists for exactly this use-case.
-
-## Workspace
-
-Rust is designed to cope well with projects that have a lot of small crates.
-It even has a feature catered to exactly this use-case: the *workspace*. When you
-use a workspace, you tell Cargo that group of crates are related and should share
-the same build cache, and optionally some metadata.
-
-```admonish
-Any time you have a project that contains more than one crate, you should
-create a Cargo Workspace to make sure that they can all share a build cache.
-```
-
-You can crate a Cargo workspace by adding a `[workspace]` section in you `Cargo.toml`:
+You can crate a Cargo workspace by adding a `[workspace]` section in you
+`Cargo.toml`:
 
 ```toml
 [workspace]
@@ -48,6 +31,14 @@ members = ["crates/crate-a", "crates/crate-b"]
 license = "MIT"
 authors = ["John Doe <john.doe@example.com"]
 ```
+
+The main reasons why you would want to use workspaces rather than simply putting
+several crates into a repository is twofold:
+- When you use a `workspace`, then your entire project uses a single `target`
+  folder, meaning that every dependency is built exactly once. This speeds up
+  the build time.
+- When you run operations, such as tests, then you can tell `cargo` to run them
+  for all crates in the workspace.
 
 Workspaces have some other interesting properties. When you run `cargo test` in
 a workspace, it defaults to running all tests for all crates. Some of the Rust

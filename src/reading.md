@@ -1,8 +1,8 @@
 # Reading
 
-This guide is aimed at developers and project managers already comfortable
-with the Rust programming language. It does not cover any fundamentals of
-the language itself, only how to structure projects.
+This guide is aimed at developers and project managers already comfortable with
+the Rust programming language. It does not cover any fundamentals of the
+language itself, only how to structure projects.
 
 If you feel that you need to refresh your Rust basics, I recommend you to read
 or work through some of these resources. You do not need to work through all of

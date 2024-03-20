@@ -5,8 +5,8 @@
 [Prerequisites](reading.md)
 
 - [Platform](platform/readme.md)
-    - [GitHub](platform/github.md)
-    - [GitLab](platform/gitlab.md)
+    - [GitHub Actions](platform/github.md)
+    - [GitLab CI](platform/gitlab.md)
 - [Organization](organization/readme.md)
     - [Crates](organization/crates.md)
     - [Workspace](organization/workspace.md)

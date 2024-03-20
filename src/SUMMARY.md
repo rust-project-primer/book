@@ -2,7 +2,7 @@
 
 [Rust Project Primer](title.md)
 [Introduction](intro.md)
-[Reading](reading.md)
+[Prerequisites](reading.md)
 
 - [Platform](platform/readme.md)
     - [GitHub](platform/github.md)

@@ -1,21 +1,66 @@
 # Bazel
 
 Bazel is an open-source port of the Blaze build system used internally at
-Google.  While it does have a bit of a steep learning curve for those not used
-to it, it does support an incredibly wide variety of languages. 
+Google. It is, in some ways, purpose built to solve the kinds of problems that
+Google faces: building large amounts of code in a giant monorepo with a very
+diverse set of client machines. 
 
-What Bazel lets you do is mix and match programming languages and easily
-have them interoperate. For example, you can have some Rust code that you
-build into a C library in one build step, and then consume that library in
-some C++ project in another step.
+## Why Bazel?
 
-Another common pattern is to build some JavaScript-based frontend and then bake
-the output of that into a Rust-based backend.
+It uses a high-level build language and supports multiple languages and
+platforms. One of Bazel's key features is its ability to create reproducible
+builds, meaning that it ensures the output of a build is the same regardless of
+the environment it's run in. This is achieved through strict dependency
+tracking and sandboxed execution environments. Bazel's performance is enhanced
+by its advanced caching and parallel execution strategies, allowing it to only
+rebuild parts of the project that have changed since the last build,
+significantly reducing build times. It also scales seamlessly, facilitating its
+use in both small projects and massive codebases like those at Google. This
+makes Bazel particularly appealing for large, multi-language projects with
+complex dependencies, where build speed and consistency are critical. 
+
+## Example
 
 
 ## Reading
 
-- [Bazel rules_rust](https://github.com/bazelbuild/rules_rust)
-- [Scaling Rust builds with Bazel](https://mmapped.blog/posts/17-scaling-rust-builds-with-bazel.html)
-- [Bazel with Rust](https://earthly.dev/blog/bazel-with-rust/)
-- [Building Rust Workspace with Bazel](https://www.tweag.io/blog/2023-07-27-building-rust-workspace-with-bazel/)
+[Scaling Rust builds with Bazel](https://mmapped.blog/posts/17-scaling-rust-builds-with-bazel.html) by Roman Kashitsyn
+
+*Roman explains how and why the Internet Computer project switched to using
+Bazel as it's build system. He explains how Bazel is good at setting up builds
+that involve several languages or build targets, such as building some code for
+WebAssembly and using the resulting binaries as inputs to other builds.  He
+walks you through the process they used to incrementally switch a large project
+to using Bazel and the implications it had. He considers the migration a
+success.*
+
+[Using Bazel with Rust to Build and Deploy an
+Application](https://earthly.dev/blog/bazel-with-rust/) by Enoch Chejieh
+
+*Enoch walks you through how to get started with a simple Rust project that
+uses Bazel to build. In particular, he shows to get get dependencies between
+several crates working, and unit tests running in Bazel.*
+
+[Rewriting the Modern Web in
+Rust](https://implfuture.dev/blog/rewriting-the-modern-web-in-rust) by Kevin
+King
+
+*Kevin shows how to set up a full-stack Rust application using
+[Axum](https://docs.rs/axum) for the backend and [Yew](https://docs.rs/yew) and
+the Tailwind CSS framework for the frontend. He shows how to use the Bazel
+build system to wrap it all together, including getting interactive rebuilds
+working. This is a good example to show how powerful Bazel is, as it involves
+building the frontend to WebAssembly and embedding it into the frontend.*
+
+[Building Rust Workspace with
+Bazel](https://www.tweag.io/blog/2023-07-27-building-rust-workspace-with-bazel/)
+by Ilya Polyakovskiy
+
+*Ilya shows you how you can make existing Rust Workspaces build with Bazel, by
+taking the `ripgrep` crate, which is a popular search tool written in Rust and
+converting it to use Bazel for building and testing.*
+
+[Bazel rules_rust](https://github.com/bazelbuild/rules_rust)
+
+*The `rules_rust` project is the official Rust bindings for Bazel. It lets you
+tell Bazel about the crates you have, and how they depend on each other.*

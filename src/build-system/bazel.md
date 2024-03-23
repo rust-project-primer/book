@@ -63,4 +63,5 @@ converting it to use Bazel for building and testing.*
 [Bazel rules_rust](https://github.com/bazelbuild/rules_rust)
 
 *The `rules_rust` project is the official Rust bindings for Bazel. It lets you
-tell Bazel about the crates you have, and how they depend on each other.*
+tell Bazel about the crates you have, and how they depend on each other. If you
+want to use Bazel to build Rust code, you should use this plugin.*

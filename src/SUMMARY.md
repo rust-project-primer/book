@@ -35,7 +35,7 @@
 - [Testing](testing/readme.md)
     - [Tiers](testing/tiers.md)
     - [External Services](testing/external-services.md)
-    - [Property-Based](testing/propery-based.md)
+    - [Property Testing](testing/property.md)
 	- [Fuzzing](testing/fuzzing.md)
     - [Mutations](testing/mutations.md)
     - [Conclusion](testing/conclusion.md)

@@ -19,3 +19,10 @@ instructions on how to install the necessary tooling locally, and how to ensure
 that they are all using the same version. Is it something you want to run in the CI,
 or periodically? At the end of this chapter, I provide an overview of each of the
 tools discussed, and how I would apply them.
+
+*This chapter includes sections that show you how to check properties of your
+entire project, rather than just your Rust code.*
+
+## Reading
+
+

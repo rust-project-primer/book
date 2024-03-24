@@ -7,18 +7,68 @@ notice that it would be convenient if the backend would serve the files of the
 frontend, and you are looking for some way to tell Cargo to build and embed the
 frontend files into the backend's binary.  How can you achieve this?*
 
-## Solution
+With Cargo, Rust has some fanstastic tooling for building, cross-compiling
+and testing Rust software. Cargo supports installing plugins that extend it's
+functionality, a lot of which are discussed in this book. If your Rust
+project has a relatively simple setup, where it consists only of Rust crates,
+then Cargo is the ideal tool to get it to build:
 
-Build systems orchestrate the build process. They track tasks and dependencies, and
-make sure that the tasks are run in the right order, rerun when inputs have changed.
-Often times, they also enforce [hygiene by sandboxing build steps][sandboxing]
-to make sure you do not accidentally depend on inputs you have not declared.
-
-```admonish
-Usually, this is not really something you need to think of when you are working
-in a Rust project, because you have [Cargo][cargo] acting as an excellent build
-system.
+```mermaid
+graph LR
+    lib_a_lib-->lib_a
+    lib_b_lib-->lib_b
+    lib_a-->bin
+    lib_b-->bin
+    bin_main-->bin
 ```
+
+Things start to get tricky when you involve other languages (such as mixing
+Rust with C, C++, TypeScript) or when the build involves building code for
+different targets (for example, that some crates need to be built as WebAssembly
+and the resulting code is needed by other build.
+
+### Example architectures
+
+For example, some projects may need to interface with some legacy C/C++ code.
+In this case, building might involve compiling the library first:
+
+```mermaid
+graph LR
+    a-->b
+```
+
+Another common pattern when building full-stack web applications with Rust
+is that you might write the frontend in Rust and need to compile it to WebAssembly,
+and the backend in Rust. You want the Rust backend to serve the frontend, so
+it requires the WebAssembly output as a build input:
+
+```mermaid
+graph LR
+    a-->b
+```
+
+If you build a traditional web application with a TypeScript frontend and a
+Rust backend, you may need to run a TypeScript compiler for some part of your
+code and use the output as the input for your backend.
+
+```mermaid
+graph LR
+    a-->b
+```
+
+Other configurations are also possible, it depends on your particular need.
+
+## Build Systems
+
+Build systems are high-level tools to orchestrate the build process. They track
+tasks and dependencies, and make sure that the build steps are run in the right
+order and rerun when any of the inputs have changed. 
+
+Good build systems will enforce [hygiene by sandboxing build steps][sandboxing]
+to make sure you do not accidentally depend on inputs you have not declared.
+This helps to avoid the "it works on my machine" syndrome, where your code
+accidentally depends on some system state that is present on your machine but
+not on other's.
 
 However, build systems become interesting to your Rust project when one of
 three things happen:
@@ -34,8 +84,6 @@ three things happen:
   want to be sure you can use reproducibly it on all platforms. For example,
   you depend on the presence of `sqlite` in a specific version.
 
-> ToDo: graph here
-
 Many build systems also offer fully reproducible builds by requiring all build
 inputs and tools to be pinned down by hash, which enables distributed caching
 which is a big quality of life improvement for developers as it leads to faster
@@ -48,7 +96,13 @@ Cargo manifests in the project that allows standard Cargo tooling to work.
 
 ## Reading
 
-- [Multi-language build system options](https://cxx.rs/building.html)
+[Multi-language build system options](https://cxx.rs/building.html)
+
+*TODO*
+
+[Build systems a la carte]()
+
+*Paper which explain build systems, and how they work.*
 
 [cargo]: https://doc.rust-lang.org/cargo/
 [sandboxing]: https://bazel.build/docs/sandboxing

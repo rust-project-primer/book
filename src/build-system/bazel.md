@@ -19,8 +19,15 @@ use in both small projects and massive codebases like those at Google. This
 makes Bazel particularly appealing for large, multi-language projects with
 complex dependencies, where build speed and consistency are critical. 
 
-## Example
+## How does Bazel work?
 
+## Examples
+
+### Full-stack Rust web application
+
+### Mixing Rust and C
+
+### Mixing Rust and JavaScript
 
 ## Reading
 

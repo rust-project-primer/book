@@ -34,6 +34,13 @@ for `cargo test`. It has some useful features for running tests in CI, but the
 main advantage is that it is [up to 3x faster][benchmarks] according to their
 own benchmarks.
 
+In my testing, I've observed a 10% speedup, but it depends on how many tests
+you have and what they are bottlenecked by. In my case, the tests were
+bottlenecked by external services, so there is not too much `cargo nextest` can
+do. But if you have a lot of tests and/or a large Cargo workspace, be sure to
+give `cargo nextest` a try, you may see a marked improvement in testing time
+and the output is also more terse, which I like.
+
 ## Reading
 
 [How (and why) nextest uses

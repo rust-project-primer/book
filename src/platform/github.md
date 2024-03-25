@@ -31,7 +31,7 @@ what the jobs should do (usually some bash commands).
 
 *Shows you how to get started with GitHub Actions.*
 
-[GitHub Actions Feels Bad](https://www.youtube.com/watch?v=9qljpi5jiMQ) by Amos
+[GitHub Actions Feels Bad](https://www.youtube.com/watch?v=9qljpi5jiMQ) by Amos Wenger
 
 *The history and design of GitHub actions, and why they are perhaps not
 designed in an ideal way.*

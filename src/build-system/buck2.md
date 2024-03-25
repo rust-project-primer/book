@@ -32,6 +32,17 @@ efficient.
 
 ## Reading
 
+[Build faster with Buck2: Our open source build
+system](https://engineering.fb.com/2023/04/06/open-source/buck2-open-source-large-scale-build-system/)
+by Chris Hopman and Neil Mitchell
+
+*Introduction article of the Buck2 build system. Explains the features Buck2
+has.*
+
+[Buck2 build: Getting started](https://buck2.build/docs/getting_started/)
+
+*Getting started guide of the Buck2 build system.*
+
 [Using Buck to build Rust Projects](https://steveklabnik.com/writing/using-buck-to-build-rust-projects) by Steve Klabnik
 
 *Steve explains how Buck2 can be used to build Rust projects.*

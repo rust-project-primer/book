@@ -26,9 +26,20 @@ requested, build Docker images with the minimal set of runtime dependencies.
 
 [ipetkov/crane](https://github.com/ipetkov/crane) on GitHub
 
-[Building a Rust service with Nix](https://fasterthanli.me/series/building-a-rust-service-with-nix) by fasterthanlime
+[Building a Rust service with Nix](https://fasterthanli.me/series/building-a-rust-service-with-nix) by Amos Wenger
+
+*Amos shows how to build a Rust service in this article.*
+
+[Introducing Crane: Composable and Cacheable Builds with Cargo and Nix](https://ipetkov.dev/blog/introducing-crane/) by Ivan Petkov
+
+*Ivan introduces Crane in this article, a Nix library for building Cargo
+projects. He explains how it works and how to use it to build Rust projects.*
 
 [Building Nix Flakes from Rust Workspaces](https://www.tweag.io/blog/2022-09-22-rust-nix/) by Tor Hovland
 
-
-https://ipetkov.dev/blog/introducing-crane/
+*Tor explains how to package your Rust code using Nix. He explains the
+different options you have for doing so: the Nix built-in `buildRustPackage`,
+Naersk, Crane and Cargo2Nix. He shows how to build a sample application that
+consists of a Rust crate that is compiled into WebAssembly, a Rust library and
+a Rust application that depends on both of these. He also discusses some
+potential other options for building and packaging Rust code in Nix.*

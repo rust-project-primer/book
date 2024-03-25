@@ -89,13 +89,12 @@ however you should be able to apply these easily to other platforms as well.
 
 [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html) by Martin Fowler
 
-*In this article, Martin summarizes continuous integration practises:*
-
-> Continuous Integration is a software development practice where each member
-> of a team merges their changes into a codebase together with their colleagues
-> changes at least daily. Each of these integrations is verified by an
-> automated build (including test) to detect integration errors as quickly as
-> possible. Teams find that this approach reduces the risk of delivery delays,
-> reduces the effort of integration, and enables practices that foster a
-> healthy codebase for rapid enhancement with new features.
+*In this article, Martin summarizes continuous integration practises. In his
+own words: "Continuous Integration is a software development practice where each
+member of a team merges their changes into a codebase together with their
+colleagues changes at least daily. Each of these integrations is verified by an
+automated build (including test) to detect integration errors as quickly as
+possible. Teams find that this approach reduces the risk of delivery delays,
+reduces the effort of integration, and enables practices that foster a healthy
+codebase for rapid enhancement with new features."*
 

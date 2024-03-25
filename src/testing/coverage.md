@@ -10,17 +10,34 @@ This is another good reason for splitting up project into small crates: it allow
 you to have and enforce a good test coverage for all of the library crates that can
 be tested, while allowing certain binary crates to not be well-tested.
 
-In Rust, you can use `cargo-llvm-cov` to determine code coverage. It can output
+## Cargo LLVM-Cov
+
+In Rust, you can use [`cargo-llvm-cov`][cargo-llvm-cov] to determine code coverage. It can output
 in different formats, including HTML, JSON and text.
 
 ```
 $ cargo llvm-cov
 ```
 
+## Cargo Tarpaulin
+
+Another option is to use [`cargo-tarpaulin`][tarpaulin].
+
+## GRCOV
+
+Finally, there is also [grcov][].
+
 ## Reading
 
-- [cargo-llvm-cov](https://github.com/taiki-e/cargo-llvm-cov)
-- [tarpaulin](https://github.com/xd009642/tarpaulin)
-- [grcov](https://github.com/mozilla/grcov)
-- Rustc Book: [Instrumentation-based Code Coverage](https://doc.rust-lang.org/rustc/instrument-coverage.html)
+Rustc Book: [Instrumentation-based Code Coverage](https://doc.rust-lang.org/rustc/instrument-coverage.html)
+
+[How to do code coverage in Rust](https://blog.rng0.io/how-to-do-code-coverage-in-rust/#source-based-coverage) by Dotan J. Nahum 
+
+*Dotan explains how to measure test coverage in Rust using both Tarpaulin and
+grcov. He shows how to set it up for a project, with working GitHub Actions
+workflows.*
+
+[cargo-llvm-cov]: https://github.com/taiki-e/cargo-llvm-cov
+[tarpaulin]: https://github.com/xd009642/tarpaulin
+[grcov]: https://github.com/mozilla/grcov
 

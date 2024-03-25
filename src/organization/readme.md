@@ -52,12 +52,31 @@ both robust and flexible.
 
 ## Reading
 
-- [Chapter 7: Managing Growing Projects with Packages, Crates, and Modules](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html) in *The Rust Programming Language*
-- [Chapter 2.5: Project Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html) in *The Cargo Book*
-- [Rust at scale: packages, crates, modules](https://mmapped.blog/posts/03-rust-packages-crates-modules) by Roman Kashitsyn
-- [Rust compile times](https://endler.dev/2020/rust-compile-times/) by Matthias Endler
-- [The Dark side of inlining and monomorphization](https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/) by Nick Babcock
-- [Delete Cargo Integration Tests](https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html) by Alex Kladov
+[Chapter 7: Managing Growing Projects with Packages, Crates, and Modules](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html) in *The Rust Programming Language*
+
+*This chapter of The Rust Book shows you what facilities Rust has for
+structuring projects. It introduces the concepts of packages, crates and
+modules.*
+
+[Chapter 2.5: Project Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html) in *The Cargo Book*
+
+*This section in The Cargo Book explains the basic layout of a Rust project.*
+
+[Rust at scale: packages, crates, modules](https://mmapped.blog/posts/03-rust-packages-crates-modules) by Roman Kashitsyn
+
+*Roman discusses how you can scale Rust projects, and what he has learned from
+participating in several large Rust projects. He gives some guidance on when to
+put things into modules versus into crates, and what implication this has on
+compile times. He also gives some advice on programming patterns, such as
+preferring run-time polymorphism over compile-time polymorphism. This article
+is a must-read for anyone dealing with a growing Rust project and it encodes a
+lot of wisdom that otherwise takes a long time to acquire.*
+
+[Rust compile times](https://endler.dev/2020/rust-compile-times/) by Matthias Endler
+
+[The Dark side of inlining and monomorphization](https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/) by Nick Babcock
+
+[Delete Cargo Integration Tests](https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html) by Alex Kladov
 
 ---
 

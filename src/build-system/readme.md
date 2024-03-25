@@ -96,13 +96,37 @@ Cargo manifests in the project that allows standard Cargo tooling to work.
 
 ## Reading
 
+[The convergence of compilers, build systems and package managers](http://blog.ezyang.com/2015/12/the-convergence-of-compilers-build-systems-and-package-managers/) by Edward Z. Yang
+
+*Edward explains how build systems, compilers and package managers seem to
+converge. This is certainly the case for Rust, which has Cargo which acts as a
+build system (`cargo build`) and package manager (`cargo install`). He explains
+that this is not an isolated phenomenon, but inherent. It appears that we are
+heading towards a more integrated approach.*
+
 [Multi-language build system options](https://cxx.rs/building.html)
 
 *TODO*
 
-[Build systems a la carte]()
+[Build systems a la
+carte](https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems.pdf)
 
-*Paper which explain build systems, and how they work.*
+*Paper which explain build systems, and how they work. It takes popular build
+systems apart and explains their properties. A useful paper for anyone trying
+to achieve a deep understanding of what build systems are and how they work.*
+
+[Merkle trees and build systems](https://lwn.net/Articles/821367/)
+
+[Amazon's Build System](https://gist.github.com/terabyte/15a2d3d407285b8b5a0a7964dd6283b0) by Carl Meyers
+
+*Carl explains the build system that Amazon uses.*
+
+[Build System Schism: The Curse of Meta Build Systems](https://yzena.com/2024/03/build-system-schism-the-curse-of-meta-build-systems/) by Gavin D. Howard
+
+*Gavin gives a summary of the evolution of build systems, into the modern ones
+he calles meta build systems. He summarizes which features they have, and
+argues that Turing-completeness is a property that is required for a good build
+system.*
 
 [cargo]: https://doc.rust-lang.org/cargo/
 [sandboxing]: https://bazel.build/docs/sandboxing

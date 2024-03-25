@@ -76,11 +76,16 @@ or manually by maintainers.
 
 ## Reading
 
-[cargo machete, find unused dependencies quickly](https://blog.benj.me/2022/04/27/cargo-machete/)
+[cargo machete, find unused dependencies quickly](https://blog.benj.me/2022/04/27/cargo-machete/) by Benjamin Bouvier
 
-[Item 25: Manage your dependency graph](https://www.lurklurk.org/effective-rust/dep-graph.html) (Effective Rust)
+*Benjamin introduces the `cargo-machete` tool, which lets you quickly find
+unused dependencies. He explains how it works, and how it works differently to
+`cargo-udeps` to be much faster, at the expense of some accuracy.*
 
-[Finding unused dependencies with `cargo-udeps`](https://fasterthanli.me/series/updating-fasterthanli-me-for-2022/part-1#finding-unused-dependencies-with-cargo-udeps) by [@fasterthanlime](https://fasterthanli.me)
+[Item 25: Manage your dependency graph](https://www.lurklurk.org/effective-rust/dep-graph.html) in Effective Rust
+
+
+[Finding unused dependencies with `cargo-udeps`](https://fasterthanli.me/series/updating-fasterthanli-me-for-2022/part-1#finding-unused-dependencies-with-cargo-udeps) by Amos Wenger
 
 [cargo-udeps]: https://github.com/est31/cargo-udeps
 [cargo-machete]: https://github.com/bnjbvr/cargo-machete

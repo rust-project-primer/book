@@ -44,7 +44,10 @@ mdbook serve
 
 ## Reading
 
-- [mdBook Book](https://rust-lang.github.io/mdBook/)
-- GitHub: [rust-lang/mdBook][mdbook]
+[mdBook Book](https://rust-lang.github.io/mdBook/)
+
+*This is the officil book of the mdBook project. In true dog-fooding fashion,
+it is built using mdBook. It explains all the various knobs that mdBook
+supports.*
 
 [mdbook]: https://github.com/rust-lang/mdBook

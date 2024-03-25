@@ -25,4 +25,3 @@ entire project, rather than just your Rust code.*
 
 ## Reading
 
-

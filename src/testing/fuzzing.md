@@ -17,4 +17,10 @@ using property testing.
 
 ## Reading
 
-- [Rust Fuzz Book](https://rust-fuzz.github.io/book/introduction.html)
+[Rust Fuzz Book](https://rust-fuzz.github.io/book/introduction.html)
+
+[How to fuzz Rust code continuously](https://about.gitlab.com/blog/2020/12/03/how-to-fuzz-rust-code/) by Yevgeny Pats
+
+*Yevgeny explains why you should fuzz your Rust code, and shows you how
+to do it in GitLab. GitLab has some features that make running fuzzing
+inside GitLab CI quite convenient.*

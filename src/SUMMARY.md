@@ -54,6 +54,8 @@
     - [Docker images](releasing/docker.md)
 	- [Debian Package](releasing/debian.md)
 	- [RPM Package](releasing/rpm.md)
+    - [Crates](releasing/crates.md)
+    - [Private Registry](releasing/private-registry.md)
 - [Documentation](documentation/readme.md)
     - [Readme](documentation/repository.md)
     - [Rustdoc](documentation/rustdoc.md)

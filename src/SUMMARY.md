@@ -45,6 +45,7 @@
     - [Conclusion](testing/conclusion.md)
 - [Building](building/readme.md)
 	- [Binary Size](building/size.md)
+    - [Codegen](building/codegen.md)
     - [Caching](building/cache.md)
     - [Linking](building/linker.md)
 	- [Cross-Compiling](building/cross.md)

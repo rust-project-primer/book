@@ -58,6 +58,12 @@ Rust community, such as
 he explains lessons he has learned from maintaining several medium-sized Rust
 projects.*
 
+[Basic Things](https://matklad.github.io/2024/03/22/basic-things.html) by Alex Kladov
+
+*Alex argues for some basic properties of software projects. He discusses how
+getting these right can be a force-multiplier as projects grow in scope,
+developers and users.*
+
 [My Ideal Rust
 Workflow](https://fasterthanli.me/articles/my-ideal-rust-workflow#building-checking-testing-linting)
 by [fasterthanlime](https://fasterthanli.me/)

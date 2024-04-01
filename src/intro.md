@@ -101,3 +101,9 @@ If you are new to the Rust programming language, I recommend you to spend some
 time writing documentation for Rust crates that need it. It is a good way to be
 exposed to some Rust code and make an impact, and documentation is usually
 appreciated and uncontroversial.
+
+## How to read this book
+
+This book is structured like a recipe book: you can read it cover-to-cover,
+if you like. But you can also use it as a tool to look up recipes for how
+to solve issues you might run across.

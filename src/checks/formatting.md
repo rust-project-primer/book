@@ -14,15 +14,18 @@ code. The canonical tool used for formatting Rust code is `rustfmt`.
 
 ## Rustfmt
 
-Generally, Rust code can be formatted using `rustfmt`[^rustfmt], which is a core piece
+Generally, Rust code can be formatted using [rustfmt][], which is a core piece
 of Rust tooling and in general, the whole Rust community uses it.
 
-~~~admonish
+By incorporating `rustfmt` checks into the CI system, you can make sure that
+issues with formatting are caught before code review.
+
+### Installation
+
 Usually, `rustfmt` comes preinstalled when you install Rust. However, if you
 do not have it, you can install it using:
 
     rustup component add rustfmt
-~~~
 
 You can run `rustfmt` against a crate like this:
 
@@ -40,22 +43,14 @@ cargo fmt --check
 If the code is not properly formatted, this will return a nonzero exit code
 and cause the CI check to fail.
 
-```admonish
-By incorporating `rustfmt` checks into the CI system, you can make sure that
-issues with formatting are caught before code review.
-```
-
 ### Configuration
 
-Rustfmt can also optionally take some configuration[^rustfmt-conf] in a
-`rustfmt.toml` file. 
+Rustfmt can also optionally take some [configuration][rustfmt-conf] in a
+`rustfmt.toml` file.  This allows you to override specific behaviour, for
+example to set how it will group imports.
 
-This allows you to override specific behaviour, for example to set how it
-will group imports.
-
-Unfortunately, this is only supported by the nightly
-version of Rustfmt at the moment, so when using it you have to call `rustfmt`
-like this:
+Some configuration options are unstable at the moment and therefore require an
+unstable build of Rustfmt. When using it you have to call `rustfmt` like this:
 
 ```
 cargo +nightly fmt
@@ -73,8 +68,5 @@ git_ignore = true
 ```
 ~~~
 
----
-
-[^rustfmt-conf]: Overview of `rustfmt` configuration options: <https://rust-lang.github.io/rustfmt/>.
-
-[^rustfmt]: `rustfmt` repository: <https://github.com/rust-lang/rustfmt>.
+[rustfmt-conf]: https://rust-lang.github.io/rustfmt/
+[rustfmt]: https://github.com/rust-lang/rustfmt

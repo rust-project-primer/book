@@ -26,10 +26,6 @@ You can crate a Cargo workspace by adding a `[workspace]` section in you
 [workspace]
 resolver = "2"
 members = ["crates/crate-a", "crates/crate-b"]
-
-[workspace.package]
-license = "MIT"
-authors = ["John Doe <john.doe@example.com"]
 ```
 
 The main reasons why you would want to use workspaces rather than simply putting
@@ -59,6 +55,62 @@ default_file = "Cargo.toml"
 ```
 ~~~
 
+## Dependencies
+
+When you work in a large workspace, often times you have a set of dependencies that
+all of the crates in the workspace use. In that case, typically you want to ensure that
+they all use the same version of the dependency.
+
+For that use-case, Cargo Workspaces allows you to declare dependencies on a workspace
+level, and reference them in the daughter crates. This makes it easier to keep versions
+of dependencies in sync when they are used by a lot of crates.
+
+To use this feature, you can simply set the `workspaces.dependencies` in the same way
+that you would set `dependencies` in a regular crate.
+
+```toml
+[workspace.dependencies]
+anyhow = "1"
+```
+
+In the child crates, you can then reference them like this:
+
+```toml
+[dependencies]
+anyhow = { workspace = true }
+```
+
+It's still possible to override it, for example to turn on additional features.
+
+```toml
+[dependencies]
+anyhow = { workspace = true, features = ["abc"] }
+```
+
+## Metadata
+
+Another commonly used feature of Cargo Workspaces is the ability to set shared
+metadata. For example, you can use it to set a license for all crates, or keep the
+version of the crates in sync. To do this, you set metadata in the `workspace.package`
+in the workspace config, like this:
+
+```toml
+[workspace.package]
+license = "MIT"
+authors = ["John Doe <john.doe@example.com"]
+```
+
+To use this, you have to then reference it in the child crates.
+
+```toml
+[package]
+name = "crate-a"
+license.workspace = true
+authors.workspace = true
+```
+
+Doing this makes sense if you want all child crates to share some amount of metadata, as
+is often the case with licenses or authors.
 
 ## Reading
 

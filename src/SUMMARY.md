@@ -20,7 +20,6 @@
     - [Workspace](organization/workspace.md)
     - [Crate Size](organization/crate-size.md)
     - [Crate Features](organization/features.md)
-    - [Binary Crates](organization/binaries.md)
 - [Continuous Integration](platform/readme.md)
     - [GitHub Actions](platform/github.md)
     - [GitLab CI](platform/gitlab.md)

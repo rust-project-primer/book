@@ -83,7 +83,7 @@ Every crate can define (at most) one library. The entrypoint for this is in `src
 When you use a crate as a dependency, this is what other crates can see. Even if your
 project is primarily an executable and not a library, you should try to put most of the code
 into this library section, because this is what is visible to example code and integration
-tests.
+tests. I call this *library-first development*.
 
 - articles for library-first development
 
@@ -113,6 +113,8 @@ examples in the code documentation automatically.
 
 - graphic: examples linking against library
 
+See also: [Package Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html).
+
 ## Creating a crate
 
 You can use `cargo new` to create an empty crate. You have the choice of creating a library
@@ -126,6 +128,20 @@ cargo new example-crate
 # create a library crate
 cargo new --lib example-crate
 ```
+
+This is what an example crate layout looks like, after adding some dependencies. You can
+see what the metadata and the source code looks like.
+
+```files
+path = "example-crate"
+git_ignore = true
+default_file = "Cargo.toml"
+```
+
+A more full-fledged example makes use of both the library and executables, has
+some documentation strings, tests and examples in it, along with complete crate
+metadata.
+
 
 ~~~admonish info
 Cargo has some neat features besides being able to create new crates for you.
@@ -144,6 +160,39 @@ commonly requested.
 ~~~
 
 ## Crate Features
+
+Rust crates can declare optional dependencies. These are additive, meaning that
+enabling them should not break anything. The reason for this is that Rust performs
+feature unification: if you have multiple dependendencies in your dependency that
+depend on a single crate, it will only be built once with the features unified.
+
+- dependency tree: feature unification
+
+This is a good way to add additional, optional features to your crates while keeping
+compilation times short for those who don't use them. If you have a dependency, you
+can enable them by setting the `features` key:
+
+```toml
+[dependencies]
+serde = { version = "1.0.182", features = ["derive"] }
+```
+
+For your own crates, you can declare optional features using the `features` section
+in the metadata. Using features, you can enable optional dependencies, and inside your
+code you can disable parts (functions, structs, modules) depending on them.
+
+```toml
+[features]
+default = []
+cool-feature = ["serde"]
+```
+
+```rust
+#[cfg(feature = "cool-feature")]
+fn only_visible_when_cool_feature_enabled() {
+    // ...
+}
+```
 
 ## Crate Size
 

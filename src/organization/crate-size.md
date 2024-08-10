@@ -68,6 +68,8 @@ in by one project crate.
 *TODO*
 ```
 
+https://two-wrongs.com/decompose-into-larger-modules
+
 ## Reading
 
 [Prefer small crates](https://rust-unofficial.github.io/patterns/patterns/structural/small-crates.html) in *Rust Design Patterns*

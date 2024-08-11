@@ -1,0 +1,12 @@
+# Graphics
+
+- https://www.data-to-viz.com/
+- https://d3-graph-gallery.com/index.html
+- https://observablehq.com/@observablehq/plot-gallery
+- https://observablehq.com/@d3/tree/2?intent=fork
+- https://observablehq.com/@nitaku/tangled-tree-visualization-ii
+- https://observablehq.com/@d3/pack/2?intent=fork
+- https://observablehq.com/@d3/bubble-chart/2?intent=fork
+- https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable
+
+run: deno run bubble.js

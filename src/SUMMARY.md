@@ -18,6 +18,7 @@
 - [Organization](organization/readme.md)
     - [Crates](organization/crates.md)
     - [Workspace](organization/workspace.md)
+    - [Repository](organization/repository.md)
     - [Crate Size](organization/crate-size.md)
     - [Crate Features](organization/features.md)
 - [Continuous Integration](platform/readme.md)

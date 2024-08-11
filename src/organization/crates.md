@@ -187,6 +187,9 @@ default = []
 cool-feature = ["serde"]
 ```
 
+Once you have declared a feature like this, you can use it to conditionally include code
+in your project, using the cfg attribute.
+
 ```rust
 #[cfg(feature = "cool-feature")]
 fn only_visible_when_cool_feature_enabled() {
@@ -194,10 +197,30 @@ fn only_visible_when_cool_feature_enabled() {
 }
 ```
 
+Doing this can have some advantages, for example it lets you keep compilation times short
+for developers because they can build a subset of the project for testing purposes. However,
+it also requires some care, because you often need to be careful to make sure features don't
+conflict with each other, see [Chapter 6.10: Crate Features](checks/features.md).
+
 ## Crate Size
 
+As mentioned earlier, in Rust a crate is a compilation unit. When you make a
+change in one file, the entire crate needs to be rebuilt. While it makes sense
+initially to start a project out with one crate, as the project grows it may
+make sense to split it up into multiple, smaller crates. This allows for faster
+development cycles.
+
+The next section discusses how this can be done, and what mechanisms Rust
+supports for doing so.
 
 ## Reading
+
+[Default to Large Modules](https://two-wrongs.com/decompose-into-larger-modules)
+
+*In this article, Chris argues that it is best to default to large modules,
+because the cost of designing useful abstractions for the interaction is high,
+and it is possible to split larger modules into smaller ones later when the
+code is more stable.*
 
 [semver]: https://semver.org/
 [crates.io]: https://crates.io/

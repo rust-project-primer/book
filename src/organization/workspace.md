@@ -1,23 +1,20 @@
 ## Workspace
 
+As your projects grows, you may feel the need to split it up into multiple
+crates. Maybe the compilation times are becoming a problem, and having multiple
+smaller crates means that most of the application does not need to be rebuilt
+when you make a change in one file. Or maybe you want to enforce more loose
+coupling between the application, and split the responsibility of various parts
+to separate teams.
+
 Rust is designed to cope well with projects that contain a lot of crates.  It
 even has a feature catered to exactly this use-case: the *workspace*. When you
 use a workspace, you tell Cargo that group of crates are related and should
 share the same build cache, and optionally some metadata.
 
-```admonish
-Any time you have a project that contains more than one crate, you should
-create a Cargo Workspace to make sure that they can all share a build cache.
+* statistics on how many Rust projects use workspaces
 
-While you can put every crate into its own repository, I recommend that you
-start new Rust projects with a monorepo approach at first, keeping all crates
-that the project consists of in a single repository. This gives you greater
-iteration speed and allows you to make use of this workspace feature.
-
-Once the code has reached some amount of stability, you can consider moving
-some individual crates out into their own repository. Only do this if and when
-you think it is worth doing so and paying the cost of doing proper versioning.
-```
+## Creating a Workspace
 
 You can crate a Cargo workspace by adding a `[workspace]` section in you
 `Cargo.toml`:
@@ -112,6 +109,16 @@ authors.workspace = true
 Doing this makes sense if you want all child crates to share some amount of metadata, as
 is often the case with licenses or authors.
 
+## When to split crates
+
+When is the right time to split crates? This is a question that is not so easy
+to answer.  Splitting crates has a cost: it means you need to define the
+interface well. But if you do it well, it also has advantages. Maybe the code
+can be reused for future projects, because it is generic enough. Splitting
+crates out prematurely is probably not a good idea, but doing it too late risks
+that your code will depend on and use private interfaces that you don't want it
+to use.
+
 ## Reading
 
 [Chapter 7: Managing Growing Projects with Packages, Crates and Modules](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html) in *The Rust Programming Language*
@@ -132,3 +139,27 @@ configuration options that are available for it in the Crate manifest.*
 
 [An Opinionated Guide To Structuring Rust Projects](https://www.justanotherdot.com/posts/an-opinionated-guide-to-structuring-rust-projects.html) by Ryan James Spencer
 
+*TODO*
+
+[Prefer small crates](https://rust-unofficial.github.io/patterns/patterns/structural/small-crates.html) in *Rust Design Patterns*
+
+*This article argues that Rust makes it easy to add dependencies, so there is
+no downside to having more of them. Additionally, smaller crates are easier to
+understand and lead to more modular code, therefore small crate sizes should be
+encouraged.*
+
+[Brainstorm request: How to get benefits of small and large crates](https://internals.rust-lang.org/t/brainstorm-request-how-to-get-benefits-of-small-and-large-crates/10585/2)
+
+*In this discussion, the upsides and downsides of having small crates is
+discussed.*
+
+[rfc: collapse Tokio sub crates into single tokio crate](https://github.com/tokio-rs/tokio/issues/1318)
+
+*The Tokio project did the reverse: they used to be composed of many small
+crates, and merged them all into one crate. This discussion contains important
+context for why this decision was made, and has some arguments against having
+many small crates.*
+
+[Why is my Rust build so slow: splitting into more crates](https://fasterthanli.me/articles/why-is-my-rust-build-so-slow#splitting-into-more-crates)
+
+*TODO*

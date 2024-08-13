@@ -102,3 +102,7 @@ When should you consider async code:
 
 
 https://kkourt.io/blog/2017/10-14-linux-aio.html
+
+
+
+https://github.com/jkarneges/rust-async-bench

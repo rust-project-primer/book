@@ -1,21 +1,39 @@
 # Performance
 
-If there is some part of your crate where you care about performance, then you
-should test for it. The way to test the performance of some code in Rust is by
-writing some benchmarks.
+Rust often attracts people that care about performance. Often times, performance
+is not the end goal: instead, higher performance means higher efficiency. In an era
+of cloud computing, this translates to lower costs per request.
 
-Writing benchmarks allows you to quickly evaluate changes to some code, by
-comparing the benchmark results from different versions. Another application is
-tracking the performance of your code over time, by running benchmarks on every
-commit or periodically by a platform such as [Bencher][bencher] or the [Continuous Benchmark GitHub Action][continuous-benchmark].
+Performance optimizations are a large subject, and this book will not go into
+depth when it comes to it. There are other books that do a better job of
+summarizing what can be done to optimize applications, such as the [Rust
+Performance Book](https://nnethercote.github.io/perf-book/title-page.html).
+But this book does make a point that performance is something that should be
+tested and tracked over time, that is the only way to ensure that a project
+is heading in the right direction and not regressing.
 
-I must add that I am a big proponent of implementing this. You should care
-about performance. Your users care about performance — even a 100ms change is
-detectable by a human. And most importantly, performance does not happen by
-accident. Only when you continuously measure it, does your team have the
-feedback it needs to make good choices. In computer science, everything is a
-tradeoff, and you can only make good tradeoffs if you have some hard data on
-what you are trading in.
+The way you can do that in Rust is by writing benchmarks. In fact, Cargo comes
+with built-in support for doing so. While the Cargo build-in benchmarking
+harness is still unstable, there are some crates that allow you to easily build
+benchmarks for both blocking and async code, and track their performance over
+time.
+
+Writing benchmarks makes it easy to experiement with different options of
+implementing a feature, because it makes it easy to compare the performance
+differences between various approaches.  Another application is tracking the
+performance of your code over time, by running benchmarks on every commit or
+periodically by a platform such as [Bencher][bencher] or the [Continuous
+Benchmark GitHub Action][continuous-benchmark].
+
+Often times, performance is a tradeoff. While Rust has some zero-cost
+abstrations that allow you to write simple code that is still fast, there are
+many situations where you have to make a choice between a simpler
+implementation or some tech debt, and doing it properly, resulting in more
+development time or more complex code. The only way to make these decisions
+properly is to have data for them. How much runtime performance are you trading
+by keeping your simple implementation? How much performance are you gaining by
+having a more complex implementation? Projects should make these decisions
+based on measurements, and not guesses.
 
 ## Criterion
 
@@ -25,14 +43,21 @@ support for statistical analysis of the benchmark results.  The Rust standard
 library also has some benchmarking support, but this is currently a
 nightly-only feature.
 
-## Examples
+### Examples
 
 TODO:
 - simple benchmarking with criterion
 - async benchmarking with criterion
 - benchmarking published to bencher
 
+## Debugging Performance
+
 ## Reading
+
+[Rust Performance Book](https://nnethercote.github.io/perf-book/index.html)
+
+*This book summarizes various approaches of benchmarking and profiling code,
+and offers some suggestions to use to improve performance.*
 
 [Criterion.rs Book](https://bheisler.github.io/criterion.rs/book/index.html)
 
@@ -62,3 +87,4 @@ function introduced a regression.*
 [bencher]: https://bencher.dev/
 [continuous-benchmark]: https://github.com/marketplace/actions/continuous-benchmark
 [rustls]: https://github.com/rustls/rustls
+

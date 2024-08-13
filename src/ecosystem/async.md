@@ -97,3 +97,8 @@ When should you consider async code:
 [tokio]: https://tokio.rs/
 [smol]: https://github.com/smol-rs/smol
 [async-std]: https://async.rs/
+
+
+
+
+https://kkourt.io/blog/2017/10-14-linux-aio.html

@@ -11,9 +11,14 @@ At the same time, dealing with multiple repositories is also a headache. How do 
 make a change in a library and test that it doesn't break any of the repositories that depend
 on it?
 
+## Advantages and disadvantages of monorepos
+
+
 ## Start out with a single repository
 
+For your new Rust project, it probably makes sense to start out with 
 
+- bubble graph with big bubbge containing crates
 
 ## Split out libraries only if they are stable
 
@@ -21,6 +26,9 @@ on it?
 - private registry
 
 
+## Examples
+
+- tokio project
 
 ## Reading
 

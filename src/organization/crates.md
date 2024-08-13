@@ -215,6 +215,15 @@ supports for doing so.
 
 ## Reading
 
+[Chapter 3.2.1: Cargo Targets](https://doc.rust-lang.org/cargo/reference/cargo-targets.html) in The Cargo Book
+
+*In this section of the Cargo book, all of the possible targets that Cargo can build
+for a crate are defined.*
+
+[Chapter 3.1: Specifying Dependencies](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) in The Cargo Book
+
+*In this section of the book, it is explained how dependencies are specified in Cargo.*
+
 [Default to Large Modules](https://two-wrongs.com/decompose-into-larger-modules)
 
 *In this article, Chris argues that it is best to default to large modules,
@@ -224,3 +233,4 @@ code is more stable.*
 
 [semver]: https://semver.org/
 [crates.io]: https://crates.io/
+

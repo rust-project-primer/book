@@ -57,6 +57,8 @@ for using to to ensure correctness of the code.
 
 [Chapter 11: Writing automated tests](https://doc.rust-lang.org/book/ch11-00-testing.html) in *The Rust Book*
 
+https://doc.rust-lang.org/book/ch11-03-test-organization.html
+
 [How SQLite is tested](https://www.sqlite.org/testing.html)
 
 [cargo-nextest book](https://nexte.st/index.html)

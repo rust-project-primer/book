@@ -1,4 +1,4 @@
-## Workspace
+# Workspace
 
 As your projects grows, you may feel the need to split it up into multiple
 crates. Maybe the compilation times are becoming a problem, and having multiple

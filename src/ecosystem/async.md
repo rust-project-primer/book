@@ -5,6 +5,8 @@ of async code? This is typically the case when your application is I/O bound
 and wants to process a lot of requests, or when you want to make use of heavy,
 lightweight concurrency.
 
+![bubble graph of popular async crates](/graphics/crate-popularity-async.svg)
+
 ## What even is async?
 
 In short, async programming is a paradigm that lets you write scalable applications

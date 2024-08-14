@@ -7,6 +7,8 @@ pleasant development experience. The ecosystem's ability to abstract hardware
 makes it possible to easily retarget firmware for different microcontrollers,
 something which is usually not as easy when writing in C.
 
+![bubble graph of popular embedded crates](/graphics/crate-popularity-embedded.svg)
+
 ## [Embassy](https://embassy.dev)
 
 Embassy is one of those projects that makes writing embedded code feel like

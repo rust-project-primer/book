@@ -8,7 +8,5 @@ to put some thought into this before you start developing, because it might be
 difficult to switch once you've already invested in building your project with
 one ecosystem.
 
+![bubble graph of popular crates](graphics/crate-popularity.svg)
 
-
-- bubble graph of popular crates: https://observablehq.com/@d3/bubble-chart/2?intent=fork
-- https://d3-graph-gallery.com/index.html

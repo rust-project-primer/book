@@ -4,6 +4,8 @@ A common use-case of Rust is building backends for web applications. To do this,
 you often need some kind of framework to handle the HTTP protocol, request routing,
 authentication, parameter deserialization and response.
 
+![bubble graph of popular web crates](/graphics/crates-web.svg)
+
 ## [Axum](https://github.com/tokio-rs/axum)
 
 Axum is currently the most popular web framework in the Rust ecosystem. It is

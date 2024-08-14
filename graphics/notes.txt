@@ -10,3 +10,6 @@
 - https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable
 
 run: deno run bubble.js
+
+- bubble graph of popular crates: https://observablehq.com/@d3/bubble-chart/2?intent=fork
+- https://d3-graph-gallery.com/index.html

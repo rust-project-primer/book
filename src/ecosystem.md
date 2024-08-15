@@ -10,3 +10,6 @@ one ecosystem.
 
 ![bubble graph of popular crates](graphics/crate-popularity.svg)
 
+## Reading
+
+[On Dependency Usage in Rust](https://landaire.net/on-dependency-usage-in-rust/)

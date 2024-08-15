@@ -120,5 +120,8 @@ on Windows for Rust.*
 https://kkourt.io/blog/2017/10-14-linux-aio.html
 
 
+https://v5.chriskrycho.com/journal/async-rust-complexity/
+
+https://github.com/alexpusch/rust-magic-patterns/blob/master/rust-stream-visualized/Readme.md
 
 https://github.com/jkarneges/rust-async-bench

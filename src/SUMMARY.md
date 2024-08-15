@@ -1,9 +1,15 @@
 # Summary
 
 [Rust Project Primer](title.md)
-[Introduction](intro.md)
-[Prerequisites](reading.md)
+[Preface](preface.md)
 
+- [Introduction](intro.md)
+    - [Prerequisites](reading.md)
+    - [Why Choose Rust](whyrust.md)
+- [Development Environment](development-environment/index.md)
+    - [Zed](development-environment/zed.md)
+    - [Visual Studio Code](development-environment/vscode.md)
+    - [RustRover](development-environment/rust-rover.md)
 - [Ecosystem](ecosystem.md)
     - [Async](ecosystem/async.md)
     - [Rendering](ecosystem/rendering.md)
@@ -12,10 +18,6 @@
     - [Web Frontend](ecosystem/web-frontend.md)
     - [User Interface](ecosystem/ui.md)
     - [Embedded](ecosystem/embedded.md)
-- [Development Environment](development-environment/index.md)
-    - [Zed](development-environment/zed.md)
-    - [Visual Studio Code](development-environment/vscode.md)
-    - [RustRover](development-environment/rust-rover.md)
 - [Organization](organization/readme.md)
     - [Crates](organization/crates.md)
     - [Workspace](organization/workspace.md)

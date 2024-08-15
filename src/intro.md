@@ -107,3 +107,8 @@ appreciated and uncontroversial.
 This book is structured like a recipe book: you can read it cover-to-cover,
 if you like. But you can also use it as a tool to look up recipes for how
 to solve issues you might run across.
+
+
+## Reading
+
+[rust is not about memory safety](https://o-santi.github.io/blog/rust-is-not-about-memory-safety/)

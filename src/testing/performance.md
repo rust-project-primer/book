@@ -52,6 +52,11 @@ TODO:
 
 ## Debugging Performance
 
+
+## Using Valgrind
+
+- idea: repeatable measurements (on same architecture).
+
 ## Reading
 
 [Rust Performance Book](https://nnethercote.github.io/perf-book/index.html)
@@ -82,6 +87,14 @@ to find performance regressions easily. He explains that using `cachegrind` was
 instrumental, because it is able to count CPU instructions and easily diff them
 per function for different benchmark runs, which allows for tracking down which
 function introduced a regression.*
+
+[Criterion Flamegraphs](https://www.jibbow.com/posts/criterion-flamegraphs/)
+
+https://nickb.dev/blog/guidelines-on-benchmarking-and-rust/
+https://blog.lambdaclass.com/benchmarking-and-analyzing-rust-performance-with-criterion-and-iai/
+https://engineering.deptagency.com/benchmarking-rust-code-using-criterion-rs
+https://lib.rs/crates/iai-callgrind
+https://github.com/bheisler/iai
 
 [criterion]: https://docs.rs/criterion/latest/criterion/
 [bencher]: https://bencher.dev/

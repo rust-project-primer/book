@@ -15,6 +15,8 @@ run: deno run bubble.js
 - https://d3-graph-gallery.com/index.html
 https://stackoverflow.com/questions/13339615/packing-different-sized-circles-into-rectangle-d3-js
 
+cool visualisations: https://recursion.wtf/posts/recursion_lib_intro/
+
 fix:
 - highlight by category
 - transition for hover (zoom, maybe show description)

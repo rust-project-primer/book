@@ -177,5 +177,9 @@ Scripts](https://doc.rust-lang.org/cargo/reference/build-scripts.html)
 *Section in the Cargo Book that talks about using build scripts. It shows some
 examples for how they can be used and explains what can be achieved with them.*
 
+[The Missing Parts in Cargo](https://weihanglo.tw/posts/2024/the-missing-parts-in-cargo/)
+
+*TODO*
+
 [crates.io]: https://crates.io
 [rust-targets]: http://example.com

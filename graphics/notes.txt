@@ -13,3 +13,9 @@ run: deno run bubble.js
 
 - bubble graph of popular crates: https://observablehq.com/@d3/bubble-chart/2?intent=fork
 - https://d3-graph-gallery.com/index.html
+https://stackoverflow.com/questions/13339615/packing-different-sized-circles-into-rectangle-d3-js
+
+fix:
+- highlight by category
+- transition for hover (zoom, maybe show description)
+- link to crate

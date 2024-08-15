@@ -101,6 +101,20 @@ When should you consider async code:
 [async-std]: https://async.rs/
 
 
+## Reading
+
+[Sans-IO](https://www.firezone.dev/blog/sans-io)
+
+*This article expalains an approach to architecting asynchronous applications that stricly
+separate IO code from business logic.*
+
+[\Device\Afd, Or the Deal With the Devil that makes async Rust work on
+Windows](https://notgull.net/device-afd/)
+
+*That Windows has some odd design choices and cruft is has accumulated over the
+years is not news to any developers that have had to interact with it. This
+article explains the dark magic that needs to be performed to make async work
+on Windows for Rust.*
 
 
 https://kkourt.io/blog/2017/10-14-linux-aio.html

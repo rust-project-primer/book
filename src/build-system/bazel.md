@@ -23,9 +23,13 @@ complex dependencies, where build speed and consistency are critical.
 
 ## Examples
 
-### Full-stack Rust web application
+### Bazel Rust Hello World
+
+### Bazel Rust Workspace
 
 ### Mixing Rust and C
+
+### Full-stack Rust web application
 
 ### Mixing Rust and JavaScript
 
@@ -72,3 +76,8 @@ converting it to use Bazel for building and testing.*
 *The `rules_rust` project is the official Rust bindings for Bazel. It lets you
 tell Bazel about the crates you have, and how they depend on each other. If you
 want to use Bazel to build Rust code, you should use this plugin.*
+
+[Bazel: What It Is, How It Works, and Why Developers Need It](https://hackernoon.com/bazel-what-it-is-how-it-works-and-why-developers-need-it)
+
+*This article is an overview of Bazel, it discusses the basics of hot it operates
+and what advantages it has for developers.*

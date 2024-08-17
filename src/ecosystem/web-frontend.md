@@ -181,6 +181,11 @@ Tokio, Postgres, and Warp.*
 [Full Stack Rust with Leptos](https://benw.is/posts/full-stack-rust-with-leptos)
 
 
+
+[Rust and WebAssembly Book](https://rustwasm.github.io/docs/book/introduction.html)
+
+*Book that explains how to use Rust to target WebAssembly.*
+
 [trunk]: https://trunkrs.dev/
 [wasm]: https://webassembly.org/
 [browser-support]: https://caniuse.com/wasm

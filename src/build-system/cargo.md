@@ -9,16 +9,43 @@ it is also easy to cross-compile your Rust code for other targets, see the
 [list of supported Rust targets][rust-targets].
 
 Cargo supports installing other tools that integrate into it and extend it
-with new subcommands. This guide mentions several of such tools, for example:
-
-- `cargo hack`, for testing feature permutations,
-- `cargo llvm-cov`, for determining test coverage,
+with new subcommands. This guide mentions several of such tools, such as `cargo-hack`
+or `cargo-llvm-cov`.
 
 One nice property of having Cargo as the default build system for all Rust
 projects is that you can typically clone any repository that contains a Rust
 crate and run `cargo build` to build it, or `cargo test` to run tests.
 This is quite different to languages such as C, C++ or JavaScript that have
 a more fragmented build ecosystem.
+
+## What Cargo Lacks
+
+If you only use built-in commands and only build Rust code, then Cargo is a
+great build system for Rust projects. However, there are some features it does
+not have.
+
+If you rely on plugins to build your project, such as `trunk` for building
+WebAssembly-powered web frontend applications powered by Rust, Cargo will not
+install it automatically.  Rather, developers need to install it manually by
+running `cargo install trunk`.
+
+If you rely on native dependencies, such as OpenSSL or other libraries, Cargo
+will not handle installing them on your behalf. There are some workarounds for
+this, for example some crates like `rusqlite` ship the C code and have a
+feature flag where Cargo will build the required library from source if you
+request it.
+
+If you need to execute build steps, such as compiling C code or your have some
+parts of your project that use for example JavaScript, there is only
+rudimentary support for doing so with Cargo.
+
+In short, Cargo is great at all things Rust, but it does not help you much if
+you mix other languages into your project. And that is by design: Cargo's goal
+is not to reinvent the world. It does one thing, and it does it well, which is
+build Rust code.
+
+The next sections discuss some approaches that you can use to use Cargo in
+situations that it is not designed for, but that yet seem to work.
 
 ## Complex build steps
 
@@ -32,7 +59,7 @@ write that are executed at build time and let you do anything you like, includin
 building other code. It also supports linking with C/C++ libraries by having
 these build scripts emit some data that Cargo parses.
 
-### Using build scripts with Cargo
+### Compiling C Code
 
 Issues typically come up whenever you need to interface with other programming
 languages. While there is support for doing that, it can sometimes be tricky to
@@ -61,6 +88,8 @@ There are some common patterns that people do in build scripts:
 ~~~admonish example title="Using a build script with Cargo"
 TODO
 ~~~
+
+### Linking with native libraries
 
 ## Caching builds
 
@@ -142,6 +171,15 @@ should always specify this.
 TODO
 ~~~
 
+## Convenience Commands
+
+https://blog.logrocket.com/demystifying-cargo-in-rust/
+
+```
+cargo add
+cargo update
+cargo tree
+```
 
 ## Conclusion
 

@@ -65,13 +65,13 @@ https://doc.rust-lang.org/book/ch11-03-test-organization.html
 
 [How to Test](https://matklad.github.io/2021/05/31/how-to-test.html) by Alex Kladov
 
+[Unit and Integration tests](https://matklad.github.io//2022/07/04/unit-and-integration-tests.html)
+
 
 [Everything you need to know about testing in Rust](https://www.shuttle.rs/blog/2024/03/21/testing-in-rust) by Joshua Mo
 
 *This article gives an overview of Cargo features for testing and libraries
 in the Rust ecosystem that can help in writing useful tests for software.*
-
-
 
 
 [tdd]: https://en.wikipedia.org/wiki/Test-driven_development

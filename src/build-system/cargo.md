@@ -173,12 +173,76 @@ TODO
 
 ## Convenience Commands
 
+Cargo has a useful selection of convenience commands built-in to it that make
+using it to manage Rust projects easy.
+
 https://blog.logrocket.com/demystifying-cargo-in-rust/
 
+### Managing Dependencies
+
+Cargo comes with built-in commands for managing dependencies. Originally, these commands
+were part of [cargo-edit][], but due to their popularity the Cargo team has decided to adopt
+them as first-class citizens and integrate them into Cargo.
+
 ```
-cargo add
-cargo update
+cargo add serde
+cargo remove serde
+```
+
+Recently, they also added support for Workspace dependencies. If you use `cargo-add` to add
+a dependency to a crate, which already exists in the root workspace as a dependency, it will do the
+right thing and add it as a workspace dependency to your Cargo manifst.
+
+You can also use Cargo to query the dependency tree. This lets you see a list of all dependencies,
+and their child dependencies. It lets you find out if you have duplicate dependencies (with different
+versions), and when that is the case, why they get pulled in. For example, if you have one dependency
+that uses `uuid v1.0.0`, but you depend on `uuid v0.7.0`, then you will end up with two versions of
+the `uuid` crate that are being pulled in.
+
+```
 cargo tree
+```
+
+This command used to be a separate plugin called [cargo-tree][], but was
+incorporated into Cargo by the team due to it being useful.
+
+[cargo-edit]: https://github.com/killercup/cargo-edit
+[cargo-tree]: https://github.com/sfackler/cargo-tree
+
+### Building and running Code and Examples
+
+
+```
+cargo build
+cargo run
+```
+
+### Running Tests and Benchmarks
+
+```
+cargo test
+cargo bench
+```
+
+
+### Building Documentation
+
+```
+cargo doc
+```
+
+### Installing Rust Tools
+
+```
+cargo install
+```
+
+- mention cargo-binstall
+
+## Profiling Builds
+
+```
+cargo +nightly build --timings=html
 ```
 
 ## Conclusion

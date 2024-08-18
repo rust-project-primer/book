@@ -4,8 +4,6 @@
 [Preface](preface.md)
 
 - [Introduction](intro.md)
-    - [Prerequisites](reading.md)
-    - [Why Choose Rust](whyrust.md)
 - [Development Environment](development-environment/index.md)
     - [Zed](development-environment/zed.md)
     - [Visual Studio Code](development-environment/vscode.md)

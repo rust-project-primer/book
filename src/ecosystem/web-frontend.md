@@ -141,13 +141,16 @@ hooks](https://docs.rs/yew-hooks/latest/yew_hooks/).
 The idea is that you can compose these small components into bigger applications. Yew
 also comes with a plugin for [routing](https://docs.rs/yew-router/latest/yew_router/).
 
-### Examples
+### Example: Todo App
 
-Here is an example of a todo-list application written in Yew.
+Here is an example of a todo-list application written in Yew. It is a rewrite
+of this [example todo app written in
+React](https://www.digitalocean.com/community/tutorials/how-to-build-a-react-to-do-app-with-react-hooks).
 
 ```files
 path = "todo-yew"
 git_ignore = true
+files = ["!.git"]
 default_file = "src/lib.rs"
 ```
 
@@ -174,6 +177,8 @@ fn app() -> Element {
 
 The upside is that it does not use proc macros, which helps with IDE support
 for the developer experience.
+
+### Example: Todo App
 
 ## [Leptos](https://www.leptos.dev/)
 
@@ -206,6 +211,8 @@ pub fn SimpleCounter(initial_value: i32) -> impl IntoView {
 }
 ```
 
+### Example: Todo App
+
 ## [Trunk][trunk]
 
 Trunk is not a frontend framework at all, but it is a build tool. It handles some of
@@ -222,6 +229,22 @@ installed Rust using rustup, you can do this easily:
 Some interesting points is that it has some integration with external tooling, such
 as wasm-opt to optimize and slim down WebAssembly binaries, and Tailwind CSS for generating
 CSS styles.
+
+### Configuration
+
+### Assets
+
+- how to include css
+- how to include assets
+- how to use tailwind css
+
+### Request Forwarding
+
+- how to proxy API requests to backend
+
+### Output of Trunk
+
+- example build output of trunk
 
 ## Reading
 

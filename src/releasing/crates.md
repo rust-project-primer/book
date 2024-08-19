@@ -1,4 +1,4 @@
-# Crates
+# Crate Registry
 
 The default way to release Rust crates (libraries and binaries) is to a Crate
 registry.  The default crate registry for Rust is [crates.io][], with 150k

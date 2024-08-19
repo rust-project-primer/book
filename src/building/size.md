@@ -1,4 +1,6 @@
-# Binary Size
+# Optimizations
+
+## Binary Size
 
 *One of your customers deploys the Rust-based tool that you are developing on
 very small embedded systems which run in an industrial environment. They are

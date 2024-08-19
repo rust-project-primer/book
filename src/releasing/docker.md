@@ -1,4 +1,4 @@
-# Docker images
+# Containerize
 
 *To deploy your Rust services, you have some `Dockerfile`s in the repository.
 Sometimes, developers like to build these locally for testing purposes.

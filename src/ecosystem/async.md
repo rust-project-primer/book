@@ -5,7 +5,68 @@ of async code? This is typically the case when your application is I/O bound
 and wants to process a lot of requests, or when you want to make use of heavy,
 lightweight concurrency.
 
-![bubble graph of popular async crates](/graphics/crate-popularity-async.svg)
+The main difference between async and blocking programming paradigms is the
+introduction of *futures*, which represent a computation. While in blocking code,
+when you run some code, your thread will do only that:
+
+```rust
+std::time::sleep(Duration::from_secs(1));
+```
+
+In async code, you split the *definition* of a computation from its *execution*.
+Every async function returns a *future* that you need to *await*.
+
+```rust
+tokio::time::sleep(Duration::from_secs(1)).await;
+```
+
+The advantage of this is that it lets you perform high-level operations on
+computations. It lets you compose them. For example, you can execute
+multiple futures at once:
+
+```rust
+let future_1 = tokio::time::sleep(Duration::from_secs(1));
+let future_1 = tokio::time::sleep(Duration::from_secs(1));
+futures::join(future_1, future_2).await;
+```
+
+You can also wrap your futures into something else, for example adding a timeout
+to some computation that will cancel it when the time runs out:
+
+```rust
+tokio::time::timeout(Duration::from_secs(1), handle_request()).await;
+```
+
+## When should you use async?
+
+When should you consider async code:
+
+- You're writing something that is heavily I/O bound, such as a web server,
+  and you want it to be able to scale to a lot of requests and still stay efficient.
+- You're writing firmware for a microcontroller, and you want it to perform
+  multiple things simultaneously.
+- You want to be able to compose computation in a high-level way, for example
+  wrapping some computation in a timeout.
+
+When should you stick so synchronous code (see also [When not to use Tokio](https://tokio.rs/tokio/tutorial#when-not-to-use-tokio)):
+
+- You're writing a command-line application that only does one thing.
+- You're writing an application that mainly performes computation and not I/O,
+  such as cryptographic libraries, data structures.
+- Most of the I/O your applications performs is file I/O.
+
+If your crate performs mainly computations, then [Rayon][rayon] is most likely what
+you want to use. The Rust standard library also comes with code to let you easily and
+safely create and manage threads.
+
+The caveate around file I/O comes from the fact that in many operating systems
+there are no asynchronous interfaces for reading from and writing to files.
+While there is [a crate that lets Tokio use
+`io_uring`](https://github.com/tokio-rs/tokio-uring), this only works on Linux
+and is experimental. For that reason, Tokio spawns a dedicated thread for file
+I/O and uses blocking calls.
+
+[rayon]: https://docs.rs/rayon/latest/rayon/
 
 ## What even is async?
 
@@ -49,9 +110,14 @@ they cause your thread to stall until some event happens. Examples of these are:
 - Waiting for a write or a read from disk
 - Waiting for a timer to expire
 
-
-
 ## What runtimes are recommended?
+
+Although support for async-await style programming was only added in [Rust
+1.39](https://blog.rust-lang.org/2019/11/07/Async-await-stable.html), it has
+caught on and the Rust community has seen a large number of frameworks being
+built for async, and a lot of crates that support it.
+
+![bubble graph of popular async crates](/graphics/crate-popularity-async.svg)
 
 In general, there are three runtimes that are recommended:
 
@@ -77,21 +143,6 @@ general, async in Rust
 Function coloring: design "sync core, async shell"
 
 https://www.thecodedmessage.com/posts/async-colors/
-
-## Summary
-
-When should you stick so synchronous code:
-
-- You're writing a command-line application that only does one thing.
-- You're writing an application that performs computation, such as cryptographic
-  library.
-
-When should you consider async code:
-
-- You're writing something that is heavily I/O bound, such as a web server.
-- You're writing firmware for a microcontroller, and you want it to perform
-  multiple things simultaneously.
-
 
 
 
@@ -125,3 +176,7 @@ https://v5.chriskrycho.com/journal/async-rust-complexity/
 https://github.com/alexpusch/rust-magic-patterns/blob/master/rust-stream-visualized/Readme.md
 
 https://github.com/jkarneges/rust-async-bench
+
+
+
+https://rust-lang.github.io/async-book/

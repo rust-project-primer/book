@@ -5,41 +5,84 @@ JavaScript, or TypeScript which compiles down to it. Running code in the
 browser allows you to store state client-side, implement responsive
 applications that don't need to reload every time a user performs an action.
 
+### WebAssembly
+
 Since the advent of [WebAssembly][wasm], and the broad [support of browsers for
 WebAssembly][browser-support], it has been possible to write frontend web
 applications in other languages than JavaScript.
 
 Thanks to Rust's use of [LLVM][llvm], a compiler infrastructure that makes it
-easy to write new backends for different targets, it had support for targetting
-WebAssembly relatively early. This means you can write entire applications that
-live and run in the browser in Rust, and make use of Rust's extensive
-ecosystem. 
+easy to write new backends for different targets, it gained support for
+targetting WebAssembly relatively early. This means you can write entire
+applications that live and run in the browser in Rust, and make use of Rust's
+extensive ecosystem. 
 
 Not all of Rust crates will work on WebAssembly out-of-the-box, for example
 because they access native operating system APIs that do not exist in
 WebAssembly, but many will work out-of-the-box or have feature flags that can
 be enabled to add support for it.
 
+All of the low-level APIs that are relevant for running in the browser are
+exposed by the [web_sys](https://docs.rs/web-sys/latest/web_sys/index.html)
+crate. This is a large crate that is automatically generated, and you need to
+enable features to enable it's various APIs. Ergonomic wrappers for a lot of
+functionality are exposed by the [gloo](https://docs.rs/gloo/latest/gloo/)
+crate, and you should use this if you can.
+
+### Async Support
+
 Thanks to the hard work of the community, it is even possible to use Rust async
 code in a WebAssembly environment, through the use of
 [wasm-bindgen-futures](https://docs.rs/wasm-bindgen-futures/latest/wasm_bindgen_futures/).
 These map the interface of Rust's Futures to JavaScript Promises.
 
-Most web frameworks work similar to React, in that they have a component model
-and keep the DOM in sync, either by directly updating it or by rendering to a
-shadow DOM.
+For example, you can use this to spawn a future in the background to make a
+network request and get the body of some web resource using the
+[reqwest](https://docs.rs/reqwest/latest/reqwest/#wasm) library:
 
-Running Rust frontend web application in the browser is a bit more complex than
-just running `cargo build`, since the result WebAssembly still needs to be
-packaged in a way that a browser can consume, and it needs some JavaScript glue
-to make it usable. For this, a lot of frameworks use [Trunk][trunk] to bundle
-and ship the raw Rust WebAssembly binaries into something the browser can
-understand.
+```rust
+wasm_bindgen_futures::spawn_local(async {
+    let test = reqwest::get("https://www.rust-lang.org")
+        .await?
+        .text()
+        .await?;
+});
+```
+
+Most frameworks have some kind of wrapper around these raw futures to be able to
+use them in the applications.
+
+### How these frameworks work
+
+Most Rust web frameworks work similar to [React][react].  They have a component
+model, where every component can have parameters called *props*, can keep some
+state, and their output is a tree containing either raw HTML or child
+components. The frameworks handle rendering the components to the browser, and
+take care of handling changes in state (by re-rendering affected components and
+child components that changed). 
+
+- animation of updating state in component using d3/recursion-visualize
+
+Some of the differences are in how they render the components to the [Document
+Object Model][dom], which is what the browser uses to represent the HTML that
+is rendered. Some frameworks render a shadow DOM and synchronize it with the
+browser, while others directly update the DOM.
+
+[dom]: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
+
+Deploying a Rust frontend web application in the browser is a bit more complex
+than just running `cargo build`, since the resulting WebAssembly blob still
+needs to be packaged in a way that a browser can consume, and it needs some
+JavaScript glue to make it usable. For this, a lot of frameworks use
+[Trunk][trunk] to bundle and ship the raw Rust WebAssembly binaries into
+something the browser can understand.
 
 In this section, we will not cover all available frontend frameworks, only a
 few of the post popular. As this is a relatively new development, there is a
 lot of activity in the various frameworks and you should expect some volatility
 in which frameworks are the most popular.
+
+[react]: https://react.dev/learn
 
 ## [Yew](https://yew.rs/)
 
@@ -48,8 +91,9 @@ It uses a reactive component model, has a useful ecosystem of plugins, supports
 server-side rendering, routing, and has a HTML macro that makes it relatively easy
 to get started.
 
-The way you use it is by defining components, using the `functional_component`
-prop macro.
+To define a component, you can either implement the [Component][yew::html::Component]
+trait, or use the [`function_component`][yew::functional::function_component] derive 
+macro. In general, the latter leads to more concise code, and is the recommended way.
 
 ```rust
 #[function_component]
@@ -60,8 +104,9 @@ fn app() -> Html {
 }
 ```
 
-Components can have inputs, these are called *props*. They can also have state
-and react to things using *hooks*. 
+You can think of this function as always being run whenever your component needs to
+re-render, for example if any of the inputs (props or state) have changed. To declare
+state in your component, you use *hooks*. Here is an example:
 
 ```rust
 #[function_component]
@@ -93,14 +138,24 @@ Simple hooks come
 also external crates offering [more
 hooks](https://docs.rs/yew-hooks/latest/yew_hooks/).
 
-In older versions of Yew, functional components did not exist yet, so in some
-code bases you may see people [deriving Component
-manually](https://github.com/yewstack/yew/blob/master/examples/counter/src/main.rs).
-
 The idea is that you can compose these small components into bigger applications. Yew
 also comes with a plugin for [routing](https://docs.rs/yew-router/latest/yew_router/).
 
-- todo: example application
+### Examples
+
+Here is an example of a todo-list application written in Yew.
+
+```files
+path = "todo-yew"
+git_ignore = true
+default_file = "src/lib.rs"
+```
+
+[Here](https://rust-project-primer.gitlab.io/todo-yew/) you can see this application running.
+
+
+[yew::html::Component]: https://docs.rs/yew/0.21.0/yew/html/trait.Component.html
+[yew::functional::function_component]: https://docs.rs/yew/0.21.0/yew/functional/attr.function_component.html
 
 ## [Dioxus](https://dioxuslabs.com/)
 
@@ -158,6 +213,11 @@ the nitty-gritty in getting a WebAssembly blog runnable in a browser. You can in
 it by running:
 
     cargo install trunk --locked
+
+If you have not done so already, you also need to enable compiling to WebAssembly. If you
+installed Rust using rustup, you can do this easily:
+
+    rustup target add wasm32-unknown-unknown
 
 Some interesting points is that it has some integration with external tooling, such
 as wasm-opt to optimize and slim down WebAssembly binaries, and Tailwind CSS for generating

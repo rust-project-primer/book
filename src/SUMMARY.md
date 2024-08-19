@@ -11,7 +11,6 @@
 - [Ecosystem](ecosystem.md)
     - [Async](ecosystem/async.md)
     - [Rendering](ecosystem/rendering.md)
-    - [Databases](ecosystem/databases.md)
     - [Web Backend](ecosystem/web-backend.md)
     - [Web Frontend](ecosystem/web-frontend.md)
     - [User Interface](ecosystem/ui.md)

@@ -1,0 +1,3 @@
+[submodule "examples/todo-yew"]
+	path = examples/todo-yew
+	url = ../todo-yew

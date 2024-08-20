@@ -1,15 +1,28 @@
 # Web Frontend
 
-Traditionally, web frontend applications are written in languages such as
-JavaScript, or TypeScript which compiles down to it. Running code in the
-browser allows you to store state client-side, implement responsive
-applications that don't need to reload every time a user performs an action.
+Traditional web frontends are written in HTML and CSS, usually using some
+templating library such as [handlebars][] or [tera][]. On every interaction,
+the server sends newly rendered HTML to the browser. The downside of this
+approach is higher latencies, because they entire page needs to be rerendered
+on every interaction.
+
+Modern web frontend applications are written in languages such as JavaScript or
+TypeScript and run as a [Single-page application][spa]. This means that some
+part of the application runs in the browser, and it can make direct API calls
+to the backend. That way, the application can stay responsive while it is
+waiting for a response from the server.
+
+Since the advent of [WebAssembly][wasm] and the broad [support of browsers for
+WebAssembly][browser-support], it has been possible to write frontend web
+applications in other languages than JavaScript. This section focusses on
+frameworks for Rust that allow you to make use of this to write single-page
+applications in it for full-stack Rust applications.
+
+[spa]: https://en.wikipedia.org/wiki/Single-page_application
+[handlebars]: https://github.com/sunng87/handlebars-rust
+[tera]: https://keats.github.io/tera/
 
 ### WebAssembly
-
-Since the advent of [WebAssembly][wasm], and the broad [support of browsers for
-WebAssembly][browser-support], it has been possible to write frontend web
-applications in other languages than JavaScript.
 
 Thanks to Rust's use of [LLVM][llvm], a compiler infrastructure that makes it
 easy to write new backends for different targets, it gained support for
@@ -32,7 +45,7 @@ crate, and you should use this if you can.
 ### Async Support
 
 Thanks to the hard work of the community, it is even possible to use Rust async
-code in a WebAssembly environment, through the use of
+code in a WebAssembly environment through the use of
 [wasm-bindgen-futures](https://docs.rs/wasm-bindgen-futures/latest/wasm_bindgen_futures/).
 These map the interface of Rust's Futures to JavaScript Promises.
 
@@ -94,6 +107,8 @@ to get started.
 To define a component, you can either implement the [Component][yew::html::Component]
 trait, or use the [`function_component`][yew::functional::function_component] derive 
 macro. In general, the latter leads to more concise code, and is the recommended way.
+Functional components return `Html`, using the `html` macro. This macro can output
+raw HTML, or other child components.
 
 ```rust
 #[function_component]
@@ -113,12 +128,12 @@ state in your component, you use *hooks*. Here is an example:
 fn App() -> Html {
     let state = use_state(|| 0);
 
-    let incr_counter = {
+    let increment_counter = {
         let state = state.clone();
         Callback::from(move |_| state.set(*state + 1))
     };
 
-    let decr_counter = {
+    let decrement_counter = {
         let state = state.clone();
         Callback::from(move |_| state.set(*state - 1))
     };
@@ -126,8 +141,8 @@ fn App() -> Html {
     html! {
         <>
             <p> {"current count: "} {*state} </p>
-            <button onclick={incr_counter}> {"+"} </button>
-            <button onclick={decr_counter}> {"-"} </button>
+            <button onclick={increment_counter}> {"+"} </button>
+            <button onclick={decrement_counter}> {"-"} </button>
         </>
     }
 }
@@ -141,11 +156,13 @@ hooks](https://docs.rs/yew-hooks/latest/yew_hooks/).
 The idea is that you can compose these small components into bigger applications. Yew
 also comes with a plugin for [routing](https://docs.rs/yew-router/latest/yew_router/).
 
-### Example: Todo App
+### Example: [Yew Todo App][todo-yew]
 
 Here is an example of a todo-list application written in Yew. It is a rewrite
 of this [example todo app written in
 React](https://www.digitalocean.com/community/tutorials/how-to-build-a-react-to-do-app-with-react-hooks).
+It showcases props, child components, raw HTML rendering, the `use_state` hook
+and how to package it with trunk.
 
 ```files
 path = "todo-yew"
@@ -154,7 +171,9 @@ files = ["!.git"]
 default_file = "src/lib.rs"
 ```
 
-[Here](https://rust-project-primer.gitlab.io/todo-yew/) you can see this application running.
+[Here][todo-yew] you can see this application in action.
+
+[todo-yew]: https://rust-project-primer.gitlab.io/todo-yew/
 
 
 [yew::html::Component]: https://docs.rs/yew/0.21.0/yew/html/trait.Component.html

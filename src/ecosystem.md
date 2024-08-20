@@ -34,3 +34,7 @@ it is so easy to add dependencies, that many small projects end up with
 gigabytes worth of trivial (transitive dependencies), which is criticized as a
 security risk. This article explains how dependencies work in Rust, and why
 it's okay to use them.*
+
+[Statistics on the Rust ecosystem](https://lib.rs/stats)
+
+*Lib.rs publishes some interesting graphics of the Rust ecosystem.*

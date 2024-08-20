@@ -1,4 +1,4 @@
-# Book
+# Project Documentation
 
 While having code-level documentation is useful for some cases, another important
 aspect is having high-level documentation which explains:
@@ -10,6 +10,8 @@ aspect is having high-level documentation which explains:
 Not explicitly documenting these somewhere leads to having projects where this
 important context lives in a few people's brains. It can block others in the
 team from making changes by not knowing how things fit together.
+
+## mdBook
 
 In the Rust community, the [mdBook][mdbook] tool has become the standard way to write 
 this kind of documentation. It consumes the documentation in the form of Markdown and
@@ -38,9 +40,9 @@ mdbook build
 mdbook serve
 ```
 
-## Examples
+### Examples
 
-## Usage
+### Usage
 
 ## Reading
 

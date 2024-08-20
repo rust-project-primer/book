@@ -178,6 +178,47 @@ using it to manage Rust projects easy.
 
 https://blog.logrocket.com/demystifying-cargo-in-rust/
 
+## Initializing Cargo project
+
+To quickly create a Cargo project, you can use `cargo new`. By default, it will
+create a binary crate, but you can use the `--lib` flag to create a library crate
+instead.
+
+```
+cargo new my-crate
+```
+
+### Building and running Code and Examples
+
+The main thing you likely use Cargo for is to build and run Rust code.
+Cargo has two commands for this, `cargo build` and `cargo run`.
+
+    cargo build
+    cargo run
+
+If you have multiple binaries and you want to build or run a specific one,
+you can specify it using the `--bin` flag.
+
+    cargo build --bin my_binary
+    cargo run --bin my_binary
+
+If you instead want to build or run an example, you can specify that using
+the `--example` flag.
+
+    cargo build --example my_example
+    cargo run --example my_example
+
+### Running Tests and Benchmarks
+
+Besides building and running Rust code, you will likely also use Cargo to
+run unit tests and benchmarks. It has built-in commands for this, too.
+
+    cargo test
+    cargo bench
+
+As explained in the [Unit testing](../testing/unit.md) section, you can
+also use the external tool `cargo-nextest` to run tests faster.
+
 ### Managing Dependencies
 
 Cargo comes with built-in commands for managing dependencies. Originally, these commands
@@ -209,21 +250,6 @@ incorporated into Cargo by the team due to it being useful.
 [cargo-edit]: https://github.com/killercup/cargo-edit
 [cargo-tree]: https://github.com/sfackler/cargo-tree
 
-### Building and running Code and Examples
-
-
-```
-cargo build
-cargo run
-```
-
-### Running Tests and Benchmarks
-
-```
-cargo test
-cargo bench
-```
-
 
 ### Building Documentation
 
@@ -233,17 +259,24 @@ cargo doc
 
 ### Installing Rust Tools
 
-```
-cargo install
-```
+Besides just being a build system for Rust, Cargo also acts as a kind of package
+manager. Any binary Rust crates that are published on a registry can be compiled
+and installed using it. This is often used to install Cargo plugins or other supporting
+tools.
+
+    cargo install ripgrep
+
 
 - mention cargo-binstall
 
 ## Profiling Builds
 
-```
-cargo +nightly build --timings=html
-```
+If you want to figure out what Cargo is spending most of the time on during
+builds, you can use the built-in profiling support. This generates a HTML report
+of the timings of the build and allows you to debug slow builds. However, it only
+works using nightly Rust.
+
+    cargo +nightly build --timings=html
 
 ## Conclusion
 

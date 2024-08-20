@@ -230,7 +230,16 @@ pub fn SimpleCounter(initial_value: i32) -> impl IntoView {
 }
 ```
 
-### Example: Todo App
+### Example: [Todo App][todo-leptos]
+
+```files
+path = "todo-leptos"
+git_ignore = true
+files = ["!.git"]
+default_file = "src/lib.rs"
+```
+
+[todo-leptos]: https://rust-project-primer.gitlab.io/todo-leptos
 
 ## [Trunk][trunk]
 

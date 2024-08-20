@@ -2,3 +2,7 @@
 	path = examples/todo-yew
 	url = ../todo-yew
     branch = master
+[submodule "examples/todo-leptos"]
+	path = examples/todo-leptos
+	url = ../todo-leptos
+    branch = master

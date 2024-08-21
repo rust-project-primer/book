@@ -104,6 +104,12 @@ build system (`cargo build`) and package manager (`cargo install`). He explains
 that this is not an isolated phenomenon, but inherent. It appears that we are
 heading towards a more integrated approach.*
 
+[Build Systems and Build Philosophy](https://abseil.io/resources/swe-book/html/ch18.html) in Software Engineering at Google
+
+*This chapter in the book discusses why build systems are vital in scaling
+software development, because they ensure that software can be built correctly
+on a number of different systems and architectures.*
+
 [Multi-language build system options](https://cxx.rs/building.html)
 
 *TODO*

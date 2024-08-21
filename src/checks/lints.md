@@ -49,6 +49,12 @@ annotation can be added to the crates that should not have unsafe code in them.
 ```
 ~~~
 
+
+## Reading
+
+[Static Analysis](https://abseil.io/resources/swe-book/html/ch20.html) in Software Engineering at Google
+
+
 ---
 
 [^clippy]: <https://github.com/rust-lang/rust-clippy>

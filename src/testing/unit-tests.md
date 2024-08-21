@@ -64,3 +64,6 @@ async fn async_unit_test() {
 ## Reading
 
 [Unit testing](https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html) in Rust By Example
+
+
+[Unit Testing](https://abseil.io/resources/swe-book/html/ch12.html) in Software Engineering at Google

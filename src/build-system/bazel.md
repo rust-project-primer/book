@@ -37,15 +37,28 @@ the compilation process is always deterministic.
 
 ## Examples
 
+This sections shows off some example projects that showcase what using Bazel
+in a Rust project looks like.
+
 ### Bazel Rust Hello World
+
+- smallest possible bazel + rust project
 
 ### Bazel Rust Workspace
 
+- smallest possible bazel + rust workspace project
+
 ### Mixing Rust and C
+
+- smallest possible rust + native C code project
 
 ### Full-stack Rust web application
 
+- smallest possible backend + frontend project
+
 ### Mixing Rust and JavaScript
+
+- smallest possible rust + javascript (react) project
 
 ## Reading
 

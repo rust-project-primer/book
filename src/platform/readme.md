@@ -98,3 +98,6 @@ possible. Teams find that this approach reduces the risk of delivery delays,
 reduces the effort of integration, and enables practices that foster a healthy
 codebase for rapid enhancement with new features."*
 
+[Continuous Integration](https://abseil.io/resources/swe-book/html/ch23.html) in Software Engineering at Google
+
+*TODO*

@@ -1,4 +1,4 @@
-# Async
+# Concurrency
 
 The biggest question that you need to ask yourself is: do you require the use
 of async code? This is typically the case when your application is I/O bound

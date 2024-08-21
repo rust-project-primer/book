@@ -19,3 +19,12 @@ In this chapter, I will explain how both of these documentation strategies can
 be employed effectively in a Rust project.
 
 ## Reading
+
+[Documentation](https://abseil.io/resources/swe-book/html/ch10.html) in Software Engineering at Google
+
+*Tom explains why documentation is needed for software projects to scale,
+because they communicate important information about how things work and why
+they work the way they do. They save valuable engineering time by giving
+engineers access to the information they need quickly, without needing to look
+into the code.  He explains what good documentation looks like, and what Google
+does to keep it accurate and of high quality.*

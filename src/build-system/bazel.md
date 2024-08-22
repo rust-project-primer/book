@@ -37,8 +37,12 @@ the compilation process is always deterministic.
 
 ## Examples
 
-This sections shows off some example projects that showcase what using Bazel
-in a Rust project looks like.
+This sections shows off some example projects that showcase what using Bazel in
+a Rust project looks like. Bazel comes with some [Rust
+examples](https://github.com/bazelbuild/examples/tree/main/rust-examples) and
+the `rules_rust` comes with a more extensive [set of
+examples](https://github.com/bazelbuild/rules_rust/tree/main/examples) that are
+also worth looking into.
 
 ### Bazel Rust Hello World
 

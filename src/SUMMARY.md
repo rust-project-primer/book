@@ -76,6 +76,7 @@
     - [Design](documentation/design.md)
     - [Examples](documentation/examples.md)
 - [Tools](tools/readme.md)
+    - [Code Search](tools/search.md)
     - [Task Runners](tools/tasks.md)
     - [Readme](tools/repository.md)
     - [Watch Files](tools/watch.md)

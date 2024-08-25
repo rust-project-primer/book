@@ -41,7 +41,7 @@
     - [Outdated Dependencies](checks/outdated.md)
     - [Cargo Manifest](checks/manifest.md)
     - [Crate Features](checks/features.md)
-    - [MSRV](checks/msrv.md)
+    - [Minimum Supported Rust Version](checks/msrv.md)
     - [Conclusion](checks/conclusion.md)
 - [Testing](testing/readme.md)
     - [Unit Tests](testing/unit-tests.md)

@@ -24,6 +24,9 @@ efficient.
 
 ## Examples
 
+There are some [examples](https://github.com/facebookincubator/reindeer/tree/main/example)
+using reindeer, which is used to translate Cargo dependencies into Buck2 configurations.
+
 ### Building C/C++ code
 
 ### Building JavaScript

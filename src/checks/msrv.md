@@ -1,4 +1,4 @@
-# MSRV
+# Minimum Supported Rust Version
 
 In [Build systems: Cargo](../build-systems/cargo.md), we've explained that
 when you build library crates, you can specify a MSRV. This specifies the

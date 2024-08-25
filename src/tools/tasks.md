@@ -66,13 +66,43 @@ some built-in functions, support for variables and much more. The [Just
 Programmer's Manual](https://just.systems/man/en/) describes all of the
 features it has to offer.
 
-## Cargo Make
+## [Cargo Make](https://github.com/sagiegurari/cargo-make)
 
-`cargo-make` is a simple Cargo subcommand which performs a similar
-function as Makefiles do, however it uses a TOML-based configuration
+`cargo-make` is a Rust task runner and build tool. It lets you define tasks in
+a `Makefile.toml`. It supports task dependencies and has some built-in features
+that are useful in Rust projects, such as the ability to install crates.
 
-- <https://crates.io/crates/cargo-make>
+You can install it using Cargo:
 
-## Cargo XTask
+    cargo install cargo-make
 
-- <https://github.com/matklad/cargo-xtask>
+Once installed, you can create a `Makefile.toml` in your repository to define
+the tasks you want it to do.
+
+```toml
+# generate coverage, will install cargo-llvm-cov if it doesn't exist
+[tasks.coverage]
+install_crate = "cargo-llvm-cov"
+command = "cargo"
+args = ["llvm-cov", "--html"]
+```
+
+With this definition, running the `coverage` task will ensure that
+`cargo-llvm-cov` is installed, and run it to produce a HTML coverage report.
+
+    cargo make coverage
+
+Tasks can also have dependencies on other tasks, and these dependencies can be
+set conditionally, such as per-platform, allowing you to write
+platform-specific or environment-specific implementations for tasks.
+
+## [Cargo XTask](https://github.com/matklad/cargo-xtask)
+
+`cargo-xtask` is less of a tool and more a pattern for defining bespoke tasks
+for Rust projects. The advantage of it is that you write the tasks themselves
+in Rust, and `cargo-xtask` is only used to run them.
+
+[Make your own make](https://matklad.github.io/2018/01/03/make-your-own-make.html) by Alex Kladov
+
+*Alex explains the idea of using Rust itself for the automation of steps in
+this article. This idea is what `cargo-xtask` implements.*

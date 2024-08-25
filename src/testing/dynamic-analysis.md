@@ -69,14 +69,18 @@ operations in Rust code, and that is [Miri][miri].
 
 ## Miri
 
-Miri is a tool that lets you find undefined behaviour in Rust programs. It
-works by acting as an interpreter for Rust's *mid-level intermediate
+[Miri][miri] is a tool that lets you find undefined behaviour in Rust programs.
+It works by acting as an interpreter for Rust's *mid-level intermediate
 representation*, which is used by the compiler internally. In some ways, it is
 similar to Valgrind, because it works by interpreting this representation. The
 advantage of using Miri over Valgrind is that this representation retains a lot
 of semantic information, which means you get much better diagnostic messages.
 It has the same downside as Valgrind, in that it makes your program's execution
 very slow.
+
+## Cargo Careful
+
+[Cargo Careful](https://github.com/RalfJung/cargo-careful)
 
 ## Reading
 

@@ -35,4 +35,9 @@ backend instead of the default LLVM backend, but your mileage may vary.
 
 ## Reading
 
-[Cranelift code generation comes to Rust](https://lwn.net/Articles/964735/)
+[Cranelift code generation comes to Rust](https://lwn.net/Articles/964735/) by Daroc Alden
+
+*Daroc announces the availability of the Cranelift compiler backend for Rust.
+He explains the history behind the Cranelift project, having been developed for
+the Wasmtime runtime, and that it can generate code faster than the LLVM
+project, at the expense of doing less optimizations.*

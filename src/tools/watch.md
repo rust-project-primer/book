@@ -56,10 +56,11 @@ specifying which files to watch.
 
 [Chapter 1: Setup - Toolchains, IDEs, CI](https://www.lpalmieri.com/posts/2020-06-06-zero-to-production-1-setup-toolchain-ides-ci/#5-2-cargo-watch) by Luca Palmieri
 
-*In this chapter of his book, he explains how to setup a project. He mentions
-using `cargo watch` can reduce the perceived compilation time.*
+*In this chapter of his book, Luca explains how to setup a real-life Rust
+project. He explains that using `cargo watch` can reduce the perceived
+compilation time.*
 
 [Cargo Issue #9339: Add Cargo watch](https://github.com/rust-lang/cargo/issues/9339)
 
-*There is some discussion going on to incorporate watching functionality natively
-into Cargo.*
+*In this Issue, there is some discussion going on to incorporate file watching
+functionality natively into Cargo.*

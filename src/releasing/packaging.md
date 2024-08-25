@@ -1,5 +1,25 @@
 # Packaging
 
+When you release software, packaging it often a good way to make it easy to
+deploy, either by end-users or by other systems. Packaging your software allows
+you to bundle the executables and libraries with assets (such as man pages,
+configuration files, documentation or runtime data) into a single file that
+contains metadata such as the version of your software and runtime dependencies
+it has.  Doing so allows not only for easy installation, but it also makes
+upgrades easy, as package managers will take care of removing the old version
+and installing the new file.
+
+Popular package formats are:
+
+- Debian packages
+- RPM packages
+- FlatPak
+- AppImage
+
+The Rust ecosystem has some useful tools to package software. Typically, this
+is useful for packaging it for Linux systems, as many other operating systems
+do not have a useful package manager.
+
 ## Debian Package
 
 If you want to create releases for Linux users, specifically ones that use the
@@ -61,6 +81,8 @@ supports cross-compilation for other architectures.
 https://github.com/cat-in-136/cargo-generate-rpm
 
 ## Flatpak
+
+## AppImage
 
 [cargo-deb-systemd]: https://github.com/kornelski/cargo-deb/blob/main/systemd.md
 [apt repo]: https://earthly.dev/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/

@@ -1,12 +1,11 @@
 # Readme
 
 The purpose of a README is for people to get a very brief introduction to what
-you project does. It does not need to be a comprehensive documentation document,
-rather a very dense summary that contains some vital pieces of information.
-
-```admonish info
-Having a usable README is mostly important for open-source development.
-```
+you project does. For open-source projects it is essential, when people decide
+if your crate solves the issue they are trying to solve.  It does not need to
+be a comprehensive documentation document, rather a very dense summary that
+contains some vital pieces of information of what your crate does, how it compares
+to other crates that achieve similar goals, and what limitations it has.
 
 There are some common patterns that make for useful README files, and this chapter
 will attempt to illustrate them.
@@ -92,12 +91,9 @@ window.addEventListener("load", (event) => {
 });
 </script>
 
-### Common badges for Rust repositories
+### Generating a readme file from crate-level documentation
 
-For repositories, there is a different set of badges. These pull information
-straight from the repository rather than from published version. This means
-that they are able to show more up-to-date information.
-
-> TODO
+The [Readme](../tools/repository.md) section shows some tools that you can use to generate
+a README file from crate-level documentation.
 
 [crates.io]: https://crates.io/

@@ -263,7 +263,10 @@ const _: () = {
 
 [Chapter 19.5: Macros](https://doc.rust-lang.org/book/ch19-06-macros.html) in The Rust Book
 
-*Section in The Rust Book introducing and explaining macros.*
+*Section in The Rust Book introducing and explaining macros. It explains the
+difference declarative and procedural macros, and the different types of
+procedural macros (attribute macros, derive macros, function-like macros) and
+how they are implemented.*
 
 [Rust Macros and inspection with cargo expand](https://medium.com/@adamszpilewicz/rust-macros-and-inspection-with-cargo-expand-9236b6ccff17) by Adam Szpilewicz
 

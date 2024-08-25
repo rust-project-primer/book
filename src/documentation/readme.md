@@ -1,5 +1,10 @@
 # Documentation
 
+If writing software was just about telling the machine what to do, then we
+would be writing code in assembly. But writing software is as much
+communicating to *others* as it is communicating with the machine we expect it
+to run in.
+
 Documentation is essential for any project. It makes it easy to onboard people
 onto projects, and generally prevents projects from turning into a mess. 
 Having documentation about the software architecture makes it easier to reason

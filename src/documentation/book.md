@@ -48,8 +48,11 @@ mdbook serve
 
 [mdBook Book](https://rust-lang.github.io/mdBook/)
 
-*This is the officil book of the mdBook project. In true dog-fooding fashion,
-it is built using mdBook. It explains all the various knobs that mdBook
-supports.*
+*This is the official book of the mdBook project. It explains all the various
+features that mdBook has, and how to use them.*
+
+[mdBook: Thirt-Party Plugins](https://github.com/rust-lang/mdBook/wiki/Third-party-plugins)
+
+*A list of third-party plugins for mdBook, contains various preprocessors and backends.*
 
 [mdbook]: https://github.com/rust-lang/mdBook

@@ -50,7 +50,6 @@ for downstream users.
 
 ## Reading
 
-- [docs.rs][]
-- [Rustdoc Book](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html)
+[Rustdoc Book](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html)
 
 [docs.rs]: https://docs.rs

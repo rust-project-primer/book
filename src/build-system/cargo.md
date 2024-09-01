@@ -59,37 +59,94 @@ write that are executed at build time and let you do anything you like, includin
 building other code. It also supports linking with C/C++ libraries by having
 these build scripts emit some data that Cargo parses.
 
-### Compiling C Code
-
-Issues typically come up whenever you need to interface with other programming
-languages. While there is support for doing that, it can sometimes be tricky to
-get it right and have it work across multiple platforms and versions.
-
-If you have a few more complex steps that you need to do when building your
-code, you can always use a build script.
-
 The other sections of this chapter are only relevant to you if your project
 consists of a mixture of languages, and building it is sufficiently complex
 that it cannot trivially be expressed or implemented in a `build.rs` file (such
 as: it needs external dependencies).
 
-```admonish
+### `build.rs` to define custom build actions
+
+
+
+If you have a few more complex steps that you need to do when building your
+code, you can always use a build script.
+
 Build scripts in Cargo are little Rust programs defined in a `build.rs` in the crate
 root which are compiled and run before your crate is compiled. They are able to do
 some build steps (such as compile an external, vendored C library) and they can
 emit some information to Cargo, for example to tell it to link against a specific
 library.
+
+Build scripts receive a [number of environment variables][build-script-input]
+as inputs, and output [some metadata][build-script-output] that controls
+Cargo's behaviour. 
+
+
+A simple build script might look like this:
+
+```rust
+fn main() {
+}
 ```
 
-There are some common patterns that people do in build scripts:
+For common tasks such as building C code, generating bindings for native
+libraries there are crates that allow you to write build scripts easily, these
+are presented in the next sections.
 
-- Use the `cc` or `cmake` crates to compile C/C++ code and then link it with your program.
+### Compiling C/C++ Code
 
-~~~admonish example title="Using a build script with Cargo"
-TODO
-~~~
+If you have some C or C++ code that you want built with your crate, you can use
+the [`cc`][cc] crate to do so. It is a helper library that you can call inside
+your build script to run the native C/C++ compiler to compile some code, link
+it into a static archive and tell Cargo to link it when building your crate. It
+also has support for compiling CUDA code.
+
+A basic use of this crate looks by adding something like this to the `main`
+function of your build script:
+
+```rust
+cc::Build::new()
+    .file("foo.c")
+    .file("bar.c")
+    .compile("foo");
+```
+
+The crate will take care of the rest of finding a suitable compiler and
+communicating to Cargo that you wish to link the `foo` library.
+
+Here is an example of how this looks like. In this crate, a build script is
+used to compile and link some C code, and the unsafe C API is wrapped and
+exposed as a native Rust function.
+
+```files
+path = "levenshtein"
+git_ignore = true
+files = ["!.git"]
+default_file = "src/lib.rs"
+```
+
+Note that in order to make the C function "visible" from Rust, you need to declare
+it in an `extern "C"` block. It needs a function definition that matches the one in
+the C header. Writing this by hand is error-prone, and can lead to unsafety issues.
+
+This example also shows how this unsafe C function is wrapped into a safe Rust
+function. Doing so involves dealing with raw pointers, and it is easy to get
+something wrong. It is important to write good [unit
+tests](../testing/unit-tests.md), and often it can help to use [dynamic
+analysis](../testing/dynamic-analysis.md) to make sure you did it correctly.
+
+[cc]: https://docs.rs/cc/latest/cc/
+
+### Compiling CMake projects
+
+- use the `cmake` crate
 
 ### Linking with native libraries
+
+- using rust-bindgen
+
+[build-script-input]: https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-build-scripts
+[build-script-output]: https://doc.rust-lang.org/cargo/reference/build-scripts.html#outputs-of-the-build-script
 
 ## Caching builds
 
@@ -315,6 +372,11 @@ examples for how they can be used and explains what can be achieved with them.*
 [The Missing Parts in Cargo](https://weihanglo.tw/posts/2024/the-missing-parts-in-cargo/)
 
 *TODO*
+
+[Foreign Function Interface](https://doc.rust-lang.org/nomicon/ffi.html) in *The Rustonomicon*
+
+*This chapter in The Rustonomicon explains how to interact with foreign
+functions, that is code written in C or C++, in Rust.*
 
 [crates.io]: https://crates.io
 [rust-targets]: http://example.com

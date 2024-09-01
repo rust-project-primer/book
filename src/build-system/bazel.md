@@ -5,6 +5,14 @@ Google. It is, in some ways, purpose built to solve the kinds of problems that
 Google faces: building large amounts of code in a giant monorepo with a very
 diverse set of client machines. 
 
+It excels at mixing and matching multiple programming languages, which makes it
+a great fit when you're trying to integrate Rust into an existing C or C++
+codebase, or build a web application that uses components written in different
+languages (such as TypeScript for the frontend, and Rust for the backend) but
+still want to have a simple build process.
+
+It is also an *artifact-centric* rather than a *task-centric* build system.
+
 ## Why Bazel?
 
 It uses a high-level build language and supports multiple languages and
@@ -34,6 +42,17 @@ deploy to).
 
 Any external resources you rely on, you specifiy with a hash-sum to ensure that
 the compilation process is always deterministic.
+
+## Getting Started with Bazel
+
+### Installing Bazel
+
+While you can [install Bazel](https://bazel.build/install), the recommended way
+to use it is to install [bazelisk](https://github.com/bazelbuild/bazelisk).
+Bazelisk is to Bazel as Rustup is to Rust: it manages multiple versions of
+Bazel and ensures that you are using the appropriate version in each project.
+
+### Project Setup
 
 ## Examples
 

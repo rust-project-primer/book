@@ -6,3 +6,7 @@
 	path = examples/todo-leptos
 	url = ../todo-leptos
     branch = master
+[submodule "examples/levenshtein"]
+	path = examples/levenshtein
+	url = ../levenshtein
+    branch = master

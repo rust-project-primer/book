@@ -14,6 +14,10 @@ project has a relatively simple setup, where it consists only of Rust crates,
 then Cargo is the ideal tool to get it to build:
 
 ```mermaid
+---
+config:
+  theme: neutral
+---
 graph LR
     lib_a_lib-->lib_a
     lib_b_lib-->lib_b
@@ -33,8 +37,18 @@ For example, some projects may need to interface with some legacy C/C++ code.
 In this case, building might involve compiling the library first:
 
 ```mermaid
+---
+config:
+  theme: neutral
+---
 graph LR
-    a-->b
+    clib[C Library]
+    wrapper[Wrapper crate]
+    crate[Rust crate]
+    dep1[Dependency crate]
+    clib-->wrapper
+    wrapper-->crate
+    dep1-->crate
 ```
 
 Another common pattern when building full-stack web applications with Rust
@@ -43,8 +57,18 @@ and the backend in Rust. You want the Rust backend to serve the frontend, so
 it requires the WebAssembly output as a build input:
 
 ```mermaid
+---
+config:
+  theme: neutral
+---
 graph LR
-    a-->b
+    frontend[Frontend]
+    wasm[WebAssembly code]
+    backend[Backend]
+    axum[Axum]
+    frontend-->wasm
+    wasm-->backend
+    axum-->backend
 ```
 
 If you build a traditional web application with a TypeScript frontend and a

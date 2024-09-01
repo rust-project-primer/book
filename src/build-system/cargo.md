@@ -125,15 +125,16 @@ files = ["!.git"]
 default_file = "src/lib.rs"
 ```
 
-Note that in order to make the C function "visible" from Rust, you need to declare
-it in an `extern "C"` block. It needs a function definition that matches the one in
-the C header. Writing this by hand is error-prone, and can lead to unsafety issues.
+Note that in order to make the C function "visible" from Rust, you need to
+declare it in an `extern "C"` block. It needs a function definition that
+matches the one in the C header. Writing this by hand is error-prone, and can
+lead to unsafety issues.
 
 This example also shows how this unsafe C function is wrapped into a safe Rust
 function. Doing so involves dealing with raw pointers, and it is easy to get
-something wrong. It is important to write good [unit
-tests](../testing/unit-tests.md), and often it can help to use [dynamic
-analysis](../testing/dynamic-analysis.md) to make sure you did it correctly.
+something wrong. It is important to write good [Unit
+Tests](../testing/unit-tests.md), and often it can help to use [Dynamic
+Analysis](../testing/dynamic-analysis.md) to make sure you did it correctly.
 
 [cc]: https://docs.rs/cc/latest/cc/
 
@@ -141,7 +142,7 @@ analysis](../testing/dynamic-analysis.md) to make sure you did it correctly.
 
 - use the `cmake` crate
 
-### Linking with native libraries
+### Generating Bindings for C/C++ Libraries
 
 - using rust-bindgen
 

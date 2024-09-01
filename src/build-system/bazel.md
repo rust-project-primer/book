@@ -45,6 +45,10 @@ the compilation process is always deterministic.
 
 ## Getting Started with Bazel
 
+Bazel's build configuration *replaces* or *coexists* with the typical
+Cargo metadata. This means that if you want to migrate a Rust project
+to use Bazel, you may need to duplicate some definitions.
+
 ### Installing Bazel
 
 While you can [install Bazel](https://bazel.build/install), the recommended way
@@ -52,7 +56,31 @@ to use it is to install [bazelisk](https://github.com/bazelbuild/bazelisk).
 Bazelisk is to Bazel as Rustup is to Rust: it manages multiple versions of
 Bazel and ensures that you are using the appropriate version in each project.
 
+If you do use bazelisk, then you should add a file into your repository telling
+it which version of Bazel your project should use. The simplest way to achieve
+this is by creating a `.bazelversion` file containing the desitred version of
+Bazel:
+
+```
+7.3.1
+```
+
+The advantage of doing this is that you ensure all users will use exactly the
+same version of Bazel.
+
 ### Project Setup
+
+To use Bazel, you need to configure a Repository (used to be called a Workspace).
+You can do this by creating a `MODULE.bazel` or `REPO.bazel` file in the
+root of your repository.
+
+Typically, if you work with Rust you will want to use [rules_rust][], which
+is a module that teaches Bazel how to build and interact with Rust projects.
+A sample Repository configuration might look like this
+
+```python
+bazel_dep(name = "rules_rust", version = "0.48.0")
+```
 
 ## Examples
 
@@ -121,7 +149,7 @@ by Ilya Polyakovskiy
 taking the `ripgrep` crate, which is a popular search tool written in Rust and
 converting it to use Bazel for building and testing.*
 
-[Bazel rules_rust](https://github.com/bazelbuild/rules_rust)
+[Bazel rules_rust][rules_rust]
 
 *The `rules_rust` project is the official Rust bindings for Bazel. It lets you
 tell Bazel about the crates you have, and how they depend on each other. If you
@@ -131,3 +159,5 @@ want to use Bazel to build Rust code, you should use this plugin.*
 
 *This article is an overview of Bazel, it discusses the basics of hot it operates
 and what advantages it has for developers.*
+
+[rules_rust]: https://github.com/bazelbuild/rules_rust

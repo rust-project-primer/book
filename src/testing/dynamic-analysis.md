@@ -1,4 +1,4 @@
-# Undefined behaviour
+# Dynamic Analysis
 
 The Rust programming language does not prevent you from writing invalid code,
 it just makes it a lot harder. The default state is that code is subject to the
@@ -30,22 +30,6 @@ behaviours*, then you get an error and a description of what it did wrong:
 - Free memory that is already freed (double free)
 - Forget to free memory (memory leak)
 
-There are some tools from the C/C++ world (where this kind of thing is
-quite common) that we can use:
-
-- [Valgrind](https://valgrind.org/) lets you run your program in a kind of
-  virtual machine, where all memory access is monitored. It is quite powerful,
-  it even incorporates features such as a model of how CPU caches work so you can
-  check how good the memory locality of your program is.  Due to the
-  virtualisation, there is some overhead.  It can also report how many
-  instructions your program took to run, which is more useful for microbenchmarks
-  than time, because it is stable between machines (but not architectures).
-- LLVM sanitizers ([AddressSanitizer][], [ThreadSanitizer][],
-  [UndefinedBehaviorSanitizer][], [LeakSanitizer][]): these need to be enabled
-  at compile time and instrument your binary with extra code on every memory
-  access or operation (depending on the kind of sanitizer). The added code adds
-  an overhead, depending on the kind of sanitizer this can be a lot. There
-  are some things these can detect that go beyond what Valgrind can detect.
 
 [AddressSanitizer]: https://clang.llvm.org/docs/AddressSanitizer.html
 [ThreadSanitizer]: https://clang.llvm.org/docs/ThreadSanitizer.html
@@ -81,6 +65,31 @@ very slow.
 ## Cargo Careful
 
 [Cargo Careful](https://github.com/RalfJung/cargo-careful)
+
+## Valgrind
+
+[Valgrind](https://valgrind.org/) lets you run your program in a kind of
+virtual machine, where all memory access is monitored. It is quite powerful,
+it even incorporates features such as a model of how CPU caches work so you can
+check how good the memory locality of your program is.  Due to the
+virtualisation, there is some overhead.  It can also report how many
+instructions your program took to run, which is more useful for microbenchmarks
+than time, because it is stable between machines (but not architectures).
+
+## LLVM Sanitizers
+
+LLVM sanitizers ([AddressSanitizer][], [ThreadSanitizer][],
+[UndefinedBehaviorSanitizer][], [LeakSanitizer][]): these need to be enabled
+at compile time and instrument your binary with extra code on every memory
+access or operation (depending on the kind of sanitizer). The added code adds
+an overhead, depending on the kind of sanitizer this can be a lot. There
+are some things these can detect that go beyond what Valgrind can detect.
+
+### Address Sanitizer
+
+### Memory Sanitizer
+
+### Undefined Behaviour Sanitizer
 
 ## Reading
 

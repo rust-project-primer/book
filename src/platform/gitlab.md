@@ -3,6 +3,14 @@
 GitLab is an [open-source][source] software development platform. It is similar
 to GitHub, but offers some more advanced features.
 
+GitLab CI works by defining pipelines. These are triggered based on various
+kinds of events, such as pushes to the repository, merges of code. Pipelines
+can also be triggered manually or by a pipeline in another repository.
+
+Pipelines consist of jobs, which run in sequence or in parallel. Jobs can have
+outputs called *artefacts*, which can be downloaded from the web interface or
+be ingested as inputs by jobs that follow.
+
 [source]: https://gitlab.com/gitlab-org/gitlab
 
 ## Job Definition

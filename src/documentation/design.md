@@ -4,6 +4,8 @@
 
 ## Reading
 
+https://ntietz.com/blog/reasons-to-write-design-docs/
+
 https://dzone.com/articles/how-to-write-rfcs-for-open-source-projects
 
 https://opensource.com/article/17/9/6-lessons-rfcs

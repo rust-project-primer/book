@@ -1,5 +1,11 @@
 # Development Environment
 
+- bare mininum is `rustc` and a text editor
+- you need cargo to do meaningful work
+- usually, cargo is installed and upgraded with `rustup`
+
+## Editors
+
 Developers have varying preferences for their development environments. Some
 prefer light-weight setups, using [vim][], [neovim][], or [helix][]. The
 advantage of these setups is that they are lightweight, portable and support

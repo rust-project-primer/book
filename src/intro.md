@@ -1,28 +1,20 @@
 # Introduction
 
-I'm putting this guide out there, permissively licensed under the *CC BY-NC-SA
-4.0* license. There are no advertisements or subscriptions, nor do I charge a
-fee for reading this book.
+- software becomes ever more complex
+- rust is very promising, it has language features that allow you to manage complexity
+- yet, maintaining software projects is more than just writing good code
+- software projects need to be structured in a way that allows them to grow
+- the rust language ecosystem has an extraordinary amount of tooling that allows you to automate this
+- best practises from 30 years of software development are encoded in the tooling of the rust language
+- this book teaches you how to take advantage of that
+- this book shows you how you can keep your rust projects free of bugs and usable by others with less effort
+- this book is a recipe book, every chapter is self-contained
+- you should not implement every piece of advice from this book, rather use it as inspiration
 
-In some ways, writing this guide is my way of giving back to the Rust community,
-which has given me the tools to write code joyfully. If you want to give something
-back, I suggest you get involved in the community, for example:
-
-- Helping with the [Rust compiler development][rustc], [RFC process][rfc] or
-  joining a [workgroup][governance],
-- Helping the Rust [crate ecosystem][crates], by participating in building
-  features or fixing bugs,
-- Sharing your knowledge through blog posts, guides or tutorials.
-
-[rustc]: https://github.com/rust-lang/rust
-[rfc]: https://github.com/rust-lang/rfcs
-[governance]: https://www.rust-lang.org/governance
-[crates]: https://crates.io
-
-If you are new to the Rust programming language, I recommend you to spend some
-time writing documentation for Rust crates that need it. It is a good way to be
-exposed to some Rust code and make an impact, and documentation is usually
-appreciated and uncontroversial.
+While the Rust programming language is amazing, this is not a book about Rust,
+per se. Instead, this book gives little nuggets of information on how you can
+structure and maintain Rust software projects. As such, it focusses not on the
+Rust language, but rather on the way that you can use it effectively.
 
 ## Target Audience
 

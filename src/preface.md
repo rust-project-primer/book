@@ -33,3 +33,30 @@ This book is a living document, not a finished product. It will be periodically
 updated with new insights and revised examples, reflecting ongoing learnings in
 the field of Rust programming.
 
+## License
+
+I'm putting this guide out there, permissively licensed under the *CC BY-NC-SA
+4.0* license. There are no advertisements or subscriptions, nor do I charge a
+fee for reading this book.
+
+In some ways, writing this guide is my way of giving back to the Rust community,
+which has given me the tools to write code joyfully. If you want to give something
+back, I suggest you get involved in the community, for example:
+
+- Helping with the [Rust compiler development][rustc], [RFC process][rfc] or
+  joining a [workgroup][governance],
+- Helping the Rust [crate ecosystem][crates], by participating in building
+  features or fixing bugs,
+- Sharing your knowledge through blog posts, guides or tutorials.
+
+[rustc]: https://github.com/rust-lang/rust
+[rfc]: https://github.com/rust-lang/rfcs
+[governance]: https://www.rust-lang.org/governance
+[crates]: https://crates.io
+
+If you are new to the Rust programming language, I recommend you to spend some
+time writing documentation for Rust crates that need it. It is a good way to be
+exposed to some Rust code and make an impact, and documentation is usually
+appreciated and uncontroversial.
+
+## Why free?

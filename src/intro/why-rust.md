@@ -1,8 +1,26 @@
 # Why Rust?
 
+
+In his seminal paper, [Go To Statement Considered
+Harmful](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf) the
+Dutch computer scientist Edgar Dijkstra postulated something novel: restricting
+computer scientists in what they can do can lead to better software projects.
+The paper explains that, while it is possible to write programs that use `goto`
+statements to jump around, better code quality and maintainability can be
+achieved through the use of *structured programming*, concept such as *for* and
+*while* loops, and functions. This abstraction lets programmers write code that
+is easy to follow, expand and maintain.
+
+In some ways, the Rust programming language is a manifestation of an extension
+of this idea: just like the flow through a program needs structure, the ownership
+of memory needs ownership.
+
+## Software Complexity is Growing
+
 - software complexity
 - difficulty to write multithreaded applications
 - difficulty to scale software
+- increase in vulnerabilities
 
 ![XKCD 2375](https://imgs.xkcd.com/comics/dependency.png)
 

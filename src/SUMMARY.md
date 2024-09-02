@@ -21,11 +21,9 @@
     - [Crates](organization/crates.md)
     - [Workspace](organization/workspace.md)
     - [Repository](organization/repository.md)
-    - [Crate Size](organization/crate-size.md)
-    - [Crate Features](organization/features.md)
 - [Continuous Integration](platform/readme.md)
-    - [GitHub Actions](platform/github.md)
     - [GitLab CI](platform/gitlab.md)
+    - [GitHub Actions](platform/github.md)
 - [Build system](build-system/readme.md)
     - [Cargo](build-system/cargo.md)
     - [Bazel](build-system/bazel.md)
@@ -85,3 +83,5 @@
     - [Expand Macros](tools/macros.md)
 - [Examples](examples.md)
 - [Conclusion](conclusion.md)
+
+[License](license.md)

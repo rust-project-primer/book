@@ -111,6 +111,15 @@ also worth looking into.
 
 - smallest possible rust + javascript (react) project
 
+## Integrating with Nix
+
+- <https://nix-bazel.build/>
+- <https://www.tweag.io/blog/2022-12-15-bazel-nix-migration-experience/>
+- <https://www.tweag.io/blog/2018-03-15-bazel-nix/>
+- <https://www.tweag.io/blog/2024-02-29-remote-execution-rules-nixpkgs/>
+- <https://github.com/tweag/rules_nixpkgs>
+
+
 ## Reading
 
 [Scaling Rust builds with Bazel](https://mmapped.blog/posts/17-scaling-rust-builds-with-bazel.html) by Roman Kashitsyn

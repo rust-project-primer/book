@@ -43,3 +43,9 @@ Naersk, Crane and Cargo2Nix. He shows how to build a sample application that
 consists of a Rust crate that is compiled into WebAssembly, a Rust library and
 a Rust application that depends on both of these. He also discusses some
 potential other options for building and packaging Rust code in Nix.*
+
+[Zero to Nix](https://zero-to-nix.com/) by Determinate Systems
+
+*This is a guide on how to get started using Nix. It teaches you how to install it,
+how to use it for development, how to package your software with it, and how to
+manage your system with it.*

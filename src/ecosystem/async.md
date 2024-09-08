@@ -1,11 +1,28 @@
 # Concurrency
 
+This section discusses different ways to architect your project to make
+use of concurrency or parallelism in Rust.
+
+*Concurrency* is your program's ability to track and execute multiple things
+at the same time. It does not mean that you are using multiple threads,
+for example using async and a single-threaded executor, you can execute
+multiple requests *concurrently*.
+
+*Parallelism* is when your program executes multiple tasks at the same time,
+
+
+
+
 The biggest question that you need to ask yourself is: do you require the use
 of async code? This is typically the case when your application is I/O bound
 and wants to process a lot of requests, or when you want to make use of heavy,
 lightweight concurrency.
 
+The basic building blocks of programs is *threads*. When you run some code, it
+generally has a single thread
+
 ## Async and Blocking Code
+
 
 The main difference between async and blocking programming paradigms is the
 introduction of *futures*, which represent a computation. While in blocking code,

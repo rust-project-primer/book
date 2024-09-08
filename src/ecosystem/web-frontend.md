@@ -1,28 +1,104 @@
 # Web Frontend
 
-Traditional web frontends are written in HTML and CSS, usually using some
-templating library such as [handlebars][] or [tera][]. On every interaction,
-the server sends newly rendered HTML to the browser. The downside of this
-approach is higher latencies, because they entire page needs to be rerendered
-on every interaction.
+Websites use HTML for both content and structure. CSS is used to style how the
+website looks. The browser reads the HTML to get the content and layout, then
+applies CSS to style it, and finally renders it to the screen. When writing web
+applications, the first question is where and when this HTML is generated.
 
-Modern web frontend applications are written in languages such as JavaScript or
-TypeScript and run as a [Single-page application][spa]. This means that some
-part of the application runs in the browser, and it can make direct API calls
-to the backend. That way, the application can stay responsive while it is
-waiting for a response from the server.
+In traditional web applications, the HTML is created on the server. When the
+backend gets a request, it processes it and generates an HTML response. This
+response is then sent to the browser. On any interaction, such as a click on
+a link, press of a button or submission of a form, a new request is made to
+the browser, and a new HTML response is sent.
 
-Since the advent of [WebAssembly][wasm] and the broad [support of browsers for
-WebAssembly][browser-support], it has been possible to write frontend web
-applications in other languages than JavaScript. This section focusses on
-frameworks for Rust that allow you to make use of this to write single-page
-applications in it for full-stack Rust applications.
+<center>
+
+![Traditional web application](traditional-webapp.svg)
+
+</center>
+
+The Rust web backend frameworks have good support for writing web applications
+this way, often combined with templating crates such as [handlebars][] or
+[tera][].  The downside to this traditional approach is higher latencies. Since
+the entire page needs to be regenerated, transmitted and rendered on every
+interaction, there is a noticeable delay.  When structing a web application
+this way, it is difficult to implement interactive widgets on pages, or update
+information in real-time.
+
+Modern web frontend applications are often [single-page applications][spa]
+(SPAs), written in languages like JavaScript or TypeScript and run in the
+browser. They are called "single-page" because the entire app is loaded in the
+initial request. After that, the frontend reacts to interactions and
+dynamically updates the content, without needing to realod the page.
+Communication with the backend typically happens through an API. This keeps the
+app responsive while waiting for server responses and allows for real-time
+events from the server using technologies like [WebSockets][WebSocket].
+
+<center>
+
+![Modern web application](modern-webapp.svg)
+
+</center>
+
+Since the standardization of [WebAssembly][wasm] and the broad [browser
+support][browser-support] it has gained, it has been possible to write frontend
+web applications languages other than JavaScript. This section explores Rust
+frameworks that allow you to write single-page web applications for full-stack
+Rust projects.
+
+Using Rust for web frontends has some benefits. It allows you to write
+performant frontends, make use of the Rust crate ecosystem, and share type
+definitions between your backend and frontend easily. However, the availability
+of this is a relatively new and JavaScript-based frameworks tend to be more
+mature. Finding frontend engineers that are familiar with JavaScript-based
+frameworks is also a lot easier. If you want to build a prototype frontend
+for an existing Rust project, it may be worth exploring these as it allows you
+use a single language across the project.
 
 [spa]: https://en.wikipedia.org/wiki/Single-page_application
 [handlebars]: https://github.com/sunng87/handlebars-rust
 [tera]: https://keats.github.io/tera/
+[WebSocket]: https://en.wikipedia.org/wiki/WebSocket
 
-### WebAssembly
+### The Component Model
+
+Most Rust web frameworks work similar to [React][react].  They have a component
+model, where every component can have parameters called *props*, can keep some
+state, and their output is a tree containing either raw HTML or child
+components. The frameworks handle rendering the components to the browser, and
+take care of handling changes in state (by re-rendering affected components and
+child components that changed). 
+
+- animation of updating state in component using d3/recursion-visualize
+
+
+[dom]: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
+
+
+In this section, we will not cover all available frontend frameworks, only a
+few of the post popular. As this is a relatively new development, there is a
+lot of activity in the various frameworks and you should expect some volatility
+in which frameworks are the most popular.
+
+[react]: https://react.dev/learn
+
+### Rendering Methods
+
+Some of the differences are in how they render the components to the [Document
+Object Model][dom], which is what the browser uses to represent the HTML that
+is rendered. Some frameworks render a shadow DOM and synchronize it with the
+browser, while others directly update the DOM.
+
+### Compiling and Deploying Frontend Applications
+
+Deploying a Rust frontend web application in the browser is a bit more complex
+than just running `cargo build`, since the resulting WebAssembly blob still
+needs to be packaged in a way that a browser can consume, and it needs some
+JavaScript glue to make it usable. For this, a lot of frameworks use
+[Trunk][trunk] to bundle and ship the raw Rust WebAssembly binaries into
+something the browser can understand.
+
+### WebAssembly Support in the Ecosystem
 
 Thanks to Rust's use of [LLVM][llvm], a compiler infrastructure that makes it
 easy to write new backends for different targets, it gained support for
@@ -64,38 +140,6 @@ wasm_bindgen_futures::spawn_local(async {
 
 Most frameworks have some kind of wrapper around these raw futures to be able to
 use them in the applications.
-
-### How these frameworks work
-
-Most Rust web frameworks work similar to [React][react].  They have a component
-model, where every component can have parameters called *props*, can keep some
-state, and their output is a tree containing either raw HTML or child
-components. The frameworks handle rendering the components to the browser, and
-take care of handling changes in state (by re-rendering affected components and
-child components that changed). 
-
-- animation of updating state in component using d3/recursion-visualize
-
-Some of the differences are in how they render the components to the [Document
-Object Model][dom], which is what the browser uses to represent the HTML that
-is rendered. Some frameworks render a shadow DOM and synchronize it with the
-browser, while others directly update the DOM.
-
-[dom]: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
-
-Deploying a Rust frontend web application in the browser is a bit more complex
-than just running `cargo build`, since the resulting WebAssembly blob still
-needs to be packaged in a way that a browser can consume, and it needs some
-JavaScript glue to make it usable. For this, a lot of frameworks use
-[Trunk][trunk] to bundle and ship the raw Rust WebAssembly binaries into
-something the browser can understand.
-
-In this section, we will not cover all available frontend frameworks, only a
-few of the post popular. As this is a relatively new development, there is a
-lot of activity in the various frameworks and you should expect some volatility
-in which frameworks are the most popular.
-
-[react]: https://react.dev/learn
 
 ## [Yew](https://yew.rs/)
 

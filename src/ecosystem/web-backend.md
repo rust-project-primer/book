@@ -6,6 +6,14 @@ authentication, parameter deserialization and response.
 
 ![bubble graph of popular web crates](/graphics/crates-web.svg)
 
+### Template engines in Rust
+
+*TODO*
+
+https://blog.logrocket.com/top-3-templating-libraries-for-rust/
+
+https://lib.rs/template-engine
+
 ## [Axum](https://github.com/tokio-rs/axum)
 
 Axum is currently the most popular web framework in the Rust ecosystem. It is

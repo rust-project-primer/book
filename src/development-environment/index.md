@@ -65,6 +65,8 @@ parser for Rust than `rustc` has.
 
 [LSP could have been better](https://matklad.github.io/2023/10/12/lsp-could-have-been-better.html)
 
+[LSP: The good, the bad and the ugly](https://www.michaelpj.com/blog/2024/09/03/lsp-good-bad-ugly.html)
+
 [Improving "Extract Function" in Rust Analyzer](https://dorianlistens.com/2022/07/improving-extract-function-in-rust-analyzer/)
 
 

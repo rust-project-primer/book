@@ -5,6 +5,8 @@ of async code? This is typically the case when your application is I/O bound
 and wants to process a lot of requests, or when you want to make use of heavy,
 lightweight concurrency.
 
+## Async and Blocking Code
+
 The main difference between async and blocking programming paradigms is the
 introduction of *futures*, which represent a computation. While in blocking code,
 when you run some code, your thread will do only that:
@@ -130,6 +132,11 @@ In general, there are three runtimes that are recommended:
   async code as simple as using the standard library. It is not as actively developed
   as Tokio, and in general is not recommended to be used for new projects. A lot of
   the ideas it came with have been incorporated into Tokio.
+
+## Thread-per-Core vs Shared-Nothing
+
+
+## Epoll vs io_uring
 
 ## How does aysnc work in Rust?
 

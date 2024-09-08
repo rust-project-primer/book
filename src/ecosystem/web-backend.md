@@ -1,10 +1,34 @@
 # Web Backend
 
-A common use-case of Rust is building backends for web applications. To do this,
-you often need some kind of framework to handle the HTTP protocol, request routing,
-authentication, parameter deserialization and response.
+A common use-case of Rust is building backends for web applications. Rust is
+particularily suited for this, because it offers great performance and a strong
+async ecosystem that allows you to scale to many concurrent requests easily.
+
+While you can build a web backend manually by using crates such as [hyper][]
+for HTTP and [h3][] for HTTP/3, generally you will want to use a framework to
+implement the backend. Web backend frameworks handle things such as request
+routing, route authentication, parameter deserialization and building responses
+for you to make sure your application stays maintainable.
+
+But the important question is then: which framework do you use? The rust crate
+ecosystem has come up with a large amount of web framework crates with varying
+levels of popularity.
 
 ![bubble graph of popular web crates](/graphics/crates-web.svg)
+
+In general, the two most popular frameworks are Axum and Actix-Web, and they
+should be your go-to frameworks of choice if you have no specific requirements.
+Axum is nice because it integrates into the Tower ecosystem of middleware,
+meaning that you will easily find some existing middleware implementations for
+whatever you are trying to do, such as adaptive rate limiting. Actix-Web is
+known for being easy to get started with, and for being very fast.
+
+On a reasonably powerful system, either one of these can handle up to one
+million requests per second, meaning that most likely your database will be the
+bottleneck in scaling Rust web backends.
+
+[hyper]: https://hyper.rs/
+[h3]: https://github.com/hyperium/h3
 
 ### Template engines in Rust
 
@@ -13,6 +37,22 @@ authentication, parameter deserialization and response.
 https://blog.logrocket.com/top-3-templating-libraries-for-rust/
 
 https://lib.rs/template-engine
+
+### Routing
+
+- macro-based vs dynamic
+
+### Middleware
+
+- tower ecosystem
+
+### WebSockets
+
+- websocket support
+
+### Tracing
+
+### Metrics
 
 ## [Axum](https://github.com/tokio-rs/axum)
 
@@ -92,6 +132,26 @@ fn rocket() -> _ {
     rocket::build().mount("/", routes![hello])
 }
 ```
+
+## Warp
+
+https://github.com/seanmonstar/warp
+
+## Tide
+
+https://github.com/http-rs/tide
+
+## Poem
+
+https://github.com/poem-web/poem
+
+## Deploying
+
+### Shuttle
+
+https://www.shuttle.rs/
+
+### AWS Lambda
 
 ## Reading
 

@@ -1,5 +1,12 @@
 # Web Frontend
 
+This section discusses the frameworks you can use in Rust to build web
+frontends that run in the browser. If you are already familiar with the
+architecture of single-page web applications, you can skip down to the
+frameworks for a discussion of how they work.
+
+## Background
+
 Websites use HTML for both content and structure. CSS is used to style how the
 website looks. The browser reads the HTML to get the content and layout, then
 applies CSS to style it, and finally renders it to the screen. When writing web
@@ -62,14 +69,66 @@ use a single language across the project.
 
 ### The Component Model
 
-Most Rust web frameworks work similar to [React][react].  They have a component
-model, where every component can have parameters called *props*, can keep some
-state, and their output is a tree containing either raw HTML or child
-components. The frameworks handle rendering the components to the browser, and
-take care of handling changes in state (by re-rendering affected components and
-child components that changed). 
+All Rust web frontend frameworks discussed here use the component model to
+implement applications. In web frontend development, the component model is a
+way to build applications using reusable and self-contained pieces called
+components. Each component has its own logic and can manage its own state and
+appearance. Components can be nested within other components to build complex
+user interfaces. If you are familiar with [React][react] or similar JavaScript
+frontend libraries, then you should already be familiar with the component
+model.
 
-- animation of updating state in component using d3/recursion-visualize
+- conceptual understanding of components
+
+Typically, web frameworks use a HTML-like domain-specific language to represent
+the outputs of components. For example, the root component of this example
+application might look like this:
+
+```rust
+html! {
+    <main>
+        <Header />
+        <div class="content">
+            <SideBar />
+            <Content />
+        </div>
+    </main>
+}
+```
+
+Components can have *properties*
+
+In this example, `main` and `div` are regular HTML tags, while `Header`, `SideBar`
+and `Content` are sub-components.
+
+Like functions can have arguments, components can have *properties*. These are
+inputs to the component.
+
+Components can also have *state*. 
+
+Finally, many frameworks also support *context*. Unlike *properties*, which a parent
+explicitly passes down to its child components, context is implicitly passed down
+to all child components (even children-of-children). This is often useful to
+pass global state such as whether the user is logged in down to all components
+in the tree, or utilities such as data caches.
+
+The the web frameworks do is they handle *changing* of data. If any of the inputs
+to a component changes, whether that be properties, state or context, the component
+is re-rendered. 
+
+<center>
+
+![Component data model](component.svg)
+
+</center>
+
+The way frameworks can track these changes depend on the framework itself,
+but generally they are able to do so because they have *hooks* that allow
+them to track what is changed and when.
+
+- animation of changes propagating
+
+
 
 
 [dom]: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
@@ -82,12 +141,34 @@ in which frameworks are the most popular.
 
 [react]: https://react.dev/learn
 
-### Rendering Methods
+### `web_sys` and Raw Web APIs
 
-Some of the differences are in how they render the components to the [Document
-Object Model][dom], which is what the browser uses to represent the HTML that
-is rendered. Some frameworks render a shadow DOM and synchronize it with the
-browser, while others directly update the DOM.
+While most of the Rust web frameworks handle all of the interactions with the
+underlying web APIs, sometimes you may find the need to go "deeper" and interact
+with the raw APIs. The way you do this is by using the `web-sys` crate, which has
+safe Rust wrappers for all of the APIs the browser exposes.
+
+```admonish
+One quirk of the `web-sys` crate is that it puts every single API behind a
+feature flag. In doing so, it has over 1,500 features, and as such needs an
+exception to bypass the [crates.io crate features
+limit](https://blog.rust-lang.org/2023/10/26/broken-badges-and-23k-keywords.html).
+If you use it, don't be surprised if you get compiler errors, make sure that
+you have enabled the correct set of features. The crate documentation shows you
+for every interface, which feature it requires.
+```
+
+Most frontend libraries will allow you to get raw access to the underlying DOM
+nodes and perform raw operations on them. One example is when you want to use a
+`<canvas>` element, you can use this to draw on it. Here is an example of what
+this looks like in Yew:
+
+```rust
+// todo
+```
+
+You must keep in mind how the framework renders, to make sure that your raw
+access is not broken by components refreshing.
 
 ### Compiling and Deploying Frontend Applications
 
@@ -96,7 +177,33 @@ than just running `cargo build`, since the resulting WebAssembly blob still
 needs to be packaged in a way that a browser can consume, and it needs some
 JavaScript glue to make it usable. For this, a lot of frameworks use
 [Trunk][trunk] to bundle and ship the raw Rust WebAssembly binaries into
-something the browser can understand.
+something the browser can understand. The [Trunk](#trunk) section below
+explains how that works and how you can configure it.
+
+Some Rust web frontend frameworks also support server-side rendering, where it
+can fallback to a traditional web application style where the HTML is generated
+server-side. This can also help search engines index the websites better by not
+needing WebAssembly support to render the website. The frameworks support
+partial hydration, where parts of the website are rendered server-side, or full
+hydration where every page can be fully rendered server-side.
+
+If you use this feature, you also need to integrate your frontend application
+with your backend. 
+
+### Rendering Methods
+
+Browsers represent a loaded website (with HTML and styling) in their [Document
+Object Model][dom]. Web frontend frameworks have to update this DOM whenever
+components change their outputs. One important difference between frameworks is
+in how they do this. 
+
+Some frameworks have a *shadow DOM* (sometimes also called
+*virtual DOM*), which is a copy of the DOM that is in the browser, that
+components modify. The framework then synchronizes this copy with the real DOM.
+
+
+Other frameworks modify the DOM directly, which can have some performance
+benefits.
 
 ### WebAssembly Support in the Ecosystem
 
@@ -223,26 +330,6 @@ default_file = "src/lib.rs"
 [yew::html::Component]: https://docs.rs/yew/0.21.0/yew/html/trait.Component.html
 [yew::functional::function_component]: https://docs.rs/yew/0.21.0/yew/functional/attr.function_component.html
 
-## [Dioxus](https://dioxuslabs.com/)
-
-Dioxus has a similar experience as Yew, also using a reactive component model.
-One of the main differences is that it does not use a HTML macro the way Yew does,
-which understands (mostly) vanilla HTML, but it has an `rsx` macro that uses a slightly
-different syntax.
-
-```rust
-fn app() -> Element {
-    rsx! {
-        div { "Hello, world!" }
-    }
-}
-```
-
-The upside is that it does not use proc macros, which helps with IDE support
-for the developer experience.
-
-### Example: Todo App
-
 ## [Leptos](https://www.leptos.dev/)
 
 Leptop is quite similar to Yew. The primary difference is in how it renders:
@@ -284,6 +371,27 @@ default_file = "src/lib.rs"
 ```
 
 [todo-leptos]: https://rust-project-primer.gitlab.io/todo-leptos
+
+## [Dioxus](https://dioxuslabs.com/)
+
+Dioxus has a similar experience as Yew, also using a reactive component model.
+One of the main differences is that it does not use a HTML macro the way Yew does,
+which understands (mostly) vanilla HTML, but it has an `rsx` macro that uses a slightly
+different syntax.
+
+```rust
+fn app() -> Element {
+    rsx! {
+        div { "Hello, world!" }
+    }
+}
+```
+
+The upside is that it does not use proc macros, which helps with IDE support
+for the developer experience.
+
+### Example: Todo App
+
 
 ## [Trunk][trunk]
 
@@ -340,6 +448,8 @@ Tokio, Postgres, and Warp.*
 [Rust and WebAssembly Book](https://rustwasm.github.io/docs/book/introduction.html)
 
 *Book that explains how to use Rust to target WebAssembly.*
+
+https://robert.kra.hn/posts/2022-04-03_rust-web-wasm/
 
 [trunk]: https://trunkrs.dev/
 [wasm]: https://webassembly.org/

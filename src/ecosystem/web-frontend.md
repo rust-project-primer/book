@@ -141,7 +141,7 @@ in which frameworks are the most popular.
 
 [react]: https://react.dev/learn
 
-### `web_sys` and Raw Web APIs
+### Raw Web APIs with `web-sys`
 
 While most of the Rust web frameworks handle all of the interactions with the
 underlying web APIs, sometimes you may find the need to go "deeper" and interact

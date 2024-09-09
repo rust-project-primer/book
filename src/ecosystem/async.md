@@ -208,3 +208,5 @@ https://rust-lang.github.io/async-book/
 Stats on blocking vs async:
 
 https://emschwartz.me/async-rust-can-be-a-pleasure-to-work-with-without-send-sync-static/
+
+https://turso.tech/blog/how-to-deadlock-tokio-application-in-rust-with-just-a-single-mutex

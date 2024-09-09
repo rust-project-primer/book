@@ -90,9 +90,14 @@ function introduced a regression.*
 
 [Criterion Flamegraphs](https://www.jibbow.com/posts/criterion-flamegraphs/)
 
-https://nickb.dev/blog/guidelines-on-benchmarking-and-rust/
-https://blog.lambdaclass.com/benchmarking-and-analyzing-rust-performance-with-criterion-and-iai/
-https://engineering.deptagency.com/benchmarking-rust-code-using-criterion-rs
+[Making slow Rust code fast](https://patrickfreed.github.io/rust/2021/10/15/making-slow-rust-code-fast.html) by Patrick Freed
+
+[Guidelines on Benchmarking and Rust](https://nickb.dev/blog/guidelines-on-benchmarking-and-rust/)
+
+[Benchmarking and analyzing Rust performance with Criterion and iai](https://blog.lambdaclass.com/benchmarking-and-analyzing-rust-performance-with-criterion-and-iai/)
+
+[Benchmarking Rust code using Criterion-rs](https://engineering.deptagency.com/benchmarking-rust-code-using-criterion-rs)
+
 https://lib.rs/crates/iai-callgrind
 https://github.com/bheisler/iai
 

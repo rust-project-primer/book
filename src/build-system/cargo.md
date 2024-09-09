@@ -364,15 +364,15 @@ that they bring that outweigh the additional complexity.
 *Reference guide for Cargo. This book discusses all features that Cargo has and
 how they can be used.*
 
-[The Cargo Book: Build
-Scripts](https://doc.rust-lang.org/cargo/reference/build-scripts.html)
+[Build
+Scripts](https://doc.rust-lang.org/cargo/reference/build-scripts.html) in The Cargo Book
 
 *Section in the Cargo Book that talks about using build scripts. It shows some
 examples for how they can be used and explains what can be achieved with them.*
 
-[The Missing Parts in Cargo](https://weihanglo.tw/posts/2024/the-missing-parts-in-cargo/)
+[The Missing Parts in Cargo](https://weihanglo.tw/posts/2024/the-missing-parts-in-cargo/) by Weihang Lo 
 
-*TODO*
+*Weihang discusses Cargo, and what is missing from it.*
 
 [Foreign Function Interface](https://doc.rust-lang.org/nomicon/ffi.html) in *The Rustonomicon*
 

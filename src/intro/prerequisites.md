@@ -1,4 +1,4 @@
-# Prerequisites
+# Resources
 
 This guide is aimed at developers and project managers already comfortable with
 the Rust programming language. It does not cover any fundamentals of the

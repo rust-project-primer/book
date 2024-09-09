@@ -49,5 +49,7 @@ market.
 
 [Slightly faster linking for Rust](https://brokenco.de/2020/01/08/faster-rust-linking.html) by R. Tyler Croy
 
+https://blog.shrirambalaji.com/posts/resolving-rust-symbols/
+
 [mold]: https://github.com/rui314/mold
 [sold]: https://github.com/bluewhalesystems/sold

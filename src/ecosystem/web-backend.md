@@ -42,6 +42,8 @@ https://lib.rs/template-engine
 
 - macro-based vs dynamic
 
+### Query Parsing
+
 ### Middleware
 
 - tower ecosystem
@@ -53,6 +55,11 @@ https://lib.rs/template-engine
 ### Tracing
 
 ### Metrics
+
+### State
+
+### Testing
+
 
 ## [Axum](https://github.com/tokio-rs/axum)
 

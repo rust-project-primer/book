@@ -1,20 +1,28 @@
 # Introduction
 
-- software becomes ever more complex
-- rust is very promising, it has language features that allow you to manage complexity
-- yet, maintaining software projects is more than just writing good code
-- software projects need to be structured in a way that allows them to grow
-- the rust language ecosystem has an extraordinary amount of tooling that allows you to automate this
-- best practises from 30 years of software development are encoded in the tooling of the rust language
-- this book teaches you how to take advantage of that
-- this book shows you how you can keep your rust projects free of bugs and usable by others with less effort
-- this book is a recipe book, every chapter is self-contained
-- you should not implement every piece of advice from this book, rather use it as inspiration
+As software continues to grow more complex, managing that complexity becomes a
+key challenge. The Rust programming language is, in my opinion, particularly
+promising in this regard. It has language features designed to help developers
+handle complexity effectively. Its focus on memory safety and fearless
+concurrency allows you to write large, multithreaded applications without
+needing to worry about many of the kinds of crashes that can happen in C or
+C++.  However, maintaining software projects involves much more than just
+writing good code—it also requires structuring projects in a way that supports
+long-term growth and sustainability.
 
-While the Rust programming language is amazing, this is not a book about Rust,
-per se. Instead, this book gives little nuggets of information on how you can
-structure and maintain Rust software projects. As such, it focusses not on the
-Rust language, but rather on the way that you can use it effectively.
+Fortunately, the Rust ecosystem provides an useful set of tools that help
+automate many aspects of software development and maintenance. These tools are
+built on learnings from decades of software engineering, allowing you to manage
+projects efficiently and effectively. 
+
+This book is designed to teach you how to take full advantage of Rust's
+ecosystem. It will guide you on how to keep your Rust projects free of bugs and
+maintainable with less effort, making them easier to use and extend by others.
+
+The book follows a recipe format, with each chapter being self-contained, so
+you can focus on specific topics as needed. You don't need to implement every
+suggestion in this book. Instead, use it as a source of inspiration to find the
+approaches that work best for your project.
 
 ## Target Audience
 

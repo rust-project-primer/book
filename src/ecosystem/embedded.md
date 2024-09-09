@@ -67,3 +67,7 @@ It is even possible to mix Embedded HAL and Embassy to some extent.
 [Rust Embedded Book](https://docs.rust-embedded.org/book/)
 
 [Embassy Books](https://embassy.dev/book/)
+
+[Deploying Rust in Existing Firmware Codebases](https://security.googleblog.com/2024/09/deploying-rust-in-existing-firmware.html) by Ivan Lozano and Dominik Maier
+
+

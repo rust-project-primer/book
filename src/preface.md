@@ -6,6 +6,8 @@ missing, or not fully written out. If you find sections which are incorrect,
 feel free to send a correction in the form of an issue or pull request.
 ```
 
+- personal history with languages
+
 I wrote this book as a guide for how to bootstrap, structure and maintain Rust
 projects out of a passion for the Rust programming language. Having accumulated
 some opinions on what allows projects to succeed, I feel that it is valuable to

@@ -307,6 +307,13 @@ hooks](https://docs.rs/yew-hooks/latest/yew_hooks/).
 The idea is that you can compose these small components into bigger applications. Yew
 also comes with a plugin for [routing](https://docs.rs/yew-router/latest/yew_router/).
 
+One thing that is nice about Yew is that the `html!` macro it uses very closely
+resembles HTML. There is not a steep learning curve if you are familiar with
+it. The only downside with it is that values require quoting, you can see that
+to have text inside a paragraph element, you need to write `<p>{"Text
+here"}</p>`.  Another downside of it is that the state handles it uses require
+cloning, which adds some clutter to the code.
+
 ### Example: Yew Todo App
 
 Here is an example of a todo-list application written in Yew. It showcases
@@ -364,6 +371,11 @@ pub fn SimpleCounter(initial_value: i32) -> impl IntoView {
     }
 }
 ```
+One thing to note is that the `view!` macro it uses to create the component
+output tree has some slightly different syntax from regular HTML. For example,
+it uses `on:click=value` instead of `onclick=value`. An upside is that values
+do not require being put into braces, so `<span>"Hello"</span>` is valid. Also,
+the state handles it uses do not require cloning as they do in Yew.
 
 ### Example: Todo App
 
@@ -384,6 +396,7 @@ can also see how Leptos manages state using `create_signal()`, which returns a
 getter and a setter for the signal value. It further showcases how the `view!`
 macro is used to construct a tree of HTML elements and child components, and
 how `Callback` can be used to pass callbacks down to child components.
+
 
 [todo-leptos]: https://rust-project-primer.gitlab.io/todo-leptos
 

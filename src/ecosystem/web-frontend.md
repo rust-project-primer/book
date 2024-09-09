@@ -248,12 +248,12 @@ wasm_bindgen_futures::spawn_local(async {
 Most frameworks have some kind of wrapper around these raw futures to be able to
 use them in the applications.
 
-## [Yew](https://yew.rs/)
+## Yew
 
-Yew is currently the most popular framework for web frontend development in Rust. 
-It uses a reactive component model, has a useful ecosystem of plugins, supports
-server-side rendering, routing, and has a HTML macro that makes it relatively easy
-to get started.
+[Yew](https://yew.rs/) is currently the most popular framework for web frontend
+development in Rust.  It uses a reactive component model, has a useful
+ecosystem of plugins, supports server-side rendering, routing, and has a HTML
+macro that makes it relatively easy to get started.
 
 To define a component, you can either implement the [Component][yew::html::Component]
 trait, or use the [`function_component`][yew::functional::function_component] derive 
@@ -307,13 +307,11 @@ hooks](https://docs.rs/yew-hooks/latest/yew_hooks/).
 The idea is that you can compose these small components into bigger applications. Yew
 also comes with a plugin for [routing](https://docs.rs/yew-router/latest/yew_router/).
 
-### Example: [Yew Todo App][todo-yew]
+### Example: Yew Todo App
 
-Here is an example of a todo-list application written in Yew. It is a rewrite
-of this [example todo app written in
-React](https://www.digitalocean.com/community/tutorials/how-to-build-a-react-to-do-app-with-react-hooks).
-It showcases props, child components, raw HTML rendering, the `use_state` hook
-and how to package it with trunk.
+Here is an example of a todo-list application written in Yew. It showcases
+props, child components, raw HTML rendering, the `use_state` hook and how to
+package it with trunk. 
 
 ```files
 path = "todo-yew"
@@ -322,7 +320,12 @@ files = ["!.git"]
 default_file = "src/lib.rs"
 ```
 
-[Here][todo-yew] you can see this application in action.
+[Here][todo-yew] you can see this application in action. In this example, you
+can see how properties in Yew are structs that derive the `Properties` trait.
+You can also see how state is represented with the `use_state()` hook, and how
+`Callback` is used to pass callbacks down to child components. The `html!`
+macro is used to output HTML elements and child components, and the `classes!`
+macro is used to create a list of classes.
 
 [todo-yew]: https://rust-project-primer.gitlab.io/todo-yew/
 
@@ -330,11 +333,12 @@ default_file = "src/lib.rs"
 [yew::html::Component]: https://docs.rs/yew/0.21.0/yew/html/trait.Component.html
 [yew::functional::function_component]: https://docs.rs/yew/0.21.0/yew/functional/attr.function_component.html
 
-## [Leptos](https://www.leptos.dev/)
+## Leptos
 
-Leptop is quite similar to Yew. The primary difference is in how it renders:
-Yew renders to a shadow DOM, and then synchronizes it to the real DOM, while
-Leptos directly updates the DOM. This has some implications in terms of speed.
+[Leptos](https://www.leptos.dev/) is a web frontend framework for Rust that is
+quite similar to Yew. The primary difference is in how it renders: Yew renders
+to a shadow DOM, and then synchronizes it to the real DOM, while Leptos
+directly updates the DOM. This has some implications in terms of speed.
 
 ```rust
 #[component]
@@ -361,7 +365,11 @@ pub fn SimpleCounter(initial_value: i32) -> impl IntoView {
 }
 ```
 
-### Example: [Todo App][todo-leptos]
+### Example: Todo App
+
+Here is an example of a todo-list application written using Leptos. It
+showcases defining components, rendering child components, passing down
+properties, handling state and passing callbacks to child components.
 
 ```files
 path = "todo-leptos"
@@ -369,6 +377,13 @@ git_ignore = true
 files = ["!.git"]
 default_file = "src/lib.rs"
 ```
+
+You can see this app in action [here][todo-leptos]. You can see how Leptos
+represents properties using function parameters when defining components.  You
+can also see how Leptos manages state using `create_signal()`, which returns a
+getter and a setter for the signal value. It further showcases how the `view!`
+macro is used to construct a tree of HTML elements and child components, and
+how `Callback` can be used to pass callbacks down to child components.
 
 [todo-leptos]: https://rust-project-primer.gitlab.io/todo-leptos
 
@@ -393,11 +408,11 @@ for the developer experience.
 ### Example: Todo App
 
 
-## [Trunk][trunk]
+## Trunk
 
-Trunk is not a frontend framework at all, but it is a build tool. It handles some of
-the nitty-gritty in getting a WebAssembly blog runnable in a browser. You can install
-it by running:
+[Trunk][trunk] is not a frontend framework at all, but it is a build tool. It
+handles some of the nitty-gritty in getting a WebAssembly blog runnable in a
+browser. You can install it by running:
 
     cargo install trunk --locked
 
@@ -406,17 +421,61 @@ installed Rust using rustup, you can do this easily:
 
     rustup target add wasm32-unknown-unknown
 
-Some interesting points is that it has some integration with external tooling, such
-as wasm-opt to optimize and slim down WebAssembly binaries, and Tailwind CSS for generating
-CSS styles.
+Some interesting points is that it has some integration with external tooling,
+such as `wasm-opt` to optimize and slim down WebAssembly binaries, and
+[Tailwind CSS][tailwind] for generating CSS styles.
+
+[tailwind]: https://tailwindcss.com/
+
+### Setup
+
+To get started with Trunk, you need to create an `index.html` file. This is used
+by Trunk as a template, and it contains some metadata for Trunk that tells it what
+assets you want to include in the build.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Hello World</title>
+        <link data-trunk rel="rust" data-wasm-opt="z">
+    </head>
+    <body>
+    </body>
+</html>
+```
+
+Most of the content of this does not matter. Trunk only cares about any tags
+that have the `data-trunk` property. In this example, we have only one entry
+that Trunk processes, which is the `rel=rust` one. This tells Trunk to link the
+current crate into this site, and run `wasm-opt` on it to optimize the
+WebAssembly.
+
+You can include some CSS in the output of your site like this:
+
+```html
+<link data-trunk rel="rust" data-wasm-opt="z">
+```
+
+If you want to use Tailwind CSS, you can use this to tell Trunk to run it and
+include the generated CSS file in your site:
+
+```html
+<link data-trunk rel="tailwind-css" href="src/tailwind.css">
+```
+
+See the [Trunk Assets](https://trunkrs.dev/assets/) documentation page for a
+full list of the types of assets that Trunk supports including in your
+application. It can run the SASS preprocessor, copy static assets such as
+images, inline content, copy files or directory, 
 
 ### Configuration
 
-### Assets
-
-- how to include css
-- how to include assets
-- how to use tailwind css
+Trunk also has an additional configuration file that you can use to configure
+how it works, `Trunk.toml`. In this file, you can configure some hooks, which
+are run before, during or after the build for custom steps, set up proxying for
+the Trunk development server, or change where and how your site is built.
 
 ### Request Forwarding
 
@@ -425,6 +484,10 @@ CSS styles.
 ### Output of Trunk
 
 - example build output of trunk
+
+### Example: Trunk and Tailwind CSS
+
+### Example: Proxying API requests to backend
 
 ## Reading
 

@@ -44,6 +44,8 @@ Rust.
 [online](https://www.rustadventure.dev/)) is collection of interactive courses
 that teaches you how to build things in Rust through a set of workshops. |
 
+[Comprehensive Rust](https://google.github.io/comprehensive-rust/)
+
 *CodeCrafters* Available [online](https://codecrafters.io/).  While not specific to Rust, CodeCrafters has a growing number of courses that are all built around the idea of reimplementing popular software yourself. Some of the courses they have are *Build your own Git*, *Build your own Redis*, and *Build your own SQLite*, to name but a few. What makes the courses fun is that they are broken down into small steps and come with unit tests that allow you to test your implementation as your progress.
 
 ## Articles

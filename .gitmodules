@@ -10,3 +10,7 @@
 	path = examples/levenshtein
 	url = ../levenshtein
     branch = master
+[submodule "examples/todo-dioxus"]
+	path = examples/todo-dioxus
+	url = ../todo-dioxus
+    branch = master

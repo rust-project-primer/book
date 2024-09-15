@@ -400,12 +400,21 @@ how `Callback` can be used to pass callbacks down to child components.
 
 [todo-leptos]: https://rust-project-primer.gitlab.io/todo-leptos
 
-## [Dioxus](https://dioxuslabs.com/)
+## Dioxus
 
-Dioxus has a similar experience as Yew, also using a reactive component model.
-One of the main differences is that it does not use a HTML macro the way Yew does,
-which understands (mostly) vanilla HTML, but it has an `rsx` macro that uses a slightly
-different syntax.
+[Dioxus](https://dioxuslabs.com/) is another frontend framework. Like Yew and Leptos, it
+also uses the component model, hooks and has a domain-specific language for describing
+the graph of HTML elements and components that a component renders into.
+
+What makes Dioxus interesting is that it is easy to build Desktop and Mobile
+applications with it. The Dioxus team is also working on
+[Blitz](https://github.com/DioxusLabs/blitz), a minimal web renderer for use
+with writing Desktop applications with Dioxus but without the need for a full
+browser engine. Dioxus also used to support rendering to the Terminal,
+but it appears as if the support for this has been dropped since `0.4.3`.
+
+The domain-specific language of Dioxus uses the `rsx!` macro and is distinct from
+the XML-style that the other frameworks use.
 
 ```rust
 fn app() -> Element {
@@ -415,11 +424,17 @@ fn app() -> Element {
 }
 ```
 
-The upside is that it does not use proc macros, which helps with IDE support
-for the developer experience.
-
 ### Example: Todo App
 
+This is an example todo application written using Dioxus. It looks and
+functions similar to the example applications written with Yew and Leptos.
+
+```files
+path = "todo-dioxus"
+git_ignore = true
+files = ["!.git"]
+default_file = "src/lib.rs"
+```
 
 ## Trunk
 

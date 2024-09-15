@@ -210,3 +210,7 @@ Stats on blocking vs async:
 https://emschwartz.me/async-rust-can-be-a-pleasure-to-work-with-without-send-sync-static/
 
 https://turso.tech/blog/how-to-deadlock-tokio-application-in-rust-with-just-a-single-mutex
+
+https://yorickpeterse.com/articles/asynchronous-io-the-next-billion-dollar-mistake/
+
+https://eli.thegreenplace.net/2018/measuring-context-switching-and-memory-overheads-for-linux-threads/

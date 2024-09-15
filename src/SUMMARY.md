@@ -13,7 +13,7 @@
 - [Ecosystem](ecosystem.md)
     - [Concurrency](ecosystem/async.md)
     - [Web Backend](ecosystem/web-backend.md)
-    - [Web Frontend](ecosystem/web-frontend.md)
+    - [Web Frontend](ecosystem/web-frontend/readme.md)
     - [User Interface](ecosystem/ui.md)
     - [Rendering](ecosystem/rendering.md)
     - [Embedded](ecosystem/embedded.md)

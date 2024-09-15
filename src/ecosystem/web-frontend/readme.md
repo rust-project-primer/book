@@ -78,7 +78,7 @@ user interfaces. If you are familiar with [React][react] or similar JavaScript
 frontend libraries, then you should already be familiar with the component
 model.
 
-- conceptual understanding of components
+![Component application](app.svg)
 
 Typically, web frameworks use a HTML-like domain-specific language to represent
 the outputs of components. For example, the root component of this example
@@ -96,13 +96,13 @@ html! {
 }
 ```
 
-Components can have *properties*
-
-In this example, `main` and `div` are regular HTML tags, while `Header`, `SideBar`
-and `Content` are sub-components.
-
 Like functions can have arguments, components can have *properties*. These are
-inputs to the component.
+inputs to the component. In this example, the HTML `div` element has the property
+`class="content"`. In the same way, Rust components can have properties, which
+can be any Rust type.
+
+As a convention, HTML native components are usually lowercased (such as `main`, `div`, `p`)
+whereas Rust components are uppercased (such as `Header`, `SideBar`, `Content`).
 
 Components can also have *state*. 
 
@@ -248,11 +248,42 @@ wasm_bindgen_futures::spawn_local(async {
 Most frameworks have some kind of wrapper around these raw futures to be able to
 use them in the applications.
 
+### Server-Side Rendering
+
+### Differences between frameworks
+
+The rest of this section discusses some frameworks for Rust-based
+frontend programming. Generally, the conceptual model of these frameworks is
+very similar, because they used the same component model.
+
+Differences between the frameworks exist between:
+
+- The language they use to describe the output of a component. Usually, this is
+  some kind of macro that allows you to specify a tree of components (HTML or
+  native), their properties and children.
+- The method in which they render the output of the components into the browser
+  (using direct rendering or a shadow DOM). Either rendering methods can have advantages,
+  it depends on what you are doing. Unless you are rendering a large amount of data
+  or update frequently, it likely does not make a difference.
+- The ecosystem of premade components and hooks. Some frameworks are more established
+  and have third-part support for premade hooks and component libraries. These make
+  your life easier.
+- The degree to which they allow you to access raw browser APIs. Frameworks that have
+  multiple rendering backends might be more limited in their support for raw browser APIs
+  for compatibility.
+- The syntax they use for defining components, properties and create and access hooks.
+- The build system they use and support (either Trunk or a custom build system)
+- Support for server-side rendering, for example having plugins for popular web backend
+  crates such as `axum` or `actix-web`.
+
+In the next sections, we will showcase some popular frameworks and attempt
+to give an overview of their features.
+
 ## Yew
 
 [Yew](https://yew.rs/) is currently the most popular framework for web frontend
-development in Rust.  It uses a reactive component model, has a useful
-ecosystem of plugins, supports server-side rendering, routing, and has a HTML
+development in Rust. It uses a reactive component model, has a useful
+ecosystem of plugins, supports server-side rendering, routing, and has a `html!`
 macro that makes it relatively easy to get started.
 
 To define a component, you can either implement the [Component][yew::html::Component]
@@ -327,7 +358,7 @@ files = ["!.git"]
 default_file = "src/lib.rs"
 ```
 
-[Here][todo-yew] you can see this application in action. In this example, you
+You can see this application in action [here][todo-yew]. In this example, you
 can see how properties in Yew are structs that derive the `Properties` trait.
 You can also see how state is represented with the `use_state()` hook, and how
 `Callback` is used to pass callbacks down to child components. The `html!`
@@ -424,6 +455,9 @@ fn app() -> Element {
 }
 ```
 
+Dioxus comes with its own CLI to use for initializing, building and serving Dioxus
+applications. I was not able to get it working with Trunk.
+
 ### Example: Todo App
 
 This is an example todo application written using Dioxus. It looks and
@@ -436,11 +470,19 @@ files = ["!.git"]
 default_file = "src/lib.rs"
 ```
 
+You can see this application in action [here][todo-dioxus]. Note that this
+implementation is slightly different from the Yew and Leptos implementations,
+because here we pass the signal that contains the list of todo items directly
+down to the child components and have them change it, rather than using callbacks
+to update it. 
+
+[todo-dioxus]: https://rust-project-primer.gitlab.io/todo-dioxus
+
 ## Trunk
 
-[Trunk][trunk] is not a frontend framework at all, but it is a build tool. It
-handles some of the nitty-gritty in getting a WebAssembly blog runnable in a
-browser. You can install it by running:
+[Trunk][trunk] is is a build tool for Rust web frontends. It handles some of
+the nitty-gritty in getting a WebAssembly blog runnable in a browser. You can
+install it by running:
 
     cargo install trunk --locked
 
@@ -473,6 +515,13 @@ assets you want to include in the build.
     </body>
 </html>
 ```
+
+```admonish info
+The `data-wasm-opt` property here tells Trunk to call `wasm-opt` over the resulting
+WebAssembly output when doing a release build.
+```
+
+### Assets
 
 Most of the content of this does not matter. Trunk only cares about any tags
 that have the `data-trunk` property. In this example, we have only one entry
@@ -507,11 +556,16 @@ the Trunk development server, or change where and how your site is built.
 
 ### Request Forwarding
 
-- how to proxy API requests to backend
+A common pattern for developing is to use `trunk serve` to build and serve your
+frontend, and to have it talk to your backend via API requests. To make it easier
+to route the API requests to your backend, you can tell Trunk to forward proxy
+requests matching a specific route to another service.
 
-### Output of Trunk
-
-- example build output of trunk
+```toml
+[[proxy]]
+rewrite = "/api/v1/"
+backend = "http://localhost:9000/"
+```
 
 ### Example: Trunk and Tailwind CSS
 
@@ -519,18 +573,25 @@ the Trunk development server, or change where and how your site is built.
 
 ## Reading
 
-[Are We Web Yet: Web Frameworks](https://www.arewewebyet.org/topics/frameworks/)
+[Are We Web Yet: Web Frameworks](https://www.arewewebyet.org/topics/frameworks/) on Are We Web Yet
 
-*Keeps a list of frontend web frameworks for Rust along with some statistics indicating popularity.*
+*List of frontend web frameworks for Rust along with some statistics indicating
+popularity. Good for discovery of new and rising frameworks or to explore all
+the different ideas.*
 
-[Rust Web Framework Comparison](https://github.com/flosse/rust-web-framework-comparison)
+[Rust Web Framework Comparison](https://github.com/flosse/rust-web-framework-comparison) by Markus Kohlhase
 
-Compares different Rust web frameworks.
+*Overview of different Rust frontend and backend frameworks. Unfortunately, it
+marks some frameworks that are still heavily used as outdated, so take that
+with a grain of salt.*
 
-[Full-stack Rust: A complete tutorial with examples](https://blog.logrocket.com/full-stack-rust-a-complete-tutorial-with-examples/)
+[Full-stack Rust: A complete tutorial with examples](https://blog.logrocket.com/full-stack-rust-a-complete-tutorial-with-examples/) by Mario Zupan
 
-*A tutorial showing how to build a full-stack Rust web application using Yew,
-Tokio, Postgres, and Warp.*
+*Tutorial showing how to build a full-stack Rust web application using Yew,
+Tokio, Postgres, and Warp. Good tutorial to see how everything fits together,
+unfortunately it is a bit older and uses an outdated version of Yew that is
+pre-functional components. But it is still a good article to get a feeling for
+how a full-stack Rust application fits together.*
 
 [Full Stack Rust with Leptos](https://benw.is/posts/full-stack-rust-with-leptos)
 
@@ -538,9 +599,19 @@ Tokio, Postgres, and Warp.*
 
 [Rust and WebAssembly Book](https://rustwasm.github.io/docs/book/introduction.html)
 
-*Book that explains how to use Rust to target WebAssembly.*
+*Book that explains how to use Rust to target WebAssembly. Has some good
+low-level information, such as how to debug and profile WebAssembly
+applications, keeping code size small, interoperation with JavaScript.*
 
-https://robert.kra.hn/posts/2022-04-03_rust-web-wasm/
+[A Rust web server / frontend setup like it's 2022 (with axum and yew)](https://robert.kra.hn/posts/2022-04-03_rust-web-wasm/) by Robert Krahn
+
+*Shows how to setup a full-stack Rust web application with Yew and Axum
+from scratch.*
+
+[Using Dioxus with Rust to build performant single-page apps](https://blog.logrocket.com/using-dioxus-rust-build-single-page-apps/) by Eze Sunday
+
+*Eze shows how to use Dioxus to implement a todo application. Uses an older
+version of Dioxus, the interface has since changed.*
 
 [trunk]: https://trunkrs.dev/
 [wasm]: https://webassembly.org/

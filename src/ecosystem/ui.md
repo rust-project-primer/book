@@ -37,6 +37,8 @@ around the quirks of GTK with decent documentation and procedural macros.
 
 - example: gtk rs calculator
 
+## egui
+
 ## Reading
 
 [Are We GUI Yet](https://areweguiyet.com/)

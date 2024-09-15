@@ -113,6 +113,17 @@ also worth looking into.
 
 ## Integrating with Nix
 
+It is possible to integrate Bazel with Nix. The idea is that Nix is a little
+bit better of a package manager, and that Bazel is a bit better as a build
+system.  Nix is used to bootstrap the environment: the compiler, the native
+libraries.  Bazel is then used as a build system.
+
+If you don't Nix, to get a true hermetic build environment you need to instruct
+it to build all native dependencies from source. You can avoid that when using
+Nix. And the fact that Nix has a public binary cache means that you rarely need
+to actually compile the thing you are using, most of the case Nix will be able
+to just pull it from the cache.
+
 - <https://nix-bazel.build/>
 - <https://www.tweag.io/blog/2022-12-15-bazel-nix-migration-experience/>
 - <https://www.tweag.io/blog/2018-03-15-bazel-nix/>

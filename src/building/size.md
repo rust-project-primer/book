@@ -58,3 +58,6 @@ source to be able to do link-time optimization on it.*
 
 [cargo-bloat]: https://github.com/RazrFalcon/cargo-bloat
 
+[Build Configuration](https://nnethercote.github.io/perf-book/build-configuration.html) in The Rust Performance Book
+
+[Type Sizes](https://nnethercote.github.io/perf-book/type-sizes.html) in The Rust Performance Book

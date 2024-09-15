@@ -58,7 +58,6 @@ cargo +nightly fmt
 
 ### Examples
 
-~~~admonish example
 Here is one example of a project which has a `rustfmt.toml` to configure
 rustfmt, and some CI steps which enforce the formatting in CI.
 
@@ -66,7 +65,13 @@ rustfmt, and some CI steps which enforce the formatting in CI.
 path = "check-formatting"
 git_ignore = true
 ```
-~~~
+
+## Reading
+
+[How to configure rustfmt](https://rust-lang.github.io/rustfmt/)
+
+
+[The Rust Style Guide](https://doc.rust-lang.org/beta/style-guide/index.html) by The Rust Foundation
 
 [rustfmt-conf]: https://rust-lang.github.io/rustfmt/
 [rustfmt]: https://github.com/rust-lang/rustfmt

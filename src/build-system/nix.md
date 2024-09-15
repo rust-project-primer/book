@@ -10,6 +10,11 @@ requested, build Docker images with the minimal set of runtime dependencies.
 
 ## Why Nix?
 
+Nix is an old project, it is 20 years old now. But it only really gained a lot
+of popularity a number of years ago. One of the core concepts of Nix is that it
+is declarative, it ensures hermetic and reproducible builds, and it is very
+cacheable.
+
 ## How does Nix work?
 
 ## Examples
@@ -49,3 +54,5 @@ potential other options for building and packaging Rust code in Nix.*
 *This is a guide on how to get started using Nix. It teaches you how to install it,
 how to use it for development, how to package your software with it, and how to
 manage your system with it.*
+
+[What is Nix?](https://serokell.io/blog/what-is-nix)

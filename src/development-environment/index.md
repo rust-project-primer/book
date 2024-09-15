@@ -155,7 +155,16 @@ parser for Rust than `rustc` has.
 
 [Rust Analyzer Manual](https://rust-analyzer.github.io/manual.html)
 
-[LSP could have been better](https://matklad.github.io/2023/10/12/lsp-could-have-been-better.html)
+*Explains how to install and use `rust-analyzer`. Has some good advice for how to
+integrate it into your editor.*
+
+[Why LSP?](https://matklad.github.io/2022/04/25/why-lsp.html) by Alex Kladov
+
+*Alex explains what problem LSPs solve.*
+
+[LSP could have been better](https://matklad.github.io/2023/10/12/lsp-could-have-been-better.html) by Alex Kladov
+
+*This article discusses architectural aspects of LSPs, that Alex does not find as brilliant.*
 
 [LSP: The good, the bad and the ugly](https://www.michaelpj.com/blog/2024/09/03/lsp-good-bad-ugly.html)
 
@@ -163,9 +172,6 @@ parser for Rust than `rustc` has.
 
 [survey2023]: https://blog.rust-lang.org/2024/02/19/2023-Rust-Annual-Survey-2023-results.html
 [wsl2]: https://learn.microsoft.com/en-us/windows/wsl/about
-
-### IDEs
-
 
 https://rust-lang.github.io/rustup/index.html
 

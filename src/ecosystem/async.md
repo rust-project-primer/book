@@ -181,7 +181,8 @@ https://www.thecodedmessage.com/posts/async-colors/
 [Sans-IO](https://www.firezone.dev/blog/sans-io)
 
 *This article expalains an approach to architecting asynchronous applications that stricly
-separate IO code from business logic.*
+separate IO code from business logic. This concept helps you design applications that
+can be easily tested, but can run with an asynchronous executor.*
 
 [\Device\Afd, Or the Deal With the Devil that makes async Rust work on
 Windows](https://notgull.net/device-afd/)
@@ -191,26 +192,39 @@ years is not news to any developers that have had to interact with it. This
 article explains the dark magic that needs to be performed to make async work
 on Windows for Rust.*
 
-
-https://kkourt.io/blog/2017/10-14-linux-aio.html
-
-
-https://v5.chriskrycho.com/journal/async-rust-complexity/
-
-https://github.com/alexpusch/rust-magic-patterns/blob/master/rust-stream-visualized/Readme.md
-
-https://github.com/jkarneges/rust-async-bench
+[Linux AIO](https://kkourt.io/blog/2017/10-14-linux-aio.html)
 
 
+[Async Rust Complexity](https://v5.chriskrycho.com/journal/async-rust-complexity/) by Chris Krycho
 
-https://rust-lang.github.io/async-book/
+*Chris argues that one of the reasons why doing async is difficult in Rust is
+because of the sheer amount of choice. Various async runtimes and libraries
+exist, and for a beginner it is difficult to pick one without investigating all
+of the options.*
+
+[Rust Stream Visualized](https://github.com/alexpusch/rust-magic-patterns/blob/master/rust-stream-visualized/Readme.md) by Alex Pushinsky
+
+*Visually explains how the Rust asynx stream API works, using diagrams to
+illustrate the behaviour.*
+
+[Rust Async Bench](https://github.com/jkarneges/rust-async-bench)
+
+
+
+[Async Book](https://rust-lang.github.io/async-book/)
 
 Stats on blocking vs async:
 
-https://emschwartz.me/async-rust-can-be-a-pleasure-to-work-with-without-send-sync-static/
+[Async Rust can be a pleasure to work with without Send, Sync and 'static](https://emschwartz.me/async-rust-can-be-a-pleasure-to-work-with-without-send-sync-static/)
 
-https://turso.tech/blog/how-to-deadlock-tokio-application-in-rust-with-just-a-single-mutex
+[How to deadlock a Tokio application in Rust with just a single Mutex](https://turso.tech/blog/how-to-deadlock-tokio-application-in-rust-with-just-a-single-mutex)
 
-https://yorickpeterse.com/articles/asynchronous-io-the-next-billion-dollar-mistake/
+[Asynchronous I/O: The next billion dollar mistake?](https://yorickpeterse.com/articles/asynchronous-io-the-next-billion-dollar-mistake/)
 
-https://eli.thegreenplace.net/2018/measuring-context-switching-and-memory-overheads-for-linux-threads/
+[Measuring Context switching and memory overheads for Linux threads](https://eli.thegreenplace.net/2018/measuring-context-switching-and-memory-overheads-for-linux-threads/) by Eli Bendersky
+
+*Eli measures the overhead of using threads in Linux. While Linux threads have
+a relatively low overhead, the requirement to do a context switch to switch
+between threads has a mimimum overhead of about 1.2 to 1.5 µs when using CPU
+core pinning, and 2.2 µs without.  This limits how many requests can be served
+when using a thread-per-request architecture.*

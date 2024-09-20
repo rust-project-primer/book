@@ -181,7 +181,7 @@ want this pinning to work:
 
 ### Pinning the toolchain version for projects
 
-The way you can solve this is by putting a `rust-toolchain.toml` file into the
+The way you can solve this is by putting a [`rust-toolchain.toml`][rust-toolchain] file into the
 repository. This will instruct `rustup` to fetch the exact toolchain mentioned
 in this file whenever you run any operations in the project.
 
@@ -381,3 +381,4 @@ functions, that is code written in C or C++, in Rust.*
 
 [crates.io]: https://crates.io
 [rust-targets]: http://example.com
+[rust-toolchain]: https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file

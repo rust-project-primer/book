@@ -55,6 +55,8 @@ annotation can be added to the crates that should not have unsafe code in them.
 
 [Static Analysis](https://abseil.io/resources/swe-book/html/ch20.html) in Software Engineering at Google
 
+[Rust Lints you may not know](https://www.possiblerust.com/pattern/rust-lints-you-may-not-know) by Andrew Lilley Brinker
+
 
 [clippy]: <https://github.com/rust-lang/rust-clippy>
 [clippy-lints]: <https://rust-lang.github.io/rust-clippy/>

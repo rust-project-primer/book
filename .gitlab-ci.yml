@@ -37,8 +37,8 @@ pages:
     - apk add mdbook brotli
   script:
     - mv book public
-    - find public -exec gzip -k {} \;
-    - find public -exec brotli -k {} \;
+    - find public -type f -exec gzip -k {} \;
+    - find public -type f -exec brotli -k {} \;
   artifacts:
     paths:
       - public/

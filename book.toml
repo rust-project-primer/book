@@ -30,3 +30,18 @@ additional-css = ["assets/mdbook-files.css", "assets/mdbook-admonish.css"]
 additional-js = ["assets/mermaid.min.js", "assets/mermaid-init.js"]
 git-repository-url = "https://github.com/rust-project-primer/book"
 git-repository-icon = "fa-github"
+
+[output.html.redirect]
+"/build.html" = "/build-system/index.html"
+"/build/cargo.html" = "/build-system/cargo.html"
+"/checks/style.html" = "/checks/lints.html"
+"/examples/github.html" = "/examples.html"
+"/organization/crate-size.html" = "/organization/crates.html"
+"/organization/features.html" = "/organization/crates.html#crate-features"
+"/organization/library-first.html" = "/organization/crates.html"
+"/organization/workspace-metadata.html" = "/organization/workspace.html"
+"/reading.html" = "/intro/prerequisites.html"
+"/releasing/flatpak.html" = "/releasing/packaging.html"
+"/releasing/rpm.html" = "/releasing/packaging.html"
+"/testing/undefined-behavior.html" = "/testing/dynamic-analysis.html"
+"/tools/xtask.html" = "/tools/tasks.html"

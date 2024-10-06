@@ -1,27 +1,28 @@
 # Concurrency
 
 This section discusses different ways to architect your project to make
-use of concurrency or parallelism in Rust.
+use of concurrency or parallelism in Rust. The difference is small
+but significant:
 
-*Concurrency* is your program's ability to track and execute multiple things
-at the same time. It does not mean that you are using multiple threads,
-for example using async and a single-threaded executor, you can execute
-multiple requests *concurrently*.
+- **Concurrency** is your program's ability to track and execute multiple things
+  at the same time, but not neccessarily *in parallel*. One example is a single-threaded
+  asynchronous runtime, which can execute multiple futures by switching
+  between them.
+- **Parallelism** is when your program executes multiple tasks at the same time,
+  for example using a multi-threaded model. It implies concurrency.
 
-*Parallelism* is when your program executes multiple tasks at the same time,
+There are different methods in Rust to write concurrent or parallel
+programs, depending on the kind of workload you have. Your choice of these
+impacts the shape of the Rust code you write, so it is important to figure
+out which model suits your particular project. However, it is possible, to 
+some extent, to mix the two models.
 
+The building blocks that Rust give you to write concurrent applications are:
 
+- Multi-threading with synchronous code
+- Asynchronous concurrency or parallelism
 
-
-The biggest question that you need to ask yourself is: do you require the use
-of async code? This is typically the case when your application is I/O bound
-and wants to process a lot of requests, or when you want to make use of heavy,
-lightweight concurrency.
-
-The basic building blocks of programs is *threads*. When you run some code, it
-generally has a single thread
-
-## Async and Blocking Code
+### Async and Blocking Code
 
 
 The main difference between async and blocking programming paradigms is the
@@ -56,7 +57,9 @@ to some computation that will cancel it when the time runs out:
 tokio::time::timeout(Duration::from_secs(1), handle_request()).await;
 ```
 
-## When should you use async?
+## Async
+
+### When should you use async?
 
 When should you consider async code:
 
@@ -87,7 +90,7 @@ I/O and uses blocking calls.
 
 [rayon]: https://docs.rs/rayon/latest/rayon/
 
-## What even is async?
+### What even is async?
 
 In short, async programming is a paradigm that lets you write scalable applications
 that have to do a lot of waiting.
@@ -129,7 +132,7 @@ they cause your thread to stall until some event happens. Examples of these are:
 - Waiting for a write or a read from disk
 - Waiting for a timer to expire
 
-## What runtimes are recommended?
+### What runtimes are recommended?
 
 Although support for async-await style programming was only added in [Rust
 1.39](https://blog.rust-lang.org/2019/11/07/Async-await-stable.html), it has
@@ -150,19 +153,16 @@ In general, there are three runtimes that are recommended:
   as Tokio, and in general is not recommended to be used for new projects. A lot of
   the ideas it came with have been incorporated into Tokio.
 
-## Thread-per-Core vs Shared-Nothing
+### Thread-per-Core vs Shared-Nothing
 
+### Epoll vs io_uring
 
-## Epoll vs io_uring
-
-## How does aysnc work in Rust?
+### How does aysnc work in Rust?
 
 There is the [Async Book][async book] that goes into much greater depth. But in
 general, async in Rust 
 
-
-
-## What are some common pitfalls with async in Rust?
+### What are some common pitfalls with async in Rust?
 
 Function coloring: design "sync core, async shell"
 
@@ -180,9 +180,13 @@ https://www.thecodedmessage.com/posts/async-colors/
 
 [Sans-IO](https://www.firezone.dev/blog/sans-io)
 
-*This article expalains an approach to architecting asynchronous applications that stricly
-separate IO code from business logic. This concept helps you design applications that
-can be easily tested, but can run with an asynchronous executor.*
+*This article expalains an approach to architecting asynchronous applications
+that stricly separate IO code from business logic. This concept helps you
+design applications that can be easily tested, but can run with an asynchronous
+executor. While this article is written with Python in mind, the lessons are
+equally valid for Rust: good software design keeps a synchronous core (without
+I/O) and wraps it in a thin, asynchronous shell. That way, your business logic
+is decoupled from your runtime strategy.*
 
 [\Device\Afd, Or the Deal With the Devil that makes async Rust work on
 Windows](https://notgull.net/device-afd/)
@@ -192,6 +196,10 @@ years is not news to any developers that have had to interact with it. This
 article explains the dark magic that needs to be performed to make async work
 on Windows for Rust.*
 
+[Thread-per-core](https://without.boats/blog/thread-per-core/) by David Lee Aronson
+
+Todo
+
 [Linux AIO](https://kkourt.io/blog/2017/10-14-linux-aio.html)
 
 
@@ -200,7 +208,8 @@ on Windows for Rust.*
 *Chris argues that one of the reasons why doing async is difficult in Rust is
 because of the sheer amount of choice. Various async runtimes and libraries
 exist, and for a beginner it is difficult to pick one without investigating all
-of the options.*
+of the options. This is less true today, as most of the Rust community has
+centered around the Tokio ecosystem for async.*
 
 [Rust Stream Visualized](https://github.com/alexpusch/rust-magic-patterns/blob/master/rust-stream-visualized/Readme.md) by Alex Pushinsky
 

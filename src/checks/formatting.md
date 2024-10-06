@@ -1,21 +1,20 @@
 # Formatting
 
-*You have noticed that in your project, a lot of time is wasted in code reviews
-on debating over style. You have also noticed that there seems to be an
-inconsistency, whereby different teams produce different-looking code. This
-creates friction for developers switching between teams and when teams try to
-collaborate. How can you ensure that the style issue is settled mechanically?*
 
-Ensuring consistent formatting across a project is quite important. It allows
-Code Reviews to focus on the content, and not the formatting of the code. One
-thing the Rust community does very well is have a consistent formatting style,
-which eliminates the surprises you will encounter when reading other people's
-code. The canonical tool used for formatting Rust code is `rustfmt`.
+
+Ensuring consistent formatting across a project helps reduce friction. It
+allows Code Reviews to focus on the content, and not the formatting of the
+code. 
+
+One thing the Rust community does very well is have a consistent
+formatting style, which eliminates the surprises you will encounter when
+reading other people's code. The canonical tool used for formatting Rust code
+is `rustfmt`.
 
 ## Rustfmt
 
-Generally, Rust code can be formatted using [rustfmt][], which is a core piece
-of Rust tooling and in general, the whole Rust community uses it.
+Rust code can be formatted using [rustfmt][], which is a core piece of Rust
+tooling and used by the whole Rust community.
 
 By incorporating `rustfmt` checks into the CI system, you can make sure that
 issues with formatting are caught before code review.
@@ -70,8 +69,18 @@ git_ignore = true
 
 [How to configure rustfmt](https://rust-lang.github.io/rustfmt/)
 
+*Overview of all of the configuration options of Rustfmt. In general, you
+should not need to tweak these: the defaults that it comes with out-of-the-box
+are sane and used by the majority of Rust projects. However, if you have a good
+reason, you can look around here and configure Rustfmt. Keep in mind that using
+a non-standard Rustfmt configuration might alienate some developers.*
 
 [The Rust Style Guide](https://doc.rust-lang.org/stable/style-guide/index.html) by The Rust Foundation
+
+*Style guide issued by the Rust foundation. This is a concise document that
+outlines good style recommendations for Rust code. Usually, reading these is
+not as important because Rustfmt will enforce these automatically, but it can
+be useful to read.*
 
 [rustfmt-conf]: https://rust-lang.github.io/rustfmt/
 [rustfmt]: https://github.com/rust-lang/rustfmt

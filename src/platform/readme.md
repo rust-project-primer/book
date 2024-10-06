@@ -1,4 +1,4 @@
-# Platform
+# Continuous Integration
 
 Modern software development usually uses the [Git][git] version control system.
 Typically, it is written using [*agile development* workflows][agile], where

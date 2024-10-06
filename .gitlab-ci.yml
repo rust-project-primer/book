@@ -33,8 +33,12 @@ pages:
   stage: publish
   dependencies:
     - book
+  before_script:
+    - apk add mdbook brotli
   script:
     - mv book public
+    - find public -exec gzip -k {} \;
+    - find public -exec brotli -k {} \;
   artifacts:
     paths:
       - public/

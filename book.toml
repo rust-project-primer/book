@@ -31,6 +31,7 @@ additional-js = ["assets/mermaid.min.js", "assets/mermaid-init.js"]
 git-repository-url = "https://github.com/rust-project-primer/book"
 git-repository-icon = "fa-github"
 
+# redirects for moved pages
 [output.html.redirect]
 "/build.html" = "/build-system/index.html"
 "/build/cargo.html" = "/build-system/cargo.html"

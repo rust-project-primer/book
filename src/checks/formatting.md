@@ -71,7 +71,7 @@ git_ignore = true
 [How to configure rustfmt](https://rust-lang.github.io/rustfmt/)
 
 
-[The Rust Style Guide](https://doc.rust-lang.org/beta/style-guide/index.html) by The Rust Foundation
+[The Rust Style Guide](https://doc.rust-lang.org/stable/style-guide/index.html) by The Rust Foundation
 
 [rustfmt-conf]: https://rust-lang.github.io/rustfmt/
 [rustfmt]: https://github.com/rust-lang/rustfmt

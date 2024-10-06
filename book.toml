@@ -8,6 +8,10 @@ title = "Rust Project Primer"
 [rust]
 edition = "2021"
 
+[build]
+create-missing = false
+extra-watch-dirs = ["examples", "graphics"]
+
 [preprocessor.files]
 command = "mdbook-files"
 prefix = "examples"
@@ -21,6 +25,7 @@ assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
 after = ["links"]
 
 [output.html]
+theme = "theme"
 additional-css = ["assets/mdbook-files.css", "assets/mdbook-admonish.css"]
 additional-js = ["assets/mermaid.min.js", "assets/mermaid-init.js"]
 git-repository-url = "https://github.com/rust-project-primer/book"

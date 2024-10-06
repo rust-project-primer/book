@@ -181,3 +181,12 @@ want to use Bazel to build Rust code, you should use this plugin.*
 and what advantages it has for developers.*
 
 [rules_rust]: https://github.com/bazelbuild/rules_rust
+
+*The `rules_rust` module in Bazel is the official module to support building
+Rust code using Bazel.*
+
+[Birth of the Bazel](https://blog.engflow.com/2024/10/01/birth-of-the-bazel/) by Han-Wen Nienhuys
+
+*Han-Wen explains how Bazel was born as an open source build system out of
+Google's internal Blaze build system, and why the decision was made to
+open-source it.*

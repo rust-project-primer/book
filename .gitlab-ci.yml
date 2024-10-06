@@ -38,7 +38,7 @@ pages:
   script:
     - mv book public
     - find public -type f -exec gzip -k {} \;
-    - find public -type f -exec brotli -k {} \;
+    #- find public -type f -exec brotli -k {} \;
   artifacts:
     paths:
       - public/

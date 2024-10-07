@@ -34,7 +34,7 @@ pages:
   dependencies:
     - book
   before_script:
-    - apk add mdbook brotli
+    - apk add mdbook brotli gzip
   script:
     - mv book public
     - find public -not -name '*.gz' -not -name '*.br' -type f -exec gzip -vk {} \;

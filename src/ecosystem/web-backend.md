@@ -175,3 +175,8 @@ https://www.arewewebyet.org/
 
 *Compares the performance (as measured by requests-per-second) of various web
 frameworks.*
+
+[Rusts Axum style magic function params example](https://alexpusch/rust-magic-patterns/blob/master/axum-style-magic-function-param/Readme.md) by Alex Puschinsky
+
+*In this article, Alex explains how Axum's magic function parameter handling is
+implemented in Rust.*

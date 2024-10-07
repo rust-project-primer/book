@@ -237,3 +237,9 @@ a relatively low overhead, the requirement to do a context switch to switch
 between threads has a mimimum overhead of about 1.2 to 1.5 µs when using CPU
 core pinning, and 2.2 µs without.  This limits how many requests can be served
 when using a thread-per-request architecture.*
+
+[Confusing or misunderstood topics in systems programming: Part 0](https://pthorpe92.dev/programming/systems/common-misunderstandings) by Preston Thorpe
+
+*Preston explains processes, threads, context switches and communication
+between threads. This article provides a good background explainer to be able
+to understand how asynchronouns programming works behind the scenes.*

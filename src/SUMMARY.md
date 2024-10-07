@@ -20,6 +20,7 @@
     - [User Interface](ecosystem/ui.md)
     - [Rendering](ecosystem/rendering.md)
     - [Embedded](ecosystem/embedded.md)
+    - [Logging](ecosystem/logging.md)
 - [Organization](organization/readme.md)
     - [Crates](organization/crates.md)
     - [Workspace](organization/workspace.md)

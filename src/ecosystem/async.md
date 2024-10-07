@@ -243,3 +243,13 @@ when using a thread-per-request architecture.*
 *Preston explains processes, threads, context switches and communication
 between threads. This article provides a good background explainer to be able
 to understand how asynchronouns programming works behind the scenes.*
+
+[Rust Tokio task cancellations patterns](https://cybernetist.com/2024/04/19/rust-tokio-task-cancellation-patterns/) by Milos Gajdos
+
+*In this article, Milos explains different patterns used in asynchronous, Tokio-powered
+Rust software to cancel tasks.*
+
+[Async-Task explained](https://notgull.net/async-task-explained-part1/) John Nunley
+
+*John explains the internals of the `async-task` crate from the grounds up in
+this article. It gives a good background on how async works behind the scenes.*

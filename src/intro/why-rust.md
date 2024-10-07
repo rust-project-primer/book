@@ -68,3 +68,5 @@ this guide is focussed on giving you the tools you need to make sure you
 structure projects in a way that minimizes the number of bugs.
 
 https://medium.com/@penberg/why-i-am-not-yet-ready-to-switch-to-zig-from-rust-3660e02f0060
+
+https://matklad.github.io/2024/10/06/ousterhouts-dichotomy.html

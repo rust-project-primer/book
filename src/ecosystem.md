@@ -10,6 +10,15 @@ you add and manage dependencies.
 
 ![bubble graph of popular crates](graphics/crate-popularity.svg)
 
+Rust can also target a wide variety of platforms: whether you are writing code
+to run [on GPUs](https://rust-gpu.github.io/), [in the
+browser](https://www.rust-lang.org/what/wasm), [on
+servers](https://www.rust-lang.org/what/networking), [in the
+terminal](https://www.rust-lang.org/what/cli), [inside your
+bootloder](https://github.com/rust-osdev/uefi-rs), [on embedded
+devices](https://www.rust-lang.org/what/embedded) or on unusual platforms, Rust
+typically has you covered.
+
 Most of the time, it is relatively easy to switch between different crates.
 However, in some cases the crates you decide to use have an influence over the
 architecture of your project. For example, it is not always so easy to convert

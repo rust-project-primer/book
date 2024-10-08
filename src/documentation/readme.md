@@ -35,7 +35,7 @@ Rust project has many kinds of documentation:
 
 - [The Rust Book](https://doc.rust-lang.org/stable/book/) documents the
   language itself, helping people get up to speed.
-- [Standard library documentation](https://std.rs) document the standard
+- [Standard library documentation](https://std.rs) documents the standard
   library
 - [docs.rs](https://docs.rs) hosts documentation for all crates which are
   published on [crates.io](https://crates.io)
@@ -50,7 +50,6 @@ Rust project has many kinds of documentation:
 - Books from some popular framework crates
   ([Criterion](https://bheisler.github.io/criterion.rs/book/index.html),
   [Tokio](https://tokio.rs/tokio/tutorial), [Serde](https://serde.rs/))
-```
 
 With this breadth of documentation, people new to the Rust language can quickly
 get to high-quality explanations for whatever it is they are trying to do.
@@ -58,6 +57,7 @@ Having a service publish documentation for crates also has another effect: it
 forces crate authors to put good documentation into their crates, because a
 lack of such is immediately visible.  This alone has a strong positive effect
 on the crate ecosystem.
+```
 
 When you write documentation, the most important question you have to ask is:
 who are you writing documentation for? What are they trying to do? If you know

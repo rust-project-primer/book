@@ -30,6 +30,7 @@ additional-css = ["assets/mdbook-files.css", "assets/mdbook-admonish.css"]
 additional-js = ["assets/mermaid.min.js", "assets/mermaid-init.js"]
 git-repository-url = "https://github.com/rust-project-primer/book"
 git-repository-icon = "fa-github"
+mathjax-support = true
 
 # redirects for moved pages
 [output.html.redirect]

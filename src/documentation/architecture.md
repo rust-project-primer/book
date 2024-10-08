@@ -16,18 +16,29 @@ data travels through each component.
 If you do not have time to properly document software, the least you should do
 is document the high-level architecture.
 
+## Publishing
+
+- Markdown
+- mdBook
+
 ## Diagrams
 
-Software architecture can be documented in many different ways. Following a
-set process for it is not critical, the important part is that there is some
-kind of documentation for it. Usually, the most effective kind of documentation
-comes in the form of diagrams.
+It tends to be easier to *show* architecture rather than to *explain* it.
 
-There are various tools that can be used to draw such diagrams:
+There are some useful tools that can be used to draw such diagrams:
 
 - [draw.io](https://draw.io)
-- PlantUML
-- Mermaid
+- [Excalidraw](https://excalidraw.com/)
+- [PlantUML](https://www.plantuml.com/)
+- [Mermaid](https://mermaid.js.org/)
+
+### draw.io
+
+### Excalidraw
+
+### PlantUML
+
+### Mermaid
 
 ## Documenting Changes
 

@@ -132,6 +132,10 @@ https://x86.lol/generic/2024/08/28/systemd-sysupdate.html
 
 ## Reading
 
+[Nix Reference Manual](https://nix.dev/manual/nix/latest/)
+
+*Reference manual for the Nix package manager.*
+
 [Rust](https://nixos.wiki/wiki/Rust) in the NixOS Wiki
 
 [ipetkov/crane](https://github.com/ipetkov/crane) on GitHub

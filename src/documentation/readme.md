@@ -87,7 +87,7 @@ APIs).
 
 End-user documentation should contain:
 
-- Explanation of what problems your project solves
+- Explanation of what problems your project solves, and what limitations it might have
 - Instruction of how to install your application (or compile your library)
 - Instruction of how to configure your application (or library)
 - Examples or guides on how to use it for specific use-cases
@@ -112,19 +112,26 @@ Developer documentation should contain:
 
 - Instructions on how to fetch the code (git clone)
 - Architecture of the project (diagram)
+- Explanation of why the archiecture is the way it is
 - High-level explanation of how the code works
 - Instructions on how to compile the library
-- Instructions on how to run unit tests and benchmarks
+- Instructions on how to run tests: unit tests, integration tests, benchmarks, fuzzing tests
 - Style guide for code, commits, documentation
 - Documentation of processes (how to submit a patch, how to cut a release)
 - Code-level documentation (APIs, data structures, invariants)
 
 ### Tools to write and publish documentation
 
+<!-- places for documentation: readme, crate metadata, standalone documentation, code documentation -->
+
 In the sections of this chapter, I will go though some of the functionality
 Rust has built-in for generating documentation for software projects, and some
 tools that are useful for writing the kinds of end-user and developer
-documentation outlined here.
+documentation outlined here. I will focus on:
+
+- Types of documentation documents (readme files, code comments, standalone documentation)
+- Tools to write effective documentation (diagramming tools, documentation generators)
+- Patterns for documentation (changelogs, patterns for documenting architecture)
 
 ## Reading
 

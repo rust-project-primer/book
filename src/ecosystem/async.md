@@ -178,6 +178,10 @@ https://www.thecodedmessage.com/posts/async-colors/
 
 ## Reading
 
+[Why Async Rust](https://without.boats/blog/why-async-rust/) by David Lee Aronson
+
+*In this article, David explains the history of the development of async Rust.*
+
 [Sans-IO](https://www.firezone.dev/blog/sans-io)
 
 *This article expalains an approach to architecting asynchronous applications

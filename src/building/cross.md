@@ -4,13 +4,19 @@ When you compile something, you usually create an executable that is able to
 run on whichever platform you are compiling it on. This is called *native
 compilation*. However, there are some situation where you want to be able to
 generate binaries for a *different* platform than the one that you are doing
-the compilation on. Doing so is called *cross compilation*.
+the compilation on. Doing this is called *cross compilation*.
 
-Rust has a concept of *target triples*. This is how Rust identifies the
+<center>
+
+![Cross compilation example](cross-compile.svg)
+
+</center>
+
+Rust has a concept of [*target triples*][triple]. This is how Rust identifies the
 platform that you want the compiler to generate binaries for. For example, if
 you are using Linux on an AMD64 system, your target triple might be
 `x86_64-unknown-linux-gnu`.  From Rust's point of view, cross compilation is
-whenever you as the compiler to generate executables for a different target
+whenever you ask the compiler to generate executables for a different target
 triple than your native one.
 
 In general, doing cross-compilation can be a bit of a hassle, but there are
@@ -32,6 +38,8 @@ Rust uses [LLVM][llvm] to implement its compilation backend. LLVM
 is written in a modular way that makes it easy to add support for code generation
 for new targets. This means that Rust comes with good support for cross-compilation
 out-of-the-box.
+
+### Simple Cross-Compilation
 
 If you want to use this, you first need to add support for the target you
 want to build for to your installed Rust toolchain. If you are using Rustup
@@ -253,7 +261,12 @@ The idea with it is that it acts as a replacement for Cargo.
 
 *In this article, Greg explains how to cross-compile Rust crates using the cross project.*
 
-https://actually.fyi/posts/zig-makes-rust-cross-compilation-just-work/
+[Zig makes Rust cross-compilation just work](https://actually.fyi/posts/zig-makes-rust-cross-compilation-just-work/) by Max Hollmann
+
+*Max explains how you can use Zig to simplify cross-compilation for Rust. Zig
+comes with built-in support for compiling and linking for various targets
+out-of-the-box, which means you don't need to install separate toolchains for
+each target.*
 
 [LLVM](https://aosabook.org/en/v1/llvm.html) in *The Architecture of Open Source Applications (Volume 1)*
 
@@ -262,5 +275,15 @@ easy to use it as a library to build compilers, and to target a variety of
 different targets. LLVM decouples the various stages of the compiler and uses a
 serialisation format to communicate between them.*
 
+[Cross-compilation](https://rust-lang.github.io/rustup/cross-compilation.html) in *The rustup book*
+
+*This chapter explains the basics for how to do cross-compilation with rustup.*
+
+[Configuration (target section)](https://doc.rust-lang.org/cargo/reference/config.html#target) in *The Cargo Book*
+
+*This chapter in the book explains how you can configure Cargo to do cross-compilation,
+by telling it which linker, rustflags and runner to use.*
+
 [llvm]: https://llvm.org/
 [musl]: https://musl.libc.org/
+[triple]: https://doc.rust-lang.org/cargo/appendix/glossary.html?highlight=triple#target

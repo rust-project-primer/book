@@ -1,5 +1,36 @@
 # Optimizations
 
+When you compile Rust code, you have some control over the compiler as to
+what it prioritizes when building your executables. Everything is a tradeoff,
+so when you prioritize one aspect, you might see a regression in another aspect.
+Common priorities are:
+
+- **Speed**: You want your executables to run as fast as possible. This
+  might lead to an increase in code size, because the compiler will use
+  techniques like inlining or loop unrolling to achieve this.
+- **Binary size**: You want your executables to be as small as possible,
+  for example because you are targetting a resource-constrained platform
+  like embedded microcontrollers with limited flash memory sizes, or you
+  want to be able to easily distribute your binary. This might lead
+  to a negative impact on performance.
+
+### Compilation Profiles
+
+In general, the way you exercise control over this is by creating *profiles*.
+Every profile comes with a set of parameters that let you tweak how the
+compiler performs. Typically, when you make debug builds, your main priority
+is fast compilation times, so you are happy to sacrifice some runtime speed.
+
+A profile definition looks like this:
+
+```toml
+[profile.release]
+strip = true
+opt-level = 3
+```
+
+## Runtime speed
+
 ## Binary Size
 
 *One of your customers deploys the Rust-based tool that you are developing on

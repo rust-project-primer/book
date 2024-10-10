@@ -17,7 +17,8 @@ platform that you want the compiler to generate binaries for. For example, if
 you are using Linux on an AMD64 system, your target triple might be
 `x86_64-unknown-linux-gnu`.  From Rust's point of view, cross compilation is
 whenever you ask the compiler to generate executables for a different target
-triple than your native one.
+triple than your native one. The Rust compiler maintains a [list of supported
+targets](https://doc.rust-lang.org/rustc/platform-support.html).
 
 In general, doing cross-compilation can be a bit of a hassle, but there are
 some good reasons to do so. For example:
@@ -41,12 +42,17 @@ out-of-the-box.
 
 ### Simple Cross-Compilation
 
-If you want to use this, you first need to add support for the target you
-want to build for to your installed Rust toolchain. If you are using Rustup
-to manage your Rust toolchains, then doing so looks like this:
+If you want to use this, you first need to add support for the target you want
+to build for to your installed Rust toolchain. What this does is download a
+pre-built version of the Rust standard library for the target you specify.  If
+you are using Rustup to manage your Rust toolchains, then doing so looks like
+this:
 
 ```bash
+# add support for WebAssembly
 rustup target add wasm32-unknown-unknown
+
+# add support for building binaries with musl libc
 rustup target add x86_64-unknown-linux-musl
 ```
 
@@ -256,6 +262,12 @@ the compilation steps with the right toolchains and libraries preinstalled.
 The idea with it is that it acts as a replacement for Cargo.
 
 ## Reading
+
+[Platform Support](https://doc.rust-lang.org/rustc/platform-support.html) in *The rustc book*
+
+*This chapter lists all targets which are supported by the Rust toolchain, along
+with notes explaining what the targets are, and which tools are required for build
+for them. It also gives information on the level of support for each target.*
 
 [Guide to cross-compilation in Rust](https://blog.logrocket.com/guide-cross-compilation-rust/) by Greg Stoll
 

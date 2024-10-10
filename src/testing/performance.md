@@ -50,12 +50,50 @@ TODO:
 - async benchmarking with criterion
 - benchmarking published to bencher
 
-## Debugging Performance
-
-
-## Using Valgrind
+## Valgrind
 
 - idea: repeatable measurements (on same architecture).
+
+
+## Debugging Performance
+
+So, what do you do if you notice that your Rust code is not performing well?
+There are some common issues you might run into:
+
+- **Build mode**: Are you building your code in release mode (eg. `cargo build
+  --release`)? It makes a large difference for Rust projects.
+- **Optimization level**: Have you changed the optimization level, for example
+  to optimize for size rather than speed? This can also make a large
+  difference.
+- **Link-time optimization**: Have you tried enabling `lto` in your compilation
+  profile?
+- **Build target**: Are you building for musl libc instead of glibc (eg.
+  `--target x86_64-unknown-linux-musl`)?  Musl tends to produce slower code.
+- **Allocator**: Is your application allocation-heavy? Then try using
+  [`jemallocator`][jemallocator], it might give you a performance boost.
+- **Data structures**: Have you tried using different data structures? For
+  example, the [hashbrown](https://docs.rs/hashbrown/latest/hashbrown/) crate
+  has a `HashMap` implementation that is significantly faster than the standard
+  library.
+
+If these didn't fix your performance issues, the next step to do is to find out
+why your performance isn't good. When it comes to improving performance, the
+best thing to do is to be guided by data rather than intuition. There are many
+microoptimizations you can do in your code that lead to negligible benefits.
+Letting yourself be guided by data allows you to focus on the most important
+optimizations, this is known as [Amdahl's
+law](https://en.wikipedia.org/wiki/Amdahl's_law).
+
+### Visualizing Performance
+
+To get an understanding of *where* you are losing performance, you want to get
+some insight into which code in your program is responsible for the majority of
+the runtime. Doing this guides you to where you should focus your attention
+towards when trying optimization approaches.
+
+[cargo-flamegraph](https://github.com/flamegraph-rs/flamegraph) is a Cargo subcommand
+that lets you visualize what code in your project is taking up the majority of
+the runtime.
 
 ## Reading
 
@@ -103,8 +141,10 @@ Windtunnel CI
 https://lib.rs/crates/iai-callgrind
 https://github.com/bheisler/iai
 
+https://www.magiroux.com/rust-jemalloc-profiling/
+
 [criterion]: https://docs.rs/criterion/latest/criterion/
 [bencher]: https://bencher.dev/
 [continuous-benchmark]: https://github.com/marketplace/actions/continuous-benchmark
 [rustls]: https://github.com/rustls/rustls
-
+[jemallocator]: https://docs.rs/jemallocator/latest/jemallocator/

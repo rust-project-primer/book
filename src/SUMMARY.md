@@ -59,6 +59,7 @@
     - [Conclusion](testing/conclusion.md)
 - [Building](building/readme.md)
 	- [Optimizations](building/size.md)
+    - [Performance](building/performance.md)
     - [Codegen](building/codegen.md)
     - [Caching](building/cache.md)
     - [Linking](building/linker.md)

@@ -31,6 +31,8 @@ design patterns, anti-patterns and idioms.
 
 *Software Engineering at Google* (available [online](https://abseil.io/resources/swe-book/html/toc.html) and from [O'Reilly](https://www.oreilly.com/library/view/software-engineering-at/9781492082781/))
 
+[Rust Atomics and Locks](https://marabos.nl/atomics/) by Mara Bos
+
 ### Interactive
 
 Some people, including myself, enjoy learning new things through interactive

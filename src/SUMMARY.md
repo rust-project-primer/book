@@ -21,6 +21,7 @@
     - [Rendering](ecosystem/rendering.md)
     - [Embedded](ecosystem/embedded.md)
     - [Logging](ecosystem/logging.md)
+    - [Error handling](ecosystem/errors.md)
 - [Organization](organization/readme.md)
     - [Crates](organization/crates.md)
     - [Workspace](organization/workspace.md)

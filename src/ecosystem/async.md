@@ -257,3 +257,7 @@ Rust software to cancel tasks.*
 
 *John explains the internals of the `async-task` crate from the grounds up in
 this article. It gives a good background on how async works behind the scenes.*
+
+[Async Rust in Three Parts](https://jacko.io/async_intro.html) by Jack O'Connor
+
+[Async Rust is not safe with io_uring](https://tonbo.io/blog/async-rust-is-not-safe-with-io-uring)

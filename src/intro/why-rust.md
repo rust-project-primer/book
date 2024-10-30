@@ -72,3 +72,5 @@ https://medium.com/@penberg/why-i-am-not-yet-ready-to-switch-to-zig-from-rust-36
 https://matklad.github.io/2024/10/06/ousterhouts-dichotomy.html
 
 https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
+
+https://en.wikipedia.org/wiki/Tony_Hoare

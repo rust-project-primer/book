@@ -144,6 +144,8 @@ https://github.com/bheisler/iai
 
 https://www.magiroux.com/rust-jemalloc-profiling/
 
+[Benchmarking](https://nnethercote.github.io/perf-book/benchmarking.html) in The Rust Performance Book
+
 [criterion]: https://docs.rs/criterion/latest/criterion/
 [bencher]: https://bencher.dev/
 [continuous-benchmark]: https://github.com/marketplace/actions/continuous-benchmark

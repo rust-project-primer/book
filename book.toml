@@ -48,3 +48,6 @@ mathjax-support = true
 "/releasing/rpm.html" = "/releasing/packaging.html"
 "/testing/undefined-behavior.html" = "/testing/dynamic-analysis.html"
 "/tools/xtask.html" = "/tools/tasks.html"
+"/platform/index.html" = "/ci/index.html"
+"/platform/github.html" = "/ci/github.html"
+"/platform/gitlab.html" = "/ci/gitlab.html"

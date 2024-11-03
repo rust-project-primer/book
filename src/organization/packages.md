@@ -1,22 +1,54 @@
-# Crates
+# Packages
 
 When you start your project, the very first thing you will likely do is create
-a new crate. A crate is the unit in which Rust organizes code. You can think of
-it it like a Ruby gem, a Python package, or a Node module.
+a new package. A package is a unit in which Rust organizes code, it consists of
+metadata (such as a `Cargo.toml`) and *crates*.  You can think of it it like a
+Ruby gem, a Python package, or a Node module. Packages allow you to use the
+Cargo build system to compile it, run tests and manage dependencies.
 
-A crate is also a compilation unit: unlike C or C++, which compile individual
-files, in Rust an entire crate is always compiled in one go. This means you don't
-have to worry about the ordering of includes, and it means that all definitions
-are always visible.
+~~~admonish info
+Sometimes, the terms *package* and *crate* are used interchangeably.
+~~~
 
-## Contents
+A crate is a compilation unit. Unlike C, C++ or Java, which compile individual
+*files*, in Rust an entire crate is always compiled in one go. This means you
+don't have to worry about the ordering of includes, and it means that all
+definitions are always visible. It also makes it easier for the compiler to
+implement certain optimizations, such as inlining code.
 
-- graph: library in center, metadata in centre, binaries linking to library
+### Contents of a Package
+
+At the very minimum, a Rust package contains metadata (in the `Cargo.toml`
+file) and a single library or binary crate, otherwise there is nothing to
+compile. Generally, you do not need to configure Cargo to tell it where the
+crates are: it automatically detects them based on their standard locations.
+You can, however, override this and place your source files in non-standard
+locations, but this is not recommended.  For example, if you have a
+`src/lib.rs` file in your package, Cargo recognizes this as your library crate.
+
+<center>
+
+![Rust crate layout](rust-crate.svg)
+
+</center>
+
+Every package needs to have either a library crate or a binary crate. It may
+also contain other, supporting crates, such as integration tests, benchmarks,
+examples. Having first-class support for these is a big bonus, because it means
+you can run `cargo test` in any Rust project and Cargo will know where the tests
+are and is able to run them.
+
+Generally, the library crate of every package is where you want to keep all of
+your logic. This is because this code is what all the other crates link to by
+default. So, if you write an integration test, it cannot "see" what is inside
+your binary crates. In many projects, the binary crate at `src/main.rs` is just
+a small shell that parses command-line arguments, sets up logging and calls
+into the library crate to do the hard work.
 
 ### Metadata
 
 Every crate contains some metadata, in the `Cargo.toml` file. This contains everything
-cargo needs to know to build the crate, such as it's name, and a list of all dependencies
+cargo needs to know to build the crate, such as its name, and a list of all dependencies
 it needs to build. It also contains metadata neccessary for publishing it on [crates.io][],
 Rust's crate registry, such as its version, list of authors, license, and description.
 Finally, this file can also contain metadata for other tooling, some of which we will discuss
@@ -24,7 +56,7 @@ in this book. An example file might look like this:
 
 ```toml
 [package]
-name = "example-crate"
+name = "example-package"
 version = "0.1.0"
 version = "MIT"
 description = "My awesome crate"

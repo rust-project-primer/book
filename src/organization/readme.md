@@ -19,6 +19,19 @@ crates.*
 </caption>
 </figure>
 
+Before we dive into this chapter, we should define what all of these terms mean.
+
+| Name | Description |
+| :---: | --- |
+| **Module** | Modules in Rust are used to hierarchically split code into logical units. Modules have a path, for example `std::fs`. Modules contain functions, structs, traits, `impl` blocks, and other modules. |
+| **File** | A single source file, typically with a `.rs` extension. Every file is a module, but files can also contain inline (nested) modules. |
+| **Crate** | Compilation unit in Rust. Can be a *library crate* or a *binary crate*, the latter require the presence of a `main()` function. They have an entrypoint, which is typically `lib.rs` or `main.rs` but can also be called something else. |
+| **Package** | Collection of crates. Every package may contain at most one library crate, and may contain multiple binary crates. |
+| **Workspace** | A collection of packages, which can share a build cache, dependencies and metadata. |
+
+In this chapter, we will briefly cover how you can use these to structure your
+project.
+
 ## Development Speed
 
 Rust emphasizes a feature known as *zero-cost abstractions*. These are

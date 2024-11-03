@@ -59,6 +59,7 @@
 - [Measure](measure/readme.md)
     - [Coverage](measure/coverage.md)
     - [Performance](measure/performance.md)
+    - [Memory](measure/memory.md)
 - [Building](building/readme.md)
 	- [Optimizations](building/size.md)
     - [Performance](building/performance.md)

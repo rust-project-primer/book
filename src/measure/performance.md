@@ -54,6 +54,7 @@ TODO:
 
 - idea: repeatable measurements (on same architecture).
 
+## Flamegraph
 
 ## Debugging Performance
 

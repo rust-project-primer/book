@@ -62,6 +62,11 @@ same time, it supports a wider variety of targets.
 
 It is even possible to mix Embedded HAL and Embassy to some extent.
 
+## RTIC: Real-Time Interrupt-driven Concurrency
+
+[RTIC](https://rtic.rs/2/book/en/preface.html)
+
+
 ## Reading
 
 [Rust Embedded Book](https://docs.rust-embedded.org/book/)
@@ -69,5 +74,9 @@ It is even possible to mix Embedded HAL and Embassy to some extent.
 [Embassy Books](https://embassy.dev/book/)
 
 [Deploying Rust in Existing Firmware Codebases](https://security.googleblog.com/2024/09/deploying-rust-in-existing-firmware.html) by Ivan Lozano and Dominik Maier
+
+[Async Rust vs RTOS Showdown](https://tweedegolf.nl/en/blog/65/async-rust-vs-rtos-showdown) by Dion Dokter
+
+*Dion compares a simple firmware for an STM32F446 ARMv7 microcontroller
 
 

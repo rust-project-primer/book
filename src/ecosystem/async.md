@@ -1,8 +1,17 @@
 # Concurrency
 
-This section discusses different ways to architect your project to make
-use of concurrency or parallelism in Rust. The difference is small
-but significant:
+One of Rust's themes is [fearless
+concurrency](https://blog.rust-lang.org/2015/04/10/Fearless-Concurrency.html),
+and due to the focus on this, Rust has many safeguards built-in to the language
+that enable you to easily write correct concurrent (and parallel) code.
+Because of these safeguards, Rust is one of the most pleasant languages to
+write heavily concurrent (and parallel) code in. In this section, we will
+discuss some high-level concepts, strategies and libraries that you can use in
+your code to make use of this capability. Some of these involve choices that
+you have to make which affect how you should structure your project.
+
+Before we launch into this section, we should clarify what *concurrency*
+and *parallelism* actually mean. 
 
 - **Concurrency** is your program's ability to track and execute multiple things
   at the same time, but not neccessarily *in parallel*. One example is a single-threaded
@@ -22,7 +31,7 @@ The building blocks that Rust give you to write concurrent applications are:
 - Multi-threading with synchronous code
 - Asynchronous concurrency or parallelism
 
-### Async and Blocking Code
+### Primer on Multithreading
 
 
 The main difference between async and blocking programming paradigms is the
@@ -261,3 +270,5 @@ this article. It gives a good background on how async works behind the scenes.*
 [Async Rust in Three Parts](https://jacko.io/async_intro.html) by Jack O'Connor
 
 [Async Rust is not safe with io_uring](https://tonbo.io/blog/async-rust-is-not-safe-with-io-uring)
+
+[Notes on io_uring](https://without.boats/blog/io-uring/)

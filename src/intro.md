@@ -1,28 +1,54 @@
 # Introduction
 
-As software continues to grow more complex, managing that complexity becomes a
-key challenge. The Rust programming language is, in my opinion, particularly
-promising in this regard. It has language features designed to help developers
-handle complexity effectively. Its focus on memory safety and fearless
-concurrency allows you to write large, multithreaded applications without
-needing to worry about many of the kinds of crashes that can happen in C or
-C++.  However, maintaining software projects involves much more than just
-writing good code—it also requires structuring projects in a way that supports
-long-term growth and sustainability.
+Rust as a langauage is magnificent in many ways. While it has a steep learning
+curve that can make it difficult to get started, it will give you superpowers
+once you are familiar with it. You can suddenly write fast, heavily
+multithreaded code that would previously require a team of very senior
+developers writing thorough documentation on which locks are needed to access
+what, and in which order they need to be acquired to make sure it doesn't
+crash. You can write bespoke data structures, knowing there aren't any odd
+edge-cases that would make it unsafe to use. You can safely work with untrusted
+data, knowing well that you can't accidentally forget a length check, which
+leads to a stack overflow and remote-code execution in your production
+environment. All of these properties mean that Rust is very scalable: your code
+bases are not a house of cards, waiting to collapse. For the most part, if your
+code compiles, you know that it works.
 
-Fortunately, the Rust ecosystem provides an useful set of tools that help
-automate many aspects of software development and maintenance. These tools are
-built on learnings from decades of software engineering, allowing you to manage
-projects efficiently and effectively. 
+Rust has other properties that make it quite interesting. It is somewhat unique
+amongst systems programming languages in that you can deploy on a vast breadth
+of environments: from lower-power microcontrollers with kilobytes worth of RAM,
+to large servers, and even write frontend applications that run in the browser.
+The applications are endless, and the ecosystem is ever evolving to make this
+easy.
 
-This book is designed to teach you how to take full advantage of Rust's
-ecosystem. It will guide you on how to keep your Rust projects free of bugs and
-maintainable with less effort, making them easier to use and extend by others.
+At the same time, this power can be frightning. Once your have learned the
+basics, where do you go from here? What parts of the ecosystem do you use for
+what? What are some common issues that your project might run into, and how do
+you solve them? How do you structure your project, what are some common
+pitfalls that you need to avoid?
 
-The book follows a recipe format, with each chapter being self-contained, so
-you can focus on specific topics as needed. You don't need to implement every
-suggestion in this book. Instead, use it as a source of inspiration to find the
-approaches that work best for your project.
+The idea of this book is to aggregate information and advice that you can use
+on your Rust journey. In some ways, it is the book I wish I had read when I got
+started with Rust. Knowing the language is one thing, but knowing the ecosystem
+is what lets you be productive. Understanding the tools that exist, and when
+you should use them. Knowing how you can deploy them.  Structuring projects in
+a way that supports long-term growth and sustainability.
+
+This book will not teach you Rust, nor will it explain Rust syntax in any way.
+For that, there are already plenty of other books, some of which are linked in
+the [Prerequisites](intro/prerequisites.md) section. Instead, the focus is on
+practises, high-level advice with examples. Ideally, this book should help you,
+no matter if you are a project manager evaluating Rust and trying to understand
+best practises, if you have recently learned Rust and want to embark on your
+first real-world project, or if you already have some experience but want to
+lookup specific tooling or solve specific problems. 
+
+The book largely follows a recipe format. Each chapter is fairly
+self-contained, so you can focus on specific topics as needed. It is not
+intended as a guide for you to implement every single piece of advice, more to
+give an overview of what exists, how it helps you and when you should use it.
+To solve specific problems, once they occur.  Use it as a source of inspiration
+to find the approaches that work best for your project.
 
 ## Target Audience
 

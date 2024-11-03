@@ -143,3 +143,8 @@ they work the way they do. They save valuable engineering time by giving
 engineers access to the information they need quickly, without needing to look
 into the code.  He explains what good documentation looks like, and what Google
 does to keep it accurate and of high quality.*
+
+[Trees, maps and theorems](https://www.principiae.be/X0100.php)
+
+*Trees, maps, and theorems explains how to get messages across optimally in
+written documents, oral presentations, graphical displays, and more.*

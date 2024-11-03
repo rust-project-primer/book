@@ -64,7 +64,8 @@ appreciation for how you can approach this.
 
 ## Reading
 
-[Performance Culture](https://joeduffyblog.com/2016/04/10/performance-culture/) by Joe Duffy
+[Performance Culture](https://joeduffyblog.com/2016/04/10/performance-culture/)
+by Joe Duffy
 
 *Joe argues that performant software is not an accident, but rather a product
 of a performance culture. He explains what this culture looks like: that the
@@ -73,7 +74,9 @@ buy-in and are not afterthoughts, they are constantly measured so that
 engineers can make data-driven decisions when implementing new features in code
 reviews.*
 
-[Systems Performance: Enterprise and the Cloud, 2nd Edition](https://brendangregg.com/systems-performance-2nd-edition-book.html) by Brendan Gregg
+[Systems Performance: Enterprise and the Cloud, 2nd
+Edition](https://brendangregg.com/systems-performance-2nd-edition-book.html) by
+Brendan Gregg
 
 *In this book, Brendan goes into depths of how to analyze the performance of
 systems, specifically in the context of cloud-deployed software. Linux has
@@ -82,3 +85,14 @@ instrumenting it with eBPF code to measure not only how the application is
 performing, but also giving the ability to understand why it is performing the
 way it is. This book is a must-read for anyone who deeply cares about
 performance, wants to measure and debug it.*
+
+[Be good-argument-driven, not
+data-driven](https://twitchard.github.io/posts/2022-08-26-metrics-schmetrics.html)
+by Richard Marmorstein
+
+*Richard talks about using data to influence development of software. He
+explains that while data is useful, at the end it should be used to back up
+arguments, not an end in itself. There are cases where data could be
+interpreted wrong, and you should be sceptical of poor arguments made by
+incorrectly-interpreted data.*
+

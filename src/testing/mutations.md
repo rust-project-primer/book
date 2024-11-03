@@ -18,5 +18,5 @@ Cargo mutants
 
 [cargo-mutants book](https://mutants.rs/)
 
-*This book explains how cargo-mutants works, and how it can be deployed in
-Rust projects to find 
+*This book explains how cargo-mutants works, and how it can be deployed in Rust
+projects to find areas where bugs might be lurking.*

@@ -102,7 +102,23 @@ platform-specific or environment-specific implementations for tasks.
 for Rust projects. The advantage of it is that you write the tasks themselves
 in Rust, and `cargo-xtask` is only used to run them.
 
-[Make your own make](https://matklad.github.io/2018/01/03/make-your-own-make.html) by Alex Kladov
+## Reading
+
+[Just use just](https://toniogela.dev/just/) by Tonio Gela
+
+*Tonio explains what Just is, and how you can use it. He demonstrates the
+features it has with some examples.*
+
+[Automating your Rust workflows with
+cargo-make](https://medium.com/@sagiegurari/automating-your-rust-workflows-with-cargo-make-part-1-of-5-introduction-and-basics-b19ced7e7057)
+by Sagie Gur-Ari
+
+*Sagie, the author of cargo-make, explains how you can use it to automate your
+Rust workflows and gives some examples.*
+
+[Make your own
+make](https://matklad.github.io/2018/01/03/make-your-own-make.html) by Alex
+Kladov
 
 *Alex explains the idea of using Rust itself for the automation of steps in
 this article. This idea is what `cargo-xtask` implements.*

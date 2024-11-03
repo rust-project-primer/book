@@ -72,8 +72,13 @@ Shipyard is a private cargo registry service. It replicates
 *In this section of the Rust book, it shows you how you can write a Rust crate and
 publish it on Rust's crate index, crates.io.*
 
-[Using the Shipyard private crate registry with Docker](https://fasterthanli.me/series/building-a-rust-service-with-nix/part-7) by Amos Wenger
+[Using the Shipyard private crate registry with
+Docker](https://fasterthanli.me/series/building-a-rust-service-with-nix/part-7)
+by Amos Wenger
 
+*Amos explains how you can publish your crates to a private crate registry
+hosted by Shipyard. He shows how you can configure Cargo to authenticate with
+Shipyard, and how to push packages to it both locally and from CI.*
 
 [ripgrep]: https://github.com/BurntSushi/ripgrep
 [crates.io]: https://crates.io

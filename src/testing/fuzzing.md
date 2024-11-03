@@ -17,12 +17,20 @@ using property testing.
 
 ## Reading
 
-[Rust Fuzz Book](https://rust-fuzz.github.io/book/introduction.html)
+[Introduction](https://rust-fuzz.github.io/book/introduction.html) in Rust Fuzz
+Book
+
+*This book explains what fuzz testing is, and how it can be implemented in Rust
+using `afl.rs` and `cargo-fuzz`.*
 
 [How to fuzz Rust code continuously](https://about.gitlab.com/blog/2020/12/03/how-to-fuzz-rust-code/) by Yevgeny Pats
-
-[Fuzzing Solana](https://secret.club/2022/05/11/fuzzing-solana.html)
 
 *Yevgeny explains why you should fuzz your Rust code, and shows you how
 to do it in GitLab. GitLab has some features that make running fuzzing
 inside GitLab CI quite convenient.*
+
+[Fuzzing Solana](https://secret.club/2022/05/11/fuzzing-solana.html) by Addison Crump
+
+*Addison shows how Rust can be used to fuzz the Solana eBPF JIT compiler, and
+outlines the security vulnerabilities found within uses this approach.*
+

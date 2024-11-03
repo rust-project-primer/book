@@ -29,7 +29,11 @@ Finally, there is also [grcov][].
 
 ## Reading
 
-Rustc Book: [Instrumentation-based Code Coverage](https://doc.rust-lang.org/rustc/instrument-coverage.html)
+[Instrumentation-based Code Coverage](https://doc.rust-lang.org/rustc/instrument-coverage.html) in The rustc Book
+
+*This chapter in the rustc book explains low-level features of rustc that
+enable adding instrumentation to binaries for measuring execution coverage, and
+how to use the raw output to generate coverage reports.*
 
 [How to do code coverage in Rust](https://blog.rng0.io/how-to-do-code-coverage-in-rust/#source-based-coverage) by Dotan J. Nahum 
 

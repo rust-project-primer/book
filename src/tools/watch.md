@@ -58,9 +58,10 @@ specifying which files to watch.
 
 *In this chapter of his book, Luca explains how to setup a real-life Rust
 project. He explains that using `cargo watch` can reduce the perceived
-compilation time.*
+compilation time, because it triggers immediately after you change and
+save a file.*
 
 [Cargo Issue #9339: Add Cargo watch](https://github.com/rust-lang/cargo/issues/9339)
 
-*In this Issue, there is some discussion going on to incorporate file watching
-functionality natively into Cargo.*
+*In this issue on the Cargo repository, there is some discussion going on to
+incorporate file watching functionality natively into Cargo.*

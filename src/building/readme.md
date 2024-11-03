@@ -18,9 +18,19 @@ your project, and strategies for how you might solve that.
 
 [Tips For Faster Rust Compile Times](https://corrode.dev/blog/tips-for-faster-rust-compile-times/) by Matthias Endler
 
+*Matthias goes through and extensive list of tips for getting faster Rust
+compile times.  These include making sure your toolchain is up-to-date,
+enabling the parallel compiler frontend, removing unused dependencies,
+debugging dependency compile times, splitting large crates into smaller ones,
+optimizing workspaces, compilation caching, and many more.*
+
 [Fast Rust Builds](https://matklad.github.io/2021/09/04/fast-rust-builds.html) by Alex Kladov
 
-[Rust at scale: packages, crates, modules](https://mmapped.blog/posts/03-rust-packages-crates-modules) by Roman Kashitsyn
+*Alex explains some strategies to speed up Rust compilation. He explains that
+the Rust programming language has prioritized execution speed and programmer
+productivity over compilation speed. He gives recommendation for how to setup
+your CI pipeline, pruning dependencies, what code styles lead to faster
+compilation times.*
 
 [Stupidly effective ways to optimize Rust compile time](https://xxchan.me/cs/2023/02/17/optimize-rust-comptime-en.html) by Tianxiao Shen
 

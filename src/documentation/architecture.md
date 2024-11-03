@@ -82,3 +82,21 @@ informal, collaborative process to come up with architecture is better than
 having decisions be made by a software architect, because it makes it easier to
 challenge ideas, and that the most important aspect of good architecture is
 simplicity.*
+
+[Architecture diagrams should be code](https://brianmckenna.org/blog/architecture_code) by Brian McKenna
+
+*Brian explains that different people have different views of the architecture
+of a complex system, often influenced by which part of the system they work on.
+He argues that architecture diagrams can also quickly go out of sync with
+reality, as the system evolves. He argues for writing architecture diagrams as
+code, using the C4 model and [PlantUML](./diagrams.md#plantuml), or in his case
+a Haskell program which produces PlantUML output. That way, these diagrams can
+be kept in version control and updated as part of development.*
+
+[Effective Design Docs](https://mmapped.blog/posts/31-effective-design-docs) by Roman Kashitsyn
+
+[DesignDocs](https://www.designdocs.dev/)
+
+
+
+*TODO*

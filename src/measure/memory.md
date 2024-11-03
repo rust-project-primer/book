@@ -48,7 +48,8 @@ of code sections.
 
 [Heap Allocations](https://nnethercote.github.io/perf-book/heap-allocations.html) in The Rust Performance Books
 
-*In this chapter, 
+*In this chapter, strategies for profiling and optimizing heap memory usage
+is discussed.*
 
 [Allocator Designs](https://os.phil-opp.com/allocator-designs/) by Philipp Oppermann
 

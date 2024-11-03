@@ -53,5 +53,10 @@ You also need to tell `cargo-hack` what command to run.
 Test
 ```
 
+## cargo-features-manager
+
+https://github.com/ToBinio/cargo-features-manager
+https://corrode.dev/blog/tips-for-faster-rust-compile-times/#disable-unused-features-of-crate-dependencies
+
 [cfg_if]: https://docs.rs/cfg-if/latest/cfg_if/
 [cargo-hack]: https://github.com/taiki-e/cargo-hack

@@ -162,4 +162,7 @@ many small crates.*
 
 [Why is my Rust build so slow: splitting into more crates](https://fasterthanli.me/articles/why-is-my-rust-build-so-slow#splitting-into-more-crates)
 
+https://corrode.dev/blog/tips-for-faster-rust-compile-times/#split-big-crates-into-smaller-ones-using-workspaces
+
 *TODO*
+

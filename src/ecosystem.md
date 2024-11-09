@@ -33,7 +33,10 @@ a large impact on the architecture of your project.
 
 ## Reading
 
-[On Dependency Usage in Rust](https://landaire.net/on-dependency-usage-in-rust/)
+[On Dependency Usage in
+Rust](https://landaire.net/on-dependency-usage-in-rust/)
+([archived](/archived/2024-11-09-on-dependency-usage-in-rust.pdf)) by Lander
+Brandt
 
 *The C programming language is often critizied for not bringing a lot of
 foundational data structures out-of-the-box, leading many developers to

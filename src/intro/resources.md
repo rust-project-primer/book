@@ -92,6 +92,12 @@ that maintain collections of useful Rust books, for example
 Some people, including myself, enjoy learning new things through interactive
 exploration. These resources teach Rust concepts primarily in such a way.
 
+**Effective Rust** by David Drysdale is a book that lists hands-on
+recommendations for writing effective Rust code. It focusses on idioms, giving
+practical advice on implementing types, traits, Rust concepts, dependencies,
+and tooling. I would consider it a must-read for anyone new to Rust.
+Available [online](https://effective-rust.com/), in [print](https://www.oreilly.com/library/view/effective-rust/9781098151393/), [archived](/archived/2024-11-09-effective-rust.pdf).
+
 **Zero to Production** by Luca Palmieri is a practical guide for building
 production-ready Rust web applications. This is a great book to get started on
 understanding how to build real-world Rust application, including handling

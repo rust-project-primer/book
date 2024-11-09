@@ -66,3 +66,7 @@ codebase for rapid enhancement with new features."*
 in Software Engineering at Google
 
 *TODO*
+
+[Issue #5656: Expand "CI Best Practises" section in the
+guide](https://github.com/rust-lang/cargo/issues/5656) in
+[rustlang/cargo](https://github.com/rust-lang/cargo)

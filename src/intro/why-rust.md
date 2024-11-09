@@ -67,6 +67,8 @@ However, there can still be logic bugs in the application. The majority of
 this guide is focussed on giving you the tools you need to make sure you
 structure projects in a way that minimizes the number of bugs.
 
+## Articles
+
 https://medium.com/@penberg/why-i-am-not-yet-ready-to-switch-to-zig-from-rust-3660e02f0060
 
 https://matklad.github.io/2024/10/06/ousterhouts-dichotomy.html
@@ -74,3 +76,7 @@ https://matklad.github.io/2024/10/06/ousterhouts-dichotomy.html
 https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
 
 https://en.wikipedia.org/wiki/Tony_Hoare
+
+[rust is not about memory safety](https://o-santi.github.io/blog/rust-is-not-about-memory-safety/) ([archived](/archived/2024-11-09-rust-is-not-about-memory-safety.pdf)) by Leonardo Santiago
+
+[You Can't Spell Trust without Rust](https://github.com/Gankra/thesis/blob/34f4a79ef2db0c466534f4619168c9f646f353c6/thesis.pdf) ([archived](/archived/2024-11-09-trust-without-rust.pdf)) by Alexis Beingessner

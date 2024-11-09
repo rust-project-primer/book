@@ -34,6 +34,7 @@ mathjax-support = true
 
 # redirects for moved pages
 [output.html.redirect]
+"/intro/prerequisites.html" = "/intro/resources.html"
 "/build.html" = "/build-system/index.html"
 "/build/cargo.html" = "/build-system/cargo.html"
 "/checks/style.html" = "/checks/lints.html"

@@ -5,7 +5,7 @@
 
 - [Introduction](intro.md)
     - [Why Rust?](intro/why-rust.md)
-    - [Resources](intro/prerequisites.md)
+    - [Resources](intro/resources.md)
 - [Development Environment](development-environment/index.md)
     - [Zed](development-environment/zed.md)
     - [Visual Studio Code](development-environment/vscode.md)

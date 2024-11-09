@@ -4,55 +4,114 @@ This guide is aimed at developers and project managers already comfortable with
 the Rust programming language. It does not cover any fundamentals of the
 language itself, only how to structure projects.
 
-If you feel that you need to refresh your Rust basics, I recommend you to read
-or work through some of these resources. You do not need to work through all of
-them, the guide merely assumes some foundational knowledge.
+You don't necessarily need to be good at Rust for this book to be useful to
+you, for example if you are reading it from the perspective of an engineering
+manager or software architect who just wants to understand what Rust is all
+about or what tools it comes with. But if you do want to write effective Rust,
+then these resources should be helpful to you to get started.
 
-## Books
+I have categorized these resouces into two sections: *foundational* contains
+resources that explain concepts and strategies, whereas the *practical*
+resources contain hands-on projects for you to follow.  None of the links here
+earn me any commission. I am recommending them because I think they are useful,
+and not because I earn any money from doing so.
 
-Below is a list of essential readings for grasping the intricacies of Rust.
-Throughout this guide, where relevant, I will provide links to specific
-chapters from these books. This will enable you to explore topics more
-thoroughly and deepen your understanding as needed.
+## Foundational
 
+Below is a list of books that I've personally found useful resources for
+understanding the Rust programming language, and some of the more complex
+features it has (for example, how async works under the hood, or how atomics
+work). You should have read at least one of these before you embark on your
+Rust project. 
 
-*Rust Programming Language, 2nd Edition* by Steve Klabnik and Carol Nichols
-(available from [No Starch
-Press](https://nostarch.com/rust-programming-language-2nd-edition) and
-[online][rust-book]) is the official guide to Rust.
+- **Rust Programming Language, 2nd Edition** ([online][rust-book],
+  [print](https://nostarch.com/rust-programming-language-2nd-edition))
+  by Steve Klabnik and Carol Nichols
+  is the official book of the Rust programming language. It covers the
+  language and toolchain, giving you a thorough starting point for writing
+  real-world Rust code and understanding other people's code. It also
+  includes some example projects for you to follow to see how to use it
+  in practise.
 
-*Rust for Rustaceans* by Jon Gjengset (available from [No Starch
-Press](https://nostarch.com/rust-rustaceans)) is a deep dive into the Rust
-programming language.
+- **Rust for Rustaceans** ([print][rust-for-rustaceans]) by Jon Gjengset
+  is a deep dive into the Rust programming language. It gives you a structured
+  understanding how to apply Rust, covering many parts of Rust projects, from
+  designing interfaces to writing effective tests. In my opinion it is one of the
+  best explanations of how async works.
 
-*Rust Design Patterns* (available
-[online](https://rust-unofficial.github.io/patterns/)) is a catalogue of Rust
-design patterns, anti-patterns and idioms.
+- **Rust Atomics and Locks** ([print](https://marabos.nl/atomics/)) by Mara Bos
+  is a book that gives you a deep understanding of atomics. 
+  Some of the core assumptions that you have as a programmer (such as, if your
+  code writes to variables in a specific order, that the CPU writes to them
+  in that order) break down the moment you use multi-threading. Rust makes it
+  easy for you to write heavy multithreaded applications, and typically you
+  will use safe abstractions to do so. But there are times, for example when
+  you want to implement custom data-structures, that you need to know how to
+  do so safely. This book gives you that background information.
 
-*Software Engineering at Google* (available [online](https://abseil.io/resources/swe-book/html/toc.html) and from [O'Reilly](https://www.oreilly.com/library/view/software-engineering-at/9781492082781/))
+- **Rust Design Patterns** ([online][rust-design-patterns])
+  is a catalogue of Rust design patterns, anti-patterns and idioms. Going
+  through these will help you understand common patterns, and avoid
+  anti-patterns. It also gives rationale for why to avoid certain patterns.
 
-[Rust Atomics and Locks](https://marabos.nl/atomics/) by Mara Bos
+- **Software Engineering at Google** ([online][swe-google-online], [print][swe-google-print])
+  is not a Rust-specific book. Rather it is a generic book about software
+  engineering. The reason I am linking it here is that Google is undoubtedly
+  a company that has originated many of the philosophies of modern software
+  engineering, and many of those philosophies have ended up being codified
+  in the Rust programming language and developer tooling. Understanding this
+  book gives you some of the *whys* behind why the Rust developer tooling
+  is the way it is, and why it is so effective.
 
-### Interactive
+- **Rust Under the Hood** ([online](https://www.eventhelix.com/rust/rust-under-the-hood/))
+  by Sandeep Ahluwalia and Deepa Ahluwalia is a deep-dive into Rust internals
+  and generated assembly. It shows you how Rust concepts map to machine code,
+  how Rust represents various types in-memory, how it uses compiler optimizations
+  (such as loop optimizations and SIMD auto-vectorization). This book is
+  useful if you care about low-level details, even if you know little about
+  x86 assembly.
+
+There may be more useful foundational Rust resources that I have not
+listed here, because I might not be aware of them. There are some sites
+that maintain collections of useful Rust books, for example 
+[The Little Book of Rust Books](https://lborb.github.io/book/title-page.html),
+[The Rust Bookshelf](https://bookshelf.rs/).
+
+[rust-design-patterns]: https://rust-unofficial.github.io/patterns/
+[effective-rust]: https://www.lurklurk.org/effective-rust/
+[rustonimicon]: https://doc.rust-lang.org/nightly/nomicon/
+[rust-book]: https://doc.rust-lang.org/book/
+[rust-book-nostarch]: https://nostarch.com/rust-programming-language-2nd-edition
+[rust-for-rustaceans]: https://nostarch.com/rust-rustaceans
+[swe-google-online]: https://abseil.io/resources/swe-book/html/toc.html
+[swe-google-print]: https://www.oreilly.com/library/view/software-engineering-at/9781492082781/
+
+## Practical
 
 Some people, including myself, enjoy learning new things through interactive
 exploration. These resources teach Rust concepts primarily in such a way.
 
-*Zero to Production* by *Luca Palmieri* (available
-[online](https://www.zero2prod.com/)) an introduction to backend development in
-Rust.
+- **Zero to Production** ([online](https://www.zero2prod.com/)) by *Luca Palmieri* 
+  is a practical guide for building production-ready Rust web applications.
 
-*Rust Adventure* by *Chris Biscardi* (available
-[online](https://www.rustadventure.dev/)) is collection of interactive courses
-that teaches you how to build things in Rust through a set of workshops. |
+- **Comprehensive Rust** ([online](https://google.github.io/comprehensive-rust/))
+  is a Rust training course developed by Google, aimed at getting people new
+  to Rust up to speed on development quickly.
 
-[Rust Atomics and Locks](https://marabos.nl/atomics/)
+- **CodeCrafters** ([online](https://codecrafters.io/)) is a learning platform
+  with support for Rust. While not specific to Rust, CodeCrafters has a growing
+  number of courses that are all built around the idea of reimplementing popular
+  software yourself. Some of the courses they have are *Build your own Git*,
+  *Build your own Redis*, and *Build your own SQLite*, to name but a few. What
+  makes the courses fun is that they are broken down into small steps and come
+  with unit tests that allow you to test your implementation as your progress.
 
-[Comprehensive Rust](https://google.github.io/comprehensive-rust/)
+- **Rust Adventure** by *Chris Biscardi* (available
+  [online](https://www.rustadventure.dev/)) is collection of interactive courses
+  that teaches you how to build things in Rust through a set of workshops.
 
-*CodeCrafters* Available [online](https://codecrafters.io/).  While not specific to Rust, CodeCrafters has a growing number of courses that are all built around the idea of reimplementing popular software yourself. Some of the courses they have are *Build your own Git*, *Build your own Redis*, and *Build your own SQLite*, to name but a few. What makes the courses fun is that they are broken down into small steps and come with unit tests that allow you to test your implementation as your progress.
 
-[Rust Under the Hood](https://www.eventhelix.com/rust/rust-under-the-hood/)
+[zero-to-production]: https://www.zero2prod.com/
 
 ## Articles
 
@@ -113,13 +172,3 @@ watching the process of getting useful testing setup for a project.*
 
 [rust is not about memory safety](https://o-santi.github.io/blog/rust-is-not-about-memory-safety/)
 
-
-[zero-to-production]: https://www.zero2prod.com/
-[rust-design-patterns]: https://rust-unofficial.github.io/patterns/
-[effective-rust]: https://www.lurklurk.org/effective-rust/
-[rustonimicon]: https://doc.rust-lang.org/nightly/nomicon/
-[rust-book]: https://doc.rust-lang.org/book/
-[rust-book-nostarch]: https://nostarch.com/rust-programming-language-2nd-edition
-[rust-book-image]: https://nostarch.com/sites/default/files/styles/uc_product/public/RustProgramming2ndEd_comp.png
-[rust-for-rustaceans]: https://nostarch.com/rust-rustaceans
-[rust-for-rustaceans-image]: https://nostarch.com/sites/default/files/styles/uc_product/public/RustforRustaceans_cover.png

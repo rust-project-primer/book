@@ -15,6 +15,12 @@ choice. It is also [open-source][].
 
 - screenshots of all features zed has for Rust projects
 
+## Features
+
+
+
+## Notes
+
 Notably, the team behind Zed runs a [blog](https://zed.dev/blog) documenting
 their experience building a cross-platform code editor in Rust, with deep dives
 into challenges they have faced in doing so and how they managed to tackle

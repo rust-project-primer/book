@@ -140,9 +140,14 @@ function introduced a regression.*
 Windtunnel CI
 
 https://lib.rs/crates/iai-callgrind
+
 https://github.com/bheisler/iai
 
 https://www.magiroux.com/rust-jemalloc-profiling/
+
+https://kobzol.github.io/rust/rustc/2023/08/18/rustc-benchmark-suite.html
+
+https://blog.anp.lol/rust/2016/07/24/profiling-rust-perf-flamegraph/
 
 [Benchmarking](https://nnethercote.github.io/perf-book/benchmarking.html) in The Rust Performance Book
 

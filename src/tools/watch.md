@@ -23,9 +23,10 @@ When you run Trunk in *serve* mode, it will automatically rebuild your frontend
 and reload your browser whenever it detects a change, to minimze your
 development feedback loop.
 
-## [Cargo Watch](https://github.com/watchexec/cargo-watch)
+## Cargo Watch
 
-Cargo Watch is a generic tool you can use to watch your Rust projects and execute
+[Cargo Watch](https://github.com/watchexec/cargo-watch)
+is a generic tool you can use to watch your Rust projects and execute
 commands whenever a file changes. 
 
 You can install it using Cargo:

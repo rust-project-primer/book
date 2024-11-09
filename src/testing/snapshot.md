@@ -5,9 +5,10 @@ change over time. It make writing tests very simple, it lets you record an outpu
 of some code once, save it as a unit test, and check that it stays the same.
 If it does change, it shows you the difference.
 
-## [Insta](https://insta.rs/)
+## Insta
 
-Insta is a crate that lets you to snapshot testing easily in Rust. It
+[Insta](https://insta.rs/)
+is a crate that lets you to snapshot testing easily in Rust. It
 comes with a tool that lets you record the output, and shows you the diff.
 
 ## Reading

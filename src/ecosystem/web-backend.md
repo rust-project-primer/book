@@ -61,13 +61,13 @@ https://lib.rs/template-engine
 ### Testing
 
 
-## [Axum](https://github.com/tokio-rs/axum)
+## Axum
 
-Axum is currently the most popular web framework in the Rust ecosystem. It is
-developed by the same people that wrote Tokio, and uses hyper as the underlying
-HTTP implementation.  It supports WebSockets, has built-in routing and
-parameter decoding. It also integrates with the
-[tracing](https://github.com/tokio-rs/tracing) ecosystem and uses
+[Axum](https://github.com/tokio-rs/axum) is currently the most popular web
+framework in the Rust ecosystem. It is developed by the same people that wrote
+Tokio, and uses hyper as the underlying HTTP implementation.  It supports
+WebSockets, has built-in routing and parameter decoding. It also integrates
+with the [tracing](https://github.com/tokio-rs/tracing) ecosystem and uses
 [tower](https://github.com/tower-rs/tower) to build middleware.
 
 ```rust
@@ -120,11 +120,11 @@ async fn main() -> std::io::Result<()> {
 
 Actix-Web is quite fast
 
-## [Rocket](https://rocket.rs)
+## Rocket
 
-Rocket was an early framework for building web backends. Initially, it only
-supported blocking code and used threads, but since version 0.5.0 it supports
-async as well.
+[Rocket](https://rocket.rs) was an early framework for building web backends.
+Initially, it only supported blocking code and used threads, but since version
+0.5.0 it supports async as well.
 
 ```rust
 extern crate rocket;

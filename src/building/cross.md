@@ -253,9 +253,10 @@ You can use Nix to implement cross-compilation.
 that lets you build Rust applications while using Zig as the linker.
 
 
-## [Cross](https://github.com/cross-rs/cross)
+## Cross
 
-Cross advertises itself as a "zero-setup" tool for cross-compilation and
+[Cross](https://github.com/cross-rs/cross)
+advertises itself as a "zero-setup" tool for cross-compilation and
 cross-testing of Rust crates. Under the hood, it uses Docker containers to run
 the compilation steps with the right toolchains and libraries preinstalled.
 

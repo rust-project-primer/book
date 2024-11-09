@@ -10,9 +10,9 @@ not sufficient to explore all possible paths through the code. On a high level,
 mutation testing frameworks try to inject bugs into your code and see if your
 existing tests will catch them.
 
-## [cargo-mutants](https://github.com/sourcefrog/cargo-mutants)
+## cargo-mutants
 
-Cargo mutants
+[cargo-mutants](https://github.com/sourcefrog/cargo-mutants)
 
 ## Reading
 

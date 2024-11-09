@@ -26,9 +26,10 @@ High-level build system such as Bazel typically have some built-in support for
 creating custom tasks that can be run, and don't benefit as much from task
 runners described in this section.
 
-## [Just](https://github.com/casey/just)
+## Just
 
-Just is a simple task runner with a syntax similar to Makefiles, but simpler
+[Just](https://github.com/casey/just)
+is a simple task runner with a syntax similar to Makefiles, but simpler
 and with some extensions to allow passing arguments to tasks and to use
 comments for self-documenting tasks.
 
@@ -66,9 +67,10 @@ some built-in functions, support for variables and much more. The [Just
 Programmer's Manual](https://just.systems/man/en/) describes all of the
 features it has to offer.
 
-## [Cargo Make](https://github.com/sagiegurari/cargo-make)
+## Cargo Make
 
-`cargo-make` is a Rust task runner and build tool. It lets you define tasks in
+[cargo-make](https://github.com/sagiegurari/cargo-make)
+is a Rust task runner and build tool. It lets you define tasks in
 a `Makefile.toml`. It supports task dependencies and has some built-in features
 that are useful in Rust projects, such as the ability to install crates.
 
@@ -96,9 +98,10 @@ Tasks can also have dependencies on other tasks, and these dependencies can be
 set conditionally, such as per-platform, allowing you to write
 platform-specific or environment-specific implementations for tasks.
 
-## [Cargo XTask](https://github.com/matklad/cargo-xtask)
+## Cargo XTask
 
-`cargo-xtask` is less of a tool and more a pattern for defining bespoke tasks
+[Cargo XTask](https://github.com/matklad/cargo-xtask)
+is less of a tool and more a pattern for defining bespoke tasks
 for Rust projects. The advantage of it is that you write the tasks themselves
 in Rust, and `cargo-xtask` is only used to run them.
 

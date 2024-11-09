@@ -25,9 +25,10 @@ versioning (but this does not work with git dependencies). [RFC 2141][rfc2141]
 specifies how this works, and today there are some commercial private crate
 registries that you can use, or you can even host your own registry.
 
-## [Crates.io][crates.io]
+## Rust Crate Registry
 
-Crates.io is the public Rust package index. It is free and used by the Rust
+[Crates.io][crates.io]
+ is the public Rust package index. It is free and used by the Rust
 community to share libraries and tooling. It integrates with [docs.rs][] to
 automatically build and host documentation for any crates that are published
 to it.
@@ -54,16 +55,17 @@ metadata.  See [Publishing on
 crates.io](https://doc.rust-lang.org/cargo/reference/publishing.html) for more
 details on what is required and how you can manage your packages.
 
-## [Shipyard](https://shipyard.rs/)
+## Shipyard
 
-Shipyard is a private cargo registry service. It replicates
+[Shipyard](https://shipyard.rs/)
+is a private cargo registry service. It replicates
 
 ## JFrog
 
 
-## [Kellnr](https://kellnr.io/)
+## Kellnr
 
-
+[Kellnr](https://kellnr.io/)
 
 ## Reading
 

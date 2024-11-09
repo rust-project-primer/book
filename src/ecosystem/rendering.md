@@ -9,10 +9,14 @@ game logic, and render the world in 2D or 3D.
 around game development. But as of writing, there are two game engines that have received
 some amonut of popularity.
 
-## [Bevy](https://bevyengine.org/)
+## Bevy
+
+[Bevy](https://bevyengine.org/)
 
 *TODO*
 
-## [Fyrox](https://fyrox.rs/)
+## Fyrox
+
+[Fyrox](https://fyrox.rs/)
 
 *TODO*

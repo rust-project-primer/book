@@ -9,9 +9,10 @@ something which is usually not as easy when writing in C.
 
 ![bubble graph of popular embedded crates](/graphics/crate-popularity-embedded.svg)
 
-## [Embassy](https://embassy.dev)
+## Embassy
 
-Embassy is one of those projects that makes writing embedded code feel like
+[Embassy](https://embassy.dev)
+is one of those projects that makes writing embedded code feel like
 magic. It is a framework for building firmware for a variety of mostly ARM-based
 microcontrollers.
 
@@ -49,9 +50,10 @@ it reads like regular, blocking code. But behind the scenes, the executor progra
 a timer that the microcontroller has, and registers an interrupt handle that
 when it fires will resume the future.
 
-## [Embedded HAL](https://github.com/rust-embedded/embedded-hal)
+## Embedded HAL
 
-Embedded-HAL is the Rust project's attempt at building useful abstractions over
+[Embedded HAL](https://github.com/rust-embedded/embedded-hal)
+is the Rust project's attempt at building useful abstractions over
 several microcontrollers, such that you can write code (drivers, firmware) that
 are generic over the underlying hardware.
 

@@ -7,13 +7,16 @@ file. In many cases the content for these two is similar, or even the same.
 
 For ease of maintenance, it can be beneficial to keep the two in sync.
 
-## [`cargo-readme`](https://lib.rs/crates/cargo-readme)
+## Cargo Readme
 
-`cargo-readme` is a tool that allows you to generate a README file from the
+[`cargo-readme`](https://lib.rs/crates/cargo-readme)
+is a tool that allows you to generate a README file from the
 crate-level documentation strings of your Rust crate. 
 
 You can install it using Cargo:
 
     cargo install cargo-readme
 
-## [`cargo-rdme`](https://github.com/orium/cargo-rdme)
+## Cargo Rdme
+
+[`cargo-rdme`](https://github.com/orium/cargo-rdme)

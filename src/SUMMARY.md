@@ -91,3 +91,4 @@
 - [Conclusion](conclusion.md)
 
 [License](license.md)
+[Privacy Policy](privacy.md)

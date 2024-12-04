@@ -272,3 +272,11 @@ this article. It gives a good background on how async works behind the scenes.*
 [Async Rust is not safe with io_uring](https://tonbo.io/blog/async-rust-is-not-safe-with-io-uring)
 
 [Notes on io_uring](https://without.boats/blog/io-uring/)
+
+[Waiting for many things at once with io_uring](https://mazzo.li/posts/uring-multiplex.html)
+
+[Threads beat async/await](https://lucumr.pocoo.org/2024/11/18/threads-beat-async-await/)
+
+https://trouble.mataroa.blog/blog/asyncawait-is-real-and-can-hurt-you/
+
+[Async: What is blocking?](https://ryhl.io/blog/async-what-is-blocking/)

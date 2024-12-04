@@ -81,4 +81,4 @@ It is even possible to mix Embedded HAL and Embassy to some extent.
 
 *Dion compares a simple firmware for an STM32F446 ARMv7 microcontroller
 
-
+[Implementing async APIs for microcontroller peripherals](https://beaurivage.io/atsamd-hal-async)

@@ -151,6 +151,8 @@ https://blog.anp.lol/rust/2016/07/24/profiling-rust-perf-flamegraph/
 
 [Benchmarking](https://nnethercote.github.io/perf-book/benchmarking.html) in The Rust Performance Book
 
+[Achieving warp speed with Rust](https://gist.github.com/jFransham/369a86eff00e5f280ed25121454acec1)
+
 [criterion]: https://docs.rs/criterion/latest/criterion/
 [bencher]: https://bencher.dev/
 [continuous-benchmark]: https://github.com/marketplace/actions/continuous-benchmark

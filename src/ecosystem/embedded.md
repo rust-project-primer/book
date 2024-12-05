@@ -68,6 +68,10 @@ It is even possible to mix Embedded HAL and Embassy to some extent.
 
 [RTIC](https://rtic.rs/2/book/en/preface.html)
 
+## Tock
+
+[Tock](https://github.com/tock/tock) is an operating system for microcontrollers
+that is written in Rust and focusses on running mutually untrusted applications.
 
 ## Reading
 

@@ -280,3 +280,11 @@ this article. It gives a good background on how async works behind the scenes.*
 https://trouble.mataroa.blog/blog/asyncawait-is-real-and-can-hurt-you/
 
 [Async: What is blocking?](https://ryhl.io/blog/async-what-is-blocking/)
+
+[Async Rust is about concurrency, not (just) performance](https://kobzol.github.io/rust/2025/01/15/async-rust-is-about-concurrency.html) by Jakub Beránek
+
+*Jacub argues that the primary benefit of async/await is that it lets us
+concisely express complex concurrency; any (potential) performance improvements
+are just a second-order effect. He suggests that we should thus judge async
+primarily based on how it simplifies our code, not how (or if) it makes the
+code faster.*

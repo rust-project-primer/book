@@ -43,6 +43,12 @@ intersperse tests with the code. Keeping the tests close to the code is
 important, because it means that they will have visibility into non-public
 methods and fields.
 
+## Pretty Assertions
+
+The pretty-assertions crate ([repo][pretty-assertions-repo],
+[docs][pretty-assertions-docs]) helps you understand breaking test cases better
+by showing you a diff when two values don't match.
+
 ## Testing async code
 
 If you chose to use async code in your project, you migth run into a situation
@@ -67,3 +73,6 @@ async fn async_unit_test() {
 
 
 [Unit Testing](https://abseil.io/resources/swe-book/html/ch12.html) in Software Engineering at Google
+
+[pretty-assertions-repo]: https://github.com/rust-pretty-assertions/rust-pretty-assertions
+[pretty-assertions-docs]: https://docs.rs/pretty_assertions/latest/pretty_assertions/

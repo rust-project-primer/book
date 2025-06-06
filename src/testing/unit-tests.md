@@ -69,10 +69,15 @@ async fn async_unit_test() {
 
 ## Reading
 
-[Unit testing](https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html) in Rust By Example
+~~~admonish quote title="<a href='https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html'>Unit testing</a> in Rust By Example"
+This chapter outlines features of Rust's built-in support for unit tests. It
+shows advanced features, such as unit-testing panics, marking tests as ignored
+and running specific tests from the command-line.
+~~~
 
-
-[Unit Testing](https://abseil.io/resources/swe-book/html/ch12.html) in Software Engineering at Google
+~~~admonish quote title="<a href='https://abseil.io/resources/swe-book/html/ch12.html'>Unit Testing</a> in Software Engineering at Google"
+TODO
+~~~
 
 [pretty-assertions-repo]: https://github.com/rust-pretty-assertions/rust-pretty-assertions
 [pretty-assertions-docs]: https://docs.rs/pretty_assertions/latest/pretty_assertions/

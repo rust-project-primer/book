@@ -73,8 +73,11 @@ fn test_parser(input: &str) {
 
 ## Example
 
+## Test-Strategy
 
-## Reading
+[test_strategy Crate](https://docs.rs/test-strategy/latest/test_strategy/)
+
+# Reading
 
 [Proptest Book](https://proptest-rs.github.io/proptest/)
 
@@ -82,7 +85,6 @@ fn test_parser(input: &str) {
 to understand how it works and how you can customize it, for example by
 implementing custom strategies for generating test inputs.*
 
-[test_strategy Crate](https://docs.rs/test-strategy/latest/test_strategy/)
 
 [Complete Guide to Testing Code in Rust: Property testing](https://zerotomastery.io/blog/complete-guide-to-testing-code-in-rust/#Property-testing)
 

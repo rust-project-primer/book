@@ -43,16 +43,18 @@ and the output is also more terse, which I like.
 
 ## Reading
 
-[How (and why) nextest uses
-Tokio](https://sunshowers.io/posts/nextest-and-tokio/) by Siddharth Agarwal
-
-*Siddharth explains in this article how (and why) nextests uses Tokio.
+~~~admonish quote title="<a href='https://sunshowers.io/posts/nextest-and-tokio/'>How (and why) nextest uses Tokio</a> by Siddharth Agarwal"
+Siddharth explains in this article how (and why) nextests uses Tokio.
 Generally, using Tokio often comes with the assumption that some software
 uses networking, however here it turns out that the async model maps very
 well to scheduling tests as well. It is a fascinating peek into how nextest
-works.*
+works.
+~~~
 
-[cargo-nextest book](https://nexte.st/index.html)
+~~~admonish quote title="<a href='https://nexte.st/index.html'>cargo-nextest book</a>"
+The cargo-nextest is a reference guide for nextest, a next-generation test runner
+for Rust.
+~~~
 
 
 [nextest]: https://nexte.st/index.html

@@ -96,5 +96,7 @@ https://doc.rust-lang.org/book/ch11-03-test-organization.html
 *This article gives an overview of Cargo features for testing and libraries
 in the Rust ecosystem that can help in writing useful tests for software.*
 
+[Advanced Rust testing](https://rust-exercises.com/advanced-testing/00_intro/00_welcome.html) by rust-exercises.com
+
 
 [tdd]: https://en.wikipedia.org/wiki/Test-driven_development

@@ -22,6 +22,7 @@
     - [Embedded](ecosystem/embedded.md)
     - [Logging](ecosystem/logging.md)
     - [Error handling](ecosystem/errors.md)
+    - [Serialization](ecosystem/serialization.md)
 - [Organization](organization/readme.md)
     - [Packages](organization/packages.md)
     - [Workspace](organization/workspace.md)

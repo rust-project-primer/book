@@ -52,5 +52,8 @@ uses networking, however here it turns out that the async model maps very
 well to scheduling tests as well. It is a fascinating peek into how nextest
 works.*
 
+[cargo-nextest book](https://nexte.st/index.html)
+
+
 [nextest]: https://nexte.st/index.html
 [benchmarks]: https://nexte.st/book/benchmarks.html

@@ -148,3 +148,5 @@ does to keep it accurate and of high quality.*
 
 *Trees, maps, and theorems explains how to get messages across optimally in
 written documents, oral presentations, graphical displays, and more.*
+
+[](https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/) by Gio Genre De Asis

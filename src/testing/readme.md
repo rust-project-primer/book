@@ -61,13 +61,24 @@ for using to to ensure correctness of the code.
 
 ## Reading
 
-[How to organize Rust tests](https://blog.logrocket.com/how-to-organize-rust-tests/) by Andre Bogus
+[How to organize Rust
+tests](https://blog.logrocket.com/how-to-organize-rust-tests/) by Andre Bogus
 
-*In this article, Andre discusses how tests are best organized in Rust project.*
+*In this article, Andre discusses how tests are best organized in Rust project.
+He goes over the various facilities that Rust has for writing tests, from
+testing that code in the documentation compiles (doctests), to simple unit
+tests, to integration tests, and explains concepts such as snapshot-testing and
+fuzzing.*
 
-[Writing software that's reliable enough for production](https://www.sciagraph.com/docs/understanding/reliable/) by Scigraph
+[Writing software that's reliable enough for
+production](https://www.sciagraph.com/docs/understanding/reliable/) by Scigraph
 
-[Testing Overview](https://abseil.io/resources/swe-book/html/ch11.html) in Software Engineering at Google
+*In this article, approaches for building reliable real-world software is
+outlined. The article goes into depth explaining various testing strategies
+that ensure that software stays correct over time.*
+
+[Testing Overview](https://abseil.io/resources/swe-book/html/ch11.html) in
+Software Engineering at Google
 
 *Adam discusses the philosophy behind writing software tests. He explains that
 well-written tests are crucial to allow software to change. For tests to scale,
@@ -76,27 +87,52 @@ have tests to ensure they work correctly. Testing is as much a cultural problem
 as it is a technical one, and changing the culture in an organization takes
 time.*
 
+[Chapter 11: Writing automated
+tests](https://doc.rust-lang.org/book/ch11-00-testing.html) in *The Rust Book*
 
+*This chapter of the Rust book explains Rust's facilities for writing unit
+tests, and how they can be organized in a project.*
 
-[Chapter 11: Writing automated tests](https://doc.rust-lang.org/book/ch11-00-testing.html) in *The Rust Book*
+[How SQLite is tested](https://www.sqlite.org/testing.html) by SQLite
 
-https://doc.rust-lang.org/book/ch11-03-test-organization.html
+*SQLite is the world's most deployed database. It implemented as a C library
+that can be embedded into applications directly, and it powers anything from
+iPhones to web servers. This article outlines the approach that the SQLite team
+uses to ensure that it stays correct over time, with 100% branch test coverage
+and millions of test cases. The SQLite team considers testing so valuable that
+while the source-code for it itself is free and open-source, the tests are only
+available commercially.*
 
-[How SQLite is tested](https://www.sqlite.org/testing.html)
+[How to Test](https://matklad.github.io/2021/05/31/how-to-test.html) by Alex
+Kladov
 
-[cargo-nextest book](https://nexte.st/index.html)
+*This article outlines Alex' philosophy when it comes to testing software. He
+explains some goals and strategies to make tests easier to maintain, to make it
+easier to add tests (reduce friction), make tests fast, using snapshot/expect
+style tests for ease of maintenance, and other strategies that make testing
+more effective and more pleasant.*
 
-[How to Test](https://matklad.github.io/2021/05/31/how-to-test.html) by Alex Kladov
+[Unit and Integration
+tests](https://matklad.github.io//2022/07/04/unit-and-integration-tests.html)
+by Alex Kladov
 
-[Unit and Integration tests](https://matklad.github.io//2022/07/04/unit-and-integration-tests.html)
+*In this article, Alex compares unit-testing and integration-testing, and
+concludes that their main difference is the amount of purity (I/O) and the
+extent of the code that they are testing. He argues that it makes sense to try
+to get tests to be as pure as possible.*
 
+[Everything you need to know about testing in
+Rust](https://www.shuttle.rs/blog/2024/03/21/testing-in-rust) by Joshua Mo
 
-[Everything you need to know about testing in Rust](https://www.shuttle.rs/blog/2024/03/21/testing-in-rust) by Joshua Mo
+*This article gives an overview of Cargo features for testing and libraries in
+the Rust ecosystem that can help in writing useful tests for software.  It goes
+through multiple concepts, such as property testing, fuzzing and snapshot
+testing and gives examples.*
 
-*This article gives an overview of Cargo features for testing and libraries
-in the Rust ecosystem that can help in writing useful tests for software.*
+[Advanced Rust
+testing](https://rust-exercises.com/advanced-testing/00_intro/00_welcome.html)
+by rust-exercises.com
 
-[Advanced Rust testing](https://rust-exercises.com/advanced-testing/00_intro/00_welcome.html) by rust-exercises.com
-
+*This course teaches advanced Rust testing concepts.*
 
 [tdd]: https://en.wikipedia.org/wiki/Test-driven_development

@@ -175,3 +175,12 @@ fn main() -> Result<(), Error> {
 [Error Handling in a Correctness-Critical Rust Project](https://sled.rs/errors.html) by Tyler Neely
 
 [Three kinds of Unwrap](https://zkrising.com/writing/three-unwraps/)
+
+[Designing Error Types in Rust
+Libraries](https://d34dl0ck.me/rust-bites-designing-error-types-in-rust-libraries/index.html)
+by Sven Kanoldt
+
+[Why Use Structured Errors in Rust Applications?](https://home.expurple.me/posts/why-use-structured-errors-in-rust-applications/) by Dmitrii Aleksandrov
+
+[Error Handling in Rust](https://burntsushi.net/rust-error-handling/) by Andrew Gallant
+

@@ -288,3 +288,6 @@ concisely express complex concurrency; any (potential) performance improvements
 are just a second-order effect. He suggests that we should thus judge async
 primarily based on how it simplifies our code, not how (or if) it makes the
 code faster.*
+
+[Async From Scratch](https://natkr.com/tags/async-from-scratch-series/) by Teo Klestrup Röijezon
+

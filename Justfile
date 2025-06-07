@@ -14,3 +14,7 @@ admonish-update:
 # update submodules to latest commit hash
 submodules-update:
   git submodule update --init --remote
+
+compress:
+  find public -not -name '*.gz' -not -name '*.br' -type f -exec gzip -vk {} \;
+  find public -not -name '*.gz' -not -name '*.br' -type f -exec brotli -vk {} \;

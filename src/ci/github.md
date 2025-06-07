@@ -27,11 +27,21 @@ what the jobs should do (usually some bash commands).
 
 ## Reading
 
-~~~admonish article title="<a href='https://docs.github.com/en/actions/quickstart'>GitHub Actions QuickStart</a>"
+~~~reading
+style: article
+url: https://docs.github.com/en/actions/quickstart
+title: GitHub Actions QuickStart
+author: GitHub
+---
 Shows you how to get started with GitHub Actions.
 ~~~
 
-~~~admonish article title="<a href='https://www.youtube.com/watch?v=9qljpi5jiMQ'>GitHub Actions Feels Bad</a> by Amos Wenger"
+~~~reading
+style: article
+url: https://www.youtube.com/watch?v=9qljpi5jiMQ
+title: GitHub Actions Feels Bad
+author: Amos Wenger
+---
 The history and design of GitHub actions, and why they are perhaps not
 designed in an ideal way.
 ~~~

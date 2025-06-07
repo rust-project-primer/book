@@ -12,6 +12,11 @@ edition = "2021"
 create-missing = false
 extra-watch-dirs = ["examples", "graphics"]
 
+[preprocessor.reading]
+command = "mdbook-reading"
+before = ["admonish"]
+archives = "/archived/"
+
 [preprocessor.files]
 command = "mdbook-files"
 prefix = "examples"

@@ -49,7 +49,12 @@ whatever is the easiest to operate.
 
 ## Reading
 
-~~~admonish article title="<a href='https://martinfowler.com/articles/continuousIntegration.html'>Continuous Integration</a> by Martin Fowler"
+~~~reading
+style: article
+url: https://martinfowler.com/articles/continuousIntegration.html
+title: Continuous Integration
+author: Martin Fowler
+---
 In this article, Martin summarizes continuous integration practises. In his
 own words: 
 
@@ -62,8 +67,12 @@ reduces the effort of integration, and enables practices that foster a healthy
 codebase for rapid enhancement with new features.*
 ~~~
 
-~~~admonish article title="<a href='https://abseil.io/resources/swe-book/html/ch23.html'>Continuous Integration</a> in Software Engineering at Google"
-*TODO*
+~~~reading
+style: article
+url: https://abseil.io/resources/swe-book/html/ch23.html
+title: Continuous Integration
+author: Software Engineering at Google
+---
 ~~~
 
 [Issue #5656: Expand "CI Best Practises" section in the

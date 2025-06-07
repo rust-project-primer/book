@@ -33,10 +33,13 @@ a large impact on the architecture of your project.
 
 ## Reading
 
-~~~admonish article title="<a href='https://landaire.net/on-dependency-usage-in-rust/'>On Dependency Usage in Rust</a> by Lander Brandt"
-
-[archived](/archived/2024-11-09-on-dependency-usage-in-rust.pdf)
-
+~~~reading
+style: article
+url: https://landaire.net/on-dependency-usage-in-rust/
+title: On Dependency Usage in Rust
+author: Lander Brandt
+archived: 2024-11-09-on-dependency-usage-in-rust.pdf
+---
 The C programming language is often critizied for not bringing a lot of
 foundational data structures out-of-the-box, leading many developers to
 reinvent the wheel. Adding and managing dependencies in C/C++ is difficult,
@@ -47,6 +50,11 @@ security risk. This article explains how dependencies work in Rust, and why
 it's okay to use them.
 ~~~
 
-~~~admonish article title="<a href='https://lib.rs/stats'>Statistics on the Rust ecosystem</a> by lib.rs"
+~~~reading
+style: article
+url: https://lib.rs/stats
+title: Statistics on the Rust ecosystem
+author: lib.rs
+---
 Lib.rs publishes some interesting graphics of the Rust ecosystem.
 ~~~

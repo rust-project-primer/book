@@ -214,31 +214,61 @@ parser for Rust than `rustc` has.
 
 ## Reading
 
-~~~admonish article title="<a href='https://rust-lang.github.io/rustup/index.html'>The Rustup Book</a>"
+~~~reading
+style: book
+url: https://rust-lang.github.io/rustup/index.html
+title: The Rustup Book
+author: Rust Language
+---
 Book for the Rustup tool used by the Rust community to install and manage Rust
 toolchains. It explains core concepts such as channels, toolchains, components
 and profiles, how to configure Rustup to use specific versions of the toolchain
 on a per-project basis.
 ~~~
 
-~~~admonish article title="<a href='https://rust-analyzer.github.io/manual.html'>Rust Analyzer Manual</a>"
+~~~reading
+style: book
+url: https://rust-analyzer.github.io/manual.html
+title: Rust Analyzer Manual
+author: Rust Analyzer
+---
 Explains what `rust-analyzer` is, and how to use it. It has instructions for the
 best way to install it for every editor it supports, and outlines ways you can
 configure it for your project.
 ~~~
 
-~~~admonish article title="<a href='https://matklad.github.io/2022/04/25/why-lsp.html'>Why LSP?</a> by Alex Kladov"
+~~~reading
+style: article
+url: https://matklad.github.io/2022/04/25/why-lsp.html
+title: Why LSP?
+author: Alex Kladov
+---
 Alex explains what problem LSPs solve.
 ~~~
 
-~~~admonish article title="<a href='https://matklad.github.io/2023/10/12/lsp-could-have-been-better.html'>LSP could have been better</a> by Alex Kladov"
+~~~reading
+style: article
+url: https://matklad.github.io/2023/10/12/lsp-could-have-been-better.html
+title: LSP could have been better
+author: Alex Kladov
+---
 This article discusses architectural aspects of LSPs, that Alex does not find as brilliant.
 ~~~
 
-~~~admonish article title="<a href='https://www.michaelpj.com/blog/2024/09/03/lsp-good-bad-ugly.html'>LSP: The good, the bad and the ugly</a>"
+~~~reading
+style: article
+url: https://www.michaelpj.com/blog/2024/09/03/lsp-good-bad-ugly.html
+title: "LSP: The good, the bad and the ugly"
+author: Michael Peyton Jones
+---
 ~~~
 
-~~~admonish article title="<a href='https://dorianlistens.com/2022/07/improving-extract-function-in-rust-analyzer/'>Improving 'Extract Function' in Rust Analyzer</a>"
+~~~reading
+style: article
+url: https://dorianlistens.com/2022/07/improving-extract-function-in-rust-analyzer/
+title: Improving 'Extract Function' in Rust Analyzer
+author: Dorian Scheidt
+---
 ~~~
 
 [survey2023]: https://blog.rust-lang.org/2024/02/19/2023-Rust-Annual-Survey-2023-results.html

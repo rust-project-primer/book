@@ -4,9 +4,10 @@ stages:
 
 # versions of dependencies
 variables:
+  MDBOOK_VERSION: 0.4.51
   MDBOOK_MERMAID_VERSION: 0.13.0
   MDBOOK_ADMONISH_VERSION: 1.20.0
-  MDBOOK_VERSION: 0.4.51
+  MDBOOK_READING_VERSION: 0.1.0
   MDBOOK_FILES_VERSION: 0.2.0
   GIT_SUBMODULE_STRATEGY: recursive
   GIT_SUBMODULE_DEPTH: 1
@@ -21,6 +22,7 @@ book:
     - curl -sSL "https://github.com/badboy/mdbook-mermaid/releases/download/v$MDBOOK_MERMAID_VERSION/mdbook-mermaid-v$MDBOOK_MERMAID_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
     - curl -sSL "https://github.com/tommilligan/mdbook-admonish/releases/download/v$MDBOOK_ADMONISH_VERSION/mdbook-admonish-v$MDBOOK_ADMONISH_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
     - curl -sSL "https://github.com/xfbs/mdbook-files/releases/download/v$MDBOOK_FILES_VERSION/mdbook-files-v$MDBOOK_FILES_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
+    - curl -sSL "https://gitlab.com/rust-project-primer/mdbook-reading/-/releases/v0.1.0/downloads/mdbook-reading-amd64" -o /usr/local/bin/mdbook-reading
   script:
     - mdbook build
   artifacts:

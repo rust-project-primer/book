@@ -33,20 +33,20 @@ a large impact on the architecture of your project.
 
 ## Reading
 
-[On Dependency Usage in
-Rust](https://landaire.net/on-dependency-usage-in-rust/)
-([archived](/archived/2024-11-09-on-dependency-usage-in-rust.pdf)) by Lander
-Brandt
+~~~admonish article title="<a href='https://landaire.net/on-dependency-usage-in-rust/'>On Dependency Usage in Rust</a> by Lander Brandt"
 
-*The C programming language is often critizied for not bringing a lot of
+[archived](/archived/2024-11-09-on-dependency-usage-in-rust.pdf)
+
+The C programming language is often critizied for not bringing a lot of
 foundational data structures out-of-the-box, leading many developers to
 reinvent the wheel. Adding and managing dependencies in C/C++ is difficult,
 because there is no standardized build system. On the other hand, in JavaScript
 it is so easy to add dependencies, that many small projects end up with
 gigabytes worth of trivial (transitive dependencies), which is criticized as a
 security risk. This article explains how dependencies work in Rust, and why
-it's okay to use them.*
+it's okay to use them.
+~~~
 
-[Statistics on the Rust ecosystem](https://lib.rs/stats)
-
-*Lib.rs publishes some interesting graphics of the Rust ecosystem.*
+~~~admonish article title="<a href='https://lib.rs/stats'>Statistics on the Rust ecosystem</a> by lib.rs"
+Lib.rs publishes some interesting graphics of the Rust ecosystem.
+~~~

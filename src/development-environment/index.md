@@ -214,44 +214,41 @@ parser for Rust than `rustc` has.
 
 ## Reading
 
-[The Rustup Book](https://rust-lang.github.io/rustup/index.html)
-
-*Book for the Rustup tool used by the Rust community to install and manage Rust
+~~~admonish article title="<a href='https://rust-lang.github.io/rustup/index.html'>The Rustup Book</a>"
+Book for the Rustup tool used by the Rust community to install and manage Rust
 toolchains. It explains core concepts such as channels, toolchains, components
 and profiles, how to configure Rustup to use specific versions of the toolchain
-on a per-project basis.*
+on a per-project basis.
+~~~
 
-[Rust Analyzer Manual](https://rust-analyzer.github.io/manual.html)
-
-*Explains what `rust-analyzer` is, and how to use it. It has instructions for the
+~~~admonish article title="<a href='https://rust-analyzer.github.io/manual.html'>Rust Analyzer Manual</a>"
+Explains what `rust-analyzer` is, and how to use it. It has instructions for the
 best way to install it for every editor it supports, and outlines ways you can
-configure it for your project.*
+configure it for your project.
+~~~
 
-[Why LSP?](https://matklad.github.io/2022/04/25/why-lsp.html) by Alex Kladov
+~~~admonish article title="<a href='https://matklad.github.io/2022/04/25/why-lsp.html'>Why LSP?</a> by Alex Kladov"
+Alex explains what problem LSPs solve.
+~~~
 
-*Alex explains what problem LSPs solve.*
+~~~admonish article title="<a href='https://matklad.github.io/2023/10/12/lsp-could-have-been-better.html'>LSP could have been better</a> by Alex Kladov"
+This article discusses architectural aspects of LSPs, that Alex does not find as brilliant.
+~~~
 
-[LSP could have been better](https://matklad.github.io/2023/10/12/lsp-could-have-been-better.html) by Alex Kladov
+~~~admonish article title="<a href='https://www.michaelpj.com/blog/2024/09/03/lsp-good-bad-ugly.html'>LSP: The good, the bad and the ugly</a>"
+~~~
 
-*This article discusses architectural aspects of LSPs, that Alex does not find as brilliant.*
-
-[LSP: The good, the bad and the ugly](https://www.michaelpj.com/blog/2024/09/03/lsp-good-bad-ugly.html)
-
-[Improving "Extract Function" in Rust Analyzer](https://dorianlistens.com/2022/07/improving-extract-function-in-rust-analyzer/)
+~~~admonish article title="<a href='https://dorianlistens.com/2022/07/improving-extract-function-in-rust-analyzer/'>Improving 'Extract Function' in Rust Analyzer</a>"
+~~~
 
 [survey2023]: https://blog.rust-lang.org/2024/02/19/2023-Rust-Annual-Survey-2023-results.html
 [survey2023-os]: https://blog.rust-lang.org/images/2024-02-rust-survey-2023/which-os-do-you-use.svg
 [survey2023-target]: https://blog.rust-lang.org/images/2024-02-rust-survey-2023/which-os-do-you-target.svg
 [wsl2]: https://learn.microsoft.com/en-us/windows/wsl/about
-
-https://rust-lang.github.io/rustup/index.html
-
 [areweideyet]: https://areweideyet.com/
 [vim]: https://vim.org
 [neovim]: https://neovim.org
 [rust-analyzer]: https://github.com/rust-lang/rust-analyzer
 [lsp]: https://microsoft.github.io/language-server-protocol/
-
-
 [zed]: https://zed.dev/
 [helix]: https://github.com/helix-editor/helix

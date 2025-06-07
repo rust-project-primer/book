@@ -49,23 +49,22 @@ whatever is the easiest to operate.
 
 ## Reading
 
-[Continuous
-Integration](https://martinfowler.com/articles/continuousIntegration.html) by
-Martin Fowler
+~~~admonish article title="<a href='https://martinfowler.com/articles/continuousIntegration.html'>Continuous Integration</a> by Martin Fowler"
+In this article, Martin summarizes continuous integration practises. In his
+own words: 
 
-*In this article, Martin summarizes continuous integration practises. In his
-own words: "Continuous Integration is a software development practice where each
+*Continuous Integration is a software development practice where each
 member of a team merges their changes into a codebase together with their
 colleagues changes at least daily. Each of these integrations is verified by an
 automated build (including test) to detect integration errors as quickly as
 possible. Teams find that this approach reduces the risk of delivery delays,
 reduces the effort of integration, and enables practices that foster a healthy
-codebase for rapid enhancement with new features."*
+codebase for rapid enhancement with new features.*
+~~~
 
-[Continuous Integration](https://abseil.io/resources/swe-book/html/ch23.html)
-in Software Engineering at Google
-
+~~~admonish article title="<a href='https://abseil.io/resources/swe-book/html/ch23.html'>Continuous Integration</a> in Software Engineering at Google"
 *TODO*
+~~~
 
 [Issue #5656: Expand "CI Best Practises" section in the
 guide](https://github.com/rust-lang/cargo/issues/5656) in

@@ -94,16 +94,16 @@ test:cargo:
 
 ## Reading
 
-[Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
+~~~admonish article title="<a href='https://docs.gitlab.com/ee/ci/'>Get started with GitLab CI/CD</a>"
+Shows you how to get started with GitLab CI.
+~~~
 
-*Shows you how to get started with GitLab CI.*
+~~~admonish article title="<a href='https://www.fpcomplete.com/blog/deploying-rust-with-docker-and-kubernetes/'>Deploying Rust with Docker and Kubernetes</a>"
+In this article, FP complete shows you how to deploy a Rust application with
+Docker and Kubernetes using GitLab CI.
+~~~
 
-[Deploying Rust with Docker and Kubernetes](https://www.fpcomplete.com/blog/deploying-rust-with-docker-and-kubernetes/)
-
-*In this article, FP complete shows you how to deploy a Rust application with
-Docker and Kubernetes using GitLab CI.*
-
-[(New) Adventures in CI](https://www.bassi.io/articles/2019/04/13/adventures-in-ci/)
-
-*In this blog post, Emmanuele Bassi shows you how the GNOME project uses GitLab
-CI to generate coverage reports for every commit.*
+~~~admonish article title="<a href='https://www.bassi.io/articles/2019/04/13/adventures-in-ci/'>(New) Adventures in CI</a>"
+In this blog post, Emmanuele Bassi shows you how the GNOME project uses GitLab
+CI to generate coverage reports for every commit.
+~~~

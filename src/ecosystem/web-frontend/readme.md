@@ -573,45 +573,80 @@ backend = "http://localhost:9000/"
 
 ## Reading
 
-[Are We Web Yet: Web Frameworks](https://www.arewewebyet.org/topics/frameworks/) on Are We Web Yet
-
-*List of frontend web frameworks for Rust along with some statistics indicating
+~~~reading
+style: article
+title: "Are We Web Yet: Web Frameworks"
+url: https://www.arewewebyet.org/topics/frameworks/)
+author: Are We Web Yet
+---
+List of frontend web frameworks for Rust along with some statistics indicating
 popularity. Good for discovery of new and rising frameworks or to explore all
-the different ideas.*
+the different ideas.
+~~~
 
-[Rust Web Framework Comparison](https://github.com/flosse/rust-web-framework-comparison) by Markus Kohlhase
-
-*Overview of different Rust frontend and backend frameworks. Unfortunately, it
+~~~reading
+style: article
+title: Rust Web Framework Comparison
+url: https://github.com/flosse/rust-web-framework-comparison
+author: Markus Kohlhase
+---
+Overview of different Rust frontend and backend frameworks. Unfortunately, it
 marks some frameworks that are still heavily used as outdated, so take that
-with a grain of salt.*
+with a grain of salt.
+~~~
 
-[Full-stack Rust: A complete tutorial with examples](https://blog.logrocket.com/full-stack-rust-a-complete-tutorial-with-examples/) by Mario Zupan
-
-*Tutorial showing how to build a full-stack Rust web application using Yew,
+~~~reading
+style: article
+title: "Full-stack Rust: A complete tutorial with examples"
+url: https://blog.logrocket.com/full-stack-rust-a-complete-tutorial-with-examples/
+author: Mario Zupan
+---
+Tutorial showing how to build a full-stack Rust web application using Yew,
 Tokio, Postgres, and Warp. Good tutorial to see how everything fits together,
 unfortunately it is a bit older and uses an outdated version of Yew that is
 pre-functional components. But it is still a good article to get a feeling for
-how a full-stack Rust application fits together.*
+how a full-stack Rust application fits together.
+~~~
 
-[Full Stack Rust with Leptos](https://benw.is/posts/full-stack-rust-with-leptos)
+~~~reading
+style: article
+title: Full Stack Rust with Leptos
+url: https://benw.is/posts/full-stack-rust-with-leptos
+author: Ben Wishowich
+archived: benwis-full-stack-rust-with-leptos.pdf
+---
+~~~
 
-
-
-[Rust and WebAssembly Book](https://rustwasm.github.io/docs/book/introduction.html)
-
-*Book that explains how to use Rust to target WebAssembly. Has some good
+~~~reading
+style: book
+title: Rust and WebAssembly Book
+url: https://rustwasm.github.io/docs/book/introduction.html
+author: Rust-Wasm Project
+---
+Book that explains how to use Rust to target WebAssembly. Has some good
 low-level information, such as how to debug and profile WebAssembly
-applications, keeping code size small, interoperation with JavaScript.*
+applications, keeping code size small, interoperation with JavaScript.
+~~~
 
-[A Rust web server / frontend setup like it's 2022 (with axum and yew)](https://robert.kra.hn/posts/2022-04-03_rust-web-wasm/) by Robert Krahn
+~~~reading
+style: article
+title: "A Rust web server / frontend setup like it's 2022 (with axum and yew)"
+url: https://robert.kra.hn/posts/2022-04-03_rust-web-wasm/
+author: Robert Krahn
+---
+Shows how to setup a full-stack Rust web application with Yew and Axum
+from scratch.
+~~~
 
-*Shows how to setup a full-stack Rust web application with Yew and Axum
-from scratch.*
-
-[Using Dioxus with Rust to build performant single-page apps](https://blog.logrocket.com/using-dioxus-rust-build-single-page-apps/) by Eze Sunday
-
-*Eze shows how to use Dioxus to implement a todo application. Uses an older
-version of Dioxus, the interface has since changed.*
+~~~reading
+style: article
+title: Using Dioxus with Rust to build performant single-page apps
+url: https://blog.logrocket.com/using-dioxus-rust-build-single-page-apps/
+author: Eze Sunday
+---
+Eze shows how to use Dioxus to implement a todo application. Uses an older
+version of Dioxus, the interface has since changed.
+~~~
 
 [trunk]: https://trunkrs.dev/
 [wasm]: https://webassembly.org/

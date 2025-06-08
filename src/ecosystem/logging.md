@@ -54,6 +54,18 @@ tracing asynchronous functions.
 
 ## Reading
 
-[Structured logging](https://rust-exercises.com/telemetry/01_structured_logging/00_intro) By Rust telemetry exercises
+~~~reading
+style: book
+title: Structured logging
+url: https://rust-exercises.com/telemetry/01_structured_logging/00_intro
+author: Rust telemetry exercises
+---
+~~~
 
-[What is the Difference Between Tracing and Logging?](https://www.baeldung.com/cs/trace-vs-log) by Amanda Viescinski
+~~~reading
+style: article
+title: What is the Difference Between Tracing and Logging?
+url: https://www.baeldung.com/cs/trace-vs-log
+author: Amanda Viescinski
+---
+~~~

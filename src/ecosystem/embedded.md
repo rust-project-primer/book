@@ -75,14 +75,46 @@ that is written in Rust and focusses on running mutually untrusted applications.
 
 ## Reading
 
-[Rust Embedded Book](https://docs.rust-embedded.org/book/)
+~~~reading
+style: book
+title: Rust Embedded Book
+url: https://docs.rust-embedded.org/book/
+author: Rust-Embedded Project
+---
+~~~
 
-[Embassy Books](https://embassy.dev/book/)
+~~~reading
+style: book
+title: Embassy Book
+url: https://embassy.dev/book/
+author: Embassy Project
+---
+~~~
 
-[Deploying Rust in Existing Firmware Codebases](https://security.googleblog.com/2024/09/deploying-rust-in-existing-firmware.html) by Ivan Lozano and Dominik Maier
+~~~reading
+style: article
+title: Deploying Rust in Existing Firmware Codebases
+url: https://security.googleblog.com/2024/09/deploying-rust-in-existing-firmware.html
+author: Ivan Lozano and Dominik Maier
+archived: google-security-deploying-rust-in-existing-firmware.pdf
+---
+~~~
 
-[Async Rust vs RTOS Showdown](https://tweedegolf.nl/en/blog/65/async-rust-vs-rtos-showdown) by Dion Dokter
+~~~reading
+style: article
+title: Async Rust vs RTOS Showdown
+url: https://tweedegolf.nl/en/blog/65/async-rust-vs-rtos-showdown
+author: Dion Dokter
+archived: tweedegolf-async-rust-vs-rtos-showdown.pdf
+---
+Dion compares a simple firmware for an STM32F446 ARMv7 microcontroller
+~~~
 
-*Dion compares a simple firmware for an STM32F446 ARMv7 microcontroller
-
-[Implementing async APIs for microcontroller peripherals](https://beaurivage.io/atsamd-hal-async)
+~~~reading
+style: article
+title: Implementing async APIs for microcontroller peripherals
+url: https://beaurivage.io/atsamd-hal-async
+author: Justin Beaurivage
+archived: beaurivage-atsamd-hal-async.pdf
+---
+~~~

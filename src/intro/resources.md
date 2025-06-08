@@ -24,52 +24,88 @@ features it has (for example, how async works under the hood, or how atomics
 work). You should have read at least one of these before you embark on your
 Rust project. 
 
-**Rust Programming Language, 2nd Edition** by Steve Klabnik and Carol Nichols
-is the official book of the Rust programming language. It covers the language
-and toolchain, giving you a thorough starting point for writing real-world Rust
-code and understanding other people's code. It also includes some example
-projects for you to follow to see how to use it in practise. Available
-[online][rust-book] and
+~~~reading
+style: book
+title: Rust Programming Language, 2nd Edition
+url: https://doc.rust-lang.org/book/
+author: Steve Klabnik and Carol Nichols
+---
+This book is the official book of the Rust programming language. It covers the
+language and toolchain, giving you a thorough starting point for writing
+real-world Rust code and understanding other people's code. It also includes
+some example projects for you to follow to see how to use it in practise. Also
+available in
 [print](https://nostarch.com/rust-programming-language-2nd-edition).
+~~~
 
-**Rust for Rustaceans**  by Jon Gjengset
-is a deep dive into the Rust programming language. It gives you a structured
-understanding how to apply Rust, covering many parts of Rust projects, from
-designing interfaces to writing effective tests. In my opinion it is one of the
-best explanations of how async works. Available in [print][rust-for-rustaceans].
+~~~reading
+style: book
+title: Rust for Rustaceans
+author: Jon Gjengset
+url: https://nostarch.com/rust-rustaceans
+---
+This book is a deep dive into the Rust programming language. It gives you a
+structured understanding how to apply Rust, covering many parts of Rust
+projects, from designing interfaces to writing effective tests. In my opinion
+it is one of the best explanations of how async works. 
+~~~
 
-**Rust Atomics and Locks** by Mara Bos is a book that gives you a deep
-understanding of atomics.  Some of the core assumptions that you have as a
-programmer (such as, if your code writes to variables in a specific order, that
-the CPU writes to them in that order) break down the moment you use
-multi-threading. Rust makes it easy for you to write heavy multithreaded
-applications, and typically you will use safe abstractions to do so. But there
-are times, for example when you want to implement custom data-structures, that
-you need to know how to do so safely. This book gives you that background
-information. Available in [print](https://marabos.nl/atomics/).
+~~~reading
+style: book
+title: Rust Atomics and Locks
+author: Mara Bos
+url: https://marabos.nl/atomics/
+---
+This is a book that gives you a deep understanding of atomics. Some of the
+core assumptions that you have as a programmer (such as, if your code writes to
+variables in a specific order, that the CPU writes to them in that order) break
+down the moment you use multi-threading. Rust makes it easy for you to write
+heavy multithreaded applications, and typically you will use safe abstractions
+to do so. But there are times, for example when you want to implement custom
+data-structures, that you need to know how to do so safely. This book gives you
+that background information. 
+~~~
 
-**Rust Design Patterns** is a catalogue of Rust design patterns, anti-patterns
-and idioms. Going through these will help you understand common patterns, and
-avoid anti-patterns. It also gives rationale for why to avoid certain patterns.
-Available [online][rust-design-patterns] and
-[archived][rust-design-patterns-archived].
+~~~reading
+style: book
+title: Rust Design Patterns
+author: Unknown
+url: https://rust-unofficial.github.io/patterns/
+archived: rust-design-patterns.pdf
+---
+This is a catalogue of Rust design patterns, anti-patterns and idioms. Going
+through these will help you understand common patterns, and avoid
+anti-patterns. It also gives rationale for why to avoid certain patterns.
+~~~
 
-**Software Engineering at Google** is not a Rust-specific book. Rather it is a
-generic book about software engineering. The reason I am linking it here is
-that Google is undoubtedly a company that has originated many of the
-philosophies of modern software engineering, and many of those philosophies
-have ended up being codified in the Rust programming language and developer
-tooling. Understanding this book gives you some of the *whys* behind why the
-Rust developer tooling is the way it is, and why it is so effective. Available
-[online][swe-google-online] and [print][swe-google-print].
+~~~reading
+style: book
+title: Software Engineering at Google
+author: Various Authors
+url: https://abseil.io/resources/swe-book/html/toc.html
+---
+This is not a Rust-specific book. Rather it is a generic book about software
+engineering. The reason I am linking it here is that Google is undoubtedly a
+company that has originated many of the philosophies of modern software
+engineering, and many of those philosophies have ended up being codified in the
+Rust programming language and developer tooling. Understanding this book gives
+you some of the *whys* behind why the Rust developer tooling is the way it is,
+and why it is so effective. Also available as
+[print](https://www.oreilly.com/library/view/software-engineering-at/9781492082781/).
+~~~
 
-**Rust Under the Hood** by Sandeep Ahluwalia and Deepa Ahluwalia is a deep-dive
-into Rust internals and generated assembly. It shows you how Rust concepts map
-to machine code, how Rust represents various types in-memory, how it uses
-compiler optimizations (such as loop optimizations and SIMD
-auto-vectorization). This book is useful if you care about low-level details,
-even if you know little about x86 assembly. Available
-[online](https://www.eventhelix.com/rust/rust-under-the-hood/).
+~~~reading
+style: book
+title: Rust Under the Hood
+author: Sandeep Ahluwalia and Deepa Ahluwalia
+url: https://www.eventhelix.com/rust/rust-under-the-hood/
+---
+This is a deep-dive into Rust internals and generated assembly. It shows you
+how Rust concepts map to machine code, how Rust represents various types
+in-memory, how it uses compiler optimizations (such as loop optimizations and
+SIMD auto-vectorization). This book is useful if you care about low-level
+details, even if you know little about x86 assembly.
+~~~
 
 There may be more useful foundational Rust resources that I have not
 listed here, because I might not be aware of them. There are some sites
@@ -77,15 +113,10 @@ that maintain collections of useful Rust books, for example
 [The Little Book of Rust Books](https://lborb.github.io/book/title-page.html),
 [The Rust Bookshelf](https://bookshelf.rs/).
 
-[rust-design-patterns]: https://rust-unofficial.github.io/patterns/
-[rust-design-patterns-archived]: /archived/2024-11-09-rust-design-patterns.pdf
 [effective-rust]: https://www.lurklurk.org/effective-rust/
 [rustonimicon]: https://doc.rust-lang.org/nightly/nomicon/
 [rust-book]: https://doc.rust-lang.org/book/
 [rust-book-nostarch]: https://nostarch.com/rust-programming-language-2nd-edition
-[rust-for-rustaceans]: https://nostarch.com/rust-rustaceans
-[swe-google-online]: https://abseil.io/resources/swe-book/html/toc.html
-[swe-google-print]: https://www.oreilly.com/library/view/software-engineering-at/9781492082781/
 
 ## Practical
 
@@ -131,13 +162,18 @@ similar scope as this book. While some of the takes may be different from those
 presented in this book, it can be valuable to review these to see which
 conclusions others in the Rust community have arrived at.
 
-[One Hundred Thousand Lines of
-Rust](https://matklad.github.io/2021/09/05/Rust100k.html) by Alex Kladov is a
-series of articles that summarize what Alex has learned in maintaining several
-mid-sized Rust projects. He has some advice on documentation, writing effective
-tests and improving build times.  Alex Kladov is the driving force behind
-several high-profile projects in the Rust community, such as
-[rust-analyzer](https://github.com/rust-lang/rust-analyzer). 
+~~~reading
+style: article
+title: One Hundred Thousand Lines of Rust
+url: https://matklad.github.io/2021/09/05/Rust100k.html
+author: Alex Kladov
+---
+This is a series of articles that summarize what Alex has learned in
+maintaining several mid-sized Rust projects. He has some advice on
+documentation, writing effective tests and improving build times.  Alex Kladov
+is the driving force behind several high-profile projects in the Rust
+community, such as [rust-analyzer](https://github.com/rust-lang/rust-analyzer). 
+~~~
 
 [Writing Software that's reliable enough for
 production](https://www.sciagraph.com/docs/understanding/reliable/) by

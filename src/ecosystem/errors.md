@@ -162,26 +162,70 @@ fn main() -> Result<(), Error> {
 
 ## Reading
 
-[The definitive guide to Rust error handling](https://www.howtocodeit.com/articles/the-definitive-guide-to-rust-error-handling)
+~~~reading
+style: article
+title: The definitive guide to Rust error handling
+url: https://www.howtocodeit.com/articles/the-definitive-guide-to-rust-error-handling
+author: Angus Morrison
+---
+~~~
 
-[Error Handling](https://doc.rust-lang.org/book/ch09-00-error-handling.html) in The Rust Programming Language
+~~~reading
+style: book
+title: Error Handling
+url: https://doc.rust-lang.org/book/ch09-00-error-handling.html
+author: The Rust Programming Language
+---
+~~~
 
 [Error handling in Rust: a comprehensive tutorial](https://blog.logrocket.com/error-handling-rust/) by Eze Sunday
 
-[Rust Error Handling: thiserror, anyhow, and When to Use Each](https://momori.dev/posts/rust-error-handling-thiserror-anyhow/) by Momori Nakano
+~~~reading
+style: article
+title: "Rust Error Handling: thiserror, anyhow, and When to Use Each"
+url: https://momori.dev/posts/rust-error-handling-thiserror-anyhow/
+author: Momori Nakano
+archived: momori-rust-error-handling-thiserror-anyhow.pdf
+---
+~~~
 
 [Error Handling in Rust: A Deep Dive](https://www.lpalmieri.com/posts/error-handling-rust/) by Luca Palmieri
 
 [Error Handling in a Correctness-Critical Rust Project](https://sled.rs/errors.html) by Tyler Neely
 
-[Three kinds of Unwrap](https://zkrising.com/writing/three-unwraps/)
+~~~reading
+style: article
+title: Three kinds of Unwrap
+url: https://zkrising.com/writing/three-unwraps/
+author: zk
+---
+~~~
 
-[Designing Error Types in Rust
-Libraries](https://d34dl0ck.me/rust-bites-designing-error-types-in-rust-libraries/index.html)
-by Sven Kanoldt
+~~~reading
+style: article
+title: Designing Error Types in Rust Libraries
+url: https://d34dl0ck.me/rust-bites-designing-error-types-in-rust-libraries/index.html
+author: Sven Kanoldt
+archived: kanoldt-designing-error-types-in-rust-libraries.pdf
+---
+~~~
 
 [Why Use Structured Errors in Rust Applications?](https://home.expurple.me/posts/why-use-structured-errors-in-rust-applications/) by Dmitrii Aleksandrov
 
-[Error Handling in Rust](https://burntsushi.net/rust-error-handling/) by Andrew Gallant
+~~~reading
+style: article
+title: Error Handling in Rust
+url: https://burntsushi.net/rust-error-handling/
+author: Andrew Gallant
+archived: burntsushi-rust-error-handling.pdf
+---
+~~~
 
-https://mmapped.blog/posts/12-rust-error-handling
+~~~reading
+style: article
+title: Designing error types in Rust
+url: https://mmapped.blog/posts/12-rust-error-handling
+author: Roman Kashitsyn
+archived: mmapped-rust-error-handling.pdf
+---
+~~~

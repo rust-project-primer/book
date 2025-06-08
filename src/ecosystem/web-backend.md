@@ -162,10 +162,14 @@ https://www.shuttle.rs/
 
 ## Reading
 
-
-[Are We Web Yet: Web
-Frameworks](https://www.arewewebyet.org/topics/frameworks/) maintains a list of
-web frameworks along with some stats on them.
+~~~reading
+style: article
+title: "Are We Web Yet: Web Frameworks"
+url: https://www.arewewebyet.org/topics/frameworks/
+author: Are We Web Yet
+---
+List of web frameworks along with some stats on them.
+~~~
 
 
 https://www.arewewebyet.org/
@@ -176,7 +180,12 @@ https://www.arewewebyet.org/
 *Compares the performance (as measured by requests-per-second) of various web
 frameworks.*
 
-[Rusts Axum style magic function params example](https://alexpusch/rust-magic-patterns/blob/master/axum-style-magic-function-param/Readme.md) by Alex Puschinsky
-
-*In this article, Alex explains how Axum's magic function parameter handling is
-implemented in Rust.*
+~~~reading
+style: article
+title: Rusts Axum style magic function params example
+url: https://alexpusch/rust-magic-patterns/blob/master/axum-style-magic-function-param/Readme.md
+author: Alex Puschinsky
+---
+In this article, Alex explains how Axum's magic function parameter handling is
+implemented in Rust.
+~~~

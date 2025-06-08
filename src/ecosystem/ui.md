@@ -43,4 +43,11 @@ around the quirks of GTK with decent documentation and procedural macros.
 
 ## Reading
 
-[Are We GUI Yet](https://areweguiyet.com/)
+~~~reading
+style: article
+title: Are We GUI Yet
+url: https://areweguiyet.com/
+author: Unknown
+---
+Overview of current Rust GUI frameworks.
+~~~

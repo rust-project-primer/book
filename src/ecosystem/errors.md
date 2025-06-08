@@ -14,6 +14,15 @@ programmers to handle errors, at least to some degree: a fallible function
 returns a `Result<T, E>`, and you have to either handle the error (with a
 `match` statement), or propagate it up with a `?`.
 
+~~~admonish note
+In some ways, this is only partially true. Rust does have a kind of *exception*,
+through the `panic!()` and `.unwrap()` mechanism. However, the difference is
+that these are generally only used for *unrecoverable* errors. It is possible
+to catch these with [`catch_unwind()`](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html),
+but this is not recommended, has a performance penalty and does not work across
+an FFI boundary.
+~~~
+
 Part of the reason that doing this is ergonomic in Rust is because Rust has
 great syntactical support for pattern matching. This is not the case for many
 other languages, which is partially why *exceptions* were created and remain in
@@ -172,13 +181,19 @@ author: Angus Morrison
 
 ~~~reading
 style: book
-title: Error Handling
+title: "Chapter 9: Error Handling"
 url: https://doc.rust-lang.org/book/ch09-00-error-handling.html
 author: The Rust Programming Language
 ---
 ~~~
 
-[Error handling in Rust: a comprehensive tutorial](https://blog.logrocket.com/error-handling-rust/) by Eze Sunday
+~~~reading
+style: article
+title: "Error handling in Rust: a comprehensive tutorial"
+url: https://blog.logrocket.com/error-handling-rust/
+author: Eze Sunday
+---
+~~~
 
 ~~~reading
 style: article
@@ -189,9 +204,21 @@ archived: momori-rust-error-handling-thiserror-anyhow.pdf
 ---
 ~~~
 
-[Error Handling in Rust: A Deep Dive](https://www.lpalmieri.com/posts/error-handling-rust/) by Luca Palmieri
+~~~reading
+style: article
+title: "Error Handling in Rust: A Deep Dive"
+url: https://www.lpalmieri.com/posts/error-handling-rust/
+author: Luca Palmieri
+---
+~~~
 
-[Error Handling in a Correctness-Critical Rust Project](https://sled.rs/errors.html) by Tyler Neely
+~~~reading
+style: article
+title: Error Handling in a Correctness-Critical Rust Project
+url: https://sled.rs/errors.html
+author: Tyler Neely
+---
+~~~
 
 ~~~reading
 style: article
@@ -210,7 +237,13 @@ archived: kanoldt-designing-error-types-in-rust-libraries.pdf
 ---
 ~~~
 
-[Why Use Structured Errors in Rust Applications?](https://home.expurple.me/posts/why-use-structured-errors-in-rust-applications/) by Dmitrii Aleksandrov
+~~~reading
+style: article
+title: Why Use Structured Errors in Rust Applications?
+url: https://home.expurple.me/posts/why-use-structured-errors-in-rust-applications/
+author: Dmitrii Aleksandrov
+---
+~~~
 
 ~~~reading
 style: article

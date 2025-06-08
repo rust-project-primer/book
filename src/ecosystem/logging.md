@@ -44,6 +44,8 @@ tracing asynchronous functions.
 [slog](https://github.com/slog-rs/slog) is a logging crate for Rust with the tagline
 *structured, contextual, extensible, composable logging for Rust*.
 
+## Metrics
+
 ## Interopability
 
 | Crate | Description |
@@ -60,6 +62,9 @@ title: Structured logging
 url: https://rust-exercises.com/telemetry/01_structured_logging/00_intro
 author: Rust telemetry exercises
 ---
+This Rust exercise walks through various logging facilities in the Rust
+ecosystem, from using the log crate, to using tracing for asynchronous code, to
+collecting metrics and exporting them to Prometheus.
 ~~~
 
 ~~~reading
@@ -68,4 +73,5 @@ title: What is the Difference Between Tracing and Logging?
 url: https://www.baeldung.com/cs/trace-vs-log
 author: Amanda Viescinski
 ---
+This article explains the difference between logging and tracing.
 ~~~

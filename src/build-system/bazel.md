@@ -133,60 +133,90 @@ to just pull it from the cache.
 
 ## Reading
 
-[Scaling Rust builds with Bazel](https://mmapped.blog/posts/17-scaling-rust-builds-with-bazel.html) by Roman Kashitsyn
-
-*Roman explains how and why the Internet Computer project switched to using
+~~~reading
+style: article
+title: Scaling Rust builds with Bazel
+url: https://mmapped.blog/posts/17-scaling-rust-builds-with-bazel.html
+author: Roman Kashitsyn
+archived: mmapped-scaling-rust-builds-with-bazel.pdf
+---
+Roman explains how and why the Internet Computer project switched to using
 Bazel as it's build system. He explains how Bazel is good at setting up builds
 that involve several languages or build targets, such as building some code for
 WebAssembly and using the resulting binaries as inputs to other builds.  He
 walks you through the process they used to incrementally switch a large project
 to using Bazel and the implications it had. He considers the migration a
-success.*
+success.
+~~~
 
-[Using Bazel with Rust to Build and Deploy an
-Application](https://earthly.dev/blog/bazel-with-rust/) by Enoch Chejieh
-
-*Enoch walks you through how to get started with a simple Rust project that
+~~~reading
+style: article
+title: Using Bazel with Rust to Build and Deploy an Application
+url: https://earthly.dev/blog/bazel-with-rust/
+author: Enoch Chejieh
+archived: earthly-bazel-with-rust.pdf
+---
+Enoch walks you through how to get started with a simple Rust project that
 uses Bazel to build. In particular, he shows to get get dependencies between
-several crates working, and unit tests running in Bazel.*
+several crates working, and unit tests running in Bazel.
+~~~
 
-[Rewriting the Modern Web in
-Rust](https://implfuture.dev/blog/rewriting-the-modern-web-in-rust) by Kevin
-King
-
-*Kevin shows how to set up a full-stack Rust application using
+~~~reading
+style: article
+title: Rewriting the Modern Web in Rust
+url: https://implfuture.dev/blog/rewriting-the-modern-web-in-rust
+author: Kevin King
+archived: implfuture-rewriting-the-modern-web-in-rust.pdf
+---
+Kevin shows how to set up a full-stack Rust application using
 [Axum](https://docs.rs/axum) for the backend and [Yew](https://docs.rs/yew) and
 the Tailwind CSS framework for the frontend. He shows how to use the Bazel
 build system to wrap it all together, including getting interactive rebuilds
 working. This is a good example to show how powerful Bazel is, as it involves
-building the frontend to WebAssembly and embedding it into the frontend.*
+building the frontend to WebAssembly and embedding it into the frontend.
+~~~
 
-[Building Rust Workspace with
-Bazel](https://www.tweag.io/blog/2023-07-27-building-rust-workspace-with-bazel/)
-by Ilya Polyakovskiy
-
-*Ilya shows you how you can make existing Rust Workspaces build with Bazel, by
+~~~reading
+style: article
+title: Building Rust Workspace with Bazel
+url: https://www.tweag.io/blog/2023-07-27-building-rust-workspace-with-bazel/
+author: Ilya Polyakovskiy
+archived: tweag-building-rust-workspace-with-bazel.pdf
+---
+Ilya shows you how you can make existing Rust Workspaces build with Bazel, by
 taking the `ripgrep` crate, which is a popular search tool written in Rust and
-converting it to use Bazel for building and testing.*
+converting it to use Bazel for building and testing.
+~~~
 
-[Bazel rules_rust][rules_rust]
-
-*The `rules_rust` project is the official Rust bindings for Bazel. It lets you
+~~~reading
+style: article
+title: Bazel rules_rust
+url: https://github.com/bazelbuild/rules_rust
+author: rules_rust project
+---
+The `rules_rust` project is the official Rust bindings for Bazel. It lets you
 tell Bazel about the crates you have, and how they depend on each other. If you
-want to use Bazel to build Rust code, you should use this plugin.*
+want to use Bazel to build Rust code, you should use this plugin.
+~~~
 
-[Bazel: What It Is, How It Works, and Why Developers Need It](https://hackernoon.com/bazel-what-it-is-how-it-works-and-why-developers-need-it)
+~~~reading
+style: article
+title: "Bazel: What It Is, How It Works, and Why Developers Need It"
+url: https://hackernoon.com/bazel-what-it-is-how-it-works-and-why-developers-need-it
+author: David Mavrodiev
+---
+This article is an overview of Bazel, it discusses the basics of hot it operates
+and what advantages it has for developers.
+~~~
 
-*This article is an overview of Bazel, it discusses the basics of hot it operates
-and what advantages it has for developers.*
-
-[rules_rust]: https://github.com/bazelbuild/rules_rust
-
-*The `rules_rust` module in Bazel is the official module to support building
-Rust code using Bazel.*
-
-[Birth of the Bazel](https://blog.engflow.com/2024/10/01/birth-of-the-bazel/) by Han-Wen Nienhuys
-
-*Han-Wen explains how Bazel was born as an open source build system out of
+~~~reading
+style: article
+title: Birth of the Bazel
+url: https://blog.engflow.com/2024/10/01/birth-of-the-bazel/
+author: Han-Wen Nienhuys
+archived: engflow-birth-of-the-bazel.pdf
+---
+Han-Wen explains how Bazel was born as an open source build system out of
 Google's internal Blaze build system, and why the decision was made to
-open-source it.*
+open-source it.
+~~~

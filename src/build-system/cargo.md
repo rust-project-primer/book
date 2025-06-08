@@ -359,25 +359,45 @@ that they bring that outweigh the additional complexity.
 
 ## Reading
 
-[The Cargo Book](https://doc.rust-lang.org/cargo)
+~~~reading
+style: book
+title: The Cargo Book
+url: https://doc.rust-lang.org/cargo
+author: Rust Project
+---
+Reference guide for Cargo. This book discusses all features that Cargo has and
+how they can be used.
+~~~
 
-*Reference guide for Cargo. This book discusses all features that Cargo has and
-how they can be used.*
+~~~reading
+style: book
+title: Build Scripts
+url: https://doc.rust-lang.org/cargo/reference/build-scripts.html
+author: The Cargo Book
+---
+Section in the Cargo Book that talks about using build scripts. It shows some
+examples for how they can be used and explains what can be achieved with them.
+~~~
 
-[Build
-Scripts](https://doc.rust-lang.org/cargo/reference/build-scripts.html) in The Cargo Book
+~~~reading
+style: article
+title: The Missing Parts in Cargo
+url: https://weihanglo.tw/posts/2024/the-missing-parts-in-cargo/
+author: Weihang Lo 
+archived: weihanglo-the-missing-parts-in-cargo.pdf
+---
+Weihang discusses Cargo, and what is missing from it.
+~~~
 
-*Section in the Cargo Book that talks about using build scripts. It shows some
-examples for how they can be used and explains what can be achieved with them.*
-
-[The Missing Parts in Cargo](https://weihanglo.tw/posts/2024/the-missing-parts-in-cargo/) by Weihang Lo 
-
-*Weihang discusses Cargo, and what is missing from it.*
-
-[Foreign Function Interface](https://doc.rust-lang.org/nomicon/ffi.html) in *The Rustonomicon*
-
-*This chapter in The Rustonomicon explains how to interact with foreign
-functions, that is code written in C or C++, in Rust.*
+~~~reading
+style: article
+title: Foreign Function Interface
+url: https://doc.rust-lang.org/nomicon/ffi.html
+author: The Rustonomicon
+---
+This chapter in The Rustonomicon explains how to interact with foreign
+functions, that is code written in C or C++, in Rust.
+~~~
 
 [crates.io]: https://crates.io
 [rust-targets]: http://example.com

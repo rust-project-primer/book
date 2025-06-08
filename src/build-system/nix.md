@@ -132,43 +132,94 @@ https://x86.lol/generic/2024/08/28/systemd-sysupdate.html
 
 ## Reading
 
-[Nix Reference Manual](https://nix.dev/manual/nix/latest/)
+~~~reading
+style: book
+title: Nix Reference Manual
+url: https://nix.dev/manual/nix/latest/
+author: Nix Project
+---
+Reference manual for the Nix package manager.
+~~~
 
-*Reference manual for the Nix package manager.*
-
-[Rust](https://nixos.wiki/wiki/Rust) in the NixOS Wiki
+~~~reading
+style: article
+title: Rust
+url: https://nixos.wiki/wiki/Rust
+author: NixOS Wiki
+---
+~~~
 
 [ipetkov/crane](https://github.com/ipetkov/crane) on GitHub
 
-[Building a Rust service with Nix](https://fasterthanli.me/series/building-a-rust-service-with-nix) by Amos Wenger
+~~~reading
+style: article
+title: Building a Rust service with Nix
+url: https://fasterthanli.me/series/building-a-rust-service-with-nix
+author: Amos Wenger
+---
+Amos shows how to build a Rust service in this article.
+~~~
 
-*Amos shows how to build a Rust service in this article.*
+~~~reading
+style: article
+title: "Introducing Crane: Composable and Cacheable Builds with Cargo and Nix"
+url: https://ipetkov.dev/blog/introducing-crane/
+author: Ivan Petkov
+archived: ipetkov-introducing-crane.pdf
+---
+Ivan introduces Crane in this article, a Nix library for building Cargo
+projects. He explains how it works and how to use it to build Rust projects.
+~~~
 
-[Introducing Crane: Composable and Cacheable Builds with Cargo and Nix](https://ipetkov.dev/blog/introducing-crane/) by Ivan Petkov
-
-*Ivan introduces Crane in this article, a Nix library for building Cargo
-projects. He explains how it works and how to use it to build Rust projects.*
-
-[Building Nix Flakes from Rust Workspaces](https://www.tweag.io/blog/2022-09-22-rust-nix/) by Tor Hovland
-
-*Tor explains how to package your Rust code using Nix. He explains the
+~~~reading
+style: article
+title: Building Nix Flakes from Rust Workspaces
+url: https://www.tweag.io/blog/2022-09-22-rust-nix/
+author: Tor Hovland
+archived: tweag-rust-nix.pdf
+---
+Tor explains how to package your Rust code using Nix. He explains the
 different options you have for doing so: the Nix built-in `buildRustPackage`,
 Naersk, Crane and Cargo2Nix. He shows how to build a sample application that
 consists of a Rust crate that is compiled into WebAssembly, a Rust library and
 a Rust application that depends on both of these. He also discusses some
-potential other options for building and packaging Rust code in Nix.*
+potential other options for building and packaging Rust code in Nix.
+~~~
 
-[Zero to Nix](https://zero-to-nix.com/) by Determinate Systems
-
-*This is a guide on how to get started using Nix. It teaches you how to install it,
+~~~reading
+style: article
+title: Zero to Nix
+url: https://zero-to-nix.com/)
+author: Determinate Systems
+---
+This is a guide on how to get started using Nix. It teaches you how to install it,
 how to use it for development, how to package your software with it, and how to
-manage your system with it.*
+manage your system with it.
+~~~
 
-[What is Nix?](https://serokell.io/blog/what-is-nix)
+~~~reading
+style: article
+title: What is Nix?
+url: https://serokell.io/blog/what-is-nix
+author: Alexander Bantyev
+---
+~~~
 
-https://jonathanlorimer.dev/posts/nix-thesis.html
+~~~reading
+style: article
+title: The Nix Thesis 
+url: https://jonathanlorimer.dev/posts/nix-thesis.html
+author: Jonathan Lorimer
+---
+~~~
 
-https://jvns.ca/blog/2024/01/01/some-notes-on-nixos/
+~~~reading
+style: article
+title: Some notes on NixOS
+url: https://jvns.ca/blog/2024/01/01/some-notes-on-nixos/
+author: Julia Evans
+---
+~~~
 
 https://jvns.ca/blog/2023/03/03/how-do-nix-builds-work-/
 

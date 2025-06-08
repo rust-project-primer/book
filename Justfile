@@ -1,3 +1,6 @@
+list:
+  just --list
+
 # test all rust examples
 test:
   for example in $(ls examples); do just test-example $example; done
@@ -12,9 +15,6 @@ generate:
 
 generate-example example:
   cd examples/{{example}} && just generate
-
-list:
-  just --list
 
 # build the graphic
 graphic NAME:

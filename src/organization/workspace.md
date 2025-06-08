@@ -121,37 +121,66 @@ to use.
 
 ## Reading
 
-[Chapter 7: Managing Growing Projects with Packages, Crates and Modules](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html) in *The Rust Programming Language*
-
-*This chapter in the Rust book explains the different organizational structures
+~~~reading
+style: book
+title: "Chapter 7: Managing Growing Projects with Packages, Crates and Modules"
+url: https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html
+author: The Rust Programming Language
+---
+This chapter in the Rust book explains the different organizational structures
 that Rust has, and how they can be used. It mentions the use of workspaces for
-managing related crates in a project.*
+managing related crates in a project.
+~~~
 
-[Chapter 14.3: Cargo Workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) in *The Rust Programming Language*
+~~~reading
+style: book
+title: "Chapter 14.3: Cargo Workspaces"
+url: https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html
+author: The Rust Programming Language
+---
+This section in the Rust book introduces the concept of the workspace, and
+gives some examples for how it can be used in a project.
+~~~
 
-*This section in the Rust book introduces the concept of the workspace, and
-gives some examples for how it can be used in a project.*
+~~~reading
+style: book
+title: "Chapter 3.3: Workspaces"
+url: https://doc.rust-lang.org/cargo/reference/workspaces.html
+author: The Cargo Book
+---
+This section in the Cargo book explains the workspace feature, and all of the
+configuration options that are available for it in the Crate manifest.
+~~~
 
-[Chapter 3.3: Workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html) in *The Cargo Book*
+~~~reading
+style: article
+title: An Opinionated Guide To Structuring Rust Projects
+url: https://www.justanotherdot.com/posts/an-opinionated-guide-to-structuring-rust-projects.html
+author: Ryan James Spencer
+---
+~~~
 
-*This section in the Cargo book explains the workspace feature, and all of the
-configuration options that are available for it in the Crate manifest.*
-
-[An Opinionated Guide To Structuring Rust Projects](https://www.justanotherdot.com/posts/an-opinionated-guide-to-structuring-rust-projects.html) by Ryan James Spencer
-
-*TODO*
-
-[Prefer small crates](https://rust-unofficial.github.io/patterns/patterns/structural/small-crates.html) in *Rust Design Patterns*
-
-*This article argues that Rust makes it easy to add dependencies, so there is
+~~~reading
+style: article
+title: Prefer small crates
+url: https://rust-unofficial.github.io/patterns/patterns/structural/small-crates.html
+author: Rust Design Patterns
+---
+This article argues that Rust makes it easy to add dependencies, so there is
 no downside to having more of them. Additionally, smaller crates are easier to
 understand and lead to more modular code, therefore small crate sizes should be
-encouraged.*
+encouraged.
+~~~
 
-[Brainstorm request: How to get benefits of small and large crates](https://internals.rust-lang.org/t/brainstorm-request-how-to-get-benefits-of-small-and-large-crates/10585/2)
-
-*In this discussion, the upsides and downsides of having small crates is
-discussed.*
+~~~reading
+style: article
+title: "Brainstorm request: How to get benefits of small and large crates"
+url: https://internals.rust-lang.org/t/brainstorm-request-how-to-get-benefits-of-small-and-large-crates/10585/2
+author: abc
+---
+In this discussion, the upsides and downsides of having small crates is
+discussed.
+~~~
 
 [rfc: collapse Tokio sub crates into single tokio crate](https://github.com/tokio-rs/tokio/issues/1318)
 

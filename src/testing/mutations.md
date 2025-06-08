@@ -16,7 +16,12 @@ existing tests will catch them.
 
 ## Reading
 
-[cargo-mutants book](https://mutants.rs/)
-
-*This book explains how cargo-mutants works, and how it can be deployed in Rust
-projects to find areas where bugs might be lurking.*
+~~~reading
+style: book
+title: cargo-mutants book
+url: https://mutants.rs/
+author: cargo-mutants authors
+---
+This book explains how cargo-mutants works, and how it can be deployed in Rust
+projects to find areas where bugs might be lurking.
+~~~

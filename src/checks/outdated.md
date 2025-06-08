@@ -56,11 +56,16 @@ cargo outdated
 
 ## Reading
 
-[Cleaning up and upgrading third-party crates](https://fasterthanli.me/series/updating-fasterthanli-me-for-2022/part-1) by Amos Wenger
-
-*In this article, Amos shows how to clean up and upgrade crate dependencies. He
+~~~reading
+style: article
+title: Cleaning up and upgrading third-party crates
+url: https://fasterthanli.me/series/updating-fasterthanli-me-for-2022/part-1
+author: Amos Wenger
+---
+In this article, Amos shows how to clean up and upgrade crate dependencies. He
 uses `cargo-outdated` to do this, but he mentions that it has an issue with
-path dependencies in Cargo workspaces.*
+path dependencies in Cargo workspaces.
+~~~
 
 [cargo-upgrades]: https://gitlab.com/kornelski/cargo-upgrades
 [cargo-outdated]: https://github.com/kbknapp/cargo-outdated

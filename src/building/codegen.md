@@ -40,6 +40,7 @@ style: article
 title: Cranelift code generation comes to Rust
 url: https://lwn.net/Articles/964735/
 author: Daroc Alden
+archived: lwn-rust-cranelift.pdf
 ---
 Daroc announces the availability of the Cranelift compiler backend for Rust.
 He explains the history behind the Cranelift project, having been developed for

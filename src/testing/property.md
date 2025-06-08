@@ -79,22 +79,36 @@ fn test_parser(input: &str) {
 
 # Reading
 
-[Proptest Book](https://proptest-rs.github.io/proptest/)
-
-*The official book of the proptest crate. This is a valuable read if you want
+~~~reading
+style: book
+title: Proptest Book
+url: https://proptest-rs.github.io/proptest/
+author: Proptest Project
+---
+The official book of the proptest crate. This is a valuable read if you want
 to understand how it works and how you can customize it, for example by
-implementing custom strategies for generating test inputs.*
+implementing custom strategies for generating test inputs.
+~~~
 
+~~~reading
+style: article
+title: "Complete Guide to Testing Code in Rust: Property testing"
+url: https://zerotomastery.io/blog/complete-guide-to-testing-code-in-rust/#Property-testing
+author: Jayson Lennon
+---
+~~~
 
-[Complete Guide to Testing Code in Rust: Property testing](https://zerotomastery.io/blog/complete-guide-to-testing-code-in-rust/#Property-testing)
-
-
-[Property-testing async code in Rust to build reliable distributed systems](https://www.youtube.com/watch?v=ms8zKpS_dZE) by Antonio Scandurra
-
-*In this presentation, Antonio explains how he used property testing to test
+~~~reading
+style: article
+title: Property-testing async code in Rust to build reliable distributed systems
+url: https://www.youtube.com/watch?v=ms8zKpS_dZE
+author: Antonio Scandurra
+---
+In this presentation, Antonio explains how he used property testing to test
 the Zed editor for correctness. Being a concurrent, futures-based application,
 it is important that the code is correct. By testing random permutations of the
 futures execution ordering, he was able to find bugs in edge cases that would
-otherwise have been very difficult to discover or reproduce.*
+otherwise have been very difficult to discover or reproduce.
+~~~
 
 [fuzzing]: https://en.wikipedia.org/wiki/Fuzzing

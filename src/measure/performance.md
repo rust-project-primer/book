@@ -123,6 +123,7 @@ style: article
 title: Benchmark It!
 url: https://www.justanotherdot.com/posts/benchmark-it
 author: Ryan James Spencer
+archived: justanotherdot-benchmark-it.pdf
 ---
 Ryan argues in this blog post that you should benchmark code. He said that
 users can feel performance and you should care about it. He explains how to get
@@ -167,6 +168,7 @@ style: article
 title: Making slow Rust code fast
 url: https://patrickfreed.github.io/rust/2021/10/15/making-slow-rust-code-fast.html
 author: Patrick Freed
+archived: patrickfreed-making-slow-rust-code-fast.pdf
 ---
 ~~~
 
@@ -175,6 +177,7 @@ style: article
 title: Guidelines on Benchmarking and Rust
 url: https://nickb.dev/blog/guidelines-on-benchmarking-and-rust/
 author: Nick Babcock
+archived: nickb-guidelines-on-benchmarking-and-rust.pdf
 ---
 ~~~
 

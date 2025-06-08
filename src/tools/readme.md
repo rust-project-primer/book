@@ -10,6 +10,7 @@ style: article
 title: "Rust Tooling: 8 tools that will increase your productivity"
 url: https://www.shuttle.rs/blog/2024/02/15/best-rust-tooling
 author: Joshua Mo
+archived: shuttle-best-rust-tooling.pdf
 ---
 Joshua showcases and explains some tools for Rust developers that can increase
 your productivity, and gives examples for how they can be used.

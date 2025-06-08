@@ -184,3 +184,4 @@ by Sven Kanoldt
 
 [Error Handling in Rust](https://burntsushi.net/rust-error-handling/) by Andrew Gallant
 
+https://mmapped.blog/posts/12-rust-error-handling

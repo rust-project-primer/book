@@ -181,48 +181,64 @@ tests but generally work a bit different.
 
 ## Reading
 
-[Insta - Snapshot Testing for
-Rust](https://blog.bryantluk.com/insta-rs-snapshot-testing-library/) by Bryant
-Luk
-
-*Bryant explores insta, explaining how using it helps with development speed
+~~~reading
+style: article
+title: Insta - Snapshot Testing for Rust
+url: https://blog.bryantluk.com/insta-rs-snapshot-testing-library/
+author: Bryant Luk
+---
+Bryant explores insta, explaining how using it helps with development speed
 because changes in code do not require fixing many test cases, but simply
 reviewing changes in snapshots. He highlights a feature of insta that allows
-for running tests against multiple input files.*
+for running tests against multiple input files.
+~~~
 
-[Using Insta for Rust snapshot
-testing](https://blog.logrocket.com/using-insta-rust-snapshot-testing/) by
-Agustinus Theodorus
+~~~reading
+style: article
+title: Using Insta for Rust snapshot testing
+url: https://blog.logrocket.com/using-insta-rust-snapshot-testing/
+author: Agustinus Theodorus
+---
+In this article, Agustinus explains how to use insta-rs to do snapshot testing
+in Rust. He shows how to set it up, and demonstrates using it by an example.
+~~~
 
-*In this article, Agustinus explains how to use insta-rs to do snapshot testing
-in Rust. He shows how to set it up, and demonstrates using it by an example.*
-
-[Try Snapshot Testing for Compilers and Compiler-Like
-Things](https://www.cs.cornell.edu/%7Easampson/blog/turnt.html) by Adrian
-Sampson
-
-*Adrian argues that snapshot testing is a good tool for programs that turn text
+~~~reading
+style: article
+title: Try Snapshot Testing for Compilers and Compiler-Like Things
+url: https://www.cs.cornell.edu/%7Easampson/blog/turnt.html
+author: Adrian Sampson
+---
+Adrian argues that snapshot testing is a good tool for programs that turn text
 into other text, which describes compilers and lots of compiler-like things. He
 describes turnt, a Python implementation of a snapshot-testing tool. He
 explains that using snapshot testing makes it easy to add new tests, and that
-the resulting tests can serve as a kind of documentation.*
+the resulting tests can serve as a kind of documentation.
+~~~
 
-[Building Industrial Strength Software without Unit
-Tests](https://chrispenner.ca/posts/transcript-tests) by Chris Penner
-
-*Chris describes a concept called transcript tests, which are a kind of
+~~~reading
+style: article
+title: Building Industrial Strength Software without Unit Tests
+url: https://chrispenner.ca/posts/transcript-tests
+author: Chris Penner
+---
+Chris describes a concept called transcript tests, which are a kind of
 snapshot test that focus on testing the external behaviour of a tool, commonly
 a text-based tool. He explains how these allow for writing tests without
-actually writing tests.*
+actually writing tests.
+~~~
 
-[What if writing tests was a joyful
-experience?](https://blog.janestreet.com/the-joy-of-expect-tests/) by James
-Somers
-
-*James describes a pattern that is commonly used at Jane Street: expect tests.
+~~~reading
+style: article
+title: What if writing tests was a joyful experience?
+url: https://blog.janestreet.com/the-joy-of-expect-tests/
+author: James Somers
+---
+James describes a pattern that is commonly used at Jane Street: expect tests.
 He explains how writing tests this way makes them fun, and sometimes more
 useful because all of the state is easily visible. He explains how they work,
-and how they relate to some Rust libraries such as `expect-test` and `insta`.*
+and how they relate to some Rust libraries such as `expect-test` and `insta`.
+~~~
 
 [expect-test-docs]: https://docs.rs/expect-test/latest/expect_test/
 [expect-test-repo]: https://github.com/rust-analyzer/expect-test

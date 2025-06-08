@@ -11,6 +11,7 @@ style: article
 title: Add examples to your Rust libraries
 url: http://xion.io/post/code/rust-examples.html
 author: Karol Kuczmarski
+archived: karol-rust-examples.pdf
 ---
 Karol explains the need work working examples when using an unfamiliar
 library, and how Rust supports this out-of-the-box with its support for

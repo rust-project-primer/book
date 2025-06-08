@@ -93,35 +93,56 @@ are some things these can detect that go beyond what Valgrind can detect.
 
 ## Reading
 
-[Data-driven performance optimization with Rust and
-Miri](https://medium.com/source-and-buggy/data-driven-performance-optimization-with-rust-and-miri-70cb6dde0d35)
-by Keaton Brandt
-
-*Keaton shows you how you can use Miri to get detailed profiling information
+~~~reading
+style: article
+title: Data-driven performance optimization with Rust and Miri
+url: https://medium.com/source-and-buggy/data-driven-performance-optimization-with-rust-and-miri-70cb6dde0d35
+author: Keaton Brandt
+archived: keaton-data-driven-performance-optimization-rust-miri.pdf
+---
+Keaton shows you how you can use Miri to get detailed profiling information
 from Rust programs, visualize them in Chrome developer tools and use this
-information to optimize your program's execution time.*
+information to optimize your program's execution time.
+~~~
 
-[Unsafe Rust and Miri](https://www.youtube.com/watch?v=svR0p6fSUYY) by Ralf Jung
-
-*In this talk, Ralf explains key concepts around writing unsafe code, such as
+~~~reading
+style: article
+title: Unsafe Rust and Miri
+url: https://www.youtube.com/watch?v=svR0p6fSUYY
+author: Ralf Jung
+---
+In this talk, Ralf explains key concepts around writing unsafe code, such as
 what "undefined behaviour" and "unsoundness" mean, and explains how to write
-unsafe code in a systematic way that reduces the chance of getting it wrong.*
+unsafe code in a systematic way that reduces the chance of getting it wrong.
+~~~
 
-[C++ Safety, in context](https://herbsutter.com/2024/03/11/safety-in-context/) by Herb Sutter
-
-*In this article, Herb Sutter discusses the safety issues C++ has. While this
-is not directly relevant to Rust, he does make a good point about the fact that
+~~~reading
+style: article
+title: C++ Safety, in context
+url: https://herbsutter.com/2024/03/11/safety-in-context/
+author: Herb Sutter
+---
+In this article, Herb Sutter discusses the safety issues C++ has. While this is
+not directly relevant to Rust, he does make a good point about the fact that
 there is good tooling to catch a lot of issues (sanitiziers, for example) and
 that they should be more widely used, even by projects that use languages that
-are safer by design, such as Rust. While some consider C++ to be [defective](https://yosefk.com/c++fqa/defective.html), with the right tooling a majority of issues
-can be caught.*
+are safer by design, such as Rust. While some consider C++ to be
+[defective](https://yosefk.com/c++fqa/defective.html), with the right tooling a
+majority of issues can be caught.
+~~~
 
-[The Soundness Pledge](https://raphlinus.github.io/rust/2020/01/18/soundness-pledge.html) by Ralph Levien
-
-*Ralph talks about the use of `unsafe` in Rust. Many developers consider using
+~~~reading
+style: article
+title: The Soundness Pledge
+url: https://raphlinus.github.io/rust/2020/01/18/soundness-pledge.html
+author: Ralph Levien
+archived: raphlinus-soundness-pledge.pdf
+---
+Ralph talks about the use of `unsafe` in Rust. Many developers consider using
 it to be bad style, but he argues that it is not `unsafe` that is a problem, it
 is unsound code that is a problem. As a community, we should strive to
 eliminate unsound code. This includes using tools like Miri to ensure
-soundness.*
+soundness.
+~~~
 
 [miri]: https://github.com/rust-lang/miri

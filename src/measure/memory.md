@@ -61,6 +61,7 @@ style: article
 title: Allocator Designs
 url: https://os.phil-opp.com/allocator-designs/
 author: Philipp Oppermann
+archived: phil-allocator-designs.pdf
 ---
 Philipp explains different designs of allocators, and shows you how you can
 implement them in Rust. This is good background knowledge to have if you want

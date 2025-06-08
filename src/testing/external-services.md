@@ -103,21 +103,34 @@ every invocation of a test.
 
 ## Reading
 
-[Google Testing Blog: Increase Test Fidelity By Avoiding
-Mocks](https://testing.googleblog.com/2024/02/increase-test-fidelity-by-avoiding-mocks.html)
-
-*In this post from Google's Testing on the Toilet series, the topic of how to
+~~~reading
+style: article
+title: Increase Test Fidelity By Avoiding Mocks
+url: https://testing.googleblog.com/2024/02/increase-test-fidelity-by-avoiding-mocks.html)
+author: Google Testing Blog
+---
+In this post from Google's Testing on the Toilet series, the topic of how to
 interact with external services is discussed. The preference to use real
-instances is mentioned.*
+instances is mentioned.
+~~~
 
-[Rust Mock Shootout!](https://asomers.github.io/mock_shootout/) by Alan Somers
+~~~reading
+style: article
+title: Rust Mock Shootout!
+url: https://asomers.github.io/mock_shootout/
+author: Alan Somers
+---
+In this post, Alan discusses various mocking crates in Rust.
+~~~
 
-*In this post, Alan discusses various mocking crates in Rust.*
-
-[Rust Development with
-Testcontainers](https://blog.ediri.io/rust-development-with-testcontainers)
-
+~~~reading
+style: article
+title: Rust Development with Testcontainers
+url: https://blog.ediri.io/rust-development-with-testcontainers
+author: Engin Diri
+---
 *In this blog post, Engin discussed how
 [testcontainers](https://docs.rs/testcontainers/latest/testcontainers/) can be
 used to make sure external dependencies are spawned in Docker containers for
 each unit test.*
+~~~

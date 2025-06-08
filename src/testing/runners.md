@@ -48,6 +48,7 @@ style: article
 url: https://sunshowers.io/posts/nextest-and-tokio/
 title: How (and why) nextest uses Tokio
 author: Siddharth Agarwal
+archived: sunshowers-nextest-and-tokio.pdf
 ---
 Siddharth explains in this article how (and why) nextests uses Tokio.
 Generally, using Tokio often comes with the assumption that some software

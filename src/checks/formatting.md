@@ -67,20 +67,30 @@ git_ignore = true
 
 ## Reading
 
-[How to configure rustfmt](https://rust-lang.github.io/rustfmt/)
-
-*Overview of all of the configuration options of Rustfmt. In general, you
+~~~reading
+style: article
+title: Configuring Rustfmt
+url: https://rust-lang.github.io/rustfmt/
+author: Rustfmt Project
+---
+Overview of all of the configuration options of Rustfmt. In general, you
 should not need to tweak these: the defaults that it comes with out-of-the-box
 are sane and used by the majority of Rust projects. However, if you have a good
 reason, you can look around here and configure Rustfmt. Keep in mind that using
-a non-standard Rustfmt configuration might alienate some developers.*
+a non-standard Rustfmt configuration might alienate some developers.
+~~~
 
-[The Rust Style Guide](https://doc.rust-lang.org/stable/style-guide/index.html) by The Rust Foundation
-
-*Style guide issued by the Rust foundation. This is a concise document that
+~~~reading
+style: book
+title: The Rust Style Guide
+url: https://doc.rust-lang.org/stable/style-guide/index.html
+author: The Rust Foundation
+---
+Style guide issued by the Rust foundation. This is a concise document that
 outlines good style recommendations for Rust code. Usually, reading these is
 not as important because Rustfmt will enforce these automatically, but it can
-be useful to read.*
+be useful to read.
+~~~
 
 [rustfmt-conf]: https://rust-lang.github.io/rustfmt/
 [rustfmt]: https://github.com/rust-lang/rustfmt

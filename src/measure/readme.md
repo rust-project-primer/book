@@ -69,6 +69,7 @@ style: article
 title: Performance Culture
 url: https://joeduffyblog.com/2016/04/10/performance-culture/
 author: Joe Duffy
+archived: joeduffy-performance-culture.pdf
 ---
 Joe argues that performant software is not an accident, but rather a product of
 a performance culture. He explains what this culture looks like: that the

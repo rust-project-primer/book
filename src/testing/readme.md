@@ -61,78 +61,113 @@ for using to to ensure correctness of the code.
 
 ## Reading
 
-[How to organize Rust
-tests](https://blog.logrocket.com/how-to-organize-rust-tests/) by Andre Bogus
-
-*In this article, Andre discusses how tests are best organized in Rust project.
+~~~reading
+style: article
+title: How to organize Rust tests
+url: https://blog.logrocket.com/how-to-organize-rust-tests/
+author: Andre Bogus
+---
+In this article, Andre discusses how tests are best organized in Rust project.
 He goes over the various facilities that Rust has for writing tests, from
 testing that code in the documentation compiles (doctests), to simple unit
 tests, to integration tests, and explains concepts such as snapshot-testing and
-fuzzing.*
+fuzzing.
+~~~
 
-[Writing software that's reliable enough for
-production](https://www.sciagraph.com/docs/understanding/reliable/) by Scigraph
-
-*In this article, approaches for building reliable real-world software is
+~~~reading
+style: article
+title: Writing software that's reliable enough for production
+url: https://www.sciagraph.com/docs/understanding/reliable/
+author: Scigraph
+---
+In this article, approaches for building reliable real-world software is
 outlined. The article goes into depth explaining various testing strategies
-that ensure that software stays correct over time.*
+that ensure that software stays correct over time.
+~~~
 
-[Testing Overview](https://abseil.io/resources/swe-book/html/ch11.html) in
-Software Engineering at Google
-
-*Adam discusses the philosophy behind writing software tests. He explains that
+~~~reading
+style: book
+title: Testing Overview
+url: https://abseil.io/resources/swe-book/html/ch11.html)
+author: Software Engineering at Google
+---
+Adam discusses the philosophy behind writing software tests. He explains that
 well-written tests are crucial to allow software to change. For tests to scale,
 they must be automated. Features that other components or teams rely on should
 have tests to ensure they work correctly. Testing is as much a cultural problem
 as it is a technical one, and changing the culture in an organization takes
-time.*
+time.
+~~~
 
-[Chapter 11: Writing automated
-tests](https://doc.rust-lang.org/book/ch11-00-testing.html) in *The Rust Book*
+~~~reading
+style: book
+title: "Chapter 11: Writing automated tests"
+url: https://doc.rust-lang.org/book/ch11-00-testing.html
+author: The Rust Book
+---
+This chapter of the Rust book explains Rust's facilities for writing unit
+tests, and how they can be organized in a project.
+~~~
 
-*This chapter of the Rust book explains Rust's facilities for writing unit
-tests, and how they can be organized in a project.*
-
-[How SQLite is tested](https://www.sqlite.org/testing.html) by SQLite
-
-*SQLite is the world's most deployed database. It implemented as a C library
+~~~reading
+style: article
+title: How SQLite is tested
+url: https://www.sqlite.org/testing.html
+author: SQLite
+---
+SQLite is the world's most deployed database. It implemented as a C library
 that can be embedded into applications directly, and it powers anything from
 iPhones to web servers. This article outlines the approach that the SQLite team
 uses to ensure that it stays correct over time, with 100% branch test coverage
 and millions of test cases. The SQLite team considers testing so valuable that
 while the source-code for it itself is free and open-source, the tests are only
-available commercially.*
+available commercially.
+~~~
 
-[How to Test](https://matklad.github.io/2021/05/31/how-to-test.html) by Alex
-Kladov
-
-*This article outlines Alex' philosophy when it comes to testing software. He
+~~~reading
+style: article
+title: How to Test
+url: https://matklad.github.io/2021/05/31/how-to-test.html
+author: Alex Kladov
+---
+This article outlines Alex' philosophy when it comes to testing software. He
 explains some goals and strategies to make tests easier to maintain, to make it
 easier to add tests (reduce friction), make tests fast, using snapshot/expect
 style tests for ease of maintenance, and other strategies that make testing
-more effective and more pleasant.*
+more effective and more pleasant.
+~~~
 
-[Unit and Integration
-tests](https://matklad.github.io//2022/07/04/unit-and-integration-tests.html)
-by Alex Kladov
-
-*In this article, Alex compares unit-testing and integration-testing, and
+~~~reading
+style: article
+title: Unit and Integration tests
+url: https://matklad.github.io//2022/07/04/unit-and-integration-tests.html
+author: Alex Kladov
+---
+In this article, Alex compares unit-testing and integration-testing, and
 concludes that their main difference is the amount of purity (I/O) and the
 extent of the code that they are testing. He argues that it makes sense to try
-to get tests to be as pure as possible.*
+to get tests to be as pure as possible.
+~~~
 
-[Everything you need to know about testing in
-Rust](https://www.shuttle.rs/blog/2024/03/21/testing-in-rust) by Joshua Mo
-
-*This article gives an overview of Cargo features for testing and libraries in
+~~~reading
+style: article
+title: Everything you need to know about testing in Rust
+url: https://www.shuttle.rs/blog/2024/03/21/testing-in-rust
+author: Joshua Mo
+---
+This article gives an overview of Cargo features for testing and libraries in
 the Rust ecosystem that can help in writing useful tests for software.  It goes
 through multiple concepts, such as property testing, fuzzing and snapshot
-testing and gives examples.*
+testing and gives examples.
+~~~
 
-[Advanced Rust
-testing](https://rust-exercises.com/advanced-testing/00_intro/00_welcome.html)
-by rust-exercises.com
-
-*This course teaches advanced Rust testing concepts.*
+~~~reading
+style: book
+title: Advanced Rust testing
+url: https://rust-exercises.com/advanced-testing/00_intro/00_welcome.html
+author: rust-exercises.com
+---
+This course teaches advanced Rust testing concepts.
+~~~
 
 [tdd]: https://en.wikipedia.org/wiki/Test-driven_development

@@ -65,6 +65,7 @@ style: article
 title: ARCHITECTURE.md
 url: https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html
 author: Alex Kladov
+archived: matklad-architecture-md.pdf
 ---
 Alex argues in this article for adding a file named `ARCHITECTURE.md` into
 software repositories to document the architecture of the code base. He argues
@@ -87,6 +88,7 @@ style: article
 title: More Software Projects need Defenses of Design
 url: https://buttondown.email/hillelwayne/archive/more-software-projects-need-defenses-of-design/
 author: Hillel Wayne
+archived: hillelwayne-defenses-of-design.pdf
 ---
 Hillel argues that many software projects have some design decisions that
 might look strange to an outsider. Many of these design decisions are for
@@ -101,6 +103,7 @@ style: article
 title: Software Architecture is Overrated, Clear and Simple Design is Underrated
 url: https://blog.pragmaticengineer.com/software-architecture-is-overrated/
 author: Gergely Orosz
+archived: pragmaticengineer-software-architecture-is-overrated.pdf
 ---
 Gergely explains how software is architected in modern tech companies. He
 explains the effectiveness of diagrams in communicating architecture choices,
@@ -116,6 +119,7 @@ style: article
 title: Architecture diagrams should be code
 url: https://brianmckenna.org/blog/architecture_code
 author: Brian McKenna
+archived: brianmckenna-architecture-diagrams-should-be-code.pdf
 ---
 Brian explains that different people have different views of the architecture
 of a complex system, often influenced by which part of the system they work on.
@@ -131,13 +135,16 @@ style: article
 title: Effective Design Docs
 url: https://mmapped.blog/posts/31-effective-design-docs
 author: Roman Kashitsyn
+archived: mmapped-effective-design-docs.pdf
 ---
 ```
 
 ```reading
 style: article
-title: DesignDocs
+title: Design Docs
 url: https://www.designdocs.dev/
-author: Unknown
+author: Eraser
 ---
+A curated library of our favorite 1000+ design doc examples and templates from
+40+ leading engineering organizations and open source projects.
 ```

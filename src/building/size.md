@@ -93,6 +93,7 @@ style: article
 title: Thoughts on Rust bloat
 url: https://raphlinus.github.io/rust/2019/08/21/rust-bloat.html
 author: Raph Levien
+archived: raphlinus-rust-bloat.pdf
 ---
 Article discussing binary bloat in Rust and strategies that might help.
 ```

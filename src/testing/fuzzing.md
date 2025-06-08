@@ -17,20 +17,34 @@ using property testing.
 
 ## Reading
 
-[Introduction](https://rust-fuzz.github.io/book/introduction.html) in Rust Fuzz
-Book
+~~~reading
+style: book
+title: Rust-Fuzz Book
+url: https://rust-fuzz.github.io/book/introduction.html
+author: Rust Fuzz Book
+---
+This book explains what fuzz testing is, and how it can be implemented in Rust
+using `afl.rs` and `cargo-fuzz`.
+~~~
 
-*This book explains what fuzz testing is, and how it can be implemented in Rust
-using `afl.rs` and `cargo-fuzz`.*
-
-[How to fuzz Rust code continuously](https://about.gitlab.com/blog/2020/12/03/how-to-fuzz-rust-code/) by Yevgeny Pats
-
-*Yevgeny explains why you should fuzz your Rust code, and shows you how
+~~~reading
+style: article
+title: How to fuzz Rust code continuously
+url: https://about.gitlab.com/blog/2020/12/03/how-to-fuzz-rust-code/
+author: Yevgeny Pats
+---
+Yevgeny explains why you should fuzz your Rust code, and shows you how
 to do it in GitLab. GitLab has some features that make running fuzzing
-inside GitLab CI quite convenient.*
+inside GitLab CI quite convenient.
+~~~
 
-[Fuzzing Solana](https://secret.club/2022/05/11/fuzzing-solana.html) by Addison Crump
-
-*Addison shows how Rust can be used to fuzz the Solana eBPF JIT compiler, and
-outlines the security vulnerabilities found within uses this approach.*
+~~~reading
+style: article
+title: Fuzzing Solana
+url: https://secret.club/2022/05/11/fuzzing-solana.html
+author: Addison Crump
+---
+Addison shows how Rust can be used to fuzz the Solana eBPF JIT compiler, and
+outlines the security vulnerabilities found within uses this approach.
+~~~
 

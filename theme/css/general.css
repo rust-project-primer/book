@@ -128,6 +128,8 @@ h6:target::before {
 }
 
 table {
+    /* custom */
+    width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
 }
@@ -144,6 +146,7 @@ table thead td {
     border: none;
 }
 table thead th {
+    /* custom */
     padding: 0.8rem 0.8rem;
     /*padding: 3px 20px;*/
 }

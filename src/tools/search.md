@@ -41,6 +41,7 @@ style: article
 title: "ripgrep is faster than {grep, ag, git grep, ucg, pt, sift}"
 url: https://blog.burntsushi.net/ripgrep/
 author: Andrew Gallant
+archived: burntsushi-ripgrep-is-faster-than.pdf
 ---
 Andrew, the author of ripgrep, introduces the tool in this article, explains how it
 works and compares it to some common similar tools used by developers, showing how

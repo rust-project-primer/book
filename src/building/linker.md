@@ -65,6 +65,7 @@ style: article
 title: Tips For Faster Rust Compile Times
 url: https://corrode.dev/blog/tips-for-faster-rust-compile-times/
 author: Matthias Endler
+archived: corrode-faster-rust-compile-times.pdf
 ---
 Matthias goes through and extensive list of tips for getting faster Rust
 compile times.  These include making sure your toolchain is up-to-date,

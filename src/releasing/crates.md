@@ -84,6 +84,7 @@ style: article
 title: Using the Shipyard private crate registry with Docker
 url: https://fasterthanli.me/series/building-a-rust-service-with-nix/part-7
 author: Amos Wenger
+archived: fasterthanlime-build-a-rust-service-shipyard.pdf
 ---
 Amos explains how you can publish your crates to a private crate registry
 hosted by Shipyard. He shows how you can configure Cargo to authenticate with

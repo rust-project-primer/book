@@ -140,6 +140,7 @@ style: book
 title: Documentation
 url: https://abseil.io/resources/swe-book/html/ch10.html
 author: Software Engineering at Google
+archived: swe-book-documentation.pdf
 ---
 Tom explains why documentation is needed for software projects to scale,
 because they communicate important information about how things work and why

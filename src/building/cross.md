@@ -280,6 +280,7 @@ style: article
 title: Guide to cross-compilation in Rust
 url: https://blog.logrocket.com/guide-cross-compilation-rust/
 author: Greg Stoll
+archived: logrocket-guide-cross-compilation-rust.pdf
 ---
 In this article, Greg explains how to cross-compile Rust crates using the cross project.
 ```

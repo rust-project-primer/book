@@ -34,6 +34,7 @@ style: article
 title: Fast Rust Builds
 url: https://matklad.github.io/2021/09/04/fast-rust-builds.html
 author: Alex Kladov
+archived: matklad-fast-rust-builds.pdf
 ---
 Alex explains some strategies to speed up Rust compilation. He explains that
 the Rust programming language has prioritized execution speed and programmer
@@ -47,6 +48,7 @@ style: article
 title: Stupidly effective ways to optimize Rust compile time
 url: https://xxchan.me/cs/2023/02/17/optimize-rust-comptime-en.html
 author: Tianxiao Shen
+archived: xxchan-optimize-rust-comptime.pdf
 ---
 ~~~
 
@@ -55,5 +57,6 @@ style: article
 title: What part of Rust compilation is the bottleneck?
 url: https://kobzol.github.io/rust/rustc/2024/03/15/rustc-what-takes-so-long.html
 author: Jakub Beránek 
+archived: kobzol-rustc-what-takes-so-long.pdf
 ---
 ~~~

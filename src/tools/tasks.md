@@ -112,6 +112,7 @@ style: article
 title: Just use just
 url: https://toniogela.dev/just/
 author: Tonio Gela
+archived: tonio-gela-just-use-just.pdf
 ---
 Tonio explains what Just is, and how you can use it. He demonstrates the
 features it has with some examples.
@@ -122,6 +123,7 @@ style: article
 title: Automating your Rust workflows with cargo-make
 url: https://medium.com/@sagiegurari/automating-your-rust-workflows-with-cargo-make-part-1-of-5-introduction-and-basics-b19ced7e7057
 author: Sagie Gur-Ari
+archived: sagie-gur-ari-automating-your-rust-workflows.pdf
 ---
 Sagie, the author of cargo-make, explains how you can use it to automate your
 Rust workflows and gives some examples.
@@ -132,6 +134,7 @@ style: article
 title: Make your own make
 url: https://matklad.github.io/2018/01/03/make-your-own-make.html
 author: Alex Kladov
+archived: matklad-make-your-own-make.pdf
 ---
 Alex explains the idea of using Rust itself for the automation of steps in
 this article. This idea is what `cargo-xtask` implements.

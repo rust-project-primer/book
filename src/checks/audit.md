@@ -104,29 +104,64 @@ It is a good tool to add to your CI pipeline.
 
 ## Reading
 
-[Comparing Rust Supply Chain Safety Tools](https://blog.logrocket.com/comparing-rust-supply-chain-safety-tools/) by Andre Bogus
+~~~reading
+style: article
+title: Comparing Rust Supply Chain Safety Tools
+url: https://blog.logrocket.com/comparing-rust-supply-chain-safety-tools/
+author: Andre Bogus
+---
+Blog post summarizing several Rust supply chain safety tools, including the
+ones discussed in this chapter.
+~~~
 
-*Blog post summarizing several Rust supply chain safety tools, including the ones discussed in this chapter.*
+~~~reading
+style: book
+title: "Item 25: Manage your dependency graph"
+url: https://www.lurklurk.org/effective-rust/dep-graph.html)
+author: Effective Rust
+---
+Chapter about how to manage your crate's dependency graph. Mentions some of the
+tools from this chapter.
+~~~
 
-[Item 25: Manage your dependency graph](https://www.lurklurk.org/effective-rust/dep-graph.html) in *Effective Rust*
+~~~reading
+style: book
+title: Cargo Deny Book
+url: https://embarkstudios.github.io/cargo-deny/
+author: Cargo Deny Project
+---
+Cargo Deny documentation, explains what it is and how it works. Has a very good
+overview of all of the capabilities it has and how to configure them.
+~~~
 
-*Chapter about how to manage your crate's dependency graph. Mentions some of the tools from this chapter.*
+~~~reading
+style: book
+title: Securing the Software Supply Chain
+url: https://media.defense.gov/2022/Sep/01/2003068942/-1/-1/0/ESF_SECURING_THE_SOFTWARE_SUPPLY_CHAIN_DEVELOPERS.PDF
+author: US-American Department of Defense
+---
+Document released by the US-American Department of Defense, outlining how
+software supply chains should be secured.
+~~~
 
-[Cargo Deny Book](https://embarkstudios.github.io/cargo-deny/)
+~~~reading
+style: book
+title: Cargo Vet Book
+url: https://mozilla.github.io/cargo-vet/
+author: Mozilla
+---
+Official documentation book of `cargo-vet`. Explains in detail what it does and
+how to set it up for your project.
+~~~
 
-*Cargo Deny documentation, explains what it is and how it works. Has a very good overview of all of the capabilities it has and how to configure them.*
-
-[Securing the Software Supply Chain](https://media.defense.gov/2022/Sep/01/2003068942/-1/-1/0/ESF_SECURING_THE_SOFTWARE_SUPPLY_CHAIN_DEVELOPERS.PDF)
-
-*Document released by the US-American Department of Defense, outlining how software supply chains should be secured.*
-
-[Cargo Vet Book](https://mozilla.github.io/cargo-vet/)
-
-*Official documentation book of `cargo-vet`. Explains in detail what it does and how to set it up for your project.*
-
-[Vetting the Cargo](https://lwn.net/Articles/897435/) by Jonathan Corbet
-
-*Article explaining what `cargo-vet` does and how it works.*
+~~~reading
+style: article
+title: Vetting the Cargo
+url: https://lwn.net/Articles/897435/
+author: Jonathan Corbet
+---
+Article explaining what `cargo-vet` does and how it works.
+~~~
 
 [cargo-vet]: https://github.com/mozilla/supply-chain
 [cargo-deny]: https://github.com/EmbarkStudios/cargo-deny

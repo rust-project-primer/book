@@ -1,4 +1,4 @@
-# Readme
+# Repository
 
 The purpose of a README is for people to get a very brief introduction to what
 you project does. For open-source projects it is essential, when people decide

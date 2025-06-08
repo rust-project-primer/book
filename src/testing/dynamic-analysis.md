@@ -121,6 +121,7 @@ style: article
 title: C++ Safety, in context
 url: https://herbsutter.com/2024/03/11/safety-in-context/
 author: Herb Sutter
+archived: herbsutter-safety-in-context.pdf
 ---
 In this article, Herb Sutter discusses the safety issues C++ has. While this is
 not directly relevant to Rust, he does make a good point about the fact that

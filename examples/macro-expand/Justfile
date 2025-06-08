@@ -1,0 +1,7 @@
+expand name:
+  cargo expand --bin {{name}} > output/{{name}}.rs
+
+generate:
+  just expand btreemap
+  just expand json
+  just expand serialize

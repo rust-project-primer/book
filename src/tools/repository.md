@@ -15,7 +15,9 @@ crate-level documentation strings of your Rust crate.
 
 You can install it using Cargo:
 
-    cargo install cargo-readme
+```bash
+cargo install cargo-readme
+```
 
 ## Cargo Rdme
 

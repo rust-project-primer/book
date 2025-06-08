@@ -1,3 +1,17 @@
+# test all rust examples
+test:
+  for example in $(ls examples); do just test-example $example; done
+
+# test specific rust example
+test-example example:
+  cd examples/{{example}} && cargo test
+
+# generate output data for rust examples
+generate:
+  for example in $(ls examples); do test -f "examples/$example/Justfile" && just generate-example $example; done; true
+
+generate-example example:
+  cd examples/{{example}} && just generate
 
 list:
   just --list

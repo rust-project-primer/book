@@ -45,6 +45,7 @@ style: article
 title: How to do code coverage in Rust
 url: https://blog.rng0.io/how-to-do-code-coverage-in-rust/#source-based-coverage
 author: Dotan J. Nahum 
+archived: rng0-code-coverage-rust.pdf
 ---
 Dotan explains how to measure test coverage in Rust using both Tarpaulin and
 grcov. He shows how to set it up for a project, with working GitHub Actions

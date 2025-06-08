@@ -56,11 +56,15 @@ and syntax-highlights the result.
 
 You can install it simply using Cargo:
 
-    cargo install cargo-expand
+```bash
+cargo install cargo-expand
+```
 
 To run it, simply run it as a Cargo subcommand within a Rust crate:
 
-    cargo expand
+```bash
+cargo expand
+```
 
 It has some command-line options that you can use to control the output
 options, for example turning off the syntax highlighting or selecting a
@@ -73,48 +77,21 @@ If you want to create a `Vec<T>`, Rust has a built-in macro for doing so:
 `BTreeMap<T>`. You can work around this by creating your own macro:
 
 ```rust
-macro_rules! btreemap {
-    ( $($x:expr => $y:expr),* $(,)? ) => ({
-        let mut temp_map = std::collections::BTreeMap::new();
-        $(
-            temp_map.insert($x, $y);
-        )*
-        temp_map
-    });
-}
+{{#include ../../examples/macro-expand/src/btreemap.rs:macro}}
 ```
 
 But how do you verify that this macro works correctly? Besides writing unit tests for
 it, you can write a small test program that uses this macro, for example:
 
 ```rust
-fn main() {
-    let mapping = btreemap!{
-        "joesmith" => "joe.smith@example.com",
-        "djb" => "djb@example.com",
-        "elon" => "musk@example.com"
-    };
-}
+{{#include ../../examples/macro-expand/src/btreemap.rs:main}}
 ```
 
 Finally, you can run `cargo expand` on this test program to verify that it is expanding
 to the right thing.
 
-```rust
-#![feature(prelude_import)]
-#[prelude_import]
-use std::prelude::rust_2021::*;
-#[macro_use]
-extern crate std;
-fn main() {
-    let values = {
-        let mut temp_map = ::std::collections::BTreeMap::new();
-        temp_map.insert("joesmith", "joe.smith@example.com");
-        temp_map.insert("djb", "djb@example.com");
-        temp_map.insert("elon", "musk@example.com");
-        temp_map
-    };
-}
+```rust ignore
+{{#include ../../examples/macro-expand/output/btreemap.rs}}
 ```
 
 ### Example: Inspecting the [`json!`][json] macro
@@ -123,62 +100,15 @@ The [`json!`][json] macro from `serde_json` allows you to write JSON inline in R
 and get a JSON `Value` back. It supports all of JSON syntax, and allows you to
 interpolate Rust values inside it as well.
 
-```rust
-use serde_json::json;
-use uuid::Uuid;
-
-fn main() {
-    let id = Uuid::new_v4();
-    let person = json!({
-        "name": "Jeff",
-        "age": 24,
-        "interests": ["guns", "trucks", "bbq"],
-        "nationality": "us",
-        "state": "tx",
-        "id": id.to_string()
-    });
-}
+```rust ignore
+{{#include ../../examples/macro-expand/src/json.rs}}
 ```
 
 To see what this code actually does, calling `cargo expand` on it yields the
 following:
 
-```rust
-#![feature(prelude_import)]
-#[prelude_import]
-use std::prelude::rust_2021::*;
-#[macro_use]
-extern crate std;
-use serde_json::json;
-use uuid::Uuid;
-fn main() {
-    let id = Uuid::new_v4();
-    let person = ::serde_json::Value::Object({
-        let mut object = ::serde_json::Map::new();
-        let _ = object.insert(("name").into(), ::serde_json::to_value(&"Jeff").unwrap());
-        let _ = object.insert(("age").into(), ::serde_json::to_value(&24).unwrap());
-        let _ = object
-            .insert(
-                ("interests").into(),
-                ::serde_json::Value::Array(
-                    <[_]>::into_vec(
-                        #[rustc_box]
-                        ::alloc::boxed::Box::new([
-                            ::serde_json::to_value(&"guns").unwrap(),
-                            ::serde_json::to_value(&"trucks").unwrap(),
-                            ::serde_json::to_value(&"bbq").unwrap(),
-                        ]),
-                    ),
-                ),
-            );
-        let _ = object
-            .insert(("nationality").into(), ::serde_json::to_value(&"us").unwrap());
-        let _ = object.insert(("state").into(), ::serde_json::to_value(&"tx").unwrap());
-        let _ = object
-            .insert(("id").into(), ::serde_json::to_value(&id.to_string()).unwrap());
-        object
-    });
-}
+```rust ignore
+{{#include ../../examples/macro-expand/output/json.rs}}
 ```
 
 This shows that under the hood, the macro expands to manual creations of a map,
@@ -192,71 +122,14 @@ struct to arbitrary data formats. If you have some struct which uses this
 derive macro:
 
 ```rust
-use serde::Serialize;
-use uuid::Uuid;
-
-#[derive(Serialize)]
-pub struct Person {
-    name: String,
-    id: Uuid,
-    age: u16,
-}
+{{#include ../../examples/macro-expand/src/serialize.rs}}
 ```
 
 You may want to know what the expanded code looks like. Again, running `cargo expand`
 can show you this.
 
-```rust
-#![feature(prelude_import)]
-#[prelude_import]
-use std::prelude::rust_2021::*;
-#[macro_use]
-extern crate std;
-use serde::Serialize;
-use uuid::Uuid;
-pub struct Person {
-    name: String,
-    id: Uuid,
-    age: u16,
-}
-#[doc(hidden)]
-#[allow(non_upper_case_globals, unused_attributes, unused_qualifications)]
-const _: () = {
-    #[allow(unused_extern_crates, clippy::useless_attribute)]
-    extern crate serde as _serde;
-    #[automatically_derived]
-    impl _serde::Serialize for Person {
-        fn serialize<__S>(
-            &self,
-            __serializer: __S,
-        ) -> _serde::__private::Result<__S::Ok, __S::Error>
-        where
-            __S: _serde::Serializer,
-        {
-            let mut __serde_state = _serde::Serializer::serialize_struct(
-                __serializer,
-                "Person",
-                false as usize + 1 + 1 + 1,
-            )?;
-            _serde::ser::SerializeStruct::serialize_field(
-                &mut __serde_state,
-                "name",
-                &self.name,
-            )?;
-            _serde::ser::SerializeStruct::serialize_field(
-                &mut __serde_state,
-                "id",
-                &self.id,
-            )?;
-            _serde::ser::SerializeStruct::serialize_field(
-                &mut __serde_state,
-                "age",
-                &self.age,
-            )?;
-            _serde::ser::SerializeStruct::end(__serde_state)
-        }
-    }
-};
+```rust ignore
+{{#include ../../examples/macro-expand/output/serialize.rs}}
 ```
 
 ## Reading

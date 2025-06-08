@@ -6,7 +6,7 @@ src = "src"
 title = "Rust Project Primer"
 
 [rust]
-edition = "2021"
+edition = "2024"
 
 [build]
 create-missing = false

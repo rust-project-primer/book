@@ -203,9 +203,27 @@ https://lib.rs/crates/iai-callgrind
 
 https://github.com/bheisler/iai
 
-https://www.magiroux.com/rust-jemalloc-profiling/
+~~~reading
+style: article
+title: Rust Heap Profiling with Jemalloc
+url: https://www.magiroux.com/rust-jemalloc-profiling/
+author: Marc-Andre Giroux
+archived: magiroux-rust-jemalloc-profiling.pdf
+---
+Marc-Andre explains in this article how to use jemallocator's built-in support
+for emitting heap dumps, and how to analyze them with `jeprof`. He explains how to
+control the profiling behaviour from inside Rust, and gives an anecdote about Facebook
+using this in production for many services with little overhead.
+~~~
 
-https://kobzol.github.io/rust/rustc/2023/08/18/rustc-benchmark-suite.html
+~~~reading
+style: article
+title: Exploring the Rust compiler benchmark suite
+url: https://kobzol.github.io/rust/rustc/2023/08/18/rustc-benchmark-suite.html
+author: Jakub Beránek
+archived: kobzol-rustc-benchmark-suite.pdf
+---
+~~~
 
 https://blog.anp.lol/rust/2016/07/24/profiling-rust-perf-flamegraph/
 

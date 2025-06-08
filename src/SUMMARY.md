@@ -69,7 +69,7 @@
     - [Linking](building/linker.md)
 	- [Cross-Compiling](building/cross.md)
 - [Documentation](documentation/readme.md)
-    - [Readme](documentation/repository.md)
+    - [Repository](documentation/repository.md)
     - [Diagrams](documentation/diagrams.md)
     - [Code Documentation](documentation/rustdoc.md)
     - [Book](documentation/book.md)

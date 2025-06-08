@@ -1,9 +1,3 @@
-:root { font-family: "Inter", sans-serif; }
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: "InterDisplay";
-}
-
 /* static fonts */
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 100; font-display: swap; src: url("Inter-Thin.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-style: italic; font-weight: 100; font-display: swap; src: url("Inter-ThinItalic.woff2") format("woff2"); }

@@ -32,12 +32,17 @@ after = ["links"]
 [[preprocessor.admonish.custom]]
 directive = "article"
 icon = "./assets/material-newspaper.svg"
-color = "#24ab38"
+color = "#54a701"
 
 [[preprocessor.admonish.custom]]
 directive = "book"
 icon = "./assets/material-book.svg"
-color = "#24ab38"
+color = "#05ac40"
+
+[[preprocessor.admonish.custom]]
+directive = "chapter"
+icon = "./assets/material-book.svg"
+color = "#05ac40"
 
 [output.html]
 theme = "theme"

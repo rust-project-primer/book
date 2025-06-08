@@ -165,4 +165,10 @@ how to write effective written documents, including documentation, by the same
 author.
 ```
 
-[](https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/) by Gio Genre De Asis
+~~~reading
+style: article
+title: Rust Documentation Ecosystem Review
+url: https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/
+author: Gio Genre De Asis
+---
+~~~

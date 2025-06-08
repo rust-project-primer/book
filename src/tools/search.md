@@ -10,6 +10,12 @@ any places where a specific crate is used, or finding some code patterns.
 searching code bases using [regular expressions][regex]. It is very fast,
 making use of Rust's powerful [regex][rust-regex] crate. 
 
+~~~admonish note
+If you use Visual Studio Code, then you are already using ripgrep. VS Code
+uses [ripgrep internally](https://github.com/microsoft/vscode-ripgrep) to
+implement its search functionality.
+~~~
+
 It understands git repositories and will respect `.gitignore` files, making it
 particularly suitable for search software projects. Visual Studio Code's search
 functionality [uses it behind the

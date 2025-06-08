@@ -120,43 +120,80 @@ Cargo manifests in the project that allows standard Cargo tooling to work.
 
 ## Reading
 
-[The convergence of compilers, build systems and package managers](http://blog.ezyang.com/2015/12/the-convergence-of-compilers-build-systems-and-package-managers/) by Edward Z. Yang
-
-*Edward explains how build systems, compilers and package managers seem to
+~~~reading
+style: article
+title: The convergence of compilers, build systems and package managers
+url: https://blog.ezyang.com/2015/12/the-convergence-of-compilers-build-systems-and-package-managers/
+author: Edward Z. Yang
+---
+Edward explains how build systems, compilers and package managers seem to
 converge. This is certainly the case for Rust, which has Cargo which acts as a
 build system (`cargo build`) and package manager (`cargo install`). He explains
 that this is not an isolated phenomenon, but inherent. It appears that we are
-heading towards a more integrated approach.*
+heading towards a more integrated approach.
+~~~
 
-[Build Systems and Build Philosophy](https://abseil.io/resources/swe-book/html/ch18.html) in Software Engineering at Google
-
+~~~reading
+style: book
+title: Build Systems and Build Philosophy
+url: https://abseil.io/resources/swe-book/html/ch18.html
+author: Erik Kuefler
+---
 *This chapter in the book discusses why build systems are vital in scaling
 software development, because they ensure that software can be built correctly
 on a number of different systems and architectures.*
+~~~
 
-[Multi-language build system options](https://cxx.rs/building.html)
-
+~~~reading
+style: book
+title: "Chapter 4: Multi-language build system options"
+url: https://cxx.rs/building.html
+author: cxx crate
+---
 *TODO*
+~~~
 
-[Build systems a la
-carte](https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems.pdf)
-
-*Paper which explain build systems, and how they work. It takes popular build
+~~~reading
+style: article
+title: Build systems à la carte
+url: https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems.pdf
+author: Andrey Mokhov, Neil Mitchell and Simon Peyton-Jones
+---
+Paper which explain build systems, and how they work. It takes popular build
 systems apart and explains their properties. A useful paper for anyone trying
-to achieve a deep understanding of what build systems are and how they work.*
+to achieve a deep understanding of what build systems are and how they work.
+~~~
 
-[Merkle trees and build systems](https://lwn.net/Articles/821367/)
+~~~reading
+style: article
+title: Merkle trees and build systems
+url: https://lwn.net/Articles/821367/
+author: David Röthlisberger
+---
+~~~
 
-[Amazon's Build System](https://gist.github.com/terabyte/15a2d3d407285b8b5a0a7964dd6283b0) by Carl Meyers
+~~~reading
+style: article
+title: Amazon's Build System
+url: https://gist.github.com/terabyte/15a2d3d407285b8b5a0a7964dd6283b0
+author: Carl Meyers
+achived: terabyte-amazon-build-tool.pdf
+---
+Carl explains the build system that Amazon uses.
+~~~
 
-*Carl explains the build system that Amazon uses.*
-
-[Build System Schism: The Curse of Meta Build Systems](https://yzena.com/2024/03/build-system-schism-the-curse-of-meta-build-systems/) by Gavin D. Howard
-
-*Gavin gives a summary of the evolution of build systems, into the modern ones
+~~~reading
+style: article
+title: "Build System Schism: The Curse of Meta Build Systems"
+url: https://yzena.com/2024/03/build-system-schism-the-curse-of-meta-build-systems/
+author: Gavin D. Howard
+archived: yzena-build-system-schism.pdf
+---
+Gavin gives a summary of the evolution of build systems, into the modern ones
 he calles meta build systems. He summarizes which features they have, and
 argues that Turing-completeness is a property that is required for a good build
-system.*
+system.
+~~~
 
 [cargo]: https://doc.rust-lang.org/cargo/
 [sandboxing]: https://bazel.build/docs/sandboxing

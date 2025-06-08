@@ -135,18 +135,33 @@ documentation outlined here. I will focus on:
 
 ## Reading
 
-[Documentation](https://abseil.io/resources/swe-book/html/ch10.html) in Software Engineering at Google
-
-*Tom explains why documentation is needed for software projects to scale,
+```reading
+style: book
+title: Documentation
+url: https://abseil.io/resources/swe-book/html/ch10.html
+author: Software Engineering at Google
+---
+Tom explains why documentation is needed for software projects to scale,
 because they communicate important information about how things work and why
 they work the way they do. They save valuable engineering time by giving
 engineers access to the information they need quickly, without needing to look
 into the code.  He explains what good documentation looks like, and what Google
-does to keep it accurate and of high quality.*
+does to keep it accurate and of high quality.
+```
 
-[Trees, maps and theorems](https://www.principiae.be/X0100.php)
+```reading
+style: article
+title: Trees, maps and theorems
+url: https://www.principiae.be/X0100.php
+author: Jean-luc Doumont
+---
+Trees, maps, and theorems explains how to get messages across optimally in
+written documents, oral presentations, graphical displays, and more.
 
-*Trees, maps, and theorems explains how to get messages across optimally in
-written documents, oral presentations, graphical displays, and more.*
+Also see [Effective written
+documents](https://www.principiae.be/pdfs/TM&Th-2.0-summary.pdf), a summary of
+how to write effective written documents, including documentation, by the same
+author.
+```
 
 [](https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/) by Gio Genre De Asis

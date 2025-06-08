@@ -36,12 +36,17 @@ common/src/entities.rs
 
 ## Reading
 
-[ripgrep is faster than {grep, ag, git grep, ucg, pt, sift}](https://blog.burntsushi.net/ripgrep/) by Andrew Gallant
-
-*Andrew, the author of ripgrep, introduces the tool in this article, explains how it
+```reading
+style: article
+title: "ripgrep is faster than {grep, ag, git grep, ucg, pt, sift}"
+url: https://blog.burntsushi.net/ripgrep/
+author: Andrew Gallant
+---
+Andrew, the author of ripgrep, introduces the tool in this article, explains how it
 works and compares it to some common similar tools used by developers, showing how
 it performs better and how it excels at dealing with Unicode, something other tools
-struggle with.*
+struggle with.
+```
 
 [regex]: https://en.wikipedia.org/wiki/Regular_expression
 [rust-regex]: https://github.com/rust-lang/regex

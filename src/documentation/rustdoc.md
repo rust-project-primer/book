@@ -50,10 +50,15 @@ for downstream users.
 
 ## Reading
 
-[Rustdoc Book](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html)
-
-*The rustdoc book explains what rustdoc is, how the documentation is structured
+```reading
+style: book
+title: Rustdoc Book
+url: https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html
+author: rust-lang
+---
+The rustdoc book explains what rustdoc is, how the documentation is structured
 and how you can write documentation for your Rust code using the built-in
-documentation annotations.*
+documentation annotations.
+```
 
 [docs.rs]: https://docs.rs

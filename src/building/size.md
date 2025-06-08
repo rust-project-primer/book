@@ -77,18 +77,41 @@ Rust's use of generics means there is a lot of monomorphization.
 
 ## Reading
 
-[Min Sized Rust](https://github.com/johnthagen/min-sized-rust) by John T. Hagen
-
-*This is a comprehensive guide to producing minimally sized binaries in Rust. It
+```reading
+style: article
+title: Min Sized Rust
+url: https://github.com/johnthagen/min-sized-rust)
+author: John T. Hagen
+---
+This is a comprehensive guide to producing minimally sized binaries in Rust. It
 starts with some low-hanging fruits and ends at building the standard library from
-source to be able to do link-time optimization on it.*
+source to be able to do link-time optimization on it.
+```
 
-[Thoughts on Rust bloat](https://raphlinus.github.io/rust/2019/08/21/rust-bloat.html) by Raph Levien
+```reading
+style: article
+title: Thoughts on Rust bloat
+url: https://raphlinus.github.io/rust/2019/08/21/rust-bloat.html
+author: Raph Levien
+---
+Article discussing binary bloat in Rust and strategies that might help.
+```
 
-*Article discussing binary bloat in Rust and strategies that might help.*
+```reading
+style: article
+title: Build Configuration
+url: https://nnethercote.github.io/perf-book/build-configuration.html
+author: The Rust Performance Book
+---
+```
+
+```reading
+style: book
+title: Type Sizes
+url: https://nnethercote.github.io/perf-book/type-sizes.html
+author: The Rust Performance Book
+---
+```
 
 [cargo-bloat]: https://github.com/RazrFalcon/cargo-bloat
 
-[Build Configuration](https://nnethercote.github.io/perf-book/build-configuration.html) in The Rust Performance Book
-
-[Type Sizes](https://nnethercote.github.io/perf-book/type-sizes.html) in The Rust Performance Book

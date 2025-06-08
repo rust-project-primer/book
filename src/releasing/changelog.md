@@ -12,8 +12,13 @@ for every version that is released.
 
 ## Reading
 
-[Keep A Changelog](https://keepachangelog.com/en/1.1.0/) by Olivier Lacan
-
-*Keep A Changelog is a specification for how to structure changelogs. It
+```reading
+style: article
+title: Keep A Changelog
+url: https://keepachangelog.com/en/1.1.0/
+author: Olivier Lacan
+---
+Keep A Changelog is a specification for how to structure changelogs. It
 attempts to standardize their structure and make them useful, and explains why
-they are useful.*
+they are useful.
+```

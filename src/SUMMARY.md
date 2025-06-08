@@ -72,7 +72,7 @@
     - [Readme](documentation/repository.md)
     - [Diagrams](documentation/diagrams.md)
     - [Code Documentation](documentation/rustdoc.md)
-    - [Project Documentation](documentation/book.md)
+    - [Book](documentation/book.md)
     - [Architecture](documentation/architecture.md)
     - [Design](documentation/design.md)
     - [Examples](documentation/examples.md)

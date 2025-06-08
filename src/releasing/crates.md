@@ -69,18 +69,26 @@ is a private cargo registry service. It replicates
 
 ## Reading
 
-[Chapter 14.2: Publishing to Crates.io](https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html) in The Rust Book
+```reading
+style: book
+title: "Chapter 14.2: Publishing to Crates.io"
+url: https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html
+author: The Rust Book
+---
+In this section of the Rust book, it shows you how you can write a Rust crate and
+publish it on Rust's crate index, crates.io.
+```
 
-*In this section of the Rust book, it shows you how you can write a Rust crate and
-publish it on Rust's crate index, crates.io.*
-
-[Using the Shipyard private crate registry with
-Docker](https://fasterthanli.me/series/building-a-rust-service-with-nix/part-7)
-by Amos Wenger
-
-*Amos explains how you can publish your crates to a private crate registry
+```reading
+style: article
+title: Using the Shipyard private crate registry with Docker
+url: https://fasterthanli.me/series/building-a-rust-service-with-nix/part-7
+author: Amos Wenger
+---
+Amos explains how you can publish your crates to a private crate registry
 hosted by Shipyard. He shows how you can configure Cargo to authenticate with
-Shipyard, and how to push packages to it both locally and from CI.*
+Shipyard, and how to push packages to it both locally and from CI.
+```
 
 [ripgrep]: https://github.com/BurntSushi/ripgrep
 [crates.io]: https://crates.io

@@ -1,4 +1,4 @@
-# Project Documentation
+# Book
 
 While having code-level documentation is useful for some cases, another important
 aspect is having high-level documentation which explains:
@@ -46,13 +46,23 @@ mdbook serve
 
 ## Reading
 
-[mdBook Book](https://rust-lang.github.io/mdBook/)
+```reading
+style: book
+title: mdBook Book
+url: https://rust-lang.github.io/mdBook/
+author: rust-lang
+---
+This is the official book of the mdBook project. It explains all the various
+features that mdBook has, and how to use them.
+```
 
-*This is the official book of the mdBook project. It explains all the various
-features that mdBook has, and how to use them.*
-
-[mdBook: Thirt-Party Plugins](https://github.com/rust-lang/mdBook/wiki/Third-party-plugins)
-
-*A list of third-party plugins for mdBook, contains various preprocessors and backends.*
+```reading
+style: article
+title: "mdBook: Thirt-Party Plugins"
+url: https://github.com/rust-lang/mdBook/wiki/Third-party-plugins
+author: mdBook
+---
+A list of third-party plugins for mdBook, contains various preprocessors and backends.
+```
 
 [mdbook]: https://github.com/rust-lang/mdBook

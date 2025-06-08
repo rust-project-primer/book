@@ -98,44 +98,101 @@ the runtime.
 
 ## Reading
 
-[Rust Performance Book](https://nnethercote.github.io/perf-book/index.html)
+~~~reading
+style: book
+title: Rust Performance Book
+url: https://nnethercote.github.io/perf-book/index.html
+author: Various Authors
+---
+This book summarizes various approaches of benchmarking and profiling code,
+and offers some suggestions to use to improve performance.
+~~~
 
-*This book summarizes various approaches of benchmarking and profiling code,
-and offers some suggestions to use to improve performance.*
+~~~reading
+style: book
+title: Criterion.rs Book
+url: https://bheisler.github.io/criterion.rs/book/index.html
+author: Brook Heisler
+---
+The Criterion Book explains how to get started using Criterion, and what
+features it has.
+~~~
 
-[Criterion.rs Book](https://bheisler.github.io/criterion.rs/book/index.html)
-
-*The Criterion Book explains how to get started using Criterion, and what
-features it has.*
-
-[Benchmark It!](https://www.justanotherdot.com/posts/benchmark-it) by Ryan James Spencer
-
-*Ryan argues in this blog post that you should benchmark code. He said that
+~~~reading
+style: article
+title: Benchmark It!
+url: https://www.justanotherdot.com/posts/benchmark-it
+author: Ryan James Spencer
+---
+Ryan argues in this blog post that you should benchmark code. He said that
 users can feel performance and you should care about it. He explains how to get
-started doing performance benchmarkis in Rust using criterion.*
+started doing performance benchmarkis in Rust using criterion.
+~~~
 
-[Continuous Benchmarking](https://bencher.dev/docs/explanation/continuous-benchmarking/)
+~~~reading
+style: article
+title: Continuous Benchmarking
+url: https://bencher.dev/docs/explanation/continuous-benchmarking/
+author: Bencher
+---
+This blog post from Bencher explains the concept of continuous benchmarking. It
+also talks about some myths surrounding benchmarking, for example benchmarking
+in CI.
+~~~
 
-*This blog post from Bencher explains the concept of continuous benchmarking. It also talks about some myths surrounding benchmarking, for example benchmarking in CI.*
-
-[Continuous benchmarking for rustls](https://ochagavia.nl/blog/continuous-benchmarking-for-rustls/) by Adolfo Ochagavía
-
-*Adolfo explains in this blog post how he was able to implement continuous
+~~~reading
+style: article
+title: Continuous benchmarking for rustls
+url: https://ochagavia.nl/blog/continuous-benchmarking-for-rustls/
+author: Adolfo Ochagavía
+---
+Adolfo explains in this blog post how he was able to implement continuous
 benchmarking for the [rustls][] library, and how he was able to leverage this
 to find performance regressions easily. He explains that using `cachegrind` was
 instrumental, because it is able to count CPU instructions and easily diff them
 per function for different benchmark runs, which allows for tracking down which
-function introduced a regression.*
+function introduced a regression.
+~~~
 
-[Criterion Flamegraphs](https://www.jibbow.com/posts/criterion-flamegraphs/)
+~~~reading
+style: article
+title: Criterion Flamegraphs
+url: https://andi-zimmerer.com/posts/criterion-flamegraphs.html
+author: Andi Zimmerer
+---
+~~~
 
-[Making slow Rust code fast](https://patrickfreed.github.io/rust/2021/10/15/making-slow-rust-code-fast.html) by Patrick Freed
+~~~reading
+style: article
+title: Making slow Rust code fast
+url: https://patrickfreed.github.io/rust/2021/10/15/making-slow-rust-code-fast.html
+author: Patrick Freed
+---
+~~~
 
-[Guidelines on Benchmarking and Rust](https://nickb.dev/blog/guidelines-on-benchmarking-and-rust/)
+~~~reading
+style: article
+title: Guidelines on Benchmarking and Rust
+url: https://nickb.dev/blog/guidelines-on-benchmarking-and-rust/
+author: Nick Babcock
+---
+~~~
 
-[Benchmarking and analyzing Rust performance with Criterion and iai](https://blog.lambdaclass.com/benchmarking-and-analyzing-rust-performance-with-criterion-and-iai/)
+~~~reading
+style: article
+title: Benchmarking and analyzing Rust performance with Criterion and iai
+url: https://blog.lambdaclass.com/benchmarking-and-analyzing-rust-performance-with-criterion-and-iai/
+author: Lambda Class
+---
+~~~
 
-[Benchmarking Rust code using Criterion-rs](https://engineering.deptagency.com/benchmarking-rust-code-using-criterion-rs)
+~~~reading
+style: article
+title: Benchmarking Rust code using Criterion-rs
+url: https://engineering.deptagency.com/benchmarking-rust-code-using-criterion-rs
+author: Ashwin Sundar
+---
+~~~
 
 Windtunnel CI
 

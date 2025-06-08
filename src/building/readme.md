@@ -16,22 +16,44 @@ your project, and strategies for how you might solve that.
 
 ## Reading
 
-[Tips For Faster Rust Compile Times](https://corrode.dev/blog/tips-for-faster-rust-compile-times/) by Matthias Endler
-
-*Matthias goes through and extensive list of tips for getting faster Rust
-compile times.  These include making sure your toolchain is up-to-date,
+~~~reading
+style: article
+title: Tips For Faster Rust Compile Times
+url: https://corrode.dev/blog/tips-for-faster-rust-compile-times/
+author: Matthias Endler
+---
+Matthias goes through and extensive list of tips for getting faster Rust
+compile times. These include making sure your toolchain is up-to-date,
 enabling the parallel compiler frontend, removing unused dependencies,
 debugging dependency compile times, splitting large crates into smaller ones,
-optimizing workspaces, compilation caching, and many more.*
+optimizing workspaces, compilation caching, and many more.
+~~~
 
-[Fast Rust Builds](https://matklad.github.io/2021/09/04/fast-rust-builds.html) by Alex Kladov
-
-*Alex explains some strategies to speed up Rust compilation. He explains that
+~~~reading
+style: article
+title: Fast Rust Builds
+url: https://matklad.github.io/2021/09/04/fast-rust-builds.html
+author: Alex Kladov
+---
+Alex explains some strategies to speed up Rust compilation. He explains that
 the Rust programming language has prioritized execution speed and programmer
 productivity over compilation speed. He gives recommendation for how to setup
 your CI pipeline, pruning dependencies, what code styles lead to faster
-compilation times.*
+compilation times.
+~~~
 
-[Stupidly effective ways to optimize Rust compile time](https://xxchan.me/cs/2023/02/17/optimize-rust-comptime-en.html) by Tianxiao Shen
+~~~reading
+style: article
+title: Stupidly effective ways to optimize Rust compile time
+url: https://xxchan.me/cs/2023/02/17/optimize-rust-comptime-en.html
+author: Tianxiao Shen
+---
+~~~
 
-[What part of Rust compilation is the bottleneck?](https://kobzol.github.io/rust/rustc/2024/03/15/rustc-what-takes-so-long.html)
+~~~reading
+style: article
+title: What part of Rust compilation is the bottleneck?
+url: https://kobzol.github.io/rust/rustc/2024/03/15/rustc-what-takes-so-long.html
+author: Jakub Beránek 
+---
+~~~

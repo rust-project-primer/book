@@ -264,38 +264,68 @@ The idea with it is that it acts as a replacement for Cargo.
 
 ## Reading
 
-[Platform Support](https://doc.rust-lang.org/rustc/platform-support.html) in *The rustc book*
-
-*This chapter lists all targets which are supported by the Rust toolchain, along
+```reading
+style: article
+title: Platform Support
+url: https://doc.rust-lang.org/rustc/platform-support.html
+author: The rustc book
+---
+This chapter lists all targets which are supported by the Rust toolchain, along
 with notes explaining what the targets are, and which tools are required for build
-for them. It also gives information on the level of support for each target.*
+for them. It also gives information on the level of support for each target.
+```
 
-[Guide to cross-compilation in Rust](https://blog.logrocket.com/guide-cross-compilation-rust/) by Greg Stoll
+```reading
+style: article
+title: Guide to cross-compilation in Rust
+url: https://blog.logrocket.com/guide-cross-compilation-rust/
+author: Greg Stoll
+---
+In this article, Greg explains how to cross-compile Rust crates using the cross project.
+```
 
-*In this article, Greg explains how to cross-compile Rust crates using the cross project.*
-
-[Zig makes Rust cross-compilation just work](https://actually.fyi/posts/zig-makes-rust-cross-compilation-just-work/) by Max Hollmann
-
-*Max explains how you can use Zig to simplify cross-compilation for Rust. Zig
+```reading
+style: article
+title: Zig makes Rust cross-compilation just work
+url: https://actually.fyi/posts/zig-makes-rust-cross-compilation-just-work/
+author: Max Hollmann
+---
+Max explains how you can use Zig to simplify cross-compilation for Rust. Zig
 comes with built-in support for compiling and linking for various targets
 out-of-the-box, which means you don't need to install separate toolchains for
-each target.*
+each target.
+```
 
-[LLVM](https://aosabook.org/en/v1/llvm.html) in *The Architecture of Open Source Applications (Volume 1)*
-
-*Chris explains the architecture of LLVM, and how its design choices make it
+```reading
+style: book
+title: LLVM
+url: https://aosabook.org/en/v1/llvm.html
+author: The Architecture of Open Source Applications (Volume 1)
+---
+Chris explains the architecture of LLVM, and how its design choices make it
 easy to use it as a library to build compilers, and to target a variety of
 different targets. LLVM decouples the various stages of the compiler and uses a
-serialisation format to communicate between them.*
+serialisation format to communicate between them.
+```
 
-[Cross-compilation](https://rust-lang.github.io/rustup/cross-compilation.html) in *The rustup book*
+```reading
+style: book
+title: Cross-compilation
+url: https://rust-lang.github.io/rustup/cross-compilation.html
+author: The rustup book
+---
+This chapter explains the basics for how to do cross-compilation with rustup.
+```
 
-*This chapter explains the basics for how to do cross-compilation with rustup.*
-
-[Configuration (target section)](https://doc.rust-lang.org/cargo/reference/config.html#target) in *The Cargo Book*
-
-*This chapter in the book explains how you can configure Cargo to do cross-compilation,
-by telling it which linker, rustflags and runner to use.*
+```reading
+style: book
+title: Configuration (target section)
+url: https://doc.rust-lang.org/cargo/reference/config.html#target
+author: The Cargo Book
+---
+This chapter in the book explains how you can configure Cargo to do cross-compilation,
+by telling it which linker, rustflags and runner to use.
+```
 
 [llvm]: https://llvm.org/
 [musl]: https://musl.libc.org/

@@ -46,19 +46,29 @@ of code sections.
 
 ## Reading
 
-[Heap Allocations](https://nnethercote.github.io/perf-book/heap-allocations.html) in The Rust Performance Books
+~~~reading
+style: book
+title: Heap Allocations
+url: https://nnethercote.github.io/perf-book/heap-allocations.html
+author: The Rust Performance Books
+---
+In this chapter, strategies for profiling and optimizing heap memory usage
+is discussed.
+~~~
 
-*In this chapter, strategies for profiling and optimizing heap memory usage
-is discussed.*
-
-[Allocator Designs](https://os.phil-opp.com/allocator-designs/) by Philipp Oppermann
-
-*Philipp explains different designs of allocators, and shows you how you can
+~~~reading
+style: article
+title: Allocator Designs
+url: https://os.phil-opp.com/allocator-designs/
+author: Philipp Oppermann
+---
+Philipp explains different designs of allocators, and shows you how you can
 implement them in Rust. This is good background knowledge to have if you want
 to learn more about how allocators work and how they track and manage
 allocations. It can also be useful if you want fine-grained control over how
 memory is allocated, for example if you want to use an arena-style allocator
-for a specific data structure.*
+for a specific data structure.
+~~~
 
 [size_of]: https://doc.rust-lang.org/stable/std/mem/fn.size_of.html
 [dhat]: https://valgrind.org/docs/manual/dh-manual.html

@@ -50,53 +50,94 @@ the opportunity to give feedback on proposed design decisions, to find the best
 
 ## Reading
 
-https://github.com/joelparkerhenderson/architecture-decision-record?ref=blog.pragmaticengineer.com
+```reading
+style: article
+title: Architectural Decision Record
+url: https://github.com/joelparkerhenderson/architecture-decision-record
+author: Joel Parker Henderson 
+---
+Architecture decision record (ADR) examples for software planning, IT
+leadership, and template documentation.
+```
 
-[ARCHITECTURE.md](https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html) by Alex Kladov
-
-*Alex argues in this article for adding a file named `ARCHITECTURE.md` into
+```reading
+style: article
+title: ARCHITECTURE.md
+url: https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html
+author: Alex Kladov
+---
+Alex argues in this article for adding a file named `ARCHITECTURE.md` into
 software repositories to document the architecture of the code base. He argues
 that writing good documentation is hard, and it is not often done. But some
 someone starting to work in an unfamiliar codebase, such a document with a
-bird's-eye view of the layout of the project is invaluable.*
+bird's-eye view of the layout of the project is invaluable.
+```
 
-[Architectural Decision Records](https://adr.github.io/)
+```reading
+style: article
+title: Architectural Decision Records
+url: https://adr.github.io/
+author: Various Authors
+---
+ADRs are a tool to record the reasoning behind architecture changes.
+```
 
-*ADRs are a tool to record the reasoning behind architecture changes.*
-
-[More Software Projects need Defenses of Design](https://buttondown.email/hillelwayne/archive/more-software-projects-need-defenses-of-design/) by Hillel Wayne
-
-*Hillel argues that many software projects have some design decisions that
+```reading
+style: article
+title: More Software Projects need Defenses of Design
+url: https://buttondown.email/hillelwayne/archive/more-software-projects-need-defenses-of-design/
+author: Hillel Wayne
+---
+Hillel argues that many software projects have some design decisions that
 might look strange to an outsider. Many of these design decisions are for
 backwards compatibility, performance, inspiration by similar projects or other
 reasons that are not immediately obvious. For that reason, projects should have
 a document defending their design, giving important context and rationale as to
-why the decisions were made.*
+why the decisions were made.
+```
 
-[Software Architecture is Overrated, Clear and Simple Design is Underrated](https://blog.pragmaticengineer.com/software-architecture-is-overrated/) by Gergely Orosz
-
-*Gergely explains how software is architected in modern tech companies. He
+```reading
+style: article
+title: Software Architecture is Overrated, Clear and Simple Design is Underrated
+url: https://blog.pragmaticengineer.com/software-architecture-is-overrated/
+author: Gergely Orosz
+---
+Gergely explains how software is architected in modern tech companies. He
 explains the effectiveness of diagrams in communicating architecture choices,
 without the need for formal processes such as UML diagrams. He argues having an
 informal, collaborative process to come up with architecture is better than
 having decisions be made by a software architect, because it makes it easier to
 challenge ideas, and that the most important aspect of good architecture is
-simplicity.*
+simplicity.
+```
 
-[Architecture diagrams should be code](https://brianmckenna.org/blog/architecture_code) by Brian McKenna
-
-*Brian explains that different people have different views of the architecture
+```reading
+style: article
+title: Architecture diagrams should be code
+url: https://brianmckenna.org/blog/architecture_code
+author: Brian McKenna
+---
+Brian explains that different people have different views of the architecture
 of a complex system, often influenced by which part of the system they work on.
 He argues that architecture diagrams can also quickly go out of sync with
 reality, as the system evolves. He argues for writing architecture diagrams as
 code, using the C4 model and [PlantUML](./diagrams.md#plantuml), or in his case
 a Haskell program which produces PlantUML output. That way, these diagrams can
-be kept in version control and updated as part of development.*
+be kept in version control and updated as part of development.
+```
 
-[Effective Design Docs](https://mmapped.blog/posts/31-effective-design-docs) by Roman Kashitsyn
+```reading
+style: article
+title: Effective Design Docs
+url: https://mmapped.blog/posts/31-effective-design-docs
+author: Roman Kashitsyn
+---
+```
 
-[DesignDocs](https://www.designdocs.dev/)
-
-
-
-*TODO*
+```reading
+style: article
+title: DesignDocs
+url: https://www.designdocs.dev/
+author: Unknown
+---
+```

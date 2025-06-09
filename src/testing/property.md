@@ -5,6 +5,16 @@ lot of repetition and artificial test cases. For example, if you test a simple
 piece of code which appends something to a vector, you might end up with test
 cases like this:
 
+~~~admonish note
+There is some overlap between property testing and [Fuzzing](./fuzzing.md).
+Both are testing strategies that rely on randomly generating input cases.
+Usually, the difference is that property testing focusses on testing a single
+component, whereas fuzzing tries to test a whole program. Additionally, fuzzing
+usually employs instrumentation, where it monitors at runtime which branches
+are taken and attempts to try to archieve full coverage. You can replicate some
+of that by measuring [Test Coverage](../measure/coverage.md).
+~~~
+
 ```rust
 #[test]
 fn test_append() {
@@ -77,6 +87,13 @@ fn test_parser(input: &str) {
 
 [test_strategy Crate](https://docs.rs/test-strategy/latest/test_strategy/)
 
+## QuickCheck
+
+https://github.com/BurntSushi/quickcheck
+
+## Arbitrary
+
+
 # Reading
 
 ~~~reading
@@ -110,5 +127,34 @@ it is important that the code is correct. By testing random permutations of the
 futures execution ordering, he was able to find bugs in edge cases that would
 otherwise have been very difficult to discover or reproduce.
 ~~~
+
+https://www.lpalmieri.com/posts/an-introduction-to-property-based-testing-in-rust/
+
+~~~reading
+style: article
+title: Property-Based Testing in Rust with Arbitrary
+url: https://www.greyblake.com/blog/property-based-testing-in-rust-with-arbitrary/
+author: Serhii Potapov
+---
+~~~
+
+~~~reading
+style: article
+title: Bridging fuzzzing and property testing
+url: https://blog.yoshuawuyts.com/bridging-fuzzing-and-property-testing/
+author: Yoshua Wuyts
+---
+~~~
+
+~~~reading
+style: article
+title: Property-based testing in Rust with Proptest
+url: https://tinkering.xyz/property-based-testing-with-proptest/
+author: Zach Mitchell
+---
+~~~
+
+https://blog.logrocket.com/property-based-testing-in-rust-with-proptest/
+
 
 [fuzzing]: https://en.wikipedia.org/wiki/Fuzzing

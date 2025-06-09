@@ -72,12 +72,17 @@ https://two-wrongs.com/decompose-into-larger-modules
 
 ## Reading
 
-[Prefer small crates](https://rust-unofficial.github.io/patterns/patterns/structural/small-crates.html) in *Rust Design Patterns*
-
-*This article argues that Rust makes it easy to add dependencies, so there is
+~~~reading
+style: book
+title: Prefer small crates
+url: https://rust-unofficial.github.io/patterns/patterns/structural/small-crates.html
+author: Rust Design Patterns
+---
+This article argues that Rust makes it easy to add dependencies, so there is
 no downside to having more of them. Additionally, smaller crates are easier to
 understand and lead to more modular code, therefore small crate sizes should be
-encouraged.*
+encouraged.
+~~~
 
 [Brainstorm request: How to get benefits of small and large crates](https://internals.rust-lang.org/t/brainstorm-request-how-to-get-benefits-of-small-and-large-crates/10585/2)
 
@@ -93,4 +98,3 @@ many small crates.*
 
 [Why is my Rust build so slow: splitting into more crates](https://fasterthanli.me/articles/why-is-my-rust-build-so-slow#splitting-into-more-crates)
 
-*TODO*

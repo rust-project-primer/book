@@ -171,14 +171,15 @@ author: Are We Web Yet
 List of web frameworks along with some stats on them.
 ~~~
 
-
-https://www.arewewebyet.org/
-
-
-[Web Frameworks Benchmark: Rust](https://web-frameworks-benchmark.netlify.app/result?asc=0&l=rust&order_by=language)
-
-*Compares the performance (as measured by requests-per-second) of various web
-frameworks.*
+~~~reading
+style: article
+title: "Web Frameworks Benchmark: Rust"
+url: https://web-frameworks-benchmark.netlify.app/result?asc=0&l=rust&order_by=language
+author: The Benchmarker
+---
+Compares the performance (as measured by requests-per-second) of various web
+frameworks.
+~~~
 
 ~~~reading
 style: article

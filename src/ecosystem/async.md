@@ -187,107 +187,242 @@ https://www.thecodedmessage.com/posts/async-colors/
 
 ## Reading
 
-[Why Async Rust](https://without.boats/blog/why-async-rust/) by David Lee Aronson
+~~~reading
+style: article
+title: Why Async Rust
+url: https://without.boats/blog/why-async-rust/
+author: David Lee Aronson
+---
+In this article, David explains the history of the development of async Rust.
+~~~
 
-*In this article, David explains the history of the development of async Rust.*
-
-[Sans-IO](https://www.firezone.dev/blog/sans-io)
-
-*This article expalains an approach to architecting asynchronous applications
+~~~reading
+style: article
+title: Sans-IO
+url: https://www.firezone.dev/blog/sans-io
+author: Thomas Eizinger
+---
+This article expalains an approach to architecting asynchronous applications
 that stricly separate IO code from business logic. This concept helps you
 design applications that can be easily tested, but can run with an asynchronous
 executor. While this article is written with Python in mind, the lessons are
 equally valid for Rust: good software design keeps a synchronous core (without
 I/O) and wraps it in a thin, asynchronous shell. That way, your business logic
-is decoupled from your runtime strategy.*
+is decoupled from your runtime strategy.
+~~~
 
-[\Device\Afd, Or the Deal With the Devil that makes async Rust work on
-Windows](https://notgull.net/device-afd/)
-
-*That Windows has some odd design choices and cruft is has accumulated over the
+~~~reading
+style: article
+title: "/Device/Afd, Or the Deal With the Devil that makes async Rust work on Windows"
+url: https://notgull.net/device-afd/
+author: abc
+---
+That Windows has some odd design choices and cruft is has accumulated over the
 years is not news to any developers that have had to interact with it. This
 article explains the dark magic that needs to be performed to make async work
-on Windows for Rust.*
+on Windows for Rust.
+~~~
 
-[Thread-per-core](https://without.boats/blog/thread-per-core/) by David Lee Aronson
-
+~~~reading
+style: article
+title: Thread-per-core
+url: https://without.boats/blog/thread-per-core/
+author: David Lee Aronson
+---
 Todo
+~~~
 
-[Linux AIO](https://kkourt.io/blog/2017/10-14-linux-aio.html)
+~~~reading
+style: article
+title: Linux AIO
+url: https://kkourt.io/blog/2017/10-14-linux-aio.html
+author: Kornilios Kourtis
+---
+~~~
 
-
-[Async Rust Complexity](https://v5.chriskrycho.com/journal/async-rust-complexity/) by Chris Krycho
-
-*Chris argues that one of the reasons why doing async is difficult in Rust is
+~~~reading
+style: article
+title: Async Rust Complexity
+url: https://v5.chriskrycho.com/journal/async-rust-complexity/
+author: Chris Krycho
+---
+Chris argues that one of the reasons why doing async is difficult in Rust is
 because of the sheer amount of choice. Various async runtimes and libraries
 exist, and for a beginner it is difficult to pick one without investigating all
 of the options. This is less true today, as most of the Rust community has
-centered around the Tokio ecosystem for async.*
+centered around the Tokio ecosystem for async.
+~~~
 
-[Rust Stream Visualized](https://github.com/alexpusch/rust-magic-patterns/blob/master/rust-stream-visualized/Readme.md) by Alex Pushinsky
+~~~reading
+style: article
+title: Rust Stream Visualized
+url: https://github.com/alexpusch/rust-magic-patterns/blob/master/rust-stream-visualized/Readme.md
+author: Alex Pushinsky
+---
+Visually explains how the Rust asynx stream API works, using diagrams to
+illustrate the behaviour.
+~~~
 
-*Visually explains how the Rust asynx stream API works, using diagrams to
-illustrate the behaviour.*
+~~~reading
+style: article
+title: Rust Async Bench
+url: https://github.com/jkarneges/rust-async-bench
+author: Justin Karneges
+---
+~~~
 
-[Rust Async Bench](https://github.com/jkarneges/rust-async-bench)
-
-
-
-[Async Book](https://rust-lang.github.io/async-book/)
+~~~reading
+style: book
+title: Async Book
+url: https://rust-lang.github.io/async-book/
+author: Rust Lang
+---
+~~~
 
 Stats on blocking vs async:
 
-[Async Rust can be a pleasure to work with without Send, Sync and 'static](https://emschwartz.me/async-rust-can-be-a-pleasure-to-work-with-without-send-sync-static/)
+~~~reading
+style: article
+title: "Async Rust can be a pleasure to work with without Send, Sync and 'static"
+url: https://emschwartz.me/async-rust-can-be-a-pleasure-to-work-with-without-send-sync-static/
+author: Evan Schwartz
+---
+~~~
 
-[How to deadlock a Tokio application in Rust with just a single Mutex](https://turso.tech/blog/how-to-deadlock-tokio-application-in-rust-with-just-a-single-mutex)
+~~~reading
+style: article
+title: How to deadlock a Tokio application in Rust with just a single Mutex
+url: https://turso.tech/blog/how-to-deadlock-tokio-application-in-rust-with-just-a-single-mutex
+author: Piotr Jastrzebski
+---
+~~~
 
-[Asynchronous I/O: The next billion dollar mistake?](https://yorickpeterse.com/articles/asynchronous-io-the-next-billion-dollar-mistake/)
+~~~reading
+style: article
+title: "Asynchronous I/O: The next billion dollar mistake?"
+url: https://yorickpeterse.com/articles/asynchronous-io-the-next-billion-dollar-mistake/
+author: Yorick Peterse
+---
+~~~
 
-[Measuring Context switching and memory overheads for Linux threads](https://eli.thegreenplace.net/2018/measuring-context-switching-and-memory-overheads-for-linux-threads/) by Eli Bendersky
-
-*Eli measures the overhead of using threads in Linux. While Linux threads have
+~~~reading
+style: article
+title: Measuring Context switching and memory overheads for Linux threads
+url: https://eli.thegreenplace.net/2018/measuring-context-switching-and-memory-overheads-for-linux-threads/
+author: Eli Bendersky
+---
+Eli measures the overhead of using threads in Linux. While Linux threads have
 a relatively low overhead, the requirement to do a context switch to switch
 between threads has a mimimum overhead of about 1.2 to 1.5 µs when using CPU
 core pinning, and 2.2 µs without.  This limits how many requests can be served
-when using a thread-per-request architecture.*
+when using a thread-per-request architecture.
+~~~
 
-[Confusing or misunderstood topics in systems programming: Part 0](https://pthorpe92.dev/programming/systems/common-misunderstandings) by Preston Thorpe
-
-*Preston explains processes, threads, context switches and communication
+~~~reading
+style: article
+title: "Confusing or misunderstood topics in systems programming: Part 0"
+url: https://pthorpe92.dev/programming/systems/common-misunderstandings
+author: Preston Thorpe
+---
+Preston explains processes, threads, context switches and communication
 between threads. This article provides a good background explainer to be able
-to understand how asynchronouns programming works behind the scenes.*
+to understand how asynchronouns programming works behind the scenes.
+~~~
 
-[Rust Tokio task cancellations patterns](https://cybernetist.com/2024/04/19/rust-tokio-task-cancellation-patterns/) by Milos Gajdos
+~~~reading
+style: article
+title: Rust Tokio task cancellations patterns
+url: https://cybernetist.com/2024/04/19/rust-tokio-task-cancellation-patterns/
+author: Milos Gajdos
+---
+In this article, Milos explains different patterns used in asynchronous, Tokio-powered
+Rust software to cancel tasks.
+~~~
 
-*In this article, Milos explains different patterns used in asynchronous, Tokio-powered
-Rust software to cancel tasks.*
+~~~reading
+style: article
+title: Async-Task explained
+url: https://notgull.net/async-task-explained-part1/
+author: John Nunley
+---
+John explains the internals of the `async-task` crate from the grounds up in
+this article. It gives a good background on how async works behind the scenes.
+~~~
 
-[Async-Task explained](https://notgull.net/async-task-explained-part1/) John Nunley
+~~~reading
+style: article
+title: Async Rust in Three Parts
+url: https://jacko.io/async_intro.html
+author: Jack O'Connor
+---
+~~~
 
-*John explains the internals of the `async-task` crate from the grounds up in
-this article. It gives a good background on how async works behind the scenes.*
+~~~reading
+style: article
+title: Async Rust is not safe with io_uring
+url: https://tonbo.io/blog/async-rust-is-not-safe-with-io-uring
+author: Tzu Gwo
+---
+~~~
 
-[Async Rust in Three Parts](https://jacko.io/async_intro.html) by Jack O'Connor
+~~~reading
+style: article
+title: Notes on io_uring
+url: https://without.boats/blog/io-uring/
+author: David Lee Aronson
+---
+~~~
 
-[Async Rust is not safe with io_uring](https://tonbo.io/blog/async-rust-is-not-safe-with-io-uring)
+~~~reading
+style: article
+title: Waiting for many things at once with io_uring
+url: https://mazzo.li/posts/uring-multiplex.html
+author: Francesco Mazzoli
+---
+~~~
 
-[Notes on io_uring](https://without.boats/blog/io-uring/)
+~~~reading
+style: article
+title: Threads beat async/await
+url: https://lucumr.pocoo.org/2024/11/18/threads-beat-async-await/
+author: Armin Ronacher
+---
+~~~
 
-[Waiting for many things at once with io_uring](https://mazzo.li/posts/uring-multiplex.html)
+~~~reading
+style: article
+title: Async/Await Is Real And Can Hurt You
+url: https://trouble.mataroa.blog/blog/asyncawait-is-real-and-can-hurt-you/
+author: "@trouble"
+---
+~~~
 
-[Threads beat async/await](https://lucumr.pocoo.org/2024/11/18/threads-beat-async-await/)
+~~~reading
+style: article
+title: "Async: What is blocking?"
+url: https://ryhl.io/blog/async-what-is-blocking/
+author: Kristoffer Ryhl
+---
+~~~
 
-https://trouble.mataroa.blog/blog/asyncawait-is-real-and-can-hurt-you/
-
-[Async: What is blocking?](https://ryhl.io/blog/async-what-is-blocking/)
-
-[Async Rust is about concurrency, not (just) performance](https://kobzol.github.io/rust/2025/01/15/async-rust-is-about-concurrency.html) by Jakub Beránek
-
-*Jacub argues that the primary benefit of async/await is that it lets us
+~~~reading
+style: article
+title: Async Rust is about concurrency, not (just) performance
+url: https://kobzol.github.io/rust/2025/01/15/async-rust-is-about-concurrency.html
+author: Jakub Beránek
+---
+Jacub argues that the primary benefit of async/await is that it lets us
 concisely express complex concurrency; any (potential) performance improvements
 are just a second-order effect. He suggests that we should thus judge async
 primarily based on how it simplifies our code, not how (or if) it makes the
-code faster.*
+code faster.
+~~~
 
-[Async From Scratch](https://natkr.com/tags/async-from-scratch-series/) by Teo Klestrup Röijezon
+~~~reading
+style: article
+title: Async From Scratch
+url: https://natkr.com/tags/async-from-scratch-series/
+author: Teo Klestrup Röijezon
+---
+~~~
 

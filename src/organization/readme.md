@@ -101,15 +101,31 @@ is a must-read for anyone dealing with a growing Rust project and it encodes a
 lot of wisdom that otherwise takes a long time to acquire.
 ~~~
 
-[Rust compile times](https://endler.dev/2020/rust-compile-times/) by Matthias Endler
-
-[The Dark side of inlining and monomorphization](https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/) by Nick Babcock
-
-[Delete Cargo Integration Tests](https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html) by Alex Kladov
-
+~~~reading
+style: article
+title: Rust compile times
+url: https://endler.dev/2020/rust-compile-times/
+author: Matthias Endler
 ---
+~~~
 
-[^proc]: For example, procedural macros allow for eliminating a lot of repeated
-code, for example by automatically deriving traits on structures. However, they
-need to be built and executed and thus add to the compilation time.
+~~~reading
+style: article
+title: The Dark side of inlining and monomorphization
+url: https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/
+author: Nick Babcock
+---
+~~~
+
+~~~reading
+style: article
+title: Delete Cargo Integration Tests
+url: https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html
+author: Alex Kladov
+---
+~~~
+
+[^proc]: Procedural macros allow for eliminating a lot of repeated code, for
+    example by automatically deriving traits on structures. However, they need
+    to be built and executed and thus add to the compilation time.
 [^coupling]: See [Loose Coupling](https://en.wikipedia.org/wiki/Loose_coupling) (Wikipedia).

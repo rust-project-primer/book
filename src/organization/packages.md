@@ -247,21 +247,36 @@ supports for doing so.
 
 ## Reading
 
-[Chapter 3.2.1: Cargo Targets](https://doc.rust-lang.org/cargo/reference/cargo-targets.html) in The Cargo Book
+~~~reading
+style: book
+title: "Chapter 3.2.1: Cargo Targets"
+url: https://doc.rust-lang.org/cargo/reference/cargo-targets.html
+author: The Cargo Book
+---
+In this section of the Cargo book, all of the possible targets that Cargo can build
+for a crate are defined.
+~~~
 
-*In this section of the Cargo book, all of the possible targets that Cargo can build
-for a crate are defined.*
+~~~reading
+style: book
+title: "Chapter 3.1: Specifying Dependencies"
+url: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html
+author: The Cargo Book
+---
+In this section of the book, it is explained how dependencies are specified in Cargo.
+~~~
 
-[Chapter 3.1: Specifying Dependencies](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) in The Cargo Book
-
-*In this section of the book, it is explained how dependencies are specified in Cargo.*
-
-[Default to Large Modules](https://two-wrongs.com/decompose-into-larger-modules)
-
-*In this article, Chris argues that it is best to default to large modules,
+~~~reading
+style: article
+title: Default to Large Modules
+url: https://two-wrongs.com/decompose-into-larger-modules
+author: Chris
+---
+In this article, Chris argues that it is best to default to large modules,
 because the cost of designing useful abstractions for the interaction is high,
 and it is possible to split larger modules into smaller ones later when the
-code is more stable.*
+code is more stable.
+~~~
 
 [semver]: https://semver.org/
 [crates.io]: https://crates.io/

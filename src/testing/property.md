@@ -91,7 +91,9 @@ fn test_parser(input: &str) {
 
 https://github.com/BurntSushi/quickcheck
 
-## Arbitrary
+## Arbitrary and Arbtest
+
+https://crates.io/crates/arbtest
 
 
 # Reading
@@ -128,14 +130,27 @@ futures execution ordering, he was able to find bugs in edge cases that would
 otherwise have been very difficult to discover or reproduce.
 ~~~
 
-https://www.lpalmieri.com/posts/an-introduction-to-property-based-testing-in-rust/
+~~~reading
+style: article
+title: An Introduction to Property-Based Testing in Rust
+url: https://www.lpalmieri.com/posts/an-introduction-to-property-based-testing-in-rust/
+author: Luca Palmieri
+archived: lpalmieri-an-introduction-to-property-based-testing-in-rust.pdf
+---
+An exerpt from his book, *Zero to Production in Rust*, Luca does a deep-dive
+into property testing in Rust. He shows how to test a web backend using its
+REST API using both the `proptest` crate and the `quickcheck` crate.
+~~~
 
 ~~~reading
 style: article
 title: Property-Based Testing in Rust with Arbitrary
 url: https://www.greyblake.com/blog/property-based-testing-in-rust-with-arbitrary/
 author: Serhii Potapov
+archived: greyblake-property-based-testing-in-rust-with-arbitrary.pdf
 ---
+Serhii shows how to use the `arbitrary` crate and the `arbtest` crate to
+implement property-testing in Rust.
 ~~~
 
 ~~~reading
@@ -143,7 +158,16 @@ style: article
 title: Bridging fuzzzing and property testing
 url: https://blog.yoshuawuyts.com/bridging-fuzzing-and-property-testing/
 author: Yoshua Wuyts
+archived: yoshuawuyts-bridging-fuzzing-and-property-testing.pdf
 ---
+Yoshua notices that fuzzing and property testing are fundamentally similar, in
+that they generate random test-cases for programs. He mentions the `arbitrary`
+crate, which is used for fuzzing in Rust. He explains how to use this same
+crate to generate random test-cases for property testing, and explains his
+crate to do this, called `heckcheck`. He also mentions that there is another
+crate for doing this, called `proptest-arbitrary-interop`. The advantage of
+using these crates is that they unify the library ecosystem used for fuzzing
+with that used for property testing.
 ~~~
 
 ~~~reading
@@ -151,10 +175,12 @@ style: article
 title: Property-based testing in Rust with Proptest
 url: https://tinkering.xyz/property-based-testing-with-proptest/
 author: Zach Mitchell
+archived: tinkering-property-based-testing-with-proptest.pdf
 ---
+Zack shows how to use the proptest crate to write property tests. He gives
+an example of writing a parser using the `pest` crate, shows how to implement
+custom strategies for generating arbitrary test cases, and uses them to
+test his parser.
 ~~~
-
-https://blog.logrocket.com/property-based-testing-in-rust-with-proptest/
-
 
 [fuzzing]: https://en.wikipedia.org/wiki/Fuzzing

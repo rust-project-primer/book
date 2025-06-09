@@ -426,3 +426,29 @@ author: Teo Klestrup Röijezon
 ---
 ~~~
 
+~~~reading
+style: article
+title: Tree-Structured Concurrency
+url: https://blog.yoshuawuyts.com/tree-structured-concurrency/
+author: Yoshua Wuyts
+archived: yoshuawuyts-tree-structured-concurrency.pdf
+---
+~~~
+
+~~~reading
+style: article
+title: Tasks are the wrong abstraction
+url: https://blog.yoshuawuyts.com/tasks-are-the-wrong-abstraction/
+author: Yoshua Wuyts
+archived: yoshuawuyts-tasks-are-the-wrong-abstraction.pdf
+---
+~~~
+
+~~~reading
+style: article
+title: Automatic interleaving of high-level concurrent operations
+url: https://blog.yoshuawuyts.com/automatic-interleaving-of-high-level-concurrent-operations/
+author: Yoshua Wuyts
+archived: yoshuawuyts-automatic-interleaving-of-concurrent-operations.pdf
+---
+~~~

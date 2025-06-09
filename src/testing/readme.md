@@ -62,6 +62,14 @@ for using to to ensure correctness of the code.
 ## Reading
 
 ~~~reading
+style: book
+title: "Item 30: Write more than unit tests"
+url: https://effective-rust.com/testing.html
+author: Effective Rust
+---
+~~~
+
+~~~reading
 style: article
 title: How to organize Rust tests
 url: https://blog.logrocket.com/how-to-organize-rust-tests/

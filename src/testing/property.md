@@ -11,8 +11,12 @@ Both are testing strategies that rely on randomly generating input cases.
 Usually, the difference is that property testing focusses on testing a single
 component, whereas fuzzing tries to test a whole program. Additionally, fuzzing
 usually employs instrumentation, where it monitors at runtime which branches
-are taken and attempts to try to archieve full coverage. You can replicate some
-of that by measuring [Test Coverage](../measure/coverage.md).
+are taken and attempts to try to archieve full coverage.  You can replicate
+some of that by measuring [Test Coverage](../measure/coverage.md).
+
+Usually, property tests run fast and can be part of your regular unit tests,
+while fuzzing tests are run for hours and are not part of your regular testing
+routing.
 ~~~
 
 ```rust
@@ -60,6 +64,12 @@ To use property testing, you need a framework. Two popular ones in Rust are
 [quickcheck](https://github.com/BurntSushi/quickcheck) and
 [proptest](https://docs.rs/proptest/latest/proptest/). While they are both
 good, I recommend you use the latter.
+
+What property-testing frameworks typically do is:
+
+- **Generate** arbitrary (random) test-cases for your tests, with constraints that you specify.
+- **Simplify** failing inputs to crate a small failing test-case. Also called *test case shrinking*.
+- **Record** failing test-cases, so you can replay them.
 
 ## Proptest
 

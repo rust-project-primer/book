@@ -5,6 +5,9 @@ list:
 test:
   for example in $(ls examples); do just test-example $example; done
 
+build:
+  podman run -it --rm -v $(pwd):/book:z --workdir /book alpine ash /book/scripts/build.sh
+
 # test specific rust example
 test-example example:
   cd examples/{{example}} && cargo test

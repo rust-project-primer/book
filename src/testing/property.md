@@ -1,17 +1,34 @@
 # Property Testing
 
-One common issue you will run into when writing unit tests is that there is a
-lot of repetition and artificial test cases. For example, if you test a simple
-piece of code which appends something to a vector, you might end up with test
-cases like this:
+Property testing is a testing methodology that allows you to generalize your
+unit tests by running them with randomized inputs and testing *properties* of
+the resulting state, rather than coming up with individual test cases. This
+gives you confidence that your code is *generally* correct, rather than just
+correct for the specific inputs you are testing. It is often effective at
+finding edge cases you haven't considered.
+
+<center>
+
+![Property testing flow](proptest-flow.svg)
+
+</center>
+
+What property-testing frameworks typically do is:
+
+- **Generate** arbitrary (random) test-cases for your tests, with constraints
+  that you specify.
+- **Simplify** failing inputs to crate a small failing test-case. Also called
+  *test case shrinking*.
+- **Record** failing test-cases, so you can replay them.
+
 
 ~~~admonish note
-There is some overlap between property testing and [Fuzzing](./fuzzing.md).
+There is some overlap between property testing and [fuzzing](./fuzzing.md).
 Both are testing strategies that rely on randomly generating input cases.
 Usually, the difference is that property testing focusses on testing a single
 component, whereas fuzzing tries to test a whole program. Additionally, fuzzing
 usually employs instrumentation, where it monitors at runtime which branches
-are taken and attempts to try to archieve full coverage.  You can replicate
+are taken and attempts to try to archieve full coverage. You can replicate
 some of that by measuring [Test Coverage](../measure/coverage.md).
 
 Usually, property tests run fast and can be part of your regular unit tests,
@@ -19,21 +36,56 @@ while fuzzing tests are run for hours and are not part of your regular testing
 routing.
 ~~~
 
+### Examples
+
+When you write unit tests, they allow you to prove that for some specific
+inputs, your program produces the expected output. This goes a long way to
+ensuring that your code works as you intend it to.
+
 ```rust
 #[test]
 fn test_append() {
-    assert_eq!(vec![].append(1), vec![1]);
-    assert_eq!(vec![1, 2].append(3), vec![1, 2, 3]);
-    assert_eq!(vec![0, 0, 0].append(0), vec![0, 0, 0, 0]);
+    assert_eq!(sort(vec![]), vec![]);
+    assert_eq!(sort(vec![1, 2]), vec![1, 2]);
+    assert_eq!(sort(vec![3, 1, 2]), vec![1, 2, 3]);
 }
 ```
 
-In this example, you are making sure that your append function works correctly,
-but you have actually only tested that it works for these particular cases. What
-if you have missed an edge case in your tests? Ideally, you want to be able to
-write a test case like *given any array, when you call `.append()` on it with
-a value, make sure that the resulting array is the original array with the
-value appended to it*.
+But writing tests like this does not prove that your code is correct. It just
+proves that for these particular inputs, your code produces the intended
+outputs.
+
+How can you prove that your code is correct for *all* possible inputs? Doing
+that is really only possible if you write a formal proof for the correctness
+of your program, which is generally not something that you have time for.
+
+Property testing is a testing methodology that gives you more confidence that
+your program is generally correct. What it does is it allows you to define
+a property that you are testing, and it will generate randomized testcases
+and check that your program upholds the property.
+
+
+
+For example, if we want to test a sorting algorithm, the property that we
+want to verify is that for any given input, the output is *sorted*. You
+can imagine a property test to look like this:
+
+```rust
+fn check_sorting(input: Vec<u64>) {
+    assert!(is_sorted(sort(input)));
+}
+```
+
+What the property testing framework does for you is generate the randomized
+inputs, and it runs the test you define against some number of random inputs.
+It cannot check the program exhaustively (check it against all possible
+inputs), or mechanically (use formal proofs and verify them), instead it does
+it stochastically.  What that means is that if one thousand random inputs get
+correctly sorted, you can be reasonably confident that your sorting algorithm
+works correctly.  Every time you run the tests, it will test different random
+inputs.
+
+
 
 Property-based testing allows you to express exactly that. What property-based
 testing lets you do is consume randomized inputs, such that properties of the
@@ -55,21 +107,56 @@ fn test_append(list: Vec<u8>, value: u8) {
 }
 ```
 
-In some sense, using property testing is a lot like using [fuzzing][], but it
-usually works at the function level rather than the whole program. Because you
-are testing smaller pieces of code, you can test it more thoroughly and in less
-time.
+### Action Strategy
+
+One common pattern when doing property testing is letting the property
+testing framework come up with a sequence of actions, and performing those.
+This approach lets you test more complex interactions.
+
+The way this works is that you create an enum that holds possible actions.
+These actions can be anything, for example if you are testing a data structure
+you might mimick the public interface of the data structure. If you are testing
+a REST API, this struct would mimick the API endpoints that you want to test.
+
+```rust
+pub enum Action {
+    CreateUser(Uuid),
+    DeleteUser(Uuid),
+}
+```
+
+You allow the property testing framework to generate a list of these actions,
+and then you run them.
+
+```rust
+fn test_interaction(actions: Vec<Action>) {
+    let service = Service::new();
+    for action in actions {
+        match action {
+            Action::CreateUser(uuid) => {
+                service.create_user(uuid);
+            },
+            Action::DeleteUser(uuid) => {
+                service.delete_user(uuid);
+            },
+        }
+    }
+}
+```
+
+One of the ways you can use this is with a proxy object, which tracks a subset
+of the state.
+
+### Rust Crates
+
+There are three ecosystems of property-testing frameworks that you can
+use. 
 
 To use property testing, you need a framework. Two popular ones in Rust are
 [quickcheck](https://github.com/BurntSushi/quickcheck) and
 [proptest](https://docs.rs/proptest/latest/proptest/). While they are both
 good, I recommend you use the latter.
 
-What property-testing frameworks typically do is:
-
-- **Generate** arbitrary (random) test-cases for your tests, with constraints that you specify.
-- **Simplify** failing inputs to crate a small failing test-case. Also called *test case shrinking*.
-- **Record** failing test-cases, so you can replay them.
 
 ## Proptest
 

@@ -134,7 +134,7 @@ table {
     border-collapse: collapse;
 }
 table td {
-    padding: 3px 20px;
+    padding: 0.8rem 2rem;
     border: 1px var(--table-border-color) solid;
 }
 table thead {
@@ -147,7 +147,8 @@ table thead td {
 }
 table thead th {
     /* custom */
-    padding: 0.8rem 0.8rem;
+    padding: 0.8rem 2rem;
+    text-align: left;
     /*padding: 3px 20px;*/
 }
 table thead tr {

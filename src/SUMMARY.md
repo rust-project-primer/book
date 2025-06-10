@@ -17,6 +17,7 @@
     - [Logging](ecosystem/logging.md)
     - [Error handling](ecosystem/errors.md)
     - [Serialization](ecosystem/serialization.md)
+    - [Parsing](ecosystem/parsing.md)
     - [Concurrency](ecosystem/async.md)
     - [Web Backend](ecosystem/web-backend.md)
     - [Web Frontend](ecosystem/web-frontend/readme.md)

@@ -1,15 +1,62 @@
 # Fuzzing
 
+```
+v-----------feedback from instrumentation----v
+randomized input > perform action > test for invalid behaviour
+failing > reduce input > output error
+                       > record failure
+```
+
 Fuzzing is an approach to testing code that generates random inputs for your
 code and uses instrumentation to monitor which branches are being triggered,
 with the goal of triggering all branches inside the code. In doing so, it can
 test your code very thoroughly and often times discover edge cases.
 
+~~~admonish note
+Fuzzing is a popular technique for testing parsers written in memory-unsafe
+languages. It focusses on trying to reach all branches and testing for invalid
+behaviour (stack overflows, read or write out of bounds). For this reason, it
+is often combined with sanitizers. There is even some infrastructure for
+continuously running fuzzing against popular open-source libraries, done by
+Google Project Zero.
+
+Because Rust is a memory-safe language, fuzzing is generally less important.
+Some places where you might want to use it are:
+
+- If your code makes a lot of use of `unsafe` and raw pointer access,
+- If you are trying to test the soundness of a program that interacts with
+  memory-unsafe languages (for example, bindings for a C or C++ library).
+
+Otherwise, it might make more sense for you to look into doing [Property
+testing](./property.md), which focusses more on testing individual components,
+and is more focussed on *correctness* rather than *memory safety*.
+~~~
+
 Fuzzing is a very good strategy when your code parses untrusted data. It allows
 you to have confidence that for any possible input, your program does not
-misbehave.  The downside of fuzzing is that usually, it can only detect
-crashes. When possible, it is better to test individual pieces of code
-using property testing.
+misbehave. The downside of fuzzing is that usually, it can only detect
+crashes. When possible, it is better to test individual pieces of code using
+property testing.
+
+## afl.rs
+
+afl, or *american fuzzy lop*, is one of the original fuzzing tools. It is designed
+to work very easily: it continuously launches your program, feeds random bytes
+into it and monitors which branches are taken.
+
+When your program does anything invalid, it will record the input it used as
+a failing test case, later you can attempt to reproduce the crash and try to
+figure out what caused it.
+
+In general, what is considered *invalid* is anything that causes your program
+to abort unsually, for example a NULL pointer dereference. If you compile your
+program with sanitizers, you can detect more invalid behaviours (these sanitizers
+will abort your program if it does anything they can detect):
+
+- Undefined behaviour: reading uninitialized memory
+- Memory: reading out-of-bounds, writing out-of-bounds
+
+## cargo-fuzz
 
 ## Examples
 

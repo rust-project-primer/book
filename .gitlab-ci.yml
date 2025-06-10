@@ -29,6 +29,7 @@ book:
   artifacts:
     paths:
       - book/
+    expire_in: 1 week
 
 # release book on gitlab pages
 pages:
@@ -45,5 +46,6 @@ pages:
   artifacts:
     paths:
       - public/
+    expire_in: 1 week
   only:
     - main

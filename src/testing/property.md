@@ -279,5 +279,9 @@ an example of writing a parser using the `pest` crate, shows how to implement
 custom strategies for generating arbitrary test cases, and uses them to
 test his parser.
 ~~~
+ 
+https://www.tedinski.com/2018/12/11/fuzzing-and-property-testing.html
+
+https://jo3-l.dev/posts/proptest/
 
 [fuzzing]: https://en.wikipedia.org/wiki/Fuzzing

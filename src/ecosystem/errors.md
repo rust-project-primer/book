@@ -108,7 +108,34 @@ Production applications should generally never panic, and if they do it should
 result in the default behaviour, which is the application aborting.
 ~~~
 
+### The `Result` type
+
+In general, functions in Rust are fallible use the `Result` return type to
+signify this.
+
+If you have a common error type that you use in your application, then it is
+possible to make an alias of the `Result` type that defaults to your error
+type, but allows you to override it with a different error type if needed:
+
+```rust
+type Result<T, E = MyError> = Result<T, E>;
+```
+
+When you do this, `Result<String>` will resolve to `Result<String, MyError>`.
+However, you can still write `Result<String, OtherError>` to get a specific.
+Your custom error type is only used as the default when you don't specify any
+other type.
+
 ### The `Error` trait
+
+In general, all error types in Rust implement the [`Error`][error] trait.  This
+trait allows for getting a simple textual description of an error, information
+about the source of the error.
+
+If you create custom error types, you should implement this trait on them.
+There are some common libraries that help with doing this.
+
+[error]: https://doc.rust-lang.org/stable/std/error/trait.Error.html
 
 ### Libraries for custom error types
 
@@ -146,8 +173,15 @@ appropriate. In this case, all you care about is reporting errors and metadata
 ## Thiserror
 
 The [thiserror](https://docs.rs/thiserror/latest/thiserror/) crate is a popular
-crate for defining custom errors. It helps you to implement the `Error` trait
-for your custom error types. For example:
+crate for defining custom structured errors. It helps you to implement the
+`Error` trait for your custom error types. 
+
+Imagine you have an application that uses an SQLite database to store data
+and properties. Every query to the database returns some custom error type of
+the database library. However, you want consumers of your crate to be able to
+differentiate between different error cases.
+
+For example:
 
 ```rust
 #[derive(thiserror::Error, Debug)]
@@ -179,6 +213,14 @@ fn main() -> Result<(), Error> {
     Ok(())
 }
 ```
+
+The anyhow crate also has a `Result` alias, which defaults to using its
+Error type.
+
+This library is very useful for when you are writing an application that uses
+multiple libraries, and you don't want to inspect or handle the errors
+explicitly.  Rather, you can use anyhow's Error type to pass them around and
+render them to the user.
 
 ## Eyre
 

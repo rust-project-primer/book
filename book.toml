@@ -58,6 +58,7 @@ mathjax-support = true
 "/build.html" = "/build-system/index.html"
 "/build/cargo.html" = "/build-system/cargo.html"
 "/checks/style.html" = "/checks/lints.html"
+"/checks/spelling.html" = "/checks/lints.html"
 "/examples/github.html" = "/examples.html"
 "/ecosystem/async.html" = "/ecosystem/concurrency.html"
 "/organization/crate-size.html" = "/organization/packages.html"

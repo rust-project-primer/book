@@ -139,6 +139,7 @@ style: book
 title: Securing the Software Supply Chain
 url: https://media.defense.gov/2022/Sep/01/2003068942/-1/-1/0/ESF_SECURING_THE_SOFTWARE_SUPPLY_CHAIN_DEVELOPERS.PDF
 author: US-American Department of Defense
+archived: securing-the-software-supply-chain.pdf
 ---
 Document released by the US-American Department of Defense, outlining how
 software supply chains should be secured.

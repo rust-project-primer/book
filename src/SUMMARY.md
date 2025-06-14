@@ -40,7 +40,6 @@
 - [Checks](checks/readme.md)
     - [Formatting](checks/formatting.md)
     - [Lints](checks/lints.md)
-    - [Spelling](checks/spelling.md)
     - [Semantic Versioning](checks/semver.md)
     - [Dependency Minimum Versions](checks/minimum-version.md)
     - [Unused Dependencies](checks/unused.md)

@@ -40,7 +40,7 @@ fn function_one() -> &'static str {
     "hello"
 }
 
-#[cfg(test]
+#[cfg(test)]
 mod tests {
     use super::*;
 

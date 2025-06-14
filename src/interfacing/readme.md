@@ -1,3 +1,0 @@
-# Interfacing
-
-https://blog.pnkfx.org/blog/2022/05/12/linking-rust-crates/

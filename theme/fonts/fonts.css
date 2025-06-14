@@ -97,3 +97,19 @@
         squared-characters: 6;         /* Squared characters */
     }
 }
+
+@font-face {
+    font-family: "CommitMono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("CommitMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "CommitMono";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("CommitMono-Italic.woff2") format("woff2");
+}

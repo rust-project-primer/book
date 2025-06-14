@@ -22,7 +22,7 @@ body {
 }
 
 code {
-    font-family: var(--mono-font) !important;
+    font-family: "CommitMono" !important;
     font-size: var(--code-font-size);
     direction: ltr !important;
 }
@@ -42,7 +42,7 @@ main {
 
 /* custom */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "InterDisplay";
+    font-family: "InterDisplay", sans-serif;
 }
 
 /* Don't change font size in headers. */

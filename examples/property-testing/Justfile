@@ -1,0 +1,8 @@
+
+
+generate:
+  mkdir -p output
+  cargo test --lib 2>&1 | tee output/unit_tests.txt
+  cargo test --test '*' --no-default-features 2>&1 | tee output/proptest_fail.txt 2>&1 || true
+  cat tests/tests.proptest-regressions | tee output/proptest-regressions.txt
+  cargo test --test '*' 2>&1 | tee output/proptest_ok.txt

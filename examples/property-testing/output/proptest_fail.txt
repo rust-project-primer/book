@@ -1,0 +1,316 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running tests/tests.rs (target/debug/deps/tests-de3119d97d94d83f)
+
+running 2 tests
+test output_same_contents ... FAILED
+test output_is_sorted ... ok
+
+failures:
+
+---- output_same_contents stdout ----
+proptest: FileFailurePersistence::SourceParallel set, but failed to find lib.rs or main.rs
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:19:77:
+called `Option::unwrap()` on a `None` value
+
+thread 'output_same_contents' panicked at tests/tests.rs:4:1:
+Test failed: called `Option::unwrap()` on a `None` value.
+minimal failing input: input = [
+    1152,
+    1152,
+]
+	successes: 0
+	local rejects: 0
+	global rejects: 0
+
+
+
+failures:
+    output_same_contents
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `--test tests`

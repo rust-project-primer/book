@@ -5,3 +5,7 @@ edition = "2024"
 
 [dependencies]
 proptest = "1.7.0"
+
+[features]
+default = ["fixed"]
+fixed = []

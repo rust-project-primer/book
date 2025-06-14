@@ -48,74 +48,108 @@ routing.
 
 ### Examples
 
-When you write unit tests, they allow you to prove that for some specific
-inputs, your program produces the expected output. This goes a long way to
-ensuring that your code works as you intend it to.
+Imagine that you are trying to implement a novel sorting algorithm. You've
+read the paper, and you've tried your best to follow along and implement it
+in Rust. You came up with this implementation:
 
 ```rust
-#[test]
-fn test_append() {
-    assert_eq!(sort(vec![]), vec![]);
-    assert_eq!(sort(vec![1, 2]), vec![1, 2]);
-    assert_eq!(sort(vec![3, 1, 2]), vec![1, 2, 3]);
-}
+{{#include ../../examples/property-testing/src/lib.rs:sort_broken}}
 ```
 
-But writing tests like this does not prove that your code is correct. It just
-proves that for these particular inputs, your code produces the intended
-outputs.
-
-How can you prove that your code is correct for *all* possible inputs? Doing
-that is really only possible if you write a formal proof for the correctness
-of your program, which is generally not something that you have time for.
-
-Property testing is a testing methodology that gives you more confidence that
-your program is generally correct. What it does is it allows you to define
-a property that you are testing, and it will generate randomized testcases
-and check that your program upholds the property.
-
-
-
-For example, if we want to test a sorting algorithm, the property that we
-want to verify is that for any given input, the output is *sorted*. You
-can imagine a property test to look like this:
+Now, you want to test it. You can start by writing some simple unit tests
+for it, or maybe you already have as you were implementing your algorithm
+because you used *test-driven development*.
 
 ```rust
-fn check_sorting(input: Vec<u64>) {
-    assert!(is_sorted(sort(input)));
-}
+{{#include ../../examples/property-testing/src/lib.rs:unit_test}}
 ```
 
-What the property testing framework does for you is generate the randomized
-inputs, and it runs the test you define against some number of random inputs.
-It cannot check the program exhaustively (check it against all possible
-inputs), or mechanically (use formal proofs and verify them), instead it does
-it stochastically.  What that means is that if one thousand random inputs get
-correctly sorted, you can be reasonably confident that your sorting algorithm
-works correctly.  Every time you run the tests, it will test different random
-inputs.
+Running these works:
 
+```
+{{#include ../../examples/property-testing/output/unit_tests.txt}}
+```
 
+The issue now is that these working unit tests do not prove that your algorithm
+works in general. All they do is prove that your algorithm works for these
+specific inputs. What if there is a bug in your algorithm that is only
+triggered on an edge case? Hint: there is, and we will find it.
 
-Property-based testing allows you to express exactly that. What property-based
-testing lets you do is consume randomized inputs, such that properties of the
-code you are testing hold true under *all possible* inputs, rather than just the
-couple you can come up with and hard-code.
+We can use property testing to test the algorithm for randomized inputs.  While
+with unit testing, we test specific inputs and outputs, with property testing
+we run our algorithm on unknown (random) inputs, and verify that certain
+properties hold.
 
-For example, this is how you might write a reasonable test for your code:
+In this case, the function is supposed to sort an array of numbers. Sorting
+implies two properties:
+
+- The output should be sorted. This means that for any pair of adjacent numbers,
+  the first should be lower or equal than the second.
+- The output should contain the same numbers as the input (but maybe in a
+  different order).
+
+From this, we can derive some property checking functions. For each of our two
+properties (that the output is sorted, and that the output should contain the
+same elements), we write a proptest. Notice how this works: a proptest is just
+a Rust unit test that takes a `Vec<u16>`. Proptest takes care of generating
+this for us. Also, we use `prop_assert!()`, this is not required but makes the
+proptest framework play nicer.
 
 ```rust
-fn test_append(list: Vec<u8>, value: u8) {
-    let appended = list.append(value);
-
-    // length of appended is one more than original list.
-    assert_eq!(appended.len(), list.len() + 1);
-
-    // appended consists of the original list, plus `value` at the end.
-    assert_eq!(appended[0..list.len()], &list[..]);
-    assert_eq!(appended[list.len()], value);
-}
+{{#include ../../examples/property-testing/tests/tests.rs}}
 ```
+
+When you run this, you will see that it finds a failure. Because of a bug in
+the implementation of our sorting algorithm, it does not work for all inputs.
+
+```
+{{#include ../../examples/property-testing/output/proptest_fail.txt:0:18}}
+...
+{{#include ../../examples/property-testing/output/proptest_fail.txt:297:}}
+```
+
+Helpfully, proptest records this failure. Typically, it will save the failing
+seeds into a file adjacant to the source file that contains the test. In our
+case, it saves them into `tests/tests.proptest-regressions`.
+
+```
+{{#include ../../examples/property-testing/output/proptest-regressions.txt}}
+```
+
+Can we fix this? For sure. Looking at the test, we can deduce what the issue
+is. The problem seems to be that we remove all values from the input array, but
+we only add it to the output once. So when the input array contains duplicate
+values, the output will only contain a single one. We can fix this in the code
+by counting the occurences, and adding that many to the output:
+
+```rust
+{{#include ../../examples/property-testing/src/lib.rs:sort_fixed}}
+```
+
+Finally, we can run the property test again to verify that it works now.
+
+```
+{{#include ../../examples/property-testing/output/proptest_ok.txt}}
+```
+
+This example was maybe a bit simplistic, unit testing could have also caught
+this issue. But it shows the general principle of doing property testing: you
+identify general properties that your application should uphold after certain
+actions. It works well for stateless code that has an input and an output, like
+this. But you can also use it to test state transitions, which we will explain
+next.
+
+~~~admonish warning
+Property testing is not guaranteed to find an issue, because it is randomized.
+There are some things you can do to increase the chances that proptest can find
+issues. For example, you can tweak how many iterations it performs.  You can
+also reduce the search space, for example by operating on `Vec<u8>` instead of
+`Vec<u64>`.
+
+But if proptest does catch an issue, it makes it easy to reproduce it, debug it
+and ensure that it does not occur again (regression).
+~~~
+
 
 ### Action Strategy
 

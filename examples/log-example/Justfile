@@ -1,0 +1,4 @@
+generate:
+  mkdir -p output
+  cargo build
+  RUST_LOG=debug ./target/debug/log-example 2> output/output.txt

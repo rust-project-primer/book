@@ -1,0 +1,3 @@
+[2025-06-14T13:53:08Z INFO  log_example] started doing something
+[2025-06-14T13:53:08Z DEBUG log_example] took 12.642181ms
+[2025-06-14T13:53:08Z INFO  log_example] result is 22025.36450783507

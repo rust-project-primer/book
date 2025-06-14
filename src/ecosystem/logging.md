@@ -73,33 +73,27 @@ you can look into using [OnceLock][], which is thread-safe.
 For example, you might have a function like this:
 
 ```rust
-use log::*;
-
-fn do_something() {
-    info!("Program started");
-    warn!("Important warning");
-    error!("Error happened");
-}
+{{#include ../../examples/log-example/src/lib.rs}}
 ```
 
 You can use this function after registering your logging implementation, in this
 case `env_logger`:
 
 ```rust
-fn main() {
-}
+{{#include ../../examples/log-example/src/main.rs}}
 ```
 
 When you run this, for example with `cargo run`, then you will see this output
 on the console:
 
 ```
+{{#include ../../examples/log-example/output/output.txt}}
 ```
 
 Many libraries in the Rust crate ecosystem either use `log`, or have an
 optional feature that can be turned on to enable the use of the `log` crate,
-allowing you to capture logs from them. With many logging subscribers, you can
-not only filter by log level, but also by the source, allowing you to filter out
+allowing you to capture logs from them. Many logging subscribers let you filter
+not only by log level, but also by the source. This allows you to filter out
 logs from other crates that you are not interested in seeing.
 
 ### Logging Backends

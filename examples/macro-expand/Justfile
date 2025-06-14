@@ -1,4 +1,5 @@
 expand name:
+  mkdir -p output
   cargo expand --bin {{name}} > output/{{name}}.rs
 
 generate:

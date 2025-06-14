@@ -46,7 +46,113 @@ while fuzzing tests are run for hours and are not part of your regular testing
 routing.
 ~~~
 
-### Examples
+### General Principle
+
+When you write unit tests, you know the inputs and expected outputs. When you
+use property testing, your inputs will be randomized, so you don't know ahead
+of time what they will be. What you do here is that you test *properties*
+of the output state.
+
+In general, all property tests are structured the same way: it is a test
+function that is provided with some randomized inputs of a predefined shape,
+runs some *action* on the input, and then verifies the output.
+
+<center>
+
+![Proptest flow](proptest-test.svg)
+
+</center>
+
+If you are testing a stateful system, then the initial state of the system will
+be the input, and the resulting state will be the output.
+
+For exampe: if you have an API, and you are testing the *crate user* functionality,
+then your initial API (and database) state will be the input. Then you will run
+the action (create user). The property that you will test for in the output state
+will be that the user exists.
+
+### Testing against a reference
+
+Rather than manually testing properties, you can also write property tests to
+apply some operations onto both your implementation and a reference implementation.
+For example, if you are implementing a specific data structure, you can test it
+against another data structure (that might not be as optimized as yours, but you
+know is correct).
+
+### Action Strategy
+
+One common pattern when doing property testing is letting the property
+testing framework come up with a sequence of actions, and performing those.
+This approach lets you test more complex interactions.
+
+The way this works is that you create an enum that holds possible actions.
+These actions can be anything, for example if you are testing a data structure
+you might mimick the public interface of the data structure. If you are testing
+a REST API, this struct would mimick the API endpoints that you want to test.
+
+```rust
+pub enum Action {
+    CreateUser(Uuid),
+    DeleteUser(Uuid),
+}
+```
+
+You allow the property testing framework to generate a list of these actions,
+and then you run them.
+
+```rust
+fn test_interaction(actions: Vec<Action>) {
+    let service = Service::new();
+    for action in actions {
+        match action {
+            Action::CreateUser(uuid) => {
+                service.user_create(uuid);
+                assert!(service.user_exists(uuid));
+            },
+            Action::DeleteUser(uuid) => {
+                service.user_delete(uuid);
+                assert!(!service.user_exists(uuid));
+            },
+        }
+    }
+}
+```
+
+One of the ways you can use this is with a proxy object, which tracks a subset
+of the state.
+
+### Rust Crates
+
+There are three ecosystems of property-testing frameworks that you can
+use. 
+
+To use property testing, you need a framework. Two popular ones in Rust are
+[quickcheck](https://github.com/BurntSushi/quickcheck) and
+[proptest](https://docs.rs/proptest/latest/proptest/). While they are both
+good, I recommend you use the latter.
+
+
+## Proptest
+
+Proptest is a framework that makes it easy to set up property-based testing in
+Rust. It lets you generate randomized inputs for your property-based tests.
+When it hits a failure, it attempts to reduce the input to a minimal example.
+It records failing test inputs such that they will be retried.
+
+If you use `proptest`, I recommend you to use it with the `test-strategy` crate,
+which just contains some macros that make it simpler to set it up and use it
+to test async code, for example.
+
+An example proptest, using the `test-strategy` crate looks like this:
+
+```rust
+#[proptest]
+fn test_parser(input: &str) {
+    let ast = parse(input);
+}
+```
+
+### Example
 
 Imagine that you are trying to implement a novel sorting algorithm. You've
 read the paper, and you've tried your best to follow along and implement it
@@ -151,86 +257,22 @@ and ensure that it does not occur again (regression).
 ~~~
 
 
-### Action Strategy
-
-One common pattern when doing property testing is letting the property
-testing framework come up with a sequence of actions, and performing those.
-This approach lets you test more complex interactions.
-
-The way this works is that you create an enum that holds possible actions.
-These actions can be anything, for example if you are testing a data structure
-you might mimick the public interface of the data structure. If you are testing
-a REST API, this struct would mimick the API endpoints that you want to test.
-
-```rust
-pub enum Action {
-    CreateUser(Uuid),
-    DeleteUser(Uuid),
-}
-```
-
-You allow the property testing framework to generate a list of these actions,
-and then you run them.
-
-```rust
-fn test_interaction(actions: Vec<Action>) {
-    let service = Service::new();
-    for action in actions {
-        match action {
-            Action::CreateUser(uuid) => {
-                service.create_user(uuid);
-            },
-            Action::DeleteUser(uuid) => {
-                service.delete_user(uuid);
-            },
-        }
-    }
-}
-```
-
-One of the ways you can use this is with a proxy object, which tracks a subset
-of the state.
-
-### Rust Crates
-
-There are three ecosystems of property-testing frameworks that you can
-use. 
-
-To use property testing, you need a framework. Two popular ones in Rust are
-[quickcheck](https://github.com/BurntSushi/quickcheck) and
-[proptest](https://docs.rs/proptest/latest/proptest/). While they are both
-good, I recommend you use the latter.
-
-
-## Proptest
-
-Proptest is a framework that makes it easy to set up property-based testing in
-Rust. It lets you generate randomized inputs for your property-based tests.
-When it hits a failure, it attempts to reduce the input to a minimal example.
-It records failing test inputs such that they will be retried.
-
-If you use `proptest`, I recommend you to use it with the `test-strategy` crate,
-which just contains some macros that make it simpler to set it up and use it
-to test async code, for example.
-
-An example proptest, using the `test-strategy` crate looks like this:
-
-```rust
-#[proptest]
-fn test_parser(input: &str) {
-    let ast = parse(input);
-}
-```
-
-## Example
-
 ## Test-Strategy
 
-[test_strategy Crate](https://docs.rs/test-strategy/latest/test_strategy/)
+The [test_strategy](https://docs.rs/test-strategy/latest/test_strategy/) is
+a supplementary crate for proptest. It has three useful features:
+
+- It allows you to write proptests more easily with an attribute macro
+- It allows you to write proptests that are async (with support for `tokio` and
+  `async-std` executors)
+- It allows you derive an `Arbitrary` implementation for your custom types,
+  making it easier to use them in property tests.
 
 ## QuickCheck
 
-https://github.com/BurntSushi/quickcheck
+[QuickCheck](https://github.com/BurntSushi/quickcheck) is another property
+testing crate, named after the similarly named Haskell
+[QuickCheck](https://hackage.haskell.org/package/QuickCheck) package.
 
 ## Arbitrary and Arbtest
 

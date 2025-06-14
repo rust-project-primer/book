@@ -15,6 +15,7 @@
     - [GitHub Actions](ci/github.md)
 - [Ecosystem](ecosystem.md)
     - [Logging](ecosystem/logging.md)
+    - [Metrics](ecosystem/metrics.md)
     - [Error handling](ecosystem/errors.md)
     - [Serialization](ecosystem/serialization.md)
     - [Parsing](ecosystem/parsing.md)

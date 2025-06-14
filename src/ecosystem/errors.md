@@ -17,10 +17,7 @@ returns a `Result<T, E>`, and you have to either handle the error (with a
 ~~~admonish note
 In some ways, this is only partially true. Rust does have a kind of *exception*,
 through the `panic!()` and `.unwrap()` mechanism. However, the difference is
-that these are generally only used for *unrecoverable* errors. It is possible
-to catch these with [`catch_unwind()`](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html),
-but this is not recommended, has a performance penalty and does not work across
-an FFI boundary.
+that these are generally only used for *unrecoverable* errors. 
 ~~~
 
 Part of the reason that doing this is ergonomic in Rust is because Rust has
@@ -95,6 +92,22 @@ std::panic::catch_unwind(|| {
 });
 ```
 
+~~~admonish warning
+While it is possible to catch panics with
+[`catch_unwind()`](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html),
+but this is not recommended, has a performance penalty and does not work across
+an FFI boundary. Panics are considered *unrecoverable* errors, and catching them
+only works on a best-effort basis, on supported platforms.
+
+Catching panics can be useful for development. For example, when you implement
+a backend with an API, it can be useful to use `todo!()` statements in the code
+and catch panics in your request handler, so that your backend does not
+terminate when you hit something that isn't implemented yet.
+
+Production applications should generally never panic, and if they do it should
+result in the default behaviour, which is the application aborting.
+~~~
+
 ### The `Error` trait
 
 ### Libraries for custom error types
@@ -146,6 +159,12 @@ pub enum MyError {
 }
 ```
 
+The crate is specifically useful for implementing your own structured error
+types, or for composing multiple existing error types into a wrapper enum.
+
+By writing wrapper enums, you are also able to *refine* errors, for example
+classifying errors you receive from an underlying database.
+
 ## Anyhow
 
 The [anyhow](https://docs.rs/anyhow/latest/anyhow/) crate gives you the
@@ -176,7 +195,13 @@ style: article
 title: The definitive guide to Rust error handling
 url: https://www.howtocodeit.com/articles/the-definitive-guide-to-rust-error-handling
 author: Angus Morrison
+archived: howtocodeit-definitive-guide-to-error-handling.pdf
 ---
+Angus walks through the basics of error handling in Rust. He explains the
+`Error` trait, and when to use boxed versions of it to pass error around. He
+shows how it can be downcast into concrete error types, and how anyhow's `Error`
+type can be used instead. He explains structured error handling by implementing
+custom types.
 ~~~
 
 ~~~reading

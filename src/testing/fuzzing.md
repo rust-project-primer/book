@@ -12,6 +12,11 @@ code and uses instrumentation to monitor which branches are being triggered,
 with the goal of triggering all branches inside the code. In doing so, it can
 test your code very thoroughly and often times discover edge cases.
 
+Fuzzing is usually an effective technique for testing parsers. Fuzzing
+implementations are usually able to use valid, working inputs as a starting
+point and randomly mutate them to try to find inputs that either crash the
+program, or lead to some kind of invalid behaviour.
+
 ~~~admonish note
 Fuzzing is a popular technique for testing parsers written in memory-unsafe
 languages. It focusses on trying to reach all branches and testing for invalid

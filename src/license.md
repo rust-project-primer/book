@@ -1,5 +1,11 @@
 # Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 
+~~~admonish info
+This license applies to the book content, that is to say the text, diagrams
+and code examples. Other parts, including the fonts used by this book, the
+articles referenced and archived, are covered by their respective licenses.
+~~~
+
 Creative Commons Corporation (“Creative Commons”) is not a law firm and does not provide legal services or legal advice. Distribution of Creative Commons public licenses does not create a lawyer-client or other relationship. Creative Commons makes its licenses and related information available on an “as-is” basis. Creative Commons gives no warranties regarding its licenses, any material licensed under their terms and conditions, or any related information. Creative Commons disclaims all liability for damages resulting from their use to the fullest extent possible.
 
 **Using Creative Commons Public Licenses**

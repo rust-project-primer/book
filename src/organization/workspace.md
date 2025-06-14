@@ -182,6 +182,24 @@ In this discussion, the upsides and downsides of having small crates is
 discussed.
 ~~~
 
+~~~reading
+style: article
+title: Cargo Workspace and the Feature Unification Pitfall
+url: https://nickb.dev/blog/cargo-workspace-and-the-feature-unification-pitfall/
+author: Nick B
+---
+~~~
+
+~~~reading
+style: book
+title: Resolver
+url: https://doc.rust-lang.org/cargo/reference/resolver.html
+author: Cargo Project
+---
+This chapter in the Cargo Book explains how Cargo resolves crate features
+in workspaces.
+~~~
+
 [rfc: collapse Tokio sub crates into single tokio crate](https://github.com/tokio-rs/tokio/issues/1318)
 
 *The Tokio project did the reverse: they used to be composed of many small

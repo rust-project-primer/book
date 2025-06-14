@@ -31,20 +31,11 @@ test:cargo:
 
 If you have ever used Docker, then you should easily be able to 
 
-```mermaid
-graph LR
-    env[Environment Variables]
-    artifacts_in[Artifacts]
-    artifacts_out[Artifacts]
-    status[Status]
-    conditions[Conditions]
-    job[Job]
-    env-->job
-    artifacts_in-->job
-    conditions-->job
-    job-->status
-    job-->artifacts_out
-```
+<center>
+
+![GitLab CI Job](gitlab-ci-job.svg)
+
+</center>
 
 - docker containers
 - inputs: environment variables, artifacts

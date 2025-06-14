@@ -16,11 +16,21 @@ finding edge cases you haven't considered.
 What property-testing frameworks typically do is:
 
 - **Generate** arbitrary (random) test-cases for your tests, with constraints
-  that you specify.
-- **Simplify** failing inputs to crate a small failing test-case. Also called
-  *test case shrinking*.
-- **Record** failing test-cases, so you can replay them.
+  that you specify. Typically, this works by generating a random seed, and
+  using that in combination with a [pseudorandom number generator][prng] to
+  randomly generate data structures that are used as input.
+- **Simplify** failing inputs to crate a small failing test-case, also called
+  *test case shrinking*. This attempts to reduce the input test case to
+  something smaller to eliminate parts of the input data that don't matter,
+  and to make it easier to reproduce and track down the bug.
+- **Record** failing test-cases, so you can replay them. Usually this works
+  by recording the initial seed, so that the same input can be generated
+  again. 
+- **Replay**: When running tests, recorded failing seeds are replayed first
+  (before generating more randomized inputs) to ensure that there are no
+  regressions where previously-found bugs resurface.
 
+[prng]: https://en.wikipedia.org/wiki/Pseudorandom_number_generator
 
 ~~~admonish note
 There is some overlap between property testing and [fuzzing](./fuzzing.md).

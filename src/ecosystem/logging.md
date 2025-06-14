@@ -32,12 +32,15 @@ asynchronous HTTP libraries have built-in support for the `tracing` crate.
 ## Log
 
 The `log` crate is the most popular logging infrastructure. It uses the façade pattern,
-whereby using it is a two-step process:
+which decouples the users of the logging facilities (which use the `log` crate) from
+the implementation of the logging output (such as `env_logger`).
 
-- You use the `log` crate in your libraries and binaries, which exposes some
+Using it is therefore a two-step process:
+
+1. You use the `log` crate in your libraries and binaries, which exposes some
   macros that you can use for emitting log messages, such as `log::info!` or
   `log::error!`.
-- In your binaries, you import and initialize a log handler crate, such as
+2. In your binaries, you import and initialize a log handler crate, such as
   `env_logger`. This will subscribe to the logs that are sent to the `log`
   crate, and do with them whatever you configure it to (such as emit them on
   standard output).
@@ -180,6 +183,16 @@ handles a request).
 | `slog-stdlog` | `slog` to `log`, or `log` to `slog` |
 
 ## Reading
+
+~~~reading
+style: article
+title: Getting started with Tracing
+url: https://tokio.rs/tokio/topics/tracing
+author: Tokio Project
+---
+This article explains the basics of the `tracing` crate, and shows how to use
+it in an example project.
+~~~
 
 ~~~reading
 style: article

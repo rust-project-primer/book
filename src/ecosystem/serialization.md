@@ -53,3 +53,14 @@ The serde book is a reference guide for how to use serde, lists the various
 formats that serde can serialize and deserialize, and gives advice on using
 advanced features.
 ~~~
+
+~~~reading
+style: article
+title: "Rust serialization: What's ready for production today?"
+url: https://blog.logrocket.com/rust-serialization-whats-ready-for-production-today
+author: Andre Bogus
+---
+In this article, Andre goes through several serialization frameworks in Rust
+and explains which ones are stable and reliable and fit for use in production
+Rust applications.
+~~~

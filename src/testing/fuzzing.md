@@ -100,3 +100,25 @@ Addison shows how Rust can be used to fuzz the Solana eBPF JIT compiler, and
 outlines the security vulnerabilities found within uses this approach.
 ~~~
 
+~~~reading
+style: article
+title: "Earn $200K by fuzzing for a weekend: Part 1"
+url: https://secret.club/2022/05/11/fuzzing-solana.html
+author: Addisn Crump
+---
+~~~
+
+
+https://tweedegolf.nl/en/blog/154/what-is-my-fuzzer-doing
+
+https://www.fuzzingbook.org/html/Grammars.html
+
+https://antithesis.com/blog/2025/gradius/
+
+https://googleprojectzero.blogspot.com/2024/10/effective-fuzzing-dav1d-case-study.html?m=1
+
+https://carstein.github.io/fuzzing/2020/04/18/writing-simple-fuzzer-1.html
+
+https://blog.includesecurity.com/2024/04/coverage-guided-fuzzing-extending-instrumentation/
+
+https://nullprogram.com/blog/2025/02/05/

@@ -151,8 +151,6 @@ that it is easy to add support for more languages.
 bindings for Rust for other languages. It supports C, C++, Dart,
 JavaScript/TypeScript, Kotlin and Python.
 
-
-
 ## Language-Specific Interop
 
 The other sections in this chapter discuss specific tools which can be used

@@ -115,6 +115,12 @@ You also have to think about the execution model of the target language.  Some
 languages run single-threaded, and you have to make sure that you don't call
 into the language from a different thread. 
 
+### Patterns for Rust interop
+
+- the `-sys` pattern: allowing other crates to access the raw C api
+- using features to expose the api
+- using a `build.rs` script
+
 ### How this chapter is structured
 
 In this chapter, we will walk through several tools that can be used to

@@ -16,6 +16,14 @@ requested, build Docker images with the minimal set of runtime dependencies.
 
 ## Nix Explainer
 
+- derivations
+- sandboxes
+- flakes
+
+### Nix Limitations
+
+- versioning is a bit awkward
+
 ## What can you use Nix for?
 
 Nix is a bit of an oddball in this section because it is more than just a build

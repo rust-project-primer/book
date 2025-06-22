@@ -229,6 +229,17 @@ author: Julia Evans
 ---
 ~~~
 
+~~~reading
+style: article
+title: "Practical Nix flake anatomy: a guided tour of flake.nix"
+url: https://vtimofeenko.com/posts/practical-nix-flake-anatomy-a-guided-tour-of-flake.nix/
+author: Vladimir Timofeenko
+---
+Vladimit explains how a `flake.nix` file is constructed. He explains the high-level
+concepts (inputs, outputs) and shows syntax examples for how to write them.
+~~~
+
+
 https://jvns.ca/blog/2023/03/03/how-do-nix-builds-work-/
 
 https://jvns.ca/blog/2023/02/28/some-notes-on-using-nix/

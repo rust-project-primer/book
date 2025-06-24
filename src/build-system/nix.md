@@ -50,10 +50,13 @@ makes sense to explain how this all works together.
 
 ### Derivations
 
-At the very core of Nix is a *derivation*. This is how Nix tracks how
-to compile things. You can think of a derivation like a shell script
-that has some other derivations as inputs. Here's an example derivation
-(this is just a snippet, and not a full, working Nix config):
+At the very core of Nix is a *derivation*. This is how Nix tracks how to
+compile things. It can take other derivations as input (via
+`nativeBuildInputs`, `buildInputs`), some files (via `src`), and it has some
+shell scripts that define how it is built, and how it is installed.
+
+Here's an example derivation (this is just a snippet, and not a full, working
+Nix config):
 
 ```nix
 pkgs.stdenv.mkDerivation {
@@ -74,20 +77,18 @@ pkgs.stdenv.mkDerivation {
 };
 ```
 
-What is unique about Nix is two things:
+Derivations are *deterministic*, which means that if you execute them again at
+a later date, or on a different machine, they are expected to produce exactly
+the same output. Nix uses some strategies to make that happen. For example,
+when your derivation is built, it runs in a sandbox where it only has access to
+the derivations it declared as inputs, nothing else. When it attempts to get
+the current time, it receives a timestamp of zero. Network access is blocked.
+Any external data the derivation uses must have a hashsum, and Nix checks it to
+make sure the data is still the same.
 
-- Every input to the derivation is *deterministic*. If it is an input that
-  is downloaded from the internet, then you must supply a hash sum.
-- When you run this derivation, it runs *sandboxed*. That means during
-  the building, it does not have access to the internet. It also does
-  not have access to the filesystem, apart from to the outputs of the
-  derivations that you depend on (in this case, CMake, and the Ruby and
-  Python interpreters).
-
-These two properties ensure that every build is deterministic. This is
-important — it means that if a build works on one machine, it will work
-on others. And it will produce the same output. And it means you can cache
-builds.
+This allows Nix to use an aggressive caching strategy. It can use the hash
+of the derivation (this includes the hash of all transitive dependencies)
+as a key, and the output of it as values.
 
 One of the important problems that Nix addresses here is that even Rust code
 has *implicit* dependencies. For example, your Rust program is linked with some
@@ -101,6 +102,14 @@ What Nix ensures is that, when you do build your code, everyone builds it with
 headers).
 
 ### Nixpkgs
+
+When you build some code, you typically need a compiler. You might also need
+some libraries, and you may want to use some tools (linters, maybe script
+interpreters if your build process involves running scripts). Instead of having
+to define derivations for each of these, Nix has a centralized repository
+called *nixpkgs*, which contains Nix derivations for most popular packages. In
+the derivation earlier, we showed that we used the `nativeBuildInputs`.  The
+`pkgs` that we wrote there refers to nixpkgs.
 
 ### Nix Shell
 
@@ -117,6 +126,23 @@ will save this as `shell.nix`:
   # todo
 }
 ```
+
+You can launch the shell with `nix-shell`. It will recognize the `shell.nix`
+file in your current directory, and create a shell that links the tools you
+specified.
+
+You can use this in combination with other build systems. For example, if you
+use Bazel, then you can use a simple definition that includes Bazel.
+
+Here is an example:
+
+```nix
+# todo
+```
+
+Note that even if you only use the Nix Shell, you may still want to use Nix
+Flakes, for reasons that we will explain later (it has to do with pinning the
+version of `nixpkgs` that you are using).
 
 ### Nix Flakes
 
@@ -136,6 +162,12 @@ But you might also want to import derivations from another source. For example,
 you might want to import some Nix code that helps you turn Rust's build metadata
 (your `Cargo.toml`) into something Nix can understand and build. Or you might
 import derivations from another repository that you use.
+
+<center>
+
+![Nix Flakes diagram](nix-flakes.svg)
+
+</center>
 
 Nix Flakes allow you to write Nix code that has two definitions: a set of
 *inputs*, which are typically Git repositories. This can be `nixpkgs`, or
@@ -244,6 +276,30 @@ in that environment accessible. That way, you can declare which native dependenc
 you need *once*, and make sure that no matter what platform your developers happen
 to use, Nix can make sure that all requirements are satisfied.
 
+### Example: Bazel and Rust
+
+### Example: Cargo and OpenSSL
+
+## Nix as a build system
+
+You can use Nix as your primary build system. Doing so gives you reproducible
+builds, and caching for free. The downside is that you need to write (and maintain)
+the Nix configuration for building your project. You can't just use Cargo directly,
+because Cargo defaults to downloading dependencies from the internet. Instead,
+you need to use some kind of wrapper that provides you with a Rust toolchain
+of your choice, parses your Cargo dependencies lock file and makes your Rust
+dependencies available in a Nix-native way.
+
+There are some popular wrappers that make this easy:
+
+| Name | Description |
+| --- | --- |
+| [Crane][crane] | ... |
+| [Naersk][naersk] | ... |
+
+[crane]: https://github.com
+[naersk]: https://github.com
+
 ```nix
 {
   inputs = {
@@ -294,27 +350,6 @@ to use, Nix can make sure that all requirements are satisfied.
 }
 ```
 
-### Example: Cargo and OpenSSL
-
-## Nix as a build system
-
-You can use Nix as your primary build system. Doing so gives you reproducible
-builds, and caching for free. The downside is that you need to write (and maintain)
-the Nix configuration for building your project. You can't just use Cargo directly,
-because Cargo defaults to downloading dependencies from the internet. Instead,
-you need to use some kind of wrapper that provides you with a Rust toolchain
-of your choice, parses your Cargo dependencies lock file and makes your Rust
-dependencies available in a Nix-native way.
-
-There are some popular wrappers that make this easy:
-
-| Name | Description |
-| --- | --- |
-| [Crane][crane] | ... |
-| [Naersk][naersk] | ... |
-
-[crane]: https://github.com
-[naersk]: https://github.com
 
 ### Building Rust code
 
@@ -385,6 +420,38 @@ https://serokell.io/blog/continuous-delivery-with-nix
 https://garnix.io/blog/hosting-nixos
 
 https://x86.lol/generic/2024/08/28/systemd-sysupdate.html
+
+## Nix as a build cache
+
+By default, Nix will cache build outputs on your local machine. But if many
+people work on a project, and tend to compile the same code frequently, then it
+makes sense to use a shared build cache.
+
+<center>
+
+![Nix build cache](nix-build-cache.svg)
+
+</center>
+
+In a typical configuration, the CI system has write access to the build cache.
+Any commits that are pushed and run through it, have their build outputs
+uploaded to the cache. Developer machines have read-only access to the cache.
+This ensures that builds that don't change frequently (such as dependencies,
+tooling) are always in the build cache. New code is in the cache, as soon as it
+is pushed to the repository, and is available for example when other developers
+do code review.
+
+You can use hosted solutions like Cachix for your build cache, or you can setup
+a S3 bucket on some provider (Hetzner, Wasabi, Backblaze, AWS) and configure
+it. You should take care that only trusted people or machines are able to write
+into it, because this can be a security issue.
+
+## Nix as distributed compiler
+
+Finally, you can use Nix to speed up compilation by using it as a distributed
+compiler. 
+
+*Todo*
 
 ## Reading
 

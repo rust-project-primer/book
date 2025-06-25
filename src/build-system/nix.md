@@ -55,6 +55,12 @@ compile things. It can take other derivations as input (via
 `nativeBuildInputs`, `buildInputs`), some files (via `src`), and it has some
 shell scripts that define how it is built, and how it is installed.
 
+<center>
+
+![Nix derivation example](nix-derivation.svg)
+
+</center>
+
 Here's an example derivation (this is just a snippet, and not a full, working
 Nix config):
 
@@ -452,6 +458,14 @@ Finally, you can use Nix to speed up compilation by using it as a distributed
 compiler. 
 
 *Todo*
+
+## Summary
+
+In this section, we've shown that Nix has a very strict determinism. This
+allows you to use it for reproducible builds, have confidence that software
+built on one machine behaves the same way on a different machine. It also
+allows it to use very aggressive caching, and to run compilation on different
+machines.
 
 ## Reading
 

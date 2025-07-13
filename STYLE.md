@@ -76,7 +76,7 @@ than a handle), if this is known.
 When possible, resource should be archived. You can do this by using your
 browser's "Print to PDF" functionality. The PDF should be in A4 format, saved
 without headers or footers. The resulting PDF should be saved inside
-`src/archived/`, and referenced by the filename of the PDF in the `archived: `
+`src/archived/`, and referenced by the filename of the PDF in the `archived`
 field of the resource block. This archiving is intended to protect against
 bit-rot, since a lot of the resources are on people's personal blogs which may
 disappear or be restructured over time.

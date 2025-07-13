@@ -235,3 +235,5 @@ author: Amanda Viescinski
 ---
 This article explains the difference between logging and tracing.
 ```
+
+https://lpalmieri.com/posts/2020-09-27-zero-to-production-4-are-we-observable-yet

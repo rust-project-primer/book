@@ -116,6 +116,69 @@ You also have to think about the execution model of the target language. Some
 languages run single-threaded, and you have to make sure that you don't call
 into the language from a different thread.
 
+<!--
+### Performance Considerations
+
+When working across language boundaries, several performance aspects should be
+considered:
+
+#### Overhead Sources
+
+- **Function call overhead**: FFI calls have more overhead than native calls due
+  to ABI requirements and potential register shuffling
+- **Data marshalling costs**: Converting between data structures from different
+  languages can be expensive, especially for complex structures requiring deep
+  copies
+- **Optimization barriers**: Compilers cannot optimize across language
+  boundaries, as functions marked with foreign ABIs create optimization barriers
+
+#### Optimization Strategies
+
+- **Batch operations**: Make fewer, larger FFI calls instead of many small ones
+  by grouping operations
+- **Zero-copy design**: Pass pointers rather than copying data when possible,
+  using views of data instead of copies
+- **FFI-friendly data structures**: Use simple types and C-compatible layouts at
+  boundaries
+- **Memory alignment**: Ensure proper alignment with appropriate attributes when
+  needed
+
+Always profile and measure performance with appropriate tools to identify actual
+bottlenecks before optimizing. FFI overhead may not be your application's
+primary performance concern.
+
+## Safety Considerations
+
+The FFI boundary is inherently unsafe since Rust cannot enforce its safety
+guarantees on C code. Key considerations:
+
+- **Minimize unsafe scope**: Keep unsafe blocks as small as possible
+- **Memory management**: Handle resource cleanup properly, use RAII in wrappers
+- **Null pointers**: Convert to `Option<T>` in safe interfaces
+- **Error handling**: Transform C error codes to `Result<T, E>`
+- **Thread safety**: C libraries may not be thread-safe; document and handle
+  appropriately
+
+Testing FFI code thoroughly is essential, particularly for memory management.
+Tools like Valgrind and ASAN can help detect memory issues.
+
+### Undefined Behavior Risks
+
+C code can introduce undefined behavior that Rust's safety guarantees normally
+prevent:
+
+- Dereferencing null or dangling pointers
+- Double-free or use-after-free errors
+- Buffer overflows and underflows
+- Data races in multithreaded contexts
+
+Safe wrappers should validate all inputs and outputs at the FFI boundary to
+prevent these issues from affecting Rust code.
+
+ code example: A safe wrapper that validates pointers and handles resource cleanup properly
+
+-->
+
 ### Patterns for Rust interop
 
 - the `-sys` pattern: allowing other crates to access the raw C api

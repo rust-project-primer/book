@@ -24,7 +24,7 @@ body {
 code {
     font-family: "CommitMono" !important;
     /* make this match the baseline height of the main font */
-    font-size: 16.5px;
+    font-size: 15px;
     line-height: 1.3;
     direction: ltr !important;
 }

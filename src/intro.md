@@ -5,14 +5,14 @@ curve that can make it difficult to get started, it will give you superpowers
 once you are familiar with it. You can suddenly write fast, heavily
 multithreaded code that would previously require a team of very senior
 developers writing thorough documentation on which locks are needed to access
-what, and in which order they need to be acquired to make sure it doesn't
-crash. You can write bespoke data structures, knowing there aren't any odd
-edge-cases that would make it unsafe to use. You can safely work with untrusted
-data, knowing well that you can't accidentally forget a length check, which
-leads to a stack overflow and remote-code execution in your production
-environment. All of these properties mean that Rust is very scalable: your code
-bases are not a house of cards, waiting to collapse. For the most part, if your
-code compiles, you know that it works.
+what, and in which order they need to be acquired to make sure it doesn't crash.
+You can write bespoke data structures, knowing there aren't any odd edge-cases
+that would make it unsafe to use. You can safely work with untrusted data,
+knowing well that you can't accidentally forget a length check, which leads to a
+stack overflow and remote-code execution in your production environment. All of
+these properties mean that Rust is very scalable: your code bases are not a
+house of cards, waiting to collapse. For the most part, if your code compiles,
+you know that it works.
 
 Rust has other properties that make it quite interesting. It is somewhat unique
 amongst systems programming languages in that you can deploy on a vast breadth
@@ -24,15 +24,15 @@ easy.
 At the same time, this power can be frightning. Once your have learned the
 basics, where do you go from here? What parts of the ecosystem do you use for
 what? What are some common issues that your project might run into, and how do
-you solve them? How do you structure your project, what are some common
-pitfalls that you need to avoid?
+you solve them? How do you structure your project, what are some common pitfalls
+that you need to avoid?
 
-The idea of this book is to aggregate information and advice that you can use
-on your Rust journey. In some ways, it is the book I wish I had read when I got
+The idea of this book is to aggregate information and advice that you can use on
+your Rust journey. In some ways, it is the book I wish I had read when I got
 started with Rust. Knowing the language is one thing, but knowing the ecosystem
-is what lets you be productive. Understanding the tools that exist, and when
-you should use them. Knowing how you can deploy them.  Structuring projects in
-a way that supports long-term growth and sustainability.
+is what lets you be productive. Understanding the tools that exist, and when you
+should use them. Knowing how you can deploy them. Structuring projects in a way
+that supports long-term growth and sustainability.
 
 This book will not teach you Rust, nor will it explain Rust syntax in any way.
 For that, there are already plenty of other books, some of which are linked in
@@ -41,14 +41,14 @@ practises, high-level advice with examples. Ideally, this book should help you,
 no matter if you are a project manager evaluating Rust and trying to understand
 best practises, if you have recently learned Rust and want to embark on your
 first real-world project, or if you already have some experience but want to
-lookup specific tooling or solve specific problems. 
+lookup specific tooling or solve specific problems.
 
-The book largely follows a recipe format. Each chapter is fairly
-self-contained, so you can focus on specific topics as needed. It is not
-intended as a guide for you to implement every single piece of advice, more to
-give an overview of what exists, how it helps you and when you should use it.
-To solve specific problems, once they occur.  Use it as a source of inspiration
-to find the approaches that work best for your project.
+The book largely follows a recipe format. Each chapter is fairly self-contained,
+so you can focus on specific topics as needed. It is not intended as a guide for
+you to implement every single piece of advice, more to give an overview of what
+exists, how it helps you and when you should use it. To solve specific problems,
+once they occur. Use it as a source of inspiration to find the approaches that
+work best for your project.
 
 ## Target Audience
 
@@ -69,11 +69,9 @@ insights from various companies and successful projects.
 
 ## How to read this book
 
-This book is structured like a recipe book: you can read it cover-to-cover,
-if you like. But you can also use it as a tool to look up recipes for how
-to solve issues you might run across.
-
-
+This book is structured like a recipe book: you can read it cover-to-cover, if
+you like. But you can also use it as a tool to look up recipes for how to solve
+issues you might run across.
 
 <!--
 

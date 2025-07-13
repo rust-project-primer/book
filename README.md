@@ -33,6 +33,17 @@ In addition to that, there are some mdBook plugins that are used:
 - mdbook-reading
 - mdbook-files
 
+## Building
+
+To build the book, you can do one of:
+
+- Install dependencies and run `just build`
+- Run `nix build .?submodules=1`
+
+## Style
+
+For writing style, read the [STYLE](STYLE.md) file.
+
 ## License
 
 [CC BY-NC-SA 4.0](LICENSE.md)

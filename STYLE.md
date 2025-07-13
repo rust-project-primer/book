@@ -27,8 +27,13 @@ detail.
 ## Writing Style
 
 The writing style should be clear and concise, using simple language so that
-people new to Rust can understand it. It should avoid flowery language and
-define the technical terms that it uses.
+people new to Rust can understand it. It should avoid flowery language, sticking
+to factual information and a neutral tone. A writing style similar to Wikipedia
+or the Rust Book is preferred.
+
+Technical terms that are used should be defined in the section that they are
+used. Some prior knowledge of Rust is assumed, but more complex concepts should
+be explained.
 
 The book should not be overly verbose or be a tutorial. It should be a reference
 book that provides a quick overview of how to solve common problems. It may
@@ -80,3 +85,31 @@ without headers or footers. The resulting PDF should be saved inside
 field of the resource block. This archiving is intended to protect against
 bit-rot, since a lot of the resources are on people's personal blogs which may
 disappear or be restructured over time.
+
+## Markdown
+
+The book is written in markdown. When possible, links should not be inline, but
+rather defined outside of the text. For example, use a link like
+`[Link test][reference]`, and later define `[reference]: https://example.com`.
+This makes for a more pleasant editing experience.
+
+Markdown files should be wrapped at 80 charaters, but this is automated by my
+editor, which uses `pretter` to reflow the text. This ensures that the raw
+markdown is readable on a terminal or in a text editor.
+
+Deeply nested headings should be avoided. In general, stick to sections (`##`
+headings) and subsections (`###` headings). A document should only have a single
+top-level heading (`#` heading), placed at the top of the file.
+
+## Diagrams
+
+Diagrams should be created using [draw.io][], using the [Routed
+Gothic][routed-gothic] font at 14pt. This adds a bit of character to this book.
+When exporting diagrams, they should be expored as SVG files and embed the
+diagram so it can be edited later. Transparency enabled, and using automatic
+appearance should be set so they show up correectly when reading the book in
+dark mode (this should be the default). Colors in diagram should not be used
+extensively, it is preferred to keep diagrams simple and black-and-white.
+
+[draw.io]: https://app.diagrams.net/
+[routed-gothic]: https://github.com/dse/routed-gothic

@@ -8,8 +8,6 @@ crates become more popular and establish themselves as the go-to. You should
 certainly make use of the ecosystem and the ease with which Cargo lets you add
 and manage dependencies.
 
-![bubble graph of popular crates](graphics/crate-popularity.svg)
-
 Rust can also target a wide variety of platforms: whether you are writing code
 to run [on GPUs](https://rust-gpu.github.io/),
 [in the browser](https://www.rust-lang.org/what/wasm),

@@ -156,8 +156,6 @@ Although support for async-await style programming was only added in
 has caught on and the Rust community has seen a large number of frameworks being
 built for async, and a lot of crates that support it.
 
-![bubble graph of popular async crates](/graphics/crate-popularity-async.svg)
-
 In general, there are three runtimes that are recommended:
 
 - [Tokio][tokio] is the go-to runtime for all things async. With over 200

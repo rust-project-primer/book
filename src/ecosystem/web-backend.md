@@ -14,8 +14,6 @@ But the important question is then: which framework do you use? The rust crate
 ecosystem has come up with a large amount of web framework crates with varying
 levels of popularity.
 
-![bubble graph of popular web crates](/graphics/crates-web.svg)
-
 In general, the two most popular frameworks are Axum and Actix-Web, and they
 should be your go-to frameworks of choice if you have no specific requirements.
 Axum is nice because it integrates into the Tower ecosystem of middleware,

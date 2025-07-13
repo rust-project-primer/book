@@ -35,7 +35,7 @@ utility, this is what they are:
   look up a value in a map, it will return either `None` or `Some(T)`.
 - **Recoverable errors**: Rust has the `Result<T, E>` type, which can either
   contain your data as `Ok(T)`, or contain an error as `Err(E)`.
-- **Unrecorverable errors**: Panics are the Rust way to express an error that
+- **Unrecoverable errors**: Panics are the Rust way to express an error that
   cannot be recovered from. This is perhaps the closest thing Rust has to
   exceptions. These are generated when invariants are invalid, or when memory
   cannot be allocated. When they are encountered, a backtrace is printed and
@@ -60,13 +60,15 @@ let file = std::fs::read_to_string("file.txt").unwrap();
 
 ### Panics in Rust
 
-We can't talk about error handling in Rust without mentioning _panicing_. They
-are a way to signify failures that cannot reasonable be recovered from. Panics
-are not a general way to communicate errors, they are a method of last resort.
+We can't talk about error handling in Rust without mentioning _panicking_.
+Panics are a way to signify failures that cannot reasonably be recovered from.
+Panics are not a general way to communicate errors, they are a method of last
+resort. Usually, when a panic is encountered, it means that something went wrong
+that the programmer did not anticipate or handle and the program should abort.
 
-There are different ways to trigger panics in Rust. Commonly, using panics is
-used when writing prototype code, because you want to focus on the code and
-defer implementing error handling when the code works.
+There are different ways to trigger panics in Rust. Commonly, panics are used
+when writing prototype code, because you want to focus on the code and defer
+implementing error handling when the code works.
 
 For example, when you write some code which traverses a data structure, you
 might defer implementing the functionality for all edge cases. You can do this
@@ -93,10 +95,15 @@ std::panic::catch_unwind(|| {
 });
 ```
 
+For example, the `axum` framework uses `catch_unwind` to catch panics in request
+handlers, which makes it convenient to use it during development, because the
+server will not crash when it encounters a panic. However, they warn that this
+is not recommended for production usage because it has performance implications.
+
 ```admonish warning
 While it is possible to catch panics with
 [`catch_unwind()`](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html),
-but this is not recommended, has a performance penalty and does not work across
+this is not recommended, has a performance penalty and does not work across
 an FFI boundary. Panics are considered *unrecoverable* errors, and catching them
 only works on a best-effort basis, on supported platforms.
 
@@ -111,8 +118,9 @@ result in the default behaviour, which is the application aborting.
 
 ### The `Result` type
 
-In general, functions in Rust are fallible use the `Result` return type to
-signify this.
+In general, fallible functions in Rust use the `Result` return type to signify
+this. It is an enumeration that represents either success with an expected
+result value `Ok(value)` or failure with an error `Err(error)`.
 
 If you have a common error type that you use in your application, then it is
 possible to make an alias of the `Result` type that defaults to your error type,
@@ -123,15 +131,15 @@ type Result<T, E = MyError> = Result<T, E>;
 ```
 
 When you do this, `Result<String>` will resolve to `Result<String, MyError>`.
-However, you can still write `Result<String, OtherError>` to get a specific.
-Your custom error type is only used as the default when you don't specify any
-other type.
+However, you can still write `Result<String, OtherError>` to use a specific
+error type. Your custom error type is only used as the default when you don't
+specify any other type.
 
 ### The `Error` trait
 
 In general, all error types in Rust implement the [`Error`][error] trait. This
-trait allows for getting a simple textual description of an error, information
-about the source of the error.
+trait allows for getting a simple textual description of an error and
+information about the source of the error.
 
 If you create custom error types, you should implement this trait on them. There
 are some common libraries that help with doing this.
@@ -144,7 +152,7 @@ Rust comes with some libraries, which can help you integrate into the Rust error
 system. On a high level, these libraries fall into one of two categories:
 
 - **Custom error types**: these libraries allow you to define custom error
-  types, by implementing the `Error` trait and any neccessary other traits. A
+  types, by implementing the `Error` trait and any necessary other traits. A
   common pattern is to define an error type, which is an enumeration of all
   possible errors your application (or this particular function) may produce.
   These libraries often also help you by implementing a `From<T>` implementation
@@ -158,18 +166,46 @@ system. On a high level, these libraries fall into one of two categories:
   and lets you not worry about defining custom error types. Often times, these
   libraries also contain functionality for pretty-printing error chains and
   stack traces.
+- **Error reporting**: Some libraries focus specifically on presenting errors to
+  users in a readable way, often with rich formatting, source code snippets, and
+  helpful hints. These libraries are particularly useful for developer tools,
+  compilers, and applications that need to provide detailed error information.
 
 In general, if you write a crate that is to be used as a library by other
 crates, you should be using a library which allows you to define custom error
 types. You want the users of your crate to be able to handle the different
 failure modes, and if the failure modes change (your error enums change), you
-want to force them to adjust their code. This makes the failure modes explicity.
+want to force them to adjust their code. This makes the failure modes explicit.
 
 If you write an application (such as a command-line application, a web
 application, or any other code where you are not exposing the errors in any kind
 of API), then using the latter kind of error-handling library is appropriate. In
 this case, all you care about is reporting errors and metadata (where they
-occured) to an end-user.
+occurred) to an end-user.
+
+```admonish warning
+When using error handling libraries, keep in mind the trade-offs:
+
+- Libraries should generally avoid using `anyhow`, `eyre`, or similar "opaque
+  error" libraries in their public API, as this hides error details from consumers.
+- Adding too much context to errors can bloat binary size due to string literals.
+- For applications with complex domain logic, consider custom error types even if
+  you're the only consumer.
+- Be cautious about adding backtraces to all errors, as this can impact performance.
+- If you re-export other crates' error types in your custom error enum, then that
+  crate version becomes part of your public API. This has implications for versioning,
+  if you update the version of the dependency, this may be a breaking change requiring
+  a major version bump.
+```
+
+If you're writing a library, you should use a structured error library like
+[thiserror](#thiserror) to define custom error types, with useful metadata and
+context. This will allow downstream consumers to work with and handle the
+errors. If you write an application, you may want to consider using a more
+dynamic library like [anyhow](#anyhow), which allows you to not worry about
+specific error types and simply propagate them. If you need a library that
+focusses on good error reporting, consider using [miette](#miette) or
+[eyre](#eyre).
 
 ## Thiserror
 
@@ -225,7 +261,108 @@ render them to the user.
 
 ## Eyre
 
+[Eyre](https://docs.rs/eyre/latest/eyre/) is similar to anyhow but focuses more
+on customizable error reporting. It provides a context-aware error type that can
+capture information about where and why an error occurred.
+
+```rust
+use eyre::{eyre, Result};
+
+fn main() -> Result<()> {
+    let file = std::fs::read_to_string("config.toml")
+        .wrap_err("failed to read configuration file")?;
+    Ok(())
+}
+```
+
+Eyre is particularly useful when you want to add additional context to errors as
+they propagate through your application.
+
+The [color-eyre](https://docs.rs/color-eyre/latest/color_eyre/) crate extends
+Eyre with colorful, pretty error reports and even better panic messages with
+backtraces.
+
 ## Miette
+
+[Miette](https://docs.rs/miette/latest/miette/) is an error reporting library
+that focuses on providing detailed, human-readable diagnostic information. It
+excels at displaying code snippets with error spans and fancy formatting.
+
+```rust
+use miette::{Diagnostic, Result};
+use thiserror::Error;
+
+#[derive(Error, Diagnostic, Debug)]
+#[error("invalid configuration")]
+#[diagnostic(
+    code(app::invalid_config),
+    help("check the syntax in your config file")
+)]
+struct ConfigError {
+    #[source_code]
+    src: String,
+
+    #[label("this part is invalid")]
+    span: (usize, usize),
+}
+```
+
+Miette is ideal for applications that need to provide detailed, contextual error
+information to users, such as compilers, linters, or configuration validators.
+
+## Other Error Libraries
+
+### Error-Stack
+
+[Error-stack](https://docs.rs/error-stack/latest/error_stack/) is a more recent
+error handling library that provides an extended approach to error creation and
+propagation. It allows for attaching arbitrary context to errors as they bubble
+up through your program, creating a detailed "stack" of information.
+
+```rust
+use error_stack::{Report, ResultExt};
+
+fn read_config(path: &str) -> error_stack::Result<String, ConfigError> {
+    std::fs::read_to_string(path)
+        .change_context(ConfigError::FileIO)
+        .attach_printable(format!("while reading config file: {}", path))
+}
+```
+
+Error-stack excels at creating rich error contexts without the overhead of
+capturing full backtraces.
+
+### SNAFU
+
+[SNAFU](https://docs.rs/snafu/latest/snafu/) (Situation Normal: All Fouled Up)
+is another library for defining error types and context information. It uses a
+different approach than thiserror, relying on context selectors rather than
+derive macros.
+
+```rust
+use snafu::{prelude::*, Whatever};
+
+#[derive(Debug, Snafu)]
+enum Error {
+    #[snafu(display("Could not open config file: {}", source))]
+    OpenConfig { source: std::io::Error },
+}
+
+fn open_config() -> Result<(), Error> {
+    std::fs::File::open("config.toml").context(OpenConfigSnafu)?;
+    Ok(())
+}
+```
+
+SNAFU is particularly useful for situations where you need fine-grained control
+over how context is attached to errors.
+
+### Ariadne
+
+[Ariadne](https://docs.rs/ariadne/latest/ariadne/) is an alternative to miette
+that focuses on displaying source code diagnostics. It's designed for parsers,
+compilers, and interpreters that need to report syntax errors or other issues in
+source code.
 
 ## Reading
 

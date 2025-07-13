@@ -139,6 +139,12 @@ fn rocket() -> _ {
 }
 ```
 
+## Salvo
+
+[Salvo][salvo] is a web framework for Rust.
+
+[salvo]: https://salvo.rs/
+
 ## Warp
 
 https://github.com/seanmonstar/warp

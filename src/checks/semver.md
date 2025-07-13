@@ -60,30 +60,47 @@ TODO: example using cargo-semver-checks
 
 ## Reading
 
-[Semantic Versioning 2.0.0][semver]
+```reading
+style: article
+title: Semantic Versioning 2.0.0
+url: https://semver.org/
+author: Semver
+---
+Semantiv Versioning specification which explains the rules of how to apply it.
+```
 
-_Semantiv Versioning specification which explains the rules of how to apply it._
+```reading
+style: book
+title: "Chapter 3.15: SemVer Compatibility"
+url: https://doc.rust-lang.org/cargo/reference/semver.html
+author: Cargo Project
+---
+Provides details on what is conventionally considered a compatible or breaking
+SemVer change for new releases of a Cargo package.
+```
 
-[Chapter 3.15: SemVer Compatibility](https://doc.rust-lang.org/cargo/reference/semver.html)
-in _The Cargo Book_
-
-_Provides details on what is conventionally considered a compatible or breaking
-SemVer change for new releases of a Cargo package._
-
-[Semver violations are common, better tooling is the answer](https://predr.ag/blog/semver-violations-are-common-better-tooling-is-the-answer/)
-by Predrag Gruevski and Tomasz Nowak
-
-_Article which analyzes how common SemVer violations are in the Rust ecosystem,
+```reading
+style: article
+title: Semver violations are common, better tooling is the answer
+url: https://predr.ag/blog/semver-violations-are-common-better-tooling-is-the-answer/
+author: Predrag Gruevski and Tomasz Nowak
+---
+Article which analyzes how common SemVer violations are in the Rust ecosystem,
 and what can be done to address this. Concludes that violations are fairly
-common, and that better tooling can improve the state of versioning._
+common, and that better tooling can improve the state of versioning.
+```
 
-[Checking semver in the presence of doc(hidden) items](https://predr.ag/blog/checking-semver-for-doc-hidden-items/)
-by Predrag Gruevski
-
-_Explains how difficult it is to check SemVer compatibility in the presence of
+```reading
+style: article
+title: Checking semver in the presence of doc(hidden) items
+url: https://predr.ag/blog/checking-semver-for-doc-hidden-items/
+author: Predrag Gruevski
+---
+Explains how difficult it is to check SemVer compatibility in the presence of
 hidden code in Rust, and how this was addressed in `cargo-semver-checks`.
 Contains a deep dive into the implementation details and how they help to make
-these checks reliable and maintainable._
+these checks reliable and maintainable.
+```
 
 [semver]: https://semver.org/
 [cargo-semver-checks]: https://github.com/obi1kenobi/cargo-semver-checks

@@ -10,13 +10,14 @@ dependencies in the future._
 Having unused dependencies in your crates means the compiler needs to do extra
 work to fetch and build them even though they will not be used. Ensuring that
 you don't have any is therefore an important part in making sure your compile
-times are low.
+times are low. For large projects, removing unused dependencies can
+significantly reduce compile times and dependency maintenance burden.
 
-```admonish
-If you have some some dependencies that you need only conditionally, consider
+```admonish tip
+If you have some dependencies that you need only conditionally, consider
 using crate features[^feature] or conditional
 dependencies[^conditional-dependencies]
-to prevent them from being depended on unneccessarily. These let you express
+to prevent them from being depended on unnecessarily. These let you express
 that dependencies are only needed if a certain feature is activated or on a
 specific platform.
 ```
@@ -64,7 +65,7 @@ cargo udeps
 
 ## Examples
 
-```admonish
+```admonish info
 Having unused dependencies only impacts compile time but not the correctness of
 the project. Running these checks for every merge request might be too
 expensive for your project. For that reason, this check could be performed on a

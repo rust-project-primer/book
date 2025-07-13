@@ -31,16 +31,36 @@
             cp -r book/* $out/
           '';
         };
-      in
-      {
+        pages = pkgs.stdenv.mkDerivation {
+          name = "rust-project-primer-pages";
+          src = null;
+          nativeBuildInputs = [ pkgs.gzip pkgs.brotli ];
+          unpackPhase = ''
+            pwd
+            cp -r ${book.out}/* .
+            chmod -R u+rw .
+          '';
+          buildPhase = ''
+            pwd
+            find . -not -name '*.gz' -not -name '*.br' -not -name '*.pdf' -type f -exec gzip -vk {} \;
+            find . -not -name '*.gz' -not -name '*.br' -not -name '*.pdf' -type f -exec brotli -vk {} \;
+          '';
+          installPhase = ''
+            pwd
+            mkdir -p $out
+            cp -r . $out/
+          '';
+        };
+      in {
         packages = rec {
           rust-project-primer = book;
+          gitlab-pages = pages;
           default = book;
         };
         apps = rec {
-          hello = flake-utils.lib.mkApp { drv = self.packages.${system}.hello; };
+          hello =
+            flake-utils.lib.mkApp { drv = self.packages.${system}.hello; };
           default = hello;
         };
-      }
-    );
+      });
 }

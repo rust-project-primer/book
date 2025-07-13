@@ -1,48 +1,20 @@
 stages:
-  - build
   - publish
 
-# versions of dependencies
+# make sure to fetch submodules
 variables:
-  MDBOOK_VERSION: 0.4.51
-  MDBOOK_MERMAID_VERSION: 0.15.0
-  MDBOOK_ADMONISH_VERSION: 1.20.0
-  MDBOOK_READING_VERSION: 0.3.0
-  MDBOOK_FILES_VERSION: 0.2.0
   GIT_SUBMODULE_STRATEGY: recursive
   GIT_SUBMODULE_DEPTH: 1
 
-# build book
-book:
-  image: alpine
-  stage: build
-  before_script:
-    - apk add curl
-    - curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v$MDBOOK_VERSION/mdbook-v$MDBOOK_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
-    - curl -sSL "https://github.com/badboy/mdbook-mermaid/releases/download/v$MDBOOK_MERMAID_VERSION/mdbook-mermaid-v$MDBOOK_MERMAID_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
-    - curl -sSL "https://github.com/tommilligan/mdbook-admonish/releases/download/v$MDBOOK_ADMONISH_VERSION/mdbook-admonish-v$MDBOOK_ADMONISH_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
-    - curl -sSL "https://github.com/xfbs/mdbook-files/releases/download/v$MDBOOK_FILES_VERSION/mdbook-files-v$MDBOOK_FILES_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
-    - curl -sSL "https://gitlab.com/rust-project-primer/mdbook-reading/-/releases/v$MDBOOK_READING_VERSION/downloads/mdbook-reading-amd64" -o /usr/local/bin/mdbook-reading
-    - chmod +x /usr/local/bin/mdbook-reading
-  script:
-    - mdbook build
-  artifacts:
-    paths:
-      - book/
-    expire_in: 1 week
-
 # release book on gitlab pages
 pages:
-  image: alpine
+  image: nixos/nix:latest
   stage: publish
-  dependencies:
-    - book
   before_script:
-    - apk add mdbook brotli gzip
+    - echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf
   script:
-    - mv book public
-    - find public -not -name '*.gz' -not -name '*.br' -type f -exec gzip -vk {} \;
-    - find public -not -name '*.gz' -not -name '*.br' -type f -exec brotli -vk {} \;
+    - nix build .?submodules=1#gitlab-pages -L
+    - cp -r $(readlink result) public
   artifacts:
     paths:
       - public/

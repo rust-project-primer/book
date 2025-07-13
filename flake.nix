@@ -19,7 +19,6 @@
             pkgs.mdbook
             pkgs.just
             pkgs.mdbook-admonish
-            pkgs.mdbook-mermaid
             mdbook-files.packages.${system}.default
             mdbook-reading.packages.${system}.default
           ];

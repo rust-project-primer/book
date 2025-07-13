@@ -1,30 +1,16 @@
 # Build system
 
-_You are implementing a backend service in Rust which offers an API. At some
-point you realize that you need a frontend to configure it properly. Helpfully,
-one of your colleagues implements a frontend for you in React. You notice that
-it would be convenient if the backend would serve the files of the frontend, and
-you are looking for some way to tell Cargo to build and embed the frontend files
-into the backend's binary. How can you achieve this?_
-
-With Cargo, Rust has some fanstastic tooling for building, cross-compiling and
-testing Rust software. Cargo supports installing plugins that extend it's
+With Cargo, Rust has some fantastic tooling for building, cross-compiling and
+testing Rust software. Cargo supports installing plugins that extend its
 functionality, a lot of which are discussed in this book. If your Rust project
 has a relatively simple setup, where it consists only of Rust crates, then Cargo
 is the ideal tool to get it to build:
 
-```mermaid
----
-config:
-  theme: neutral
----
-graph LR
-    lib_a_lib-->lib_a
-    lib_b_lib-->lib_b
-    lib_a-->bin
-    lib_b-->bin
-    bin_main-->bin
-```
+<center>
+
+![Cargo crates build](crates-build.svg)
+
+</center>
 
 Things start to get tricky when you involve other languages (such as mixing Rust
 with C, C++, TypeScript) or when the build involves building code for different
@@ -36,49 +22,32 @@ resulting code is needed by other build.
 For example, some projects may need to interface with some legacy C/C++ code. In
 this case, building might involve compiling the library first:
 
-```mermaid
----
-config:
-  theme: neutral
----
-graph LR
-    clib[C Library]
-    wrapper[Wrapper crate]
-    crate[Rust crate]
-    dep1[Dependency crate]
-    clib-->wrapper
-    wrapper-->crate
-    dep1-->crate
-```
+<center>
+
+![Cargo crates build with native dependency](crates-build-native.svg)
+
+</center>
 
 Another common pattern when building full-stack web applications with Rust is
 that you might write the frontend in Rust and need to compile it to WebAssembly,
 and the backend in Rust. You want the Rust backend to serve the frontend, so it
 requires the WebAssembly output as a build input:
 
-```mermaid
----
-config:
-  theme: neutral
----
-graph LR
-    frontend[Frontend]
-    wasm[WebAssembly code]
-    backend[Backend]
-    axum[Axum]
-    frontend-->wasm
-    wasm-->backend
-    axum-->backend
-```
+<center>
+
+![Cargo crates build with WASM](crates-build-wasm.svg)
+
+</center>
 
 If you build a traditional web application with a TypeScript frontend and a Rust
 backend, you may need to run a TypeScript compiler for some part of your code
 and use the output as the input for your backend.
 
-```mermaid
-graph LR
-    a-->b
-```
+<center>
+
+![Cargo crates build with TypeScript](crates-build-web.svg)
+
+</center>
 
 Other configurations are also possible, it depends on your particular need.
 

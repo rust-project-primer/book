@@ -20,13 +20,10 @@ archives = "/archived/"
 [preprocessor.files]
 command = "mdbook-files"
 prefix = "examples"
-after = ["mermaid"]
-
-[preprocessor.mermaid]
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
-assets_version = "3.1.0" # do not edit: managed by `mdbook-admonish install`
+assets_version = "3.1.0"    # do not edit: managed by `mdbook-admonish install`
 after = ["links"]
 
 [[preprocessor.admonish.custom]]
@@ -46,8 +43,11 @@ color = "#779cee"
 
 [output.html]
 theme = "theme"
-additional-css = ["assets/mdbook-files.css", "./assets/mdbook-admonish.css", "assets/mdbook-admonish-custom.css"]
-additional-js = ["assets/mermaid.min.js", "assets/mermaid-init.js"]
+additional-css = [
+    "assets/mdbook-files.css",
+    "./assets/mdbook-admonish.css",
+    "assets/mdbook-admonish-custom.css",
+]
 git-repository-url = "https://github.com/rust-project-primer/book"
 git-repository-icon = "fa-github"
 mathjax-support = true

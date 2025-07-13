@@ -3,7 +3,6 @@
 # run with `just build`
 
 MDBOOK_VERSION=0.4.51
-MDBOOK_MERMAID_VERSION=0.15.0
 MDBOOK_ADMONISH_VERSION=1.20.0
 MDBOOK_READING_VERSION=0.3.0
 MDBOOK_FILES_VERSION=0.2.0
@@ -12,9 +11,6 @@ MDBOOK_FILES_VERSION=0.2.0
 apk add curl
 curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v$MDBOOK_VERSION/mdbook-v$MDBOOK_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
 mdbook --version
-
-curl -sSL "https://github.com/badboy/mdbook-mermaid/releases/download/v$MDBOOK_MERMAID_VERSION/mdbook-mermaid-v$MDBOOK_MERMAID_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
-mdbook-mermaid --version
 
 curl -sSL "https://github.com/tommilligan/mdbook-admonish/releases/download/v$MDBOOK_ADMONISH_VERSION/mdbook-admonish-v$MDBOOK_ADMONISH_VERSION-x86_64-unknown-linux-musl.tar.gz" | tar -C /usr/local/bin -zxv
 mdbook-admonish --version

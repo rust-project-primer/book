@@ -1,7 +1,5 @@
 # Design
 
-
-
 ## Reading
 
 https://ntietz.com/blog/reasons-to-write-design-docs/

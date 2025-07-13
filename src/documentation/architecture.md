@@ -10,8 +10,8 @@ new team or project, the very first thing to figure out is how the system works
 on a high level. For developers familiar with the software, it is easy to note
 down the high-level architecture, but for people unfamiliar with the code base
 it is a slow and error-prone process to wade through the code and try to
-understand how everything fits together, how components communicate and how
-data travels through each component.
+understand how everything fits together, how components communicate and how data
+travels through each component.
 
 If you do not have time to properly document software, the least you should do
 is document the high-level architecture.
@@ -23,7 +23,7 @@ is document the high-level architecture.
 
 ## Diagrams
 
-It tends to be easier to *show* architecture rather than to *explain* it.
+It tends to be easier to _show_ architecture rather than to _explain_ it.
 
 There are some useful tools that can be used to draw such diagrams:
 
@@ -43,7 +43,7 @@ There are some useful tools that can be used to draw such diagrams:
 ## Documenting Changes
 
 Another important aspect to software architecture is documenting design
-decisions. This helps answer *why* the architecture is chosen the way it is.
+decisions. This helps answer _why_ the architecture is chosen the way it is.
 Having a process around this also helps collaboration, by giving team members
 the opportunity to give feedback on proposed design decisions, to find the best
 (or sometimes the least worst) way to achieve an intended outcome.
@@ -54,7 +54,7 @@ the opportunity to give feedback on proposed design decisions, to find the best
 style: article
 title: Architectural Decision Record
 url: https://github.com/joelparkerhenderson/architecture-decision-record
-author: Joel Parker Henderson 
+author: Joel Parker Henderson
 ---
 Architecture decision record (ADR) examples for software planning, IT
 leadership, and template documentation.

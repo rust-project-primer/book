@@ -10,8 +10,8 @@ you use can give you fast feedback on syntaxtical issues. Some even let you
 define shortcuts for quickly running unit tests or other actions.
 
 Another approach is to use a tool that watches your code for changes, and runs
-some command whenever you make a change. There are some situations where this
-is useful:
+some command whenever you make a change. There are some situations where this is
+useful:
 
 - You want to run some custom tests on the code
 - You want to rebuild and relaunch your application, so that you can test it
@@ -19,15 +19,15 @@ is useful:
 
 If you build [Web Frontends](../ecosystem/web-frontend.md) in Rust and use the
 [Trunk](https://trunkrs.dev) tool to build them, you will get this for free.
-When you run Trunk in *serve* mode, it will automatically rebuild your frontend
+When you run Trunk in _serve_ mode, it will automatically rebuild your frontend
 and reload your browser whenever it detects a change, to minimze your
 development feedback loop.
 
 ## Cargo Watch
 
-[Cargo Watch](https://github.com/watchexec/cargo-watch)
-is a generic tool you can use to watch your Rust projects and execute
-commands whenever a file changes. 
+[Cargo Watch](https://github.com/watchexec/cargo-watch) is a generic tool you
+can use to watch your Rust projects and execute commands whenever a file
+changes.
 
 You can install it using Cargo:
 
@@ -38,14 +38,15 @@ By default, it will run `cargo check` when a change is detected:
     # run `cargo check` whenever files change
     cargo watch
 
-You can customize it to run any command you like. Using the `-x` flag, you can tell
-it to run any other Cargo subcommand. You can also directly give it a command to run.
+You can customize it to run any command you like. Using the `-x` flag, you can
+tell it to run any other Cargo subcommand. You can also directly give it a
+command to run.
 
     cargo watch -x test
     cargo watch -- just test
 
 It also supports command chaining, where you specify multiple Cargo subcommands
-to run.  When doing so, it will run each of them in the order you specify them,
+to run. When doing so, it will run each of them in the order you specify them,
 when they are successful.
 
     cargo watch -x check -x test -x run

@@ -16,12 +16,11 @@ worth adopting.
 For every check, you need to decide what the process is. Is it something that
 you want your developers to be able to run locally? If so, you need to give them
 instructions on how to install the necessary tooling locally, and how to ensure
-that they are all using the same version. Is it something you want to run in the CI,
-or periodically? At the end of this chapter, I provide an overview of each of the
-tools discussed, and how I would apply them.
+that they are all using the same version. Is it something you want to run in the
+CI, or periodically? At the end of this chapter, I provide an overview of each
+of the tools discussed, and how I would apply them.
 
-*This chapter includes sections that show you how to check properties of your
-entire project, rather than just your Rust code.*
+_This chapter includes sections that show you how to check properties of your
+entire project, rather than just your Rust code._
 
 ## Reading
-

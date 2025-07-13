@@ -4,12 +4,12 @@ GitLab is an [open-source][source] software development platform. It is similar
 to GitHub, but offers some more advanced features.
 
 GitLab CI works by defining pipelines. These are triggered based on various
-kinds of events, such as pushes to the repository, merges of code. Pipelines
-can also be triggered manually or by a pipeline in another repository.
+kinds of events, such as pushes to the repository, merges of code. Pipelines can
+also be triggered manually or by a pipeline in another repository.
 
 Pipelines consist of jobs, which run in sequence or in parallel. Jobs can have
-outputs called *artefacts*, which can be downloaded from the web interface or
-be ingested as inputs by jobs that follow.
+outputs called _artefacts_, which can be downloaded from the web interface or be
+ingested as inputs by jobs that follow.
 
 [source]: https://gitlab.com/gitlab-org/gitlab
 
@@ -29,7 +29,7 @@ test:cargo:
     - cargo test --workspace --verbose
 ```
 
-If you have ever used Docker, then you should easily be able to 
+If you have ever used Docker, then you should easily be able to
 
 <center>
 
@@ -85,16 +85,16 @@ test:cargo:
 
 ## Reading
 
-~~~reading
-style: article 
+```reading
+style: article
 url: https://docs.gitlab.com/ee/ci/
 title: Get started with GitLab CI/CD
 author: GitLab
 ---
 Shows you how to get started with GitLab CI.
-~~~
+```
 
-~~~reading 
+```reading
 style: article
 url: https://www.fpcomplete.com/blog/deploying-rust-with-docker-and-kubernetes/
 title: Deploying Rust with Docker and Kubernetes
@@ -102,9 +102,9 @@ author: FP Complete
 ---
 In this article, FP complete shows you how to deploy a Rust application with
 Docker and Kubernetes using GitLab CI.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 url: https://www.bassi.io/articles/2019/04/13/adventures-in-ci/
 title: (New) Adventures in CI
@@ -112,4 +112,4 @@ author: Emmanuele Bassi
 ---
 In this blog post, Emmanuele Bassi shows you how the GNOME project uses GitLab
 CI to generate coverage reports for every commit.
-~~~
+```

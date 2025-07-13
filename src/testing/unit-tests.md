@@ -4,7 +4,7 @@ Unit tests are intended to test one small unit at a time. It might be a feature,
 it might be a specific input to an algorithm. Rust has native support for them
 with the built-in testing harness support.
 
-~~~admonish info
+```admonish info
 Unit tests are similar to integration tests. In fact, they both look the same:
 a function annotated with `#[test]`. But there is an important difference in
 how they run. Unit tests are written inside your code base. Depending on where
@@ -14,7 +14,7 @@ allowing them to test internal state.
 Integration tests on the other hand are compiled as if they were an external
 crate that happens to depend on your crate. They can only test anything that
 is publically visible, and not internal state of your structs.
-~~~
+```
 
 In Rust, you can annotate any function with `#[test]` and it will be a (unit or
 integration) test. Here is how a simple test case might look like:
@@ -82,12 +82,12 @@ by showing you a diff when two values don't match.
 
 If you chose to use async code in your project, you migth run into a situation
 where you need to write unit tests for asynchronous code. Usually, most of the
-unit tests don't require it, because you will follow the *blocking core, async shell*
-paradigm.
+unit tests don't require it, because you will follow the _blocking core, async
+shell_ paradigm.
 
 If you do need to write async unit tests, then the Tokio library has some
-functionality you can use for that. They have a `#[tokio::test]` macro that
-you can use to annotate any unit test to turn it into an asynchronous unit test.
+functionality you can use for that. They have a `#[tokio::test]` macro that you
+can use to annotate any unit test to turn it into an asynchronous unit test.
 
 ```rust
 #[tokio::test]
@@ -98,7 +98,7 @@ async fn async_unit_test() {
 
 ## Reading
 
-~~~reading
+```reading
 style: book
 url: https://doc.rust-lang.org/rust-by-example/testing/unit_testing.html
 title: Unit testing
@@ -107,16 +107,18 @@ author: Rust By Example
 This chapter outlines features of Rust's built-in support for unit tests. It
 shows advanced features, such as unit-testing panics, marking tests as ignored
 and running specific tests from the command-line.
-~~~
+```
 
-~~~reading
+```reading
 style: book
 url: https://abseil.io/resources/swe-book/html/ch12.html
 title: Unit Testing
 author: Software Engineering at Google
 ---
 TODO
-~~~
+```
 
-[pretty-assertions-repo]: https://github.com/rust-pretty-assertions/rust-pretty-assertions
-[pretty-assertions-docs]: https://docs.rs/pretty_assertions/latest/pretty_assertions/
+[pretty-assertions-repo]:
+  https://github.com/rust-pretty-assertions/rust-pretty-assertions
+[pretty-assertions-docs]:
+  https://docs.rs/pretty_assertions/latest/pretty_assertions/

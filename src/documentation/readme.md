@@ -1,17 +1,17 @@
 # Documentation
 
-Writing software is as much communicating to *other humans* as it is
+Writing software is as much communicating to _other humans_ as it is
 communicating with the machine we expect it to run in.
 
-In part, documentation solves the \\( O(n^2) \\) communication complexity
-issue: if you have three developers which each own some part of the project,
-then you can afford to have them communicate with each other to understand how
-things work and skip the work of documenting it propertly. However, this does
-not scale to large teams: if you have 100 developers that each own some
-components, and they all need to talk to each other to understand each other's
-work (and no documentation), then your developers will spend more time asking
-how things work than getting things done (or, worse, reimplement things because
-it is easier than figuring out how the original thing was supposed to work).
+In part, documentation solves the \\( O(n^2) \\) communication complexity issue:
+if you have three developers which each own some part of the project, then you
+can afford to have them communicate with each other to understand how things
+work and skip the work of documenting it propertly. However, this does not scale
+to large teams: if you have 100 developers that each own some components, and
+they all need to talk to each other to understand each other's work (and no
+documentation), then your developers will spend more time asking how things work
+than getting things done (or, worse, reimplement things because it is easier
+than figuring out how the original thing was supposed to work).
 
 In other words, in a commercial project, having great documentation saves you a
 lot of cost in the long run. It makes the difference whether you need a
@@ -22,8 +22,8 @@ productivity within weeks or a month.
 
 In the context of an open-source project, documentation saves you cost as well,
 but in a different way. Projects that have good documentation tend to be more
-discoverable, and the developers need to spend less time giving users support
-or explaining how to do things. That is the power of words: you write them just
+discoverable, and the developers need to spend less time giving users support or
+explaining how to do things. That is the power of words: you write them just
 once, but they can be read many (millions, thousands) of times.
 
 ```admonish info
@@ -61,8 +61,8 @@ on the crate ecosystem.
 
 When you write documentation, the most important question you have to ask is:
 who are you writing documentation for? What are they trying to do? If you know
-who you are writing documentation for, it tells you what style you have to
-write it in, what knowledge you can expect, and into what depth you can go.
+who you are writing documentation for, it tells you what style you have to write
+it in, what knowledge you can expect, and into what depth you can go.
 
 Generally, you will have two target audiences:
 
@@ -78,33 +78,35 @@ your end-users will be people who install and use the application.
 
 ### End-user Documentation
 
-End-users are less interested in the internals (*how things work*) and more
-interested in how they can use your project to solve a particular problem.
-They want to be able to quickly find out if your project is useful to them, and
-how they can use it. Once they have decided to use your project, they will want
-an easy way to find out what changed between releases (in terms of features or
+End-users are less interested in the internals (_how things work_) and more
+interested in how they can use your project to solve a particular problem. They
+want to be able to quickly find out if your project is useful to them, and how
+they can use it. Once they have decided to use your project, they will want an
+easy way to find out what changed between releases (in terms of features or
 APIs).
 
 End-user documentation should contain:
 
-- Explanation of what problems your project solves, and what limitations it might have
+- Explanation of what problems your project solves, and what limitations it
+  might have
 - Instruction of how to install your application (or compile your library)
 - Instruction of how to configure your application (or library)
 - Examples or guides on how to use it for specific use-cases
-- Changelog of additions, deprecations or removals of features or APIs between releases
+- Changelog of additions, deprecations or removals of features or APIs between
+  releases
 - Code-level documentation (if it is a library)
 
-Often times, this documentation exists in a Readme file and/or a web book
-that is hosted by the project.
+Often times, this documentation exists in a Readme file and/or a web book that
+is hosted by the project.
 
 ### Developer documentation
 
 Developers are programmers that want to understand how your project works.
 Typically, this is because they are working on it, they want to implement a
-feature, they want to improve it, or they want to fix a bug with it.  They need
-to be able to easily clone and compile it locally, run unit tests to see if
-they changes broke anything, run benchmarks to check if they changes introduced
-a regression. They need to be able to submit a patch (merge request) with their
+feature, they want to improve it, or they want to fix a bug with it. They need
+to be able to easily clone and compile it locally, run unit tests to see if they
+changes broke anything, run benchmarks to check if they changes introduced a
+regression. They need to be able to submit a patch (merge request) with their
 changes. Some developers (maintainers) also need to be able to release new
 versions of the code.
 
@@ -115,7 +117,8 @@ Developer documentation should contain:
 - Explanation of why the archiecture is the way it is
 - High-level explanation of how the code works
 - Instructions on how to compile the library
-- Instructions on how to run tests: unit tests, integration tests, benchmarks, fuzzing tests
+- Instructions on how to run tests: unit tests, integration tests, benchmarks,
+  fuzzing tests
 - Style guide for code, commits, documentation
 - Documentation of processes (how to submit a patch, how to cut a release)
 - Code-level documentation (APIs, data structures, invariants)
@@ -124,13 +127,15 @@ Developer documentation should contain:
 
 <!-- places for documentation: readme, crate metadata, standalone documentation, code documentation -->
 
-In the sections of this chapter, I will go though some of the functionality
-Rust has built-in for generating documentation for software projects, and some
-tools that are useful for writing the kinds of end-user and developer
-documentation outlined here. I will focus on:
+In the sections of this chapter, I will go though some of the functionality Rust
+has built-in for generating documentation for software projects, and some tools
+that are useful for writing the kinds of end-user and developer documentation
+outlined here. I will focus on:
 
-- Types of documentation documents (readme files, code comments, standalone documentation)
-- Tools to write effective documentation (diagramming tools, documentation generators)
+- Types of documentation documents (readme files, code comments, standalone
+  documentation)
+- Tools to write effective documentation (diagramming tools, documentation
+  generators)
 - Patterns for documentation (changelogs, patterns for documenting architecture)
 
 ## Reading
@@ -165,10 +170,10 @@ how to write effective written documents, including documentation, by the same
 author.
 ```
 
-~~~reading
+```reading
 style: article
 title: Rust Documentation Ecosystem Review
 url: https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/
 author: Gio Genre De Asis
 ---
-~~~
+```

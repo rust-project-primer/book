@@ -6,8 +6,8 @@ There are some useful tools that can be used to draw such diagrams:
 
 ## draw.io
 
-[draw.io](https://draw.io) is a web-application that lets you draw diagrams.
-All of the diagrams in this book are made with it.
+[draw.io](https://draw.io) is a web-application that lets you draw diagrams. All
+of the diagrams in this book are made with it.
 
 ### Examples
 

@@ -4,8 +4,8 @@ A common use-case of Rust is building backends for web applications. Rust is
 particularily suited for this, because it offers great performance and a strong
 async ecosystem that allows you to scale to many concurrent requests easily.
 
-While you can build a web backend manually by using crates such as [hyper][]
-for HTTP and [h3][] for HTTP/3, generally you will want to use a framework to
+While you can build a web backend manually by using crates such as [hyper][] for
+HTTP and [h3][] for HTTP/3, generally you will want to use a framework to
 implement the backend. Web backend frameworks handle things such as request
 routing, route authentication, parameter deserialization and building responses
 for you to make sure your application stays maintainable.
@@ -32,7 +32,7 @@ bottleneck in scaling Rust web backends.
 
 ### Template engines in Rust
 
-*TODO*
+_TODO_
 
 https://blog.logrocket.com/top-3-templating-libraries-for-rust/
 
@@ -60,14 +60,13 @@ https://lib.rs/template-engine
 
 ### Testing
 
-
 ## Axum
 
 [Axum](https://github.com/tokio-rs/axum) is currently the most popular web
 framework in the Rust ecosystem. It is developed by the same people that wrote
-Tokio, and uses hyper as the underlying HTTP implementation.  It supports
-WebSockets, has built-in routing and parameter decoding. It also integrates
-with the [tracing](https://github.com/tokio-rs/tracing) ecosystem and uses
+Tokio, and uses hyper as the underlying HTTP implementation. It supports
+WebSockets, has built-in routing and parameter decoding. It also integrates with
+the [tracing](https://github.com/tokio-rs/tracing) ecosystem and uses
 [tower](https://github.com/tower-rs/tower) to build middleware.
 
 ```rust
@@ -88,16 +87,16 @@ async fn main() {
 ```
 
 One thing that is nice about Axum is that it does not use custom proc-macros to
-implement routing or request handling, which makes it easier to use it with
-IDEs that might not understand the syntax. The downside is that it's generics
+implement routing or request handling, which makes it easier to use it with IDEs
+that might not understand the syntax. The downside is that it's generics
 approach sometimes leads to difficult-to-understand error messages.
 
 ## [Actix-Web](https://actix.rs/)
 
-Actix started out as a framework implementing the actor model for message-passing
-concurrency. Actix-Web, a framework for building web application on top of it gained
-quite a lot of popularity. It remains the second-most popular framework for building
-web backend application.
+Actix started out as a framework implementing the actor model for
+message-passing concurrency. Actix-Web, a framework for building web application
+on top of it gained quite a lot of popularity. It remains the second-most
+popular framework for building web backend application.
 
 ```rust
 use actix_web::{get, web, App, HttpServer, Responder};
@@ -162,16 +161,16 @@ https://www.shuttle.rs/
 
 ## Reading
 
-~~~reading
+```reading
 style: article
 title: "Are We Web Yet: Web Frameworks"
 url: https://www.arewewebyet.org/topics/frameworks/
 author: Are We Web Yet
 ---
 List of web frameworks along with some stats on them.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: "Web Frameworks Benchmark: Rust"
 url: https://web-frameworks-benchmark.netlify.app/result?asc=0&l=rust&order_by=language
@@ -179,9 +178,9 @@ author: The Benchmarker
 ---
 Compares the performance (as measured by requests-per-second) of various web
 frameworks.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Rusts Axum style magic function params example
 url: https://alexpusch/rust-magic-patterns/blob/master/axum-style-magic-function-param/Readme.md
@@ -189,4 +188,4 @@ author: Alex Puschinsky
 ---
 In this article, Alex explains how Axum's magic function parameter handling is
 implemented in Rust.
-~~~
+```

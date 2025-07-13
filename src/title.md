@@ -1,4 +1,3 @@
-
 ```admonish
 This is a prerelease version of this book. Feel free to check if out! I would
 greatly appreciate it if you left me some
@@ -15,7 +14,7 @@ free to leave a merge request on the
 
 by
 
-*Patrick M. Elsen*
+_Patrick M. Elsen_
 
 CC BY-NC-SA 4.0 Licensed
 

@@ -1,12 +1,12 @@
 # C
 
-Interfacing with C code is commonly necessary in order to use C libraries.
-Many interpreters for programming languages, compression libraries, database
+Interfacing with C code is commonly necessary in order to use C libraries. Many
+interpreters for programming languages, compression libraries, database
 connection libraries expose a C API that they expect you to use.
 
-Similarly, exposing a Rust library as a C API is commonly done to make it
-easy for other tools to use it. The C ABI is often the lowest common
-denominator for interfacing with different languages and tools.
+Similarly, exposing a Rust library as a C API is commonly done to make it easy
+for other tools to use it. The C ABI is often the lowest common denominator for
+interfacing with different languages and tools.
 
 ### Typical architecture
 
@@ -17,13 +17,12 @@ Rust, and in a separate library you write a safe Rust wrapper.
 ## bindgen
 
 Bindgen is a tool that makes it easy for you to create Rust bindings to a C
-library. It works by parsing a C header, and emitting matching Rust bindings
-for it, mapping the C types to appropriate Rust types. This way, you get a Rust
+library. It works by parsing a C header, and emitting matching Rust bindings for
+it, mapping the C types to appropriate Rust types. This way, you get a Rust
 module that has contains every function and data type that the C header defines,
 as `unsafe` Rust functions.
 
 ### How it works
-
 
 ### Tools you might need
 
@@ -52,11 +51,11 @@ sources.
 ## cbindgen
 
 cbindgen is, in some ways, the opposite tool to bindgen. It allows you to export
-a Rust API into a C or C++ API. In this section, we will only discuss its abilities
-to export a C++ binding, for the C++ part see the [C++ section](./cpp.md).
+a Rust API into a C or C++ API. In this section, we will only discuss its
+abilities to export a C++ binding, for the C++ part see the
+[C++ section](./cpp.md).
 
 ### How to use it
-
 
 ### Example: tquic
 
@@ -68,23 +67,23 @@ to export a C++ binding, for the C++ part see the [C++ section](./cpp.md).
 
 ## Reading
 
-~~~reading
+```reading
 style: article
 title: How to create a C binding to a Rust library
 url: https://developers.redhat.com/articles/2022/09/05/how-create-c-binding-rust-library#memory_leak_test_for_the_c_binding
 author: Gris Ge
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: "Rust FFI and bindgen: Integrating embedded C code in Rust"
 url: https://blog.theembeddedrustacean.com/rust-ffi-and-bindgen-integrating-embedded-c-code-in-rust
 author: Omar Hiari
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: book
 title: The bindgen User Guide
 url: https://rust-lang.github.io/rust-bindgen/
@@ -92,9 +91,9 @@ author: Rust Project
 ---
 The bindgen User Guide shows how to set up bindgen, and how to use it in a Rust
 project.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: cbindgen User Guide
 url: https://github.com/mozilla/cbindgen/blob/master/docs.md
@@ -102,9 +101,9 @@ author: Mozilla
 ---
 The cbindgen User Guide shows how to set up cbindgen, and how to use it in a Rust
 project.
-~~~
+```
 
-~~~reading
+```reading
 style: book
 title: Foreign Function Interface
 url: https://doc.rust-lang.org/nomicon/ffi.html
@@ -113,9 +112,9 @@ author: Rust Project
 In this chapter of the Rust Nomicon, Foreign Function Interfaces are explained.
 The chapter outlines how Rust can bind with other languages, such as C, and
 gives some examples.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Rust to C - FFI Guide
 url: https://github.com/Quin-Darcy/rust-c-ffi-guide
@@ -124,4 +123,4 @@ author: Quin Darcy
 Quin shows how to call C code from Rust in this example repository. He has set up
 an example whereby some C library is called from Rust, and walks through how it
 works.
-~~~
+```

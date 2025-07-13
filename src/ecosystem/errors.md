@@ -3,9 +3,9 @@
 Error handling is essential to writing robust software. Rust has chosen a model
 for error handling that emphasizes correctness.
 
-Many programming languages use *exceptions* to communicate errors. In some way,
+Many programming languages use _exceptions_ to communicate errors. In some way,
 exceptions are a kind of hidden return value: a function can either return the
-value it declares it will return, or it can *throw* an exception.
+value it declares it will return, or it can _throw_ an exception.
 
 Rust deliberately chose not to do this, and rather uses return types. This
 ensures that it is always clearly communicated which failure modes a function
@@ -14,36 +14,36 @@ programmers to handle errors, at least to some degree: a fallible function
 returns a `Result<T, E>`, and you have to either handle the error (with a
 `match` statement), or propagate it up with a `?`.
 
-~~~admonish note
+```admonish note
 In some ways, this is only partially true. Rust does have a kind of *exception*,
 through the `panic!()` and `.unwrap()` mechanism. However, the difference is
-that these are generally only used for *unrecoverable* errors. 
-~~~
+that these are generally only used for *unrecoverable* errors.
+```
 
 Part of the reason that doing this is ergonomic in Rust is because Rust has
 great syntactical support for pattern matching. This is not the case for many
-other languages, which is partially why *exceptions* were created and remain in
+other languages, which is partially why _exceptions_ were created and remain in
 use.
 
 ### Communicating Failures in Rust
 
-Rust has three principal methods of communicating failures. In the order
-of utility, this is what they are:
+Rust has three principal methods of communicating failures. In the order of
+utility, this is what they are:
 
 - **Missing data**: Rust has the `Option<T>` type, which can communicate if
   something is missing. Generally, this is not an error. For example, when you
   look up a value in a map, it will return either `None` or `Some(T)`.
-- **Recoverable errors**: Rust has the `Result<T, E>` type, which can
-  either contain your data as `Ok(T)`, or contain an error as `Err(E)`.
+- **Recoverable errors**: Rust has the `Result<T, E>` type, which can either
+  contain your data as `Ok(T)`, or contain an error as `Err(E)`.
 - **Unrecorverable errors**: Panics are the Rust way to express an error that
   cannot be recovered from. This is perhaps the closest thing Rust has to
   exceptions. These are generated when invariants are invalid, or when memory
   cannot be allocated. When they are encountered, a backtrace is printed and
-  your program is aborted, although there are some ways to catch them if
-  need be.
+  your program is aborted, although there are some ways to catch them if need
+  be.
 
-Rust also has ways to convert between these types of errors. For example, if
-a missing key in a map is to be treated as an error, you can write:
+Rust also has ways to convert between these types of errors. For example, if a
+missing key in a map is to be treated as an error, you can write:
 
 ```rust
 // get user name, or else return a user missing error
@@ -51,8 +51,8 @@ let value = map.get("user").ok_or(Error::UserMissing)?;
 ```
 
 If an error is unrecoverable (or perhaps, you are prototyping some code and
-chose not to properly handle errors yet), then you can turn a `Err(T)` into
-a panic using `unwrap()` or `expect()`.
+chose not to properly handle errors yet), then you can turn a `Err(T)` into a
+panic using `unwrap()` or `expect()`.
 
 ```rust
 let file = std::fs::read_to_string("file.txt").unwrap();
@@ -60,7 +60,7 @@ let file = std::fs::read_to_string("file.txt").unwrap();
 
 ### Panics in Rust
 
-We can't talk about error handling in Rust without mentioning *panicing*. They
+We can't talk about error handling in Rust without mentioning _panicing_. They
 are a way to signify failures that cannot reasonable be recovered from. Panics
 are not a general way to communicate errors, they are a method of last resort.
 
@@ -83,8 +83,9 @@ fn test_value(value: &Value) -> bool {
 }
 ```
 
-Using [catch_unwind()](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html),
-you can catch panics. This might be useful if you use libraries that might panic.
+Using
+[catch_unwind()](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html), you
+can catch panics. This might be useful if you use libraries that might panic.
 
 ```rust
 std::panic::catch_unwind(|| {
@@ -92,7 +93,7 @@ std::panic::catch_unwind(|| {
 });
 ```
 
-~~~admonish warning
+```admonish warning
 While it is possible to catch panics with
 [`catch_unwind()`](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html),
 but this is not recommended, has a performance penalty and does not work across
@@ -106,7 +107,7 @@ terminate when you hit something that isn't implemented yet.
 
 Production applications should generally never panic, and if they do it should
 result in the default behaviour, which is the application aborting.
-~~~
+```
 
 ### The `Result` type
 
@@ -114,8 +115,8 @@ In general, functions in Rust are fallible use the `Result` return type to
 signify this.
 
 If you have a common error type that you use in your application, then it is
-possible to make an alias of the `Result` type that defaults to your error
-type, but allows you to override it with a different error type if needed:
+possible to make an alias of the `Result` type that defaults to your error type,
+but allows you to override it with a different error type if needed:
 
 ```rust
 type Result<T, E = MyError> = Result<T, E>;
@@ -128,12 +129,12 @@ other type.
 
 ### The `Error` trait
 
-In general, all error types in Rust implement the [`Error`][error] trait.  This
+In general, all error types in Rust implement the [`Error`][error] trait. This
 trait allows for getting a simple textual description of an error, information
 about the source of the error.
 
-If you create custom error types, you should implement this trait on them.
-There are some common libraries that help with doing this.
+If you create custom error types, you should implement this trait on them. There
+are some common libraries that help with doing this.
 
 [error]: https://doc.rust-lang.org/stable/std/error/trait.Error.html
 
@@ -142,43 +143,43 @@ There are some common libraries that help with doing this.
 Rust comes with some libraries, which can help you integrate into the Rust error
 system. On a high level, these libraries fall into one of two categories:
 
-- **Custom error types**: these libraries allow you to define custom error types,
-  by implementing the `Error` trait and any neccessary other traits. A common
-  pattern is to define an error type, which is an enumeration of all possible
-  errors your application (or this particular function) may produce. These libraries
-  often also help you by implementing a `From<T>` implementation for errors that
-  your error type wraps.
-- **Dealing with arbitrary errors**: In some cases, you want to be able to handle
-  arbitrary errors. If you are writing a crate which is to be used by others,
-  this is generally a bad idea, because you want to expose the raw errors to
-  consumers of your library. But if you are writing an application, and all you
-  want to do is to render the error at some point, it is usually beneficial to
-  use some library which has the equivalent of `Box<dyn Error>` and lets you
-  not worry about defining custom error types. Often times, these libraries also
-  contain functionality for pretty-printing error chains and stack traces.
+- **Custom error types**: these libraries allow you to define custom error
+  types, by implementing the `Error` trait and any neccessary other traits. A
+  common pattern is to define an error type, which is an enumeration of all
+  possible errors your application (or this particular function) may produce.
+  These libraries often also help you by implementing a `From<T>` implementation
+  for errors that your error type wraps.
+- **Dealing with arbitrary errors**: In some cases, you want to be able to
+  handle arbitrary errors. If you are writing a crate which is to be used by
+  others, this is generally a bad idea, because you want to expose the raw
+  errors to consumers of your library. But if you are writing an application,
+  and all you want to do is to render the error at some point, it is usually
+  beneficial to use some library which has the equivalent of `Box<dyn Error>`
+  and lets you not worry about defining custom error types. Often times, these
+  libraries also contain functionality for pretty-printing error chains and
+  stack traces.
 
 In general, if you write a crate that is to be used as a library by other
 crates, you should be using a library which allows you to define custom error
 types. You want the users of your crate to be able to handle the different
 failure modes, and if the failure modes change (your error enums change), you
-want to force them to adjust their code. This makes the failure modes
-explicity.
+want to force them to adjust their code. This makes the failure modes explicity.
 
 If you write an application (such as a command-line application, a web
-application, or any other code where you are not exposing the errors in any
-kind of API), then using the latter kind of error-handling library is
-appropriate. In this case, all you care about is reporting errors and metadata
-(where they occured) to an end-user.
+application, or any other code where you are not exposing the errors in any kind
+of API), then using the latter kind of error-handling library is appropriate. In
+this case, all you care about is reporting errors and metadata (where they
+occured) to an end-user.
 
 ## Thiserror
 
 The [thiserror](https://docs.rs/thiserror/latest/thiserror/) crate is a popular
 crate for defining custom structured errors. It helps you to implement the
-`Error` trait for your custom error types. 
+`Error` trait for your custom error types.
 
-Imagine you have an application that uses an SQLite database to store data
-and properties. Every query to the database returns some custom error type of
-the database library. However, you want consumers of your crate to be able to
+Imagine you have an application that uses an SQLite database to store data and
+properties. Every query to the database returns some custom error type of the
+database library. However, you want consumers of your crate to be able to
 differentiate between different error cases.
 
 For example:
@@ -196,14 +197,14 @@ pub enum MyError {
 The crate is specifically useful for implementing your own structured error
 types, or for composing multiple existing error types into a wrapper enum.
 
-By writing wrapper enums, you are also able to *refine* errors, for example
+By writing wrapper enums, you are also able to _refine_ errors, for example
 classifying errors you receive from an underlying database.
 
 ## Anyhow
 
-The [anyhow](https://docs.rs/anyhow/latest/anyhow/) crate gives you the
-ability to work with dynamic and ad-hoc errors. It exports the `anyhow::Error`
-type, which can capture any Rust error.
+The [anyhow](https://docs.rs/anyhow/latest/anyhow/) crate gives you the ability
+to work with dynamic and ad-hoc errors. It exports the `anyhow::Error` type,
+which can capture any Rust error.
 
 ```rust
 use anyhow::Error;
@@ -214,25 +215,21 @@ fn main() -> Result<(), Error> {
 }
 ```
 
-The anyhow crate also has a `Result` alias, which defaults to using its
-Error type.
+The anyhow crate also has a `Result` alias, which defaults to using its Error
+type.
 
 This library is very useful for when you are writing an application that uses
 multiple libraries, and you don't want to inspect or handle the errors
-explicitly.  Rather, you can use anyhow's Error type to pass them around and
+explicitly. Rather, you can use anyhow's Error type to pass them around and
 render them to the user.
 
 ## Eyre
 
-
-
 ## Miette
-
-
 
 ## Reading
 
-~~~reading
+```reading
 style: article
 title: The definitive guide to Rust error handling
 url: https://www.howtocodeit.com/articles/the-definitive-guide-to-rust-error-handling
@@ -244,88 +241,88 @@ Angus walks through the basics of error handling in Rust. He explains the
 shows how it can be downcast into concrete error types, and how anyhow's `Error`
 type can be used instead. He explains structured error handling by implementing
 custom types.
-~~~
+```
 
-~~~reading
+```reading
 style: book
 title: "Chapter 9: Error Handling"
 url: https://doc.rust-lang.org/book/ch09-00-error-handling.html
 author: The Rust Programming Language
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: "Error handling in Rust: a comprehensive tutorial"
 url: https://blog.logrocket.com/error-handling-rust/
 author: Eze Sunday
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: "Rust Error Handling: thiserror, anyhow, and When to Use Each"
 url: https://momori.dev/posts/rust-error-handling-thiserror-anyhow/
 author: Momori Nakano
 archived: momori-rust-error-handling-thiserror-anyhow.pdf
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: "Error Handling in Rust: A Deep Dive"
 url: https://www.lpalmieri.com/posts/error-handling-rust/
 author: Luca Palmieri
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Error Handling in a Correctness-Critical Rust Project
 url: https://sled.rs/errors.html
 author: Tyler Neely
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Three kinds of Unwrap
 url: https://zkrising.com/writing/three-unwraps/
 author: zk
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Designing Error Types in Rust Libraries
 url: https://d34dl0ck.me/rust-bites-designing-error-types-in-rust-libraries/index.html
 author: Sven Kanoldt
 archived: kanoldt-designing-error-types-in-rust-libraries.pdf
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Why Use Structured Errors in Rust Applications?
 url: https://home.expurple.me/posts/why-use-structured-errors-in-rust-applications/
 author: Dmitrii Aleksandrov
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Error Handling in Rust
 url: https://burntsushi.net/rust-error-handling/
 author: Andrew Gallant
 archived: burntsushi-rust-error-handling.pdf
 ---
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Designing error types in Rust
 url: https://mmapped.blog/posts/12-rust-error-handling
 author: Roman Kashitsyn
 archived: mmapped-rust-error-handling.pdf
 ---
-~~~
+```

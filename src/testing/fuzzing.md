@@ -17,7 +17,7 @@ implementations are usually able to use valid, working inputs as a starting
 point and randomly mutate them to try to find inputs that either crash the
 program, or lead to some kind of invalid behaviour.
 
-~~~admonish note
+```admonish note
 Fuzzing is a popular technique for testing parsers written in memory-unsafe
 languages. It focusses on trying to reach all branches and testing for invalid
 behaviour (stack overflows, read or write out of bounds). For this reason, it
@@ -35,28 +35,28 @@ Some places where you might want to use it are:
 Otherwise, it might make more sense for you to look into doing [Property
 testing](./property.md), which focusses more on testing individual components,
 and is more focussed on *correctness* rather than *memory safety*.
-~~~
+```
 
 Fuzzing is a very good strategy when your code parses untrusted data. It allows
 you to have confidence that for any possible input, your program does not
-misbehave. The downside of fuzzing is that usually, it can only detect
-crashes. When possible, it is better to test individual pieces of code using
-property testing.
+misbehave. The downside of fuzzing is that usually, it can only detect crashes.
+When possible, it is better to test individual pieces of code using property
+testing.
 
 ## afl.rs
 
-afl, or *american fuzzy lop*, is one of the original fuzzing tools. It is designed
-to work very easily: it continuously launches your program, feeds random bytes
-into it and monitors which branches are taken.
+afl, or _american fuzzy lop_, is one of the original fuzzing tools. It is
+designed to work very easily: it continuously launches your program, feeds
+random bytes into it and monitors which branches are taken.
 
-When your program does anything invalid, it will record the input it used as
-a failing test case, later you can attempt to reproduce the crash and try to
+When your program does anything invalid, it will record the input it used as a
+failing test case, later you can attempt to reproduce the crash and try to
 figure out what caused it.
 
-In general, what is considered *invalid* is anything that causes your program
-to abort unsually, for example a NULL pointer dereference. If you compile your
-program with sanitizers, you can detect more invalid behaviours (these sanitizers
-will abort your program if it does anything they can detect):
+In general, what is considered _invalid_ is anything that causes your program to
+abort unsually, for example a NULL pointer dereference. If you compile your
+program with sanitizers, you can detect more invalid behaviours (these
+sanitizers will abort your program if it does anything they can detect):
 
 - Undefined behaviour: reading uninitialized memory
 - Memory: reading out-of-bounds, writing out-of-bounds
@@ -65,11 +65,11 @@ will abort your program if it does anything they can detect):
 
 ## Examples
 
-*TODO*
+_TODO_
 
 ## Reading
 
-~~~reading
+```reading
 style: book
 title: Rust-Fuzz Book
 url: https://rust-fuzz.github.io/book/introduction.html
@@ -77,9 +77,9 @@ author: Rust Fuzz Book
 ---
 This book explains what fuzz testing is, and how it can be implemented in Rust
 using `afl.rs` and `cargo-fuzz`.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: How to fuzz Rust code continuously
 url: https://about.gitlab.com/blog/2020/12/03/how-to-fuzz-rust-code/
@@ -88,9 +88,9 @@ author: Yevgeny Pats
 Yevgeny explains why you should fuzz your Rust code, and shows you how
 to do it in GitLab. GitLab has some features that make running fuzzing
 inside GitLab CI quite convenient.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: Fuzzing Solana
 url: https://secret.club/2022/05/11/fuzzing-solana.html
@@ -98,16 +98,15 @@ author: Addison Crump
 ---
 Addison shows how Rust can be used to fuzz the Solana eBPF JIT compiler, and
 outlines the security vulnerabilities found within uses this approach.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 title: "Earn $200K by fuzzing for a weekend: Part 1"
 url: https://secret.club/2022/05/11/fuzzing-solana.html
 author: Addisn Crump
 ---
-~~~
-
+```
 
 https://tweedegolf.nl/en/blog/154/what-is-my-fuzzer-doing
 

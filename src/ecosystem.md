@@ -1,39 +1,39 @@
 # Ecosystem
 
 Before you start your project, you may need to put some throughts towards what
-kind of project you want to build, and choose the right ecosystem. 
+kind of project you want to build, and choose the right ecosystem.
 
-Rust has a vibrant community of all kinds of projects, usually over time
-certain crates become more popular and establish themselves as the go-to. You
-should certainly make use of the ecosystem and the ease with which Cargo lets
-you add and manage dependencies.
+Rust has a vibrant community of all kinds of projects, usually over time certain
+crates become more popular and establish themselves as the go-to. You should
+certainly make use of the ecosystem and the ease with which Cargo lets you add
+and manage dependencies.
 
 ![bubble graph of popular crates](graphics/crate-popularity.svg)
 
 Rust can also target a wide variety of platforms: whether you are writing code
-to run [on GPUs](https://rust-gpu.github.io/), [in the
-browser](https://www.rust-lang.org/what/wasm), [on
-servers](https://www.rust-lang.org/what/networking), [in the
-terminal](https://www.rust-lang.org/what/cli), [inside your
-bootloder](https://github.com/rust-osdev/uefi-rs), [on embedded
-devices](https://www.rust-lang.org/what/embedded) or on unusual platforms, Rust
-typically has you covered.
+to run [on GPUs](https://rust-gpu.github.io/),
+[in the browser](https://www.rust-lang.org/what/wasm),
+[on servers](https://www.rust-lang.org/what/networking),
+[in the terminal](https://www.rust-lang.org/what/cli),
+[inside your bootloder](https://github.com/rust-osdev/uefi-rs),
+[on embedded devices](https://www.rust-lang.org/what/embedded) or on unusual
+platforms, Rust typically has you covered.
 
 Most of the time, it is relatively easy to switch between different crates.
 However, in some cases the crates you decide to use have an influence over the
-architecture of your project. For example, it is not always so easy to convert
-a blocking, threaded application into an async one, or to switch from one web
+architecture of your project. For example, it is not always so easy to convert a
+blocking, threaded application into an async one, or to switch from one web
 framework to another.
 
 It is usually better to put some thought into this before you start developing,
-because it might be difficult to switch once you've already invested in
-building your project with one ecosystem. This sections aims at showing you
-the Rust ecosystem for some common tasks, wherever the choices you make have
-a large impact on the architecture of your project.
+because it might be difficult to switch once you've already invested in building
+your project with one ecosystem. This sections aims at showing you the Rust
+ecosystem for some common tasks, wherever the choices you make have a large
+impact on the architecture of your project.
 
 ## Reading
 
-~~~reading
+```reading
 style: article
 url: https://landaire.net/on-dependency-usage-in-rust/
 title: On Dependency Usage in Rust
@@ -48,13 +48,13 @@ it is so easy to add dependencies, that many small projects end up with
 gigabytes worth of trivial (transitive dependencies), which is criticized as a
 security risk. This article explains how dependencies work in Rust, and why
 it's okay to use them.
-~~~
+```
 
-~~~reading
+```reading
 style: article
 url: https://lib.rs/stats
 title: Statistics on the Rust ecosystem
 author: lib.rs
 ---
 Lib.rs publishes some interesting graphics of the Rust ecosystem.
-~~~
+```

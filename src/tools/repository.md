@@ -9,9 +9,9 @@ For ease of maintenance, it can be beneficial to keep the two in sync.
 
 ## Cargo Readme
 
-[`cargo-readme`](https://lib.rs/crates/cargo-readme)
-is a tool that allows you to generate a README file from the
-crate-level documentation strings of your Rust crate. 
+[`cargo-readme`](https://lib.rs/crates/cargo-readme) is a tool that allows you
+to generate a README file from the crate-level documentation strings of your
+Rust crate.
 
 You can install it using Cargo:
 

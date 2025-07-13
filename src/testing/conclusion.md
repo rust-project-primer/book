@@ -14,6 +14,3 @@ approaches that take little effort but produce great test coverage (such as
 randomized testing) can help make sure that code really does behave well.
 
 ## Matrix
-
-
-

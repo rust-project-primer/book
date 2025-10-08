@@ -8,7 +8,7 @@ allowed to use it. As this security audit was very expensive, you now wonder if
 there is a way to automate some of these checks to catch them sooner._
 
 Supply chain attacks are currently discussed a lot. As the complexity of the
-average software project grows, so does it's dependency graph. At the same time,
+average software project grows, so does its dependency graph. At the same time,
 bugs are being found, sometimes in high-profile software, leading to attacks.
 The worst situation is when bugs are found in popular libraries, but mitigations
 are not applied due to companies not recognizing they (indirectly) depend on the

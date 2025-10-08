@@ -15,7 +15,7 @@ is the ideal tool to get it to build:
 Things start to get tricky when you involve other languages (such as mixing Rust
 with C, C++, TypeScript) or when the build involves building code for different
 targets (for example, that some crates need to be built as WebAssembly and the
-resulting code is needed by other build.
+resulting code is needed by other builds.
 
 ### Example architectures
 
@@ -61,7 +61,7 @@ Good build systems will enforce [hygiene by sandboxing build steps][sandboxing]
 to make sure you do not accidentally depend on inputs you have not declared.
 This helps to avoid the "it works on my machine" syndrome, where your code
 accidentally depends on some system state that is present on your machine but
-not on other's.
+not on others'.
 
 However, build systems become interesting to your Rust project when one of three
 things happen:
@@ -74,7 +74,7 @@ things happen:
   frontend compiled to WebAssembly using a tool such as `trunk` for ease of
   deployment.
 - You depend on some **external dependency** which is not written in Rust, and
-  you want to be sure you can use reproducibly it on all platforms. For example,
+  you want to be sure you can use it reproducibly on all platforms. For example,
   you depend on the presence of `sqlite` in a specific version.
 
 Many build systems also offer fully reproducible builds by requiring all build
@@ -146,7 +146,7 @@ style: article
 title: Amazon's Build System
 url: https://gist.github.com/terabyte/15a2d3d407285b8b5a0a7964dd6283b0
 author: Carl Meyers
-achived: terabyte-amazon-build-tool.pdf
+archived: terabyte-amazon-build-tool.pdf
 ---
 Carl explains the build system that Amazon uses.
 ```
@@ -159,7 +159,7 @@ author: Gavin D. Howard
 archived: yzena-build-system-schism.pdf
 ---
 Gavin gives a summary of the evolution of build systems, into the modern ones
-he calles meta build systems. He summarizes which features they have, and
+he calls meta build systems. He summarizes which features they have, and
 argues that Turing-completeness is a property that is required for a good build
 system.
 ```

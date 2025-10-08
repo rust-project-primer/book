@@ -1,8 +1,8 @@
 # Checks
 
 The Rust compiler is very good at finding bugs in the code, thanks to the type
-system and the borrow checker. However, there is some other things in a Rust
-that can be checked continuously in a project to avoid writing broken code.
+system and the borrow checker. However, there are some other things in a Rust
+project that can be checked continuously to avoid writing broken code.
 
 This chapter deals with some other aspects of Rust projects that should be
 checked, and offers some tooling that can be used to check them. It gives you

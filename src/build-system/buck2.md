@@ -32,7 +32,7 @@ configurations.
 
 ### Building JavaScript
 
-### Building WebAssmebly
+### Building WebAssembly
 
 ## Reading
 

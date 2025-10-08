@@ -22,7 +22,7 @@ implode when you update dependencies.
 ```admonish title="Semantic Versioning"
 Semantic versioning, often abbreviated as SemVer, is a versioning scheme for
 software that aims to convey meaning about the underlying changes in each
-release. It uses a three-part version number format, *major*.*minor*.*match*
+release. It uses a three-part version number format, *major*.*minor*.*patch*
 (e.g., `2.0.1`), where Major versions introduce breaking changes, Minor
 versions add new features without breaking backward compatibility, and Patch
 versions include bug fixes that don't affect the API.
@@ -109,7 +109,7 @@ title: "Chapter 3.18: Unstable Features"
 url: https://doc.rust-lang.org/cargo/reference/unstable.html#minimal-versions
 author: The Cargo Book
 ---
-Explains the Cargo features `miminal-versions` and `direct-minimal-versions`
+Explains the Cargo features `minimal-versions` and `direct-minimal-versions`
 which force Cargo to resolve (direct) dependencies to their minimal versions
 instead of the latest versions.
 ```

@@ -5,12 +5,12 @@ dependencies and configurations in a functional language, and uses build
 isolation to ensure consistent and reproducible builds across machines.
 
 The declarative nature of Nix makes it great at dealing with complex
-environment. It handles cross-platform builds correctly. Despite being over 20
+environments. It handles cross-platform builds correctly. Despite being over 20
 years old, it has recently gained a lot of support. It is useful for providing
 consistent development setups between teams, ensuring that the code has the same
 environments between developers, CI machines and deployment machines.
 
-Nix is quite versatile. It can be used to configure your system, setup a
+Nix is quite versatile. It can be used to configure your system, set up a
 hygienic development shell containing only the dependencies you explicitly
 requested, build Docker images with the minimal set of runtime dependencies.
 
@@ -198,13 +198,13 @@ Here is an example for what a derivation looks like:
 }
 ```
 
-Even if the synax might be unfamiliar, you can see two things:
+Even if the syntax might be unfamiliar, you can see two things:
 
 - The flake has a description, which is just an informative string.
 - The flake has some inputs, which are specified by URL.
 - The flake has some outputs. This is a function that takes the parsed input
-  flakes as input, and return some kind of structure. In this example, we define
-  some keys in the `packages` field of the output structure.
+  flakes as input, and returns some kind of structure. In this example, we
+  define some keys in the `packages` field of the output structure.
 - We have hard-coded only output packages for the `x86_64-linux` architecture.
   We could also hard-code outputs for other architectures, or use some Nix
   features to automatically make this work for a set of platforms we want to
@@ -238,8 +238,8 @@ is not recommended), you need to use an earlier version of the entire nixpkgs
 
 In general, this is a good thing. Because usually, you do want to use the latest
 versions of packages, in order to get the latest features, but most importantly,
-to get the latest security fixes. But if for some reason you don't, then you it
-can get in your way.
+to get the latest security fixes. But if for some reason you don't, then it can
+get in your way.
 
 ```admonish info
 You can always manually write derivations for the packages where you need a
@@ -399,7 +399,7 @@ Nix has built-in support for running tests. Nix calls them _checks_. In your
 
 When you define your tests this way, then you can run them with:
 
-nix flake check
+    nix flake check
 
 An added bonus is that if you do use some tools for checking crates, such as
 `cargo-hack`, Nix is able to provide them for you.
@@ -444,10 +444,10 @@ tooling) are always in the build cache. New code is in the cache, as soon as it
 is pushed to the repository, and is available for example when other developers
 do code review.
 
-You can use hosted solutions like Cachix for your build cache, or you can setup
-a S3 bucket on some provider (Hetzner, Wasabi, Backblaze, AWS) and configure it.
-You should take care that only trusted people or machines are able to write into
-it, because this can be a security issue.
+You can use hosted solutions like Cachix for your build cache, or you can set up
+an S3 bucket on some provider (Hetzner, Wasabi, Backblaze, AWS) and configure
+it. You should take care that only trusted people or machines are able to write
+into it, because this can be a security issue.
 
 ## Nix as distributed compiler
 
@@ -560,7 +560,7 @@ title: "Practical Nix flake anatomy: a guided tour of flake.nix"
 url: https://vtimofeenko.com/posts/practical-nix-flake-anatomy-a-guided-tour-of-flake.nix/
 author: Vladimir Timofeenko
 ---
-Vladimit explains how a `flake.nix` file is constructed. He explains the high-level
+Vladimir explains how a `flake.nix` file is constructed. He explains the high-level
 concepts (inputs, outputs) and shows syntax examples for how to write them.
 ```
 

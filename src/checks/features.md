@@ -11,7 +11,7 @@ automatically by CI rather than by downstream users._
 
 <!-- TODO: example of how this happens -->
 
-Similar to using `#ifdef` statements in C and C++, using `#[use]` blocks is
+Similar to using `#ifdef` statements in C and C++, using `#[cfg]` blocks is
 inherently brittle. Using a crate such as [`cfg_if`][cfg_if] instead can help
 make it more manageable, but it does not address the root issue: you really need
 to test the code you write for all features.

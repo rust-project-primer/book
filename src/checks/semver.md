@@ -14,7 +14,7 @@ everything breaking when dependencies are updated.
 ```admonish title="Semantic Versioning"
 Semantic versioning, often abbreviated as SemVer, is a versioning scheme for
 software that aims to convey meaning about the underlying changes in each
-release. It uses a three-part version number format, *major*.*minor*.*match*
+release. It uses a three-part version number format, *major*.*minor*.*patch*
 (e.g., `2.0.1`), where Major versions introduce breaking changes, Minor
 versions add new features without breaking backward compatibility, and Patch
 versions include bug fixes that don't affect the API.
@@ -66,7 +66,7 @@ title: Semantic Versioning 2.0.0
 url: https://semver.org/
 author: Semver
 ---
-Semantiv Versioning specification which explains the rules of how to apply it.
+Semantic Versioning specification which explains the rules of how to apply it.
 ```
 
 ```reading

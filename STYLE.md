@@ -3,10 +3,9 @@
 This book should be a primer on starting, maintaining and understanding
 real-world Rust projects. It tries to cover the most common problems one might
 encounter in a real-world Rust project, and give some advice and context for how
-to solve them.
-
-The main focus of this book is to give an overview of how to solve common
-problems, referring to existing resources for more detailed information.
+to solve them. It should give advise on structing them and on tools used to
+solve common problems. It should reference existing articles and guides for more
+detailed information.
 
 ## Structure
 
@@ -22,94 +21,209 @@ Every section should start with a brief introduction to explain what the problem
 is that it is trying to solve. It should have subheadings for solutions to the
 problem. Where possible, it should give examples of how to solve the problem,
 and reference articles, tutorials or chapters in other books that go into more
-detail.
+detail. Every section should end with a _Reading_ section that provides a list
+of resources for further learning.
 
 ## Writing Style
 
-The writing style should be clear and concise, using simple language so that
-people new to Rust can understand it. It should avoid flowery language, sticking
-to factual information and a neutral tone. A writing style similar to Wikipedia
-or the Rust Book is preferred.
+### Voice and Tone
 
-Technical terms that are used should be defined in the section that they are
-used. Some prior knowledge of Rust is assumed, but more complex concepts should
-be explained.
+The writing should use second person ("you") to directly address the reader,
+creating a conversational but professional tone. The book acts as a guide for
+the reader's Rust journey. Avoid overly academic or formal language in favor of
+clear, practical explanations.
 
-The book should not be overly verbose or be a tutorial. It should be a reference
-book that provides a quick overview of how to solve common problems. It may
-contain examples, by directly including Rust code in code tags, or by including
-an example Rust project using `mdbook-files`.
+Examples:
 
-Including an entire project with `mdbook-files` works by placing the example
-Rust project inside `examples/`, and referencing it in the section using the
-`mdbook-files` syntax. The `path` key is relative to the `examples/` directory.
+- "When you compile something, you usually create an executable..."
+- "If you want to use this, you first need to add support..."
+- "You can install it with Cargo..."
 
-    ```files
-    path = "levenshtein"
-    git_ignore = true
-    files = ["!.git"]
-    default_file = "src/lib.rs"
-    ```
+### Problem-Driven Approach
 
-It is possible to use git-submodules to include examples that live in other
-repositories.
+Many sections begin with italicized scenario descriptions that set up real-world
+problems the reader might face. These scenarios should be specific and
+relatable, often framed as situations where something has gone wrong or a need
+has emerged.
 
-Using bullet-point lists is allowed, but writing should prefer using prose
-(paragraphs), because they break up the reading flow less.
+Format:
+
+```
+_Scenario description explaining the problem context and why the reader would
+need the solution presented in this section._
+```
+
+Example:
+
+```
+_While Rust does have a local build cache in the `target` folder, you notice
+that this is not always useful. Especially in the CI system, the entire project
+is always rebuilt. It makes you wonder if there is some way to cache the build
+artifacts in a global cache that your team and the CI server can make use of._
+```
+
+### Technical Terminology
+
+- Use backticks for code elements, file names, command names, crate names, and
+  technical terms: `rustfmt`, `Cargo.toml`, `cargo build`
+- Use italics (_text_) for emphasis on concepts: _cross compilation_,
+  _derivation_
+- Use bold (**text**) sparingly for major concepts or section highlights
+- Define technical terms when first introduced in a section
+- Assume basic Rust knowledge but explain more complex concepts
+- Reference articles and chapters in other books for detailed explanations
+
+### Lists and Structure
+
+- Use bullet points for procedural steps, feature lists, and options
+- Use numbered lists only when order matters (like installation steps)
+- Prefer prose paragraphs over excessive bullet points for better flow
+- Keep paragraphs focused on single concepts
+
+### Code Examples
+
+Provide practical, working examples rather than abstract demonstrations:
+
+- Include complete command lines with flags
+- Show both the command and expected output when helpful
+- Use realistic crate names and scenarios
+- Prefer inline code blocks over separate files unless the example is
+  substantial
+
+## Admonitions
+
+Use the `mdbook-admonish` plugin for callouts with specific semantic meaning:
+
+### Information Blocks
+
+````
+```admonish info
+Additional context or background information that helps understand the topic.
+````
+
+### Notes
+
+````
+```admonish note
+Important points to remember or clarifications.
+```
+````
+
+### Tips
+
+````
+```admonish tip
+Practical advice or best practices.
+```
+````
+
+### Warnings
+
+````
+```admonish warning
+Important caveats or things to be careful about.
+```
+````
+
+### Examples
+
+````
+```admonish example title="Descriptive Title"
+Placeholder for examples that will be filled in later, or brief example content.
+```
+````
+
+## Incomplete Content
+
+Use italicized placeholders for content to be written later:
+
+- `_TODO_` for missing sections
+- `_Todo_` for minor missing content
+- More descriptive placeholders like
+  `_TODO: Explain monomorphization and boxed trait objects_`
 
 ## Resources
 
-There is some special syntax for referring to existing resources, which is
-provided by the `mdbook-reading` plugin. Every external resource has a block
-like this:
+Use the `mdbook-reading` plugin for external references:
 
-    ```reading
-    style: article
-    title: "The Title"
-    author: "The Author"
-    url: https://example.common
-    archived: name-of-exported.pdf
-    ---
-    Summary of contents of this resource.
-    ```
+````
+```reading
+style: article|book|video
+title: "The Title"
+author: "Full Author Name"
+url: https://example.com
+archived: filename.pdf (optional)
+---
+Brief description of the resource content and why it's relevant.
+```
+````
 
-This will automatically insert an admonition with the title, a link to the
-archived resource, and the author name, along with a summary of the contents.
-When referencing resources, the full name of the author should be quoted (rather
-than a handle), if this is known.
+### Resource Guidelines
 
-When possible, resource should be archived. You can do this by using your
-browser's "Print to PDF" functionality. The PDF should be in A4 format, saved
-without headers or footers. The resulting PDF should be saved inside
-`src/archived/`, and referenced by the filename of the PDF in the `archived`
-field of the resource block. This archiving is intended to protect against
-bit-rot, since a lot of the resources are on people's personal blogs which may
-disappear or be restructured over time.
+- Always provide full name of author when known (not just handles)
+- Include archived PDF versions when possible to protect against link rot
+- Write concise but informative descriptions explaining the resource's value
+- Use appropriate style tags: `article`, `book`, `video`
+- Archive PDFs should be in A4 format without headers/footers in `src/archived/`
 
-## Markdown
+## Markdown Conventions
 
-The book is written in markdown. When possible, links should not be inline, but
-rather defined outside of the text. For example, use a link like
-`[Link test][reference]`, and later define `[reference]: https://example.com`.
-This makes for a more pleasant editing experience.
+### Links
 
-Markdown files should be wrapped at 80 charaters, but this is automated by my
-editor, which uses `pretter` to reflow the text. This ensures that the raw
-markdown is readable on a terminal or in a text editor.
+Prefer reference-style links over inline links for better readability:
 
-Deeply nested headings should be avoided. In general, stick to sections (`##`
-headings) and subsections (`###` headings). A document should only have a single
-top-level heading (`#` heading), placed at the top of the file.
+```markdown
+See the [Rust Book][rust-book] for more information.
+
+[rust-book]: https://doc.rust-lang.org/book/
+```
+
+### Headings
+
+- Use a single top-level heading (`#`) per file
+- Limit to sections (`##`) and subsections (`###`)
+- Avoid deeply nested heading structures
+- Use descriptive, concise headings
+
+### Line Length
+
+Wrap markdown at approximately 80 characters for better readability in text
+editors and version control diffs.
+
+### Code Blocks
+
+Always specify language for syntax highlighting:
+
+```toml
+[profile.release]
+opt-level = 3
+```
+
+## Examples and Projects
+
+Use `mdbook-files` to include complete example projects:
+
+````
+```files
+path = "project-name"
+git_ignore = true
+files = ["!.git"]
+default_file = "src/lib.rs"
+```
+````
+
+Projects should be placed in the `examples/` directory and can use git
+submodules for external repositories.
 
 ## Diagrams
 
-Diagrams should be created using [draw.io][], using the [Routed
-Gothic][routed-gothic] font at 14pt. This adds a bit of character to this book.
-When exporting diagrams, they should be expored as SVG files and embed the
-diagram so it can be edited later. Transparency enabled, and using automatic
-appearance should be set so they show up correectly when reading the book in
-dark mode (this should be the default). Colors in diagram should not be used
-extensively, it is preferred to keep diagrams simple and black-and-white.
+Create diagrams using [draw.io][] with these specifications:
+
+- Use [Routed Gothic][routed-gothic] font at 14pt for consistency
+- Export as SVG with embedded diagram data for future editing
+- Enable transparency and automatic appearance for dark mode compatibility
+- Keep diagrams simple and primarily black-and-white
+- Avoid excessive use of color
 
 [draw.io]: https://app.diagrams.net/
-[routed-gothic]: https://github.com/dse/routed-gothic
+[routed-gothic]: https://webonastick.com/fonts/routed-gothic/

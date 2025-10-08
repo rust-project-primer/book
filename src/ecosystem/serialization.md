@@ -28,6 +28,17 @@ have optional feature flags that make their types compatible with it.
 
 ## Serde
 
+Serde supports a variety of formats. You can find a list of supported formats
+[here](https://serde.rs/#data-formats).
+
+| Crate      | Format   |
+| ---------- | -------- |
+| serde_json | JSON     |
+| postcard   | Postcard |
+| bincode    | Bincode  |
+| csv        | CSV      |
+| serde_yaml | YAML     |
+
 ### Versioned Structs
 
 ### Default Values
@@ -36,11 +47,29 @@ have optional feature flags that make their types compatible with it.
 
 ### Custom Implementations
 
+### Plugins
+
+- serde_with
+- serde_transcode
+
 ## Bincode
+
+Bincode is a binary serialization library, designed for inter-process
+communication. It is compatible with serde, but also has the option of using its
+own traits for more control of the layout.
 
 ## Facet
 
 ## Miniserde
+
+## Conclusion
+
+If you don't have any specific requirements, sticking to `serde` is a good
+choice. The other crates are more specialized and are useful if you have
+specific requirements. Most of the time, the deciding factor is compatibility
+with the ecosystem. Many existing crates already use `serde` for their
+serialization needs, or have a feature flag that you can enable which makes
+their types compatibhttps://serde.rs/#data-formatsle with `serde`.
 
 ## Reading
 

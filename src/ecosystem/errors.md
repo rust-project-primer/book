@@ -364,6 +364,20 @@ that focuses on displaying source code diagnostics. It's designed for parsers,
 compilers, and interpreters that need to report syntax errors or other issues in
 source code.
 
+## Conclusion
+
+In this section, we've explored several error handling libraries in Rust,
+including thiserror, snafu, anyhow, and miette. We've seen how each library
+provides a different approach to error handling, and how they can be used in
+different situations.
+
+When you write libraries, you may want to use a library like `thiserror` or
+`snafu` to provide structured errors to users of your library where the focus is
+on providing context and allowing users to handle errors. When you write
+applications, you may want to use a library like `anyhow` or `miette` that
+provide convenient, generic containers for arbitrary errors where the focus is
+on communicating errors to end-users.
+
 ## Reading
 
 ```reading
@@ -377,7 +391,10 @@ Angus walks through the basics of error handling in Rust. He explains the
 `Error` trait, and when to use boxed versions of it to pass error around. He
 shows how it can be downcast into concrete error types, and how anyhow's `Error`
 type can be used instead. He explains structured error handling by implementing
-custom types.
+custom types. The article provides excellent coverage of `thiserror` and `anyhow`,
+with real-world examples from popular crates like Actix Web and wgpu. Special
+attention is given to `std::io::Error` as a complex example and Hyrum's Law's
+impact on error design.
 ```
 
 ```reading
@@ -386,6 +403,7 @@ title: "Chapter 9: Error Handling"
 url: https://doc.rust-lang.org/book/ch09-00-error-handling.html
 author: The Rust Programming Language
 ---
+The official Rust Book's chapter on error handling covers the fundamental concepts of recoverable and unrecoverable errors. It introduces `Result<T, E>` and the `panic!` macro, explaining when to use each approach. The chapter provides the foundational understanding needed before diving into more advanced error handling patterns and libraries.
 ```
 
 ```reading
@@ -394,6 +412,7 @@ title: "Error handling in Rust: a comprehensive tutorial"
 url: https://blog.logrocket.com/error-handling-rust/
 author: Eze Sunday
 ---
+A practical tutorial covering recoverable vs unrecoverable errors, with hands-on examples of various error handling methods like `.unwrap_or()`, `.expect()`, and the `?` operator. Sunday provides a helpful comparison table of `thiserror`, `anyhow`, and `color-eyre` libraries, along with best practices for debugging and logging. The article emphasizes practical application over theory.
 ```
 
 ```reading
@@ -403,6 +422,7 @@ url: https://momori.dev/posts/rust-error-handling-thiserror-anyhow/
 author: Momori Nakano
 archived: momori-rust-error-handling-thiserror-anyhow.pdf
 ---
+A focused comparison of `thiserror` and `anyhow` with practical examples. Nakano demonstrates how to build custom error enums, implement required traits manually, then shows how `thiserror` simplifies the process. The article clearly explains when to use structured errors (`thiserror`) vs opaque errors (`anyhow`), with the rule of thumb that libraries should provide detailed error information while applications can hide internal details.
 ```
 
 ```reading
@@ -411,6 +431,7 @@ title: "Error Handling in Rust: A Deep Dive"
 url: https://www.lpalmieri.com/posts/error-handling-rust/
 author: Luca Palmieri
 ---
+An in-depth exploration of error handling patterns from a backend development perspective. Palmieri covers the dual purposes of errors (control flow and reporting), layering strategies, and avoiding "ball of mud" error enums. The article includes extensive examples from a newsletter application, showing how to implement proper error chains and logging. Particularly valuable for understanding error handling architecture in larger applications.
 ```
 
 ```reading
@@ -419,6 +440,7 @@ title: Error Handling in a Correctness-Critical Rust Project
 url: https://sled.rs/errors.html
 author: Tyler Neely
 ---
+A battle-tested perspective on error handling from the author of the sled database. Neely argues against global error enums based on real-world experience with catastrophic failures. The article demonstrates how nested `Result` types (`Result<Result<T, LocalError>, FatalError>`) can prevent improper error propagation. Includes practical advice on error injection testing using tools like PingCAP's `fail` crate to catch bugs in error handling logic.
 ```
 
 ```reading
@@ -427,6 +449,7 @@ title: Three kinds of Unwrap
 url: https://zkrising.com/writing/three-unwraps/
 author: zk
 ---
+An analysis of the semantic differences between various uses of `.unwrap()` in Rust applications. The author identifies three distinct categories: unwrap as `panic!()` (intentional termination), unwrap as `unreachable!()` (impossible error states), and unwrap as `todo!()` (temporary placeholder). The article proposes new standard library methods like `.todo()` and `.unreachable()` to better express intent and enable better tooling support.
 ```
 
 ```reading
@@ -436,6 +459,7 @@ url: https://d34dl0ck.me/rust-bites-designing-error-types-in-rust-libraries/inde
 author: Sven Kanoldt
 archived: kanoldt-designing-error-types-in-rust-libraries.pdf
 ---
+A library author's guide to designing error types that provide useful information to consumers. Kanoldt covers the trade-offs between different error type designs, including when to use enums vs structs, how to provide context without breaking encapsulation, and techniques for making errors actionable. The article emphasizes designing errors from the consumer's perspective rather than the implementation's convenience.
 ```
 
 ```reading
@@ -444,6 +468,7 @@ title: Why Use Structured Errors in Rust Applications?
 url: https://home.expurple.me/posts/why-use-structured-errors-in-rust-applications/
 author: Dmitrii Aleksandrov
 ---
+Aleksandrov challenges the conventional wisdom that applications should use opaque errors like `anyhow::Error`. He argues that even applications can benefit from structured error types for better testing, debugging, and maintainability. The article provides practical examples of how structured errors can improve application robustness and developer experience, even when errors aren't exposed in public APIs.
 ```
 
 ```reading
@@ -453,6 +478,7 @@ url: https://burntsushi.net/rust-error-handling/
 author: Andrew Gallant
 archived: burntsushi-rust-error-handling.pdf
 ---
+A foundational article on Rust error handling from the author of ripgrep and many other popular Rust tools. Gallant provides a comprehensive overview of error handling patterns, from basic `Result` usage to advanced composition techniques. The article includes detailed examples of building custom error types and discusses the philosophy behind Rust's approach to error handling compared to exceptions in other languages.
 ```
 
 ```reading
@@ -462,4 +488,5 @@ url: https://mmapped.blog/posts/12-rust-error-handling
 author: Roman Kashitsyn
 archived: mmapped-rust-error-handling.pdf
 ---
+Kashitsyn provides practical guidance on designing effective error types in Rust, with a focus on balancing expressiveness with usability. The article covers error composition patterns, the trade-offs between different error representations, and how to design errors that scale with your application's complexity. Includes real-world examples and performance considerations for different error handling approaches.
 ```

@@ -1,7 +1,7 @@
 # Repository
 
 The purpose of a README is for people to get a very brief introduction to what
-you project does. For open-source projects it is essential, when people decide
+your project does. For open-source projects it is essential, when people decide
 if your crate solves the issue they are trying to solve. It does not need to be
 a comprehensive documentation document, rather a very dense summary that
 contains some vital pieces of information of what your crate does, how it
@@ -17,7 +17,7 @@ Badges are little images that you can embed into your README that show
 up-to-date information on your Rust project. These are useful because they do
 not need need to be updated manually.
 
-Generally, you can put them on your README like this:
+Generally, you can put them in your README like this:
 
 ```markdown
 # Project Name

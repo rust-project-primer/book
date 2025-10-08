@@ -49,10 +49,10 @@ target. That first part of the triple, `x86_64` (commonly called `amd64`) is the
 type of processor that your code will run.
 
 Modern AMD64 processors have an array of extensions that can speed up certain
-operations, such as hardware support for AES throught AES-NI, or support for
-SIMD with AVX2. In order for your program to remain compatible with many
-processors, Cargo will, by default, not make use of these added instructions,
-unless you tell it to.
+operations, such as hardware support for AES through AES-NI, or support for SIMD
+with AVX2. In order for your program to remain compatible with many processors,
+Cargo will, by default, not make use of these added instructions, unless you
+tell it to.
 
 You can enable these extra instructions (called _target features_) by adding it
 into your Cargo configuration at `.cargo/config.toml` within your repository.

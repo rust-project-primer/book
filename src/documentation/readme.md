@@ -6,7 +6,7 @@ communicating with the machine we expect it to run in.
 In part, documentation solves the \\( O(n^2) \\) communication complexity issue:
 if you have three developers which each own some part of the project, then you
 can afford to have them communicate with each other to understand how things
-work and skip the work of documenting it propertly. However, this does not scale
+work and skip the work of documenting it properly. However, this does not scale
 to large teams: if you have 100 developers that each own some components, and
 they all need to talk to each other to understand each other's work (and no
 documentation), then your developers will spend more time asking how things work
@@ -16,7 +16,7 @@ than figuring out how the original thing was supposed to work).
 In other words, in a commercial project, having great documentation saves you a
 lot of cost in the long run. It makes the difference whether you need a
 year-long onboarding programme for new hires until they hit their productivity
-peak, because they don't know how things work and there is not central place to
+peak, because they don't know how things work and there is no central place to
 find out, or whether they can hit the ground running and achieve baseline
 productivity within weeks or a month.
 
@@ -114,7 +114,7 @@ Developer documentation should contain:
 
 - Instructions on how to fetch the code (git clone)
 - Architecture of the project (diagram)
-- Explanation of why the archiecture is the way it is
+- Explanation of why the architecture is the way it is
 - High-level explanation of how the code works
 - Instructions on how to compile the library
 - Instructions on how to run tests: unit tests, integration tests, benchmarks,
@@ -127,10 +127,10 @@ Developer documentation should contain:
 
 <!-- places for documentation: readme, crate metadata, standalone documentation, code documentation -->
 
-In the sections of this chapter, I will go though some of the functionality Rust
-has built-in for generating documentation for software projects, and some tools
-that are useful for writing the kinds of end-user and developer documentation
-outlined here. I will focus on:
+In the sections of this chapter, I will go through some of the functionality
+Rust has built-in for generating documentation for software projects, and some
+tools that are useful for writing the kinds of end-user and developer
+documentation outlined here. I will focus on:
 
 - Types of documentation documents (readme files, code comments, standalone
   documentation)

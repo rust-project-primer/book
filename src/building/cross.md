@@ -2,7 +2,7 @@
 
 When you compile something, you usually create an executable that is able to run
 on whichever platform you are compiling it on. This is called _native
-compilation_. However, there are some situation where you want to be able to
+compilation_. However, there are some situations where you want to be able to
 generate binaries for a _different_ platform than the one that you are doing the
 compilation on. Doing this is called _cross compilation_.
 
@@ -28,7 +28,7 @@ good reasons to do so. For example:
   which uses [MUSL libc][musl] rather than the default glibc.
 - If the target triple you are building for does not have a Rust toolchain. For
   example, you cannot do a native compilation for `wasm32-unknown-unknown`.
-- If the target you are building for is severaly underpowered, such that you
+- If the target you are building for is severely underpowered, such that you
   cannot compile on it natively. This tends to be the case for embedded systems
   such as `thumbv6m-none-eabi`.
 - If you want to create builds for multiple platforms, but you don't want to
@@ -77,7 +77,7 @@ may run into with this approach:
 - **Linking errors**: You might run into linking errors, because while Rust can
   compile your crate for the target that you have requested, your system linker
   might not be able to deal with non-native object files.
-- **Native dependencies**: If your applications links with any native libraries,
+- **Native dependencies**: If your application links with any native libraries,
   then you need to have these native libraries compiled _for the target that you
   are compiling for_.
 - **Inability to run tests**: You might not be able to execute the code you have
@@ -96,7 +96,7 @@ target executables, and getting the dependencies for the right target.
 ## Debian
 
 If you use Debian, or some derivative distribution, you can typically get
-cross-compilation (including native dependencies) working relatively easy by
+cross-compilation (including native dependencies) working relatively easily by
 installing a few packages. Linux even lets you install a userspace emulator (for
 example QEMU) to allow you to run your binaries "as if" they were native,
 allowing you to run unit tests, for example.
@@ -120,7 +120,7 @@ Generally, this can be done in four steps:
 
 ## Docker
 
-You can use Docker to build and image which contains the right packages and
+You can use Docker to build an image which contains the right packages and
 environment variables to allow Rust to easily cross-compile your project for
 another target. This is often useful in CI, where you can build a Docker
 container from this and use it for the CI job where you cross-compile your code.

@@ -35,7 +35,7 @@ is to use a different linker.
 ## Using Parallel Linker
 
 Finally, it is possible to use a linker that works in parallel and provides much
-faster build times, at the cost of needing to install it manually and not it not
+faster build times, at the cost of needing to install it manually and it not
 supporting all platforms. The [`mold`][mold] linker does just that and works on
 Linux. It has a cousin, [`sold`][sold] which works on macOS. Currently, it is
 the fastest linker on the market.
@@ -66,7 +66,7 @@ url: https://corrode.dev/blog/tips-for-faster-rust-compile-times/
 author: Matthias Endler
 archived: corrode-faster-rust-compile-times.pdf
 ---
-Matthias goes through and extensive list of tips for getting faster Rust
+Matthias goes through an extensive list of tips for getting faster Rust
 compile times.  These include making sure your toolchain is up-to-date,
 enabling the parallel compiler frontend, removing unused dependencies,
 debugging dependency compile times, splitting large crates into smaller ones,

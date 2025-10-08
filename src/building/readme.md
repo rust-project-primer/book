@@ -7,12 +7,12 @@ command, and everything just works:
 cargo build --release
 ```
 
-However, doing builds on a larger scale can present with some more challenges.
-For example, always building the same dependencies in CI can present some
-challenges. Some projects want to provide builds for multiple architectures.
+However, doing builds on a larger scale can present some more challenges. For
+example, always building the same dependencies in CI can be wasteful. Some
+projects want to provide builds for multiple architectures.
 
 This chapter discusses some issues you might run into when building Rust code in
-your project, and strategies for how you might solve that.
+your project, and strategies for how you might solve them.
 
 ## Reading
 
@@ -22,7 +22,7 @@ title: Tips For Faster Rust Compile Times
 url: https://corrode.dev/blog/tips-for-faster-rust-compile-times/
 author: Matthias Endler
 ---
-Matthias goes through and extensive list of tips for getting faster Rust
+Matthias goes through an extensive list of tips for getting faster Rust
 compile times. These include making sure your toolchain is up-to-date,
 enabling the parallel compiler frontend, removing unused dependencies,
 debugging dependency compile times, splitting large crates into smaller ones,
@@ -38,7 +38,7 @@ archived: matklad-fast-rust-builds.pdf
 ---
 Alex explains some strategies to speed up Rust compilation. He explains that
 the Rust programming language has prioritized execution speed and programmer
-productivity over compilation speed. He gives recommendation for how to setup
+productivity over compilation speed. He gives recommendations for how to set up
 your CI pipeline, pruning dependencies, what code styles lead to faster
 compilation times.
 ```

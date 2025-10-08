@@ -58,7 +58,7 @@ features that mdBook has, and how to use them.
 
 ```reading
 style: article
-title: "mdBook: Thirt-Party Plugins"
+title: "mdBook: Third-Party Plugins"
 url: https://github.com/rust-lang/mdBook/wiki/Third-party-plugins
 author: mdBook
 ---

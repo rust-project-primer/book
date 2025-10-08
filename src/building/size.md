@@ -9,7 +9,7 @@ priorities are:
   lead to an increase in code size, because the compiler will use techniques
   like inlining or loop unrolling to achieve this.
 - **Binary size**: You want your executables to be as small as possible, for
-  example because you are targetting a resource-constrained platform like
+  example because you are targeting a resource-constrained platform like
   embedded microcontrollers with limited flash memory sizes, or you want to be
   able to easily distribute your binary. This might lead to a negative impact on
   performance.

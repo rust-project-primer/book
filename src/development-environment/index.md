@@ -1,7 +1,7 @@
 # Development Environment
 
 This chapter explains what you need to get started writing a Rust project. It
-outlines how your can install a Rust toolchain, and what editors or IDEs you can
+outlines how you can install a Rust toolchain, and what editors or IDEs you can
 use to write Rust code. If you already have a Rust toolchain installed and you
 have an editor or an IDE that you are comfortable using, you can safely skip
 this chapter.
@@ -14,7 +14,7 @@ project:
 - **Code editor**: with support for Rust through syntax highlighting and ideally
   integration with `rust-analyzer`.
 
-This section outlines how you can setup your environment to be able to write
+This section outlines how you can set up your environment to be able to write
 Rust productively, by showing you ways to get a Rust toolchain installed and by
 examining some popular code editors used by the Rust community.
 
@@ -23,10 +23,10 @@ A lot of this book is very command-line centric and as such you may find the
 experience of using these tools slightly easier on UNIX-like operating systems
 such as Linux or macOS. This should not come as a surprise, as the majority of
 Rust developers [work on][survey2023-os] and [target Linux][survey2023-target]
-according to [the 2023 survery][survey2023]. However, Rust loves Windows too,
+according to [the 2023 survey][survey2023]. However, Rust loves Windows too,
 and most of the tools explained here should work on any platform.  I try to
 point out any commands that either don't work on natively on Windows or require
-special setup. You can always try [WSL2][wsl2] to to run things if you run into
+special setup. You can always try [WSL2][wsl2] to run things if you run into
 any issues.
 
 [survey2023]: https://blog.rust-lang.org/2024/02/19/2023-Rust-Annual-Survey-2023-results.html
@@ -184,9 +184,9 @@ good developer experience:
 
 ### Rust Analyzer
 
-Language servers are tools that parse understand programming languages, and
-expose this data to IDEs. Unline compilers, which run once and produce a binary,
-language servers are designed to run continuously, generated metadata such as
+Language servers are tools that parse and understand programming languages, and
+expose this data to IDEs. Unlike compilers, which run once and produce a binary,
+language servers are designed to run continuously, generate metadata such as
 inferred types of values, and implement high-level operations such as
 refactoring code.
 

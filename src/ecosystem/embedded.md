@@ -360,3 +360,11 @@ url: https://oxidecomputer.github.io/hubris/reference/
 author: Oxide Computer Company
 ---
 ```
+
+```reading
+style: book
+title: The Tock Book
+author: Tock developers
+url: https://book.tockos.org/introduction.html
+---
+```

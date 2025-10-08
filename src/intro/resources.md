@@ -10,7 +10,7 @@ or software architect who just wants to understand what Rust is all about or
 what tools it comes with. But if you do want to write effective Rust, then these
 resources should be helpful to you to get started.
 
-I have categorized these resouces into two sections: _foundational_ contains
+I have categorized these resources into two sections: _foundational_ contains
 resources that explain concepts and strategies, whereas the _practical_
 resources contain hands-on projects for you to follow. None of the links here
 earn me any commission. I am recommending them because I think they are useful,
@@ -33,7 +33,7 @@ author: Steve Klabnik and Carol Nichols
 This book is the official book of the Rust programming language. It covers the
 language and toolchain, giving you a thorough starting point for writing
 real-world Rust code and understanding other people's code. It also includes
-some example projects for you to follow to see how to use it in practise. Also
+some example projects for you to follow to see how to use it in practice. Also
 available in
 [print](https://nostarch.com/rust-programming-language-2nd-edition).
 ```
@@ -195,7 +195,7 @@ by [fasterthanlime](https://fasterthanli.me/)
 [Chapter 5: Continuous Deployment for Rust Applications](https://www.lpalmieri.com/posts/2020-11-01-zero-to-production-5-how-to-deploy-a-rust-application/)
 in [Zero to Production](https://zero2prod.com)
 
-[Good Practises for Writing Rust Libraries](https://pascalhertleif.de/artikel/good-practices-for-writing-rust-libraries/)
+[Good Practices for Writing Rust Libraries](https://pascalhertleif.de/artikel/good-practices-for-writing-rust-libraries/)
 by [pascalhertleif](https://pascalhertleif.de/) (_published in 2015_)
 
 ## Videos

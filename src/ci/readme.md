@@ -1,7 +1,7 @@
 # Continuous Integration
 
 Modern software development tries to be very automated. The days where
-developers push code to a server using FTP are gone, modern practises use
+developers push code to a server using FTP are gone, modern practices use
 automated testing (often called _Continuous Integration_) and automated
 deployment of code (often called _Continuous Deployment_).
 
@@ -15,8 +15,8 @@ The idea behind these systems is twofold:
 
 - Having automated tests (CI) and enforcing them to succeed dramatically reduces
   incidents in production. Code projects should not rely on correctness because
-  of knowledge hidden inside senior developer brains, but rather their proprties
-  should be encoded, measured and tested automatically.
+  of knowledge hidden inside senior developer brains, but rather their
+  properties should be encoded, measured and tested automatically.
 - Having frequent and automated deployments (CD) allows teams to react faster,
   making them automated forces teams to write good tests to prevent production
   incidents.
@@ -32,9 +32,9 @@ ability to run code in reaction to various events. For example, when a developer
 creates a merge request, you might have some code that runs unit tests,
 determines test coverage, and runs other checks against the codebase. Doing this
 means that the developer can get quick feedback if he or she has made an error,
-and can rectify it easy. When a code change request is accepted, another job
+and can rectify it easily. When a code change request is accepted, another job
 might run which triggers the deployment. Some CI/CD systems also have the
-ability to run jobs on a schedule, for example to run mode extensive tests on a
+ability to run jobs on a schedule, for example to run more extensive tests on a
 daily basis, rather than for every single change request.
 
 - Diagram
@@ -55,7 +55,7 @@ url: https://martinfowler.com/articles/continuousIntegration.html
 title: Continuous Integration
 author: Martin Fowler
 ---
-In this article, Martin summarizes continuous integration practises. In his
+In this article, Martin summarizes continuous integration practices. In his
 own words:
 
 *Continuous Integration is a software development practice where each
@@ -75,5 +75,5 @@ author: Software Engineering at Google
 ---
 ```
 
-[Issue #5656: Expand "CI Best Practises" section in the guide](https://github.com/rust-lang/cargo/issues/5656)
+[Issue #5656: Expand "CI Best Practices" section in the guide](https://github.com/rust-lang/cargo/issues/5656)
 in [rustlang/cargo](https://github.com/rust-lang/cargo)

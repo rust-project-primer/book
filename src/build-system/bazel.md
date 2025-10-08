@@ -30,7 +30,7 @@ dependencies, where build speed and consistency are critical.
 ## How does Bazel work?
 
 When you use Bazel, you declare how your project should be built in `BUILD`
-files containing a descriptin in the Starlark language, which is similar to
+files containing a description in the Starlark language, which is similar to
 Python. In this language, you define all of the targets and dependencies. From
 this, Bazel builds a graph of all targets and their dependencies.
 
@@ -40,7 +40,7 @@ itself. You can also have platform-specific targets and rules to ensure that
 your project can be built on any platform (that your developers use or deploy
 to).
 
-Any external resources you rely on, you specifiy with a hash-sum to ensure that
+Any external resources you rely on, you specify with a hash-sum to ensure that
 the compilation process is always deterministic.
 
 ## Getting Started with Bazel
@@ -58,7 +58,7 @@ and ensures that you are using the appropriate version in each project.
 
 If you do use bazelisk, then you should add a file into your repository telling
 it which version of Bazel your project should use. The simplest way to achieve
-this is by creating a `.bazelversion` file containing the desitred version of
+this is by creating a `.bazelversion` file containing the desired version of
 Bazel:
 
 ```

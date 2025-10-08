@@ -1,6 +1,6 @@
 # Workspace
 
-As your projects grows, you may feel the need to split it up into multiple
+As your project grows, you may feel the need to split it up into multiple
 crates. Maybe the compilation times are becoming a problem, and having multiple
 smaller crates means that most of the application does not need to be rebuilt
 when you make a change in one file. Or maybe you want to enforce more loose
@@ -16,7 +16,7 @@ share the same build cache, and optionally some metadata.
 
 ## Creating a Workspace
 
-You can crate a Cargo workspace by adding a `[workspace]` section in you
+You can create a Cargo workspace by adding a `[workspace]` section in your
 `Cargo.toml`:
 
 ```toml

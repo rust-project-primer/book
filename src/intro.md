@@ -1,6 +1,6 @@
 # Introduction
 
-Rust as a langauage is magnificent in many ways. While it has a steep learning
+Rust as a language is magnificent in many ways. While it has a steep learning
 curve that can make it difficult to get started, it will give you superpowers
 once you are familiar with it. You can suddenly write fast, heavily
 multithreaded code that would previously require a team of very senior
@@ -21,7 +21,7 @@ to large servers, and even write frontend applications that run in the browser.
 The applications are endless, and the ecosystem is ever evolving to make this
 easy.
 
-At the same time, this power can be frightning. Once your have learned the
+At the same time, this power can be frightening. Once you have learned the
 basics, where do you go from here? What parts of the ecosystem do you use for
 what? What are some common issues that your project might run into, and how do
 you solve them? How do you structure your project, what are some common pitfalls
@@ -36,12 +36,12 @@ that supports long-term growth and sustainability.
 
 This book will not teach you Rust, nor will it explain Rust syntax in any way.
 For that, there are already plenty of other books, some of which are linked in
-the [Prerequisites](intro/prerequisites.md) section. Instead, the focus is on
-practises, high-level advice with examples. Ideally, this book should help you,
-no matter if you are a project manager evaluating Rust and trying to understand
-best practises, if you have recently learned Rust and want to embark on your
-first real-world project, or if you already have some experience but want to
-lookup specific tooling or solve specific problems.
+the [Resources](intro/resources.md) section. Instead, the focus is on practices,
+high-level advice with examples. Ideally, this book should help you, no matter
+if you are a project manager evaluating Rust and trying to understand best
+practices, if you have recently learned Rust and want to embark on your first
+real-world project, or if you already have some experience but want to lookup
+specific tooling or solve specific problems.
 
 The book largely follows a recipe format. Each chapter is fairly self-contained,
 so you can focus on specific topics as needed. It is not intended as a guide for
@@ -57,14 +57,14 @@ software projects.
 
 You can read this book at several levels. If you are a very technical person
 with a lot of project experience, you can use this as a recipe book showing you
-examples of how to implement various practises in real-world Rust projects. If
+examples of how to implement various practices in real-world Rust projects. If
 you are less technical, but want to understand what is possible in terms of
 automation that can lead to higher quality code and save development time, you
 can use this book as an overview various strategies and what they accomplish.
 
 Although the focus is specifically on Rust software projects, some of the
 information contained in this book is also useful for software projects in
-general. It covers various good practises of software development, containing
+general. It covers various good practices of software development, containing
 insights from various companies and successful projects.
 
 ## How to read this book

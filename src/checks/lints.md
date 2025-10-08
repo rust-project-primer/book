@@ -14,7 +14,7 @@ The Rust community has an excellent linting tool named Clippy.
 ## Clippy
 
 The linter that is typically used in Rust is [Clippy][clippy]. It is commonly
-used in Rust projects to enforce good practises, recognize unsafe or slow code.
+used in Rust projects to enforce good practices, recognize unsafe or slow code.
 It is also [configurable][clippy-lints].
 
 ```admonish info

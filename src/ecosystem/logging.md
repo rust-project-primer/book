@@ -19,11 +19,11 @@ There are some additional ways that logging can be implemented:
   propagation through several services.
 
 The Rust ecosystem has centred around three crates which are used for logging.
-These vary in terms of their intended use-case, and to some extend can even be
+These vary in terms of their intended use-case, and to some extent can even be
 mixed through interop libraries. In the next sections, we will discuss each of
 them and finally show some ways to mix-and-match them.
 
-For your Rust project, it makes sense to think about what you want our of your
+For your Rust project, it makes sense to think about what you want out of your
 logging system and choose the right kind of logging infrastructure. Part of the
 consideration should also be what other libraries or frameworks you are using,
 because many of them come with logging support built-in that you can enable. For

@@ -80,7 +80,7 @@ by showing you a diff when two values don't match.
 
 ## Testing async code
 
-If you chose to use async code in your project, you migth run into a situation
+If you chose to use async code in your project, you might run into a situation
 where you need to write unit tests for asynchronous code. Usually, most of the
 unit tests don't require it, because you will follow the _blocking core, async
 shell_ paradigm.

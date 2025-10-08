@@ -2,8 +2,8 @@
 
 Testing is the process of ensuring that code is correct. It can be done
 manually, but typically it is done in an automated way because it is cheaper
-over the long run. There are even some development paradigms that use tests are
-the primary artifacts of development, such as [Test-Drivent Development][tdd].
+over the long run. There are even some development paradigms that use tests as
+the primary artifacts of development, such as [Test-Driven Development][tdd].
 
 ## Why Tests are needed
 
@@ -15,7 +15,7 @@ Having rigid tests ensures three things:
 3. In the case of missing documentation, tests are often the only thing close to
    documenting how code is intended to be used.
 
-Having a thorough tests makes development more pleasant (and speedy), because it
+Having thorough tests makes development more pleasant (and speedy), because it
 allows developers to implement new features or refactor code, without having to
 worry about accidentally breaking existing functionality and only finding out
 when the code is deployed. But this is only possible when there is a reasonable
@@ -58,7 +58,7 @@ interfaces.
 - testability engineering
 
 This chapter discusses various features of Rust and the ecosystem and strategies
-for using to to ensure correctness of the code.
+for using them to ensure correctness of the code.
 
 ## Reading
 

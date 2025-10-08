@@ -51,7 +51,7 @@ Binary Interface (ABI).
 Rust does not have a stable ABI. But for interfacing with other language, this
 does not matter, it only matters if Rust interfaces with (other) Rust libraries
 through dynamic linking. When talking to other native code, generally the lowest
-common demoninator is the C ABI.
+common denominator is the C ABI.
 
 Implementing interop with other native languages therefore typically involves
 _squeezing_ types and function calls through some kind of C ABI. It means you
@@ -207,7 +207,7 @@ support for generating bindings for asynchronous code for languages that support
 it, for example Python and Kotlin.
 
 It is used in production by Mozilla, making it an interesting project to use,
-becuase it means it comes with some amount of stability.
+because it means it comes with some amount of stability.
 
 ## Interoptopus
 

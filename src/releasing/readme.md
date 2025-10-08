@@ -1,7 +1,7 @@
 # Releasing
 
 Releasing is the process of publishing new versions of software. Typically,
-there is some process around it, which includes throrough testing to ensure that
+there is some process around it, which includes thorough testing to ensure that
 it is bug-free, and the publishing of artefacts (binaries).
 
 The release process for every project is different. Some projects combine

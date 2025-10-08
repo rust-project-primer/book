@@ -1,7 +1,7 @@
 # Formatting
 
 From the point of view of the Rust compiler, whitespace is insignificant. The
-Rust compiler does not care how many spaces or tabes you use, how far you indent
+Rust compiler does not care how many spaces or tabs you use, how far you indent
 lines, or how long the lines in your source files are.
 
 However, code is not only read by the compiler. It is also read by humans, who
@@ -26,7 +26,7 @@ Rustfmt is part of the Rust toolchain and is used to format Rust code according
 to a set of rules. It works by parsing your code, applying formatting rules, and
 writing the formatted code back to your files.
 
-There are a few ways your can use `rustfmt`:
+There are a few ways you can use `rustfmt`:
 
 - You can run it manually on your code using the `cargo fmt` command. This will
   format all code files inside your package.
@@ -37,7 +37,7 @@ There are a few ways your can use `rustfmt`:
 - You can use `rustfmt` as a pre-commit hook to ensure that all code is properly
   formatted before it is committed to the repository.
 
-While `rustfmt` comes with sand default configuration, it is possible to
+While `rustfmt` comes with sane default configuration, it is possible to
 override the rules that it uses. In general, you don't need to do this, it is
 recommended to use the default configuration. However, if you do want to
 override the rules, you can do so by creating a `.rustfmt.toml` file in the root
@@ -120,6 +120,12 @@ instructions on how to configure it to format your code on save.
 ### Format before commit
 
 ### Format with Nix
+
+## Formatting TOML Configuration
+
+In your Rust projects, you also have some configuration files in the TOML format
+that need to be formatted properly. You can use
+[Taplo](https://taplo.tamasfe.dev/) to achieve this.
 
 ## Reading
 

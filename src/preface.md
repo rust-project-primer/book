@@ -1,7 +1,7 @@
 # Preface
 
 I have always been a bit of a programming language nerd. Growing up, I realized
-that we live in some of the most exciting time to be alive, the digital
+that we live in some of the most exciting times to be alive, the digital
 revolution is in full force. In the span of a century, we have fundamentally
 changed the way we operate and communicate, by bringing computers into our daily
 lives.
@@ -21,7 +21,7 @@ unique in being one of the few languages that manages to pack revolutionary
 ideas (memory safety in a systems language, borrow checker) into a language that
 is usable in the real world. Previous attempts at adding safety have typically
 ended up as language that are neat from an academic viewpoint but not usable in
-practise. But now, even Microsoft and Google are adopting it.
+practice. But now, even Microsoft and Google are adopting it.
 
 To me, Rust makes programming very joyful. It is like LEGO, you have all these
 little pieces and you can put them together any way you want. You can write

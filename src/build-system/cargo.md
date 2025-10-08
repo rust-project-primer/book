@@ -276,8 +276,8 @@ unit tests and benchmarks. It has built-in commands for this, too.
     cargo test
     cargo bench
 
-As explained in the [Unit testing](../testing/unit.md) section, you can also use
-the external tool `cargo-nextest` to run tests faster.
+As explained in the [Unit testing](../testing/unit-tests.md) section, you can
+also use the external tool `cargo-nextest` to run tests faster.
 
 ### Managing Dependencies
 
@@ -293,7 +293,7 @@ cargo remove serde
 Recently, they also added support for Workspace dependencies. If you use
 `cargo-add` to add a dependency to a crate, which already exists in the root
 workspace as a dependency, it will do the right thing and add it as a workspace
-dependency to your Cargo manifst.
+dependency to your Cargo manifest.
 
 You can also use Cargo to query the dependency tree. This lets you see a list of
 all dependencies, and their child dependencies. It lets you find out if you have
@@ -402,6 +402,6 @@ functions, that is code written in C or C++, in Rust.
 ```
 
 [crates.io]: https://crates.io
-[rust-targets]: http://example.com
+[rust-targets]: https://doc.rust-lang.org/rustc/platform-support.html
 [rust-toolchain]:
   https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file

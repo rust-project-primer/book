@@ -2,9 +2,9 @@
 
 When you start your project, the very first thing you will likely do is create a
 new package. A package is a unit in which Rust organizes code, it consists of
-metadata (such as a `Cargo.toml`) and _crates_. You can think of it it like a
-Ruby gem, a Python package, or a Node module. Packages allow you to use the
-Cargo build system to compile it, run tests and manage dependencies.
+metadata (such as a `Cargo.toml`) and _crates_. You can think of it like a Ruby
+gem, a Python package, or a Node module. Packages allow you to use the Cargo
+build system to compile it, run tests and manage dependencies.
 
 ```admonish info
 Sometimes, the terms *package* and *crate* are used interchangeably.
@@ -59,7 +59,7 @@ the library crate to do the hard work.
 
 Every crate contains some metadata, in the `Cargo.toml` file. This contains
 everything cargo needs to know to build the crate, such as its name, and a list
-of all dependencies it needs to build. It also contains metadata neccessary for
+of all dependencies it needs to build. It also contains metadata necessary for
 publishing it on [crates.io][], Rust's crate registry, such as its version, list
 of authors, license, and description. Finally, this file can also contain
 metadata for other tooling, some of which we will discuss in this book. An
@@ -80,7 +80,7 @@ non-breaking changes.
 
 This means that when you build your crate, Rust has to resolve the version
 numbers. It stores those resolved version numbers in a separate file,
-`Cargo.lock`. This is to ensure that you get reproducible builds: if two pepople
+`Cargo.lock`. This is to ensure that you get reproducible builds: if two people
 build the project, they always use exactly the same versions of dependencies.
 You have to manually tell Cargo to go look if there are newer versions of
 dependencies that are within the constraints, using `cargo update`. This and
@@ -186,7 +186,7 @@ commonly requested.
 
 Rust crates can declare optional dependencies. These are additive, meaning that
 enabling them should not break anything. The reason for this is that Rust
-performs feature unification: if you have multiple dependendencies in your
+performs feature unification: if you have multiple dependencies in your
 dependency that depend on a single crate, it will only be built once with the
 features unified.
 

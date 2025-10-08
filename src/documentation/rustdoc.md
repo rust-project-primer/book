@@ -37,7 +37,7 @@ _TODO_
 
 ### Enforcing
 
-You can enforce that all public API memebers have rustdoc annotations using the
+You can enforce that all public API members have rustdoc annotations using the
 `missing_docs` lint. For example this annotation will turn all places where
 documentation is missing into compile-time warnings:
 

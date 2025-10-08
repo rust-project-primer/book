@@ -35,6 +35,8 @@
   - [User Interface](ecosystem/ui.md)
   - [Rendering](ecosystem/rendering.md)
   - [Embedded](ecosystem/embedded.md)
+  - [Configuration](ecosystem/config.md)
+  - [Command-Line Interface](ecosystem/cli.md)
 - [Interop](interop/readme.md)
   - [C](interop/c.md)
   - [C++](interop/cpp.md)

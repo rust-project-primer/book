@@ -1,5 +1,12 @@
 # Codegen
 
+_You've been working on a large Rust project and notice that your development
+builds are taking longer and longer. While you don't mind waiting a bit for
+release builds since they need to be optimized, the slow compilation during
+development is really hurting your productivity. You wonder if there's a way to
+get faster builds during development, even if it means sacrificing some runtime
+performance for your debug binaries._
+
 Rust is built on top of the LLVM compiler, which means it can make use of the
 optimizations and the wide range of backends. This is a good thing, Rust would
 not be able to support as many targets as it does without the LLVM underpinnings
@@ -31,6 +38,24 @@ In my testing, I was able to get around a 30% speedup by using the cranelift
 backend instead of the default LLVM backend, but your mileage may vary.
 
 ### Example
+
+To use the Cranelift backend for your development builds, you can set it in your
+`.cargo/config.toml` file:
+
+```toml
+[build]
+rustflags = ["-Zcodegen-backend=cranelift"]
+```
+
+Alternatively, you can enable it just for specific builds:
+
+```bash
+cargo build -Zcodegen-backend=cranelift
+```
+
+Note that Cranelift is only available on nightly Rust, so you'll need to use a
+nightly toolchain for development builds if you want to take advantage of this
+optimization.
 
 ## Reading
 

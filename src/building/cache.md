@@ -10,7 +10,7 @@ dependencies do not change too much, and not all of the crates in your project
 change all the time either. With a good build cache, compiling the project can
 become very fast.
 
-```admonish
+```admonish info
 If you are using a [Build System](../build-system/readme.md), you may get this
 for free: Bazel, Buck2 and Nix all support caching compilations.
 ```
@@ -31,4 +31,11 @@ to setup and maintain a storage bucket and access tokens for it.
 
 ## Reading
 
-[sccache](https://github.com/mozilla/sccache)
+```reading
+style: article
+title: "sccache"
+url: https://github.com/mozilla/sccache
+author: Mozilla
+---
+A ccache-like tool that provides shared compilation caching with various storage backends including cloud storage buckets, Redis, and memcached. Originally developed by Mozilla for Firefox builds.
+```

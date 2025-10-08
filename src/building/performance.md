@@ -1,5 +1,12 @@
 # Performance
 
+_You've shipped your Rust application to production and it's working well, but
+you notice that it's not performing as fast as you'd like. Your users are
+experiencing longer response times than expected, and you suspect that the
+default compilation settings might not be optimal for your production workload.
+You wonder what compilation options are available to squeeze more performance
+out of your Rust code._
+
 When you build your code, you have some opportunities to tweak how Cargo
 compiles your code that can result in better performance.
 
@@ -90,16 +97,65 @@ days), the allocator can be a bottleneck for performance.
 
 ## Reading
 
-https://doc.rust-lang.org/cargo/reference/profiles.html
+```reading
+style: book
+title: "Profiles"
+url: https://doc.rust-lang.org/cargo/reference/profiles.html
+author: The Cargo Book
+---
+Official documentation for Cargo profiles, explaining how to configure build settings for different compilation modes including debug, release, and custom profiles.
+```
 
-https://kobzol.github.io/rust/cargo/2023/07/28/rust-cargo-pgo.html
+```reading
+style: article
+title: "Optimizing Rust programs with PGO and BOLT using cargo-pgo"
+url: https://kobzol.github.io/rust/cargo/2023/07/28/rust-cargo-pgo.html
+author: Jakub Beránek
+---
+Jakub demonstrates how to combine Profile-Guided Optimization (PGO) with BOLT post-link optimization to achieve significant performance improvements in Rust programs.
+```
 
-https://doc.rust-lang.org/rustc/profile-guided-optimization.html
+```reading
+style: book
+title: "Profile-guided Optimization"
+url: https://doc.rust-lang.org/rustc/profile-guided-optimization.html
+author: The rustc book
+---
+Official documentation explaining how to use Profile-Guided Optimization (PGO) with rustc to optimize program performance based on runtime profiling data.
+```
 
-https://blog.rust-lang.org/inside-rust/2020/11/11/exploring-pgo-for-the-rust-compiler.html
+```reading
+style: article
+title: "Exploring PGO for the Rust compiler"
+url: https://blog.rust-lang.org/inside-rust/2020/11/11/exploring-pgo-for-the-rust-compiler.html
+author: Rust Team
+---
+Blog post discussing the Rust team's exploration of using Profile-Guided Optimization to improve the performance of the Rust compiler itself.
+```
 
-https://github.com/Kobzol/cargo-pgo
+```reading
+style: article
+title: "cargo-pgo"
+url: https://github.com/Kobzol/cargo-pgo
+author: Jakub Beránek
+---
+A Cargo subcommand for easier use of profile-guided optimization (PGO) and post-link optimization (PLO/BOLT) with Rust programs.
+```
 
-https://github.com/llvm/llvm-project/tree/main/bolt
+```reading
+style: article
+title: "BOLT"
+url: https://github.com/llvm/llvm-project/tree/main/bolt
+author: LLVM Project
+---
+Binary Optimization and Layout Tool (BOLT) - a post-link optimizer developed by Facebook that can improve performance by optimizing application layout based on profiling data.
+```
 
-https://rustc-dev-guide.rust-lang.org/building/optimized-build.html
+```reading
+style: book
+title: "Optimized build"
+url: https://rustc-dev-guide.rust-lang.org/building/optimized-build.html
+author: rustc dev guide
+---
+Guide explaining how to build optimized versions of the Rust compiler itself, including using PGO and other optimization techniques.
+```

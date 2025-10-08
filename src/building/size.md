@@ -1,4 +1,4 @@
-# Optimizations
+# Binary Size Optimization
 
 When you compile Rust code, you have some control over the compiler as to what
 it prioritizes when building your executables. Everything is a tradeoff, so when
@@ -103,6 +103,7 @@ title: Build Configuration
 url: https://nnethercote.github.io/perf-book/build-configuration.html
 author: The Rust Performance Book
 ---
+Comprehensive guide covering build configuration options for optimizing Rust performance, including compiler flags, profile settings, and build-time optimization techniques.
 ```
 
 ```reading
@@ -111,6 +112,7 @@ title: Type Sizes
 url: https://nnethercote.github.io/perf-book/type-sizes.html
 author: The Rust Performance Book
 ---
+Explains how type sizes affect performance and memory usage in Rust, covering techniques for measuring and optimizing data structure layouts to reduce binary size and improve cache efficiency.
 ```
 
 [cargo-bloat]: https://github.com/RazrFalcon/cargo-bloat

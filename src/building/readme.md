@@ -50,6 +50,7 @@ url: https://xxchan.me/cs/2023/02/17/optimize-rust-comptime-en.html
 author: Tianxiao Shen
 archived: xxchan-optimize-rust-comptime.pdf
 ---
+Tianxiao shares practical tips for optimizing Rust compilation times, including dependency management strategies, workspace organization, and compiler flags that can significantly reduce build times in real-world projects.
 ```
 
 ```reading
@@ -59,4 +60,5 @@ url: https://kobzol.github.io/rust/rustc/2024/03/15/rustc-what-takes-so-long.htm
 author: Jakub Beránek
 archived: kobzol-rustc-what-takes-so-long.pdf
 ---
+Jakub analyzes the Rust compilation process to identify the main bottlenecks, examining different phases like parsing, type checking, and code generation to help developers understand where compilation time is actually spent.
 ```

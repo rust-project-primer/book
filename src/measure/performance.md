@@ -1,47 +1,41 @@
 # Performance
 
-Rust often attracts people that care about performance. Often times, performance
-is not the end goal: instead, higher performance means higher efficiency. In an
-era of cloud computing, this translates to lower costs per request.
+Rust often attracts people that care about performance. Often times, performance is not the end
+goal: instead, higher performance means higher efficiency. In an era of cloud computing, this
+translates to lower costs per request.
 
-Performance optimizations are a large subject, and this book will not go into
-depth when it comes to it. There are other books that do a better job of
-summarizing what can be done to optimize applications, such as the
-[Rust Performance Book](https://nnethercote.github.io/perf-book/title-page.html).
-But this book does make a point that performance is something that should be
-tested and tracked over time, that is the only way to ensure that a project is
-heading in the right direction and not regressing.
+Performance optimizations are a large subject, and this book will not go into depth when it comes to
+it. There are other books that do a better job of summarizing what can be done to optimize
+applications, such as the
+[Rust Performance Book](https://nnethercote.github.io/perf-book/title-page.html). But this book does
+make a point that performance is something that should be tested and tracked over time, that is the
+only way to ensure that a project is heading in the right direction and not regressing.
 
-The way you can do that in Rust is by writing benchmarks. In fact, Cargo comes
-with built-in support for doing so. While the Cargo build-in benchmarking
-harness is still unstable, there are some crates that allow you to easily build
-benchmarks for both blocking and async code, and track their performance over
-time.
+The way you can do that in Rust is by writing benchmarks. In fact, Cargo comes with built-in support
+for doing so. While the Cargo build-in benchmarking harness is still unstable, there are some crates
+that allow you to easily build benchmarks for both blocking and async code, and track their
+performance over time.
 
-Writing benchmarks makes it easy to experiement with different options of
-implementing a feature, because it makes it easy to compare the performance
-differences between various approaches. Another application is tracking the
-performance of your code over time, by running benchmarks on every commit or
-periodically by a platform such as [Bencher][bencher] or the [Continuous
-Benchmark GitHub Action][continuous-benchmark].
+Writing benchmarks makes it easy to experiement with different options of implementing a feature,
+because it makes it easy to compare the performance differences between various approaches. Another
+application is tracking the performance of your code over time, by running benchmarks on every
+commit or periodically by a platform such as [Bencher][bencher] or the [Continuous Benchmark GitHub
+Action][continuous-benchmark].
 
-Often times, performance is a tradeoff. While Rust has some zero-cost
-abstrations that allow you to write simple code that is still fast, there are
-many situations where you have to make a choice between a simpler implementation
-or some tech debt, and doing it properly, resulting in more development time or
-more complex code. The only way to make these decisions properly is to have data
-for them. How much runtime performance are you trading by keeping your simple
-implementation? How much performance are you gaining by having a more complex
-implementation? Projects should make these decisions based on measurements, and
-not guesses.
+Often times, performance is a tradeoff. While Rust has some zero-cost abstrations that allow you to
+write simple code that is still fast, there are many situations where you have to make a choice
+between a simpler implementation or some tech debt, and doing it properly, resulting in more
+development time or more complex code. The only way to make these decisions properly is to have data
+for them. How much runtime performance are you trading by keeping your simple implementation? How
+much performance are you gaining by having a more complex implementation? Projects should make these
+decisions based on measurements, and not guesses.
 
 ## Criterion
 
-Typically, the way that you write these is using the [criterion][] crate[^1].
-This lets you test both synchronous and asynchronous code, and it provides some
-support for statistical analysis of the benchmark results. The Rust standard
-library also has some benchmarking support, but this is currently a nightly-only
-feature.
+Typically, the way that you write these is using the [criterion][] crate[^1]. This lets you test
+both synchronous and asynchronous code, and it provides some support for statistical analysis of the
+benchmark results. The Rust standard library also has some benchmarking support, but this is
+currently a nightly-only feature.
 
 ### Examples
 
@@ -59,42 +53,36 @@ TODO:
 
 ## Debugging Performance
 
-So, what do you do if you notice that your Rust code is not performing well?
-There are some common issues you might run into:
+So, what do you do if you notice that your Rust code is not performing well? There are some common
+issues you might run into:
 
-- **Build mode**: Are you building your code in release mode (eg.
-  `cargo build --release`)? It makes a large difference for Rust projects.
-- **Optimization level**: Have you changed the optimization level, for example
-  to optimize for size rather than speed? This can also make a large difference.
-- **Link-time optimization**: Have you tried enabling `lto` in your compilation
-  profile?
+- **Build mode**: Are you building your code in release mode (eg. `cargo build --release`)? It makes
+  a large difference for Rust projects.
+- **Optimization level**: Have you changed the optimization level, for example to optimize for size
+  rather than speed? This can also make a large difference.
+- **Link-time optimization**: Have you tried enabling `lto` in your compilation profile?
 - **Build target**: Are you building for musl libc instead of glibc (eg.
   `--target x86_64-unknown-linux-musl`)? Musl tends to produce slower code.
 - **Allocator**: Is your application allocation-heavy? Then try using
   [`jemallocator`][jemallocator], it might give you a performance boost.
-- **Data structures**: Have you tried using different data structures? For
-  example, the [hashbrown](https://docs.rs/hashbrown/latest/hashbrown/) crate
-  has a `HashMap` implementation that is significantly faster than the standard
-  library.
+- **Data structures**: Have you tried using different data structures? For example, the
+  [hashbrown](https://docs.rs/hashbrown/latest/hashbrown/) crate has a `HashMap` implementation that
+  is significantly faster than the standard library.
 
-If these didn't fix your performance issues, the next step to do is to find out
-why your performance isn't good. When it comes to improving performance, the
-best thing to do is to be guided by data rather than intuition. There are many
-microoptimizations you can do in your code that lead to negligible benefits.
-Letting yourself be guided by data allows you to focus on the most important
-optimizations, this is known as
-[Amdahl's law](https://en.wikipedia.org/wiki/Amdahl's_law).
+If these didn't fix your performance issues, the next step to do is to find out why your performance
+isn't good. When it comes to improving performance, the best thing to do is to be guided by data
+rather than intuition. There are many microoptimizations you can do in your code that lead to
+negligible benefits. Letting yourself be guided by data allows you to focus on the most important
+optimizations, this is known as [Amdahl's law](https://en.wikipedia.org/wiki/Amdahl's_law).
 
 ### Visualizing Performance
 
-To get an understanding of _where_ you are losing performance, you want to get
-some insight into which code in your program is responsible for the majority of
-the runtime. Doing this guides you to where you should focus your attention
-towards when trying optimization approaches.
+To get an understanding of _where_ you are losing performance, you want to get some insight into
+which code in your program is responsible for the majority of the runtime. Doing this guides you to
+where you should focus your attention towards when trying optimization approaches.
 
-[cargo-flamegraph](https://github.com/flamegraph-rs/flamegraph) is a Cargo
-subcommand that lets you visualize what code in your project is taking up the
-majority of the runtime.
+[cargo-flamegraph](https://github.com/flamegraph-rs/flamegraph) is a Cargo subcommand that lets you
+visualize what code in your project is taking up the majority of the runtime.
 
 ## Reading
 
@@ -227,14 +215,13 @@ archived: kobzol-rustc-benchmark-suite.pdf
 
 https://blog.anp.lol/rust/2016/07/24/profiling-rust-perf-flamegraph/
 
-[Benchmarking](https://nnethercote.github.io/perf-book/benchmarking.html) in The
-Rust Performance Book
+[Benchmarking](https://nnethercote.github.io/perf-book/benchmarking.html) in The Rust Performance
+Book
 
 [Achieving warp speed with Rust](https://gist.github.com/jFransham/369a86eff00e5f280ed25121454acec1)
 
 [criterion]: https://docs.rs/criterion/latest/criterion/
 [bencher]: https://bencher.dev/
-[continuous-benchmark]:
-  https://github.com/marketplace/actions/continuous-benchmark
+[continuous-benchmark]: https://github.com/marketplace/actions/continuous-benchmark
 [rustls]: https://github.com/rustls/rustls
 [jemallocator]: https://docs.rs/jemallocator/latest/jemallocator/

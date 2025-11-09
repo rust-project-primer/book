@@ -7,15 +7,14 @@ failing > reduce input > output error
                        > record failure
 ```
 
-Fuzzing is an approach to testing code that generates random inputs for your
-code and uses instrumentation to monitor which branches are being triggered,
-with the goal of triggering all branches inside the code. In doing so, it can
-test your code very thoroughly and often times discover edge cases.
+Fuzzing is an approach to testing code that generates random inputs for your code and uses
+instrumentation to monitor which branches are being triggered, with the goal of triggering all
+branches inside the code. In doing so, it can test your code very thoroughly and often times
+discover edge cases.
 
-Fuzzing is usually an effective technique for testing parsers. Fuzzing
-implementations are usually able to use valid, working inputs as a starting
-point and randomly mutate them to try to find inputs that either crash the
-program, or lead to some kind of invalid behaviour.
+Fuzzing is usually an effective technique for testing parsers. Fuzzing implementations are usually
+able to use valid, working inputs as a starting point and randomly mutate them to try to find inputs
+that either crash the program, or lead to some kind of invalid behaviour.
 
 ```admonish note
 Fuzzing is a popular technique for testing parsers written in memory-unsafe
@@ -37,26 +36,23 @@ testing](./property.md), which focusses more on testing individual components,
 and is more focussed on *correctness* rather than *memory safety*.
 ```
 
-Fuzzing is a very good strategy when your code parses untrusted data. It allows
-you to have confidence that for any possible input, your program does not
-misbehave. The downside of fuzzing is that usually, it can only detect crashes.
-When possible, it is better to test individual pieces of code using property
-testing.
+Fuzzing is a very good strategy when your code parses untrusted data. It allows you to have
+confidence that for any possible input, your program does not misbehave. The downside of fuzzing is
+that usually, it can only detect crashes. When possible, it is better to test individual pieces of
+code using property testing.
 
 ## afl.rs
 
-afl, or _american fuzzy lop_, is one of the original fuzzing tools. It is
-designed to work very easily: it continuously launches your program, feeds
-random bytes into it and monitors which branches are taken.
+afl, or _american fuzzy lop_, is one of the original fuzzing tools. It is designed to work very
+easily: it continuously launches your program, feeds random bytes into it and monitors which
+branches are taken.
 
-When your program does anything invalid, it will record the input it used as a
-failing test case, later you can attempt to reproduce the crash and try to
-figure out what caused it.
+When your program does anything invalid, it will record the input it used as a failing test case,
+later you can attempt to reproduce the crash and try to figure out what caused it.
 
-In general, what is considered _invalid_ is anything that causes your program to
-abort unsually, for example a NULL pointer dereference. If you compile your
-program with sanitizers, you can detect more invalid behaviours (these
-sanitizers will abort your program if it does anything they can detect):
+In general, what is considered _invalid_ is anything that causes your program to abort unsually, for
+example a NULL pointer dereference. If you compile your program with sanitizers, you can detect more
+invalid behaviours (these sanitizers will abort your program if it does anything they can detect):
 
 - Undefined behaviour: reading uninitialized memory
 - Memory: reading out-of-bounds, writing out-of-bounds

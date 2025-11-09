@@ -1,32 +1,28 @@
 # Buck2
 
-[Buck2][buck2] ([source][buck2-repo]) is written and maintained by Facebook, and
-is very similar to Bazel. What makes it interesting is that it is written in
-Rust, which makes it rather likely that it has good support for building Rust
-projects.
+[Buck2][buck2] ([source][buck2-repo]) is written and maintained by Facebook, and is very similar to
+Bazel. What makes it interesting is that it is written in Rust, which makes it rather likely that it
+has good support for building Rust projects.
 
-Interestingly, Buck2 uses the same language to write configuration as Bazel
-does, which is called Starlark. Both the syntax and the APIs are quite similar,
-but not close enough to say that they are compatible. Buck2 is quite new, having
-only been released in 2022. <!-- TODO factcheck -->
+Interestingly, Buck2 uses the same language to write configuration as Bazel does, which is called
+Starlark. Both the syntax and the APIs are quite similar, but not close enough to say that they are
+compatible. Buck2 is quite new, having only been released in 2022. <!-- TODO factcheck -->
 
-What makes Buck2 exciting for us Rustaceans is that it itself is written in
-Rust, and that it has good support for Rust out-of-the-box, without needing any
-external plugins (as Bazel does with `rules_rust`).
+What makes Buck2 exciting for us Rustaceans is that it itself is written in Rust, and that it has
+good support for Rust out-of-the-box, without needing any external plugins (as Bazel does with
+`rules_rust`).
 
 ## Why Buck2?
 
-As per their website, Buck2 is an extensible and performant build system written
-in Rust and designed to make your build experience faster and more efficient.
+As per their website, Buck2 is an extensible and performant build system written in Rust and
+designed to make your build experience faster and more efficient.
 
 ## How does it work?
 
 ## Examples
 
-There are some
-[examples](https://github.com/facebookincubator/reindeer/tree/main/example)
-using reindeer, which is used to translate Cargo dependencies into Buck2
-configurations.
+There are some [examples](https://github.com/facebookincubator/reindeer/tree/main/example) using
+reindeer, which is used to translate Cargo dependencies into Buck2 configurations.
 
 ### Building C/C++ code
 

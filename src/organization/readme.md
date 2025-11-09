@@ -1,10 +1,9 @@
 # Organization
 
-In Rust, code organization is facilitated through a range of structures:
-_files_, _modules_, _crates_, and _workspaces_. This chapter aims to provide
-guidance on how to best utilize these elements to structure your Rust projects
-effectively. The emphasis will be on achieving two key objectives: _enhancing
-development speed_ and _promoting loose coupling_ for better code
+In Rust, code organization is facilitated through a range of structures: _files_, _modules_,
+_crates_, and _workspaces_. This chapter aims to provide guidance on how to best utilize these
+elements to structure your Rust projects effectively. The emphasis will be on achieving two key
+objectives: _enhancing development speed_ and _promoting loose coupling_ for better code
 maintainability.
 
 <figure>
@@ -13,8 +12,7 @@ maintainability.
 
 <caption>
 
-_Example of a Rust project's organization, with a single workspace containing
-multiple crates._
+_Example of a Rust project's organization, with a single workspace containing multiple crates._
 
 </caption>
 </figure>
@@ -29,39 +27,33 @@ Before we dive into this chapter, we should define what all of these terms mean.
 |  **Package**  | Collection of crates. Every package may contain at most one library crate, and may contain multiple binary crates.                                                                                                                       |
 | **Workspace** | A collection of packages, which can share a build cache, dependencies and metadata.                                                                                                                                                      |
 
-In this chapter, we will briefly cover how you can use these to structure your
-project.
+In this chapter, we will briefly cover how you can use these to structure your project.
 
 ## Development Speed
 
-Rust emphasizes a feature known as _zero-cost abstractions_. These are
-programming abstractions that are beneficial for developers, offering utility
-without incurring any runtime cost. This focus sets Rust apart from many other
-programming languages, which offer similar abstractions but with a runtime
-penalty. However, these zero-cost abstractions in Rust are not without their own
-trade-off: they often lead to longer compile times[^proc].
+Rust emphasizes a feature known as _zero-cost abstractions_. These are programming abstractions that
+are beneficial for developers, offering utility without incurring any runtime cost. This focus sets
+Rust apart from many other programming languages, which offer similar abstractions but with a
+runtime penalty. However, these zero-cost abstractions in Rust are not without their own trade-off:
+they often lead to longer compile times[^proc].
 
-This trade-off means Rust code is typically optimized for fast execution at the
-expense of compile speed. Yet, faster compile times hold their own importance.
-They are crucial in maintaining a tight iteration loop, allowing developers to
-quickly make code changes, compile, and test. This rapid feedback loop is
-essential for efficient feature development and debugging.
+This trade-off means Rust code is typically optimized for fast execution at the expense of compile
+speed. Yet, faster compile times hold their own importance. They are crucial in maintaining a tight
+iteration loop, allowing developers to quickly make code changes, compile, and test. This rapid
+feedback loop is essential for efficient feature development and debugging.
 
-In this chapter, we'll delve into various choices that can be made while setting
-up a Rust project to optimize compile times. We'll explore these options and
-their implications, aiming to balance efficient development cycles with optimal
-runtime performance.
+In this chapter, we'll delve into various choices that can be made while setting up a Rust project
+to optimize compile times. We'll explore these options and their implications, aiming to balance
+efficient development cycles with optimal runtime performance.
 
 ## Loose Coupling
 
-To ensure a system remains maintainable, testable, and easily adaptable,
-employing a strategy of loose coupling[^coupling] is often useful. Working with
-a large, monolithic application that's tightly coupled can be challenging and
-complex, making changes difficult. The ideal scenario involves creating code
-composed of smaller, independent units that can be tested on an individual
-basis. In this chapter, we'll explore how to achieve this level of modularity
-and loose coupling in Rust, laying out strategies to build systems that are both
-robust and flexible.
+To ensure a system remains maintainable, testable, and easily adaptable, employing a strategy of
+loose coupling[^coupling] is often useful. Working with a large, monolithic application that's
+tightly coupled can be challenging and complex, making changes difficult. The ideal scenario
+involves creating code composed of smaller, independent units that can be tested on an individual
+basis. In this chapter, we'll explore how to achieve this level of modularity and loose coupling in
+Rust, laying out strategies to build systems that are both robust and flexible.
 
 ## Reading
 
@@ -126,10 +118,8 @@ author: Alex Kladov
 ```
 
 [^proc]:
-    Procedural macros allow for eliminating a lot of repeated code, for example
-    by automatically deriving traits on structures. However, they need to be
-    built and executed and thus add to the compilation time.
+    Procedural macros allow for eliminating a lot of repeated code, for example by automatically
+    deriving traits on structures. However, they need to be built and executed and thus add to the
+    compilation time.
 
-[^coupling]:
-    See [Loose Coupling](https://en.wikipedia.org/wiki/Loose_coupling)
-    (Wikipedia).
+[^coupling]: See [Loose Coupling](https://en.wikipedia.org/wiki/Loose_coupling) (Wikipedia).

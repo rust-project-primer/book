@@ -1,23 +1,21 @@
 # Serialization
 
-Serialization is the process of turning structured data into a flat format,
-usually a textual or binary format. Typically this is done to save data (on
-disk, in a database), exchange it (between processes, between services).
-Deserialization is the process of doing the inverse: turning a flat
+Serialization is the process of turning structured data into a flat format, usually a textual or
+binary format. Typically this is done to save data (on disk, in a database), exchange it (between
+processes, between services). Deserialization is the process of doing the inverse: turning a flat
 representation into a structured representation.
 
 For example:
 
 - When you read a config file from disk and parse it, you are deserializing it.
-- When you make an API request and send JSON-encoded data, you are serializing
-  it.
+- When you make an API request and send JSON-encoded data, you are serializing it.
 
-Performing serialization and deserialization is important for any program that
-must communicate with the outside world.
+Performing serialization and deserialization is important for any program that must communicate with
+the outside world.
 
-Rust has some popular crates that are used for doing this. The most popular
-crate is `serde` (which stands for *ser*ialize, *de*serialize). Many Rust crates
-have optional feature flags that make their types compatible with it.
+Rust has some popular crates that are used for doing this. The most popular crate is `serde` (which
+stands for *ser*ialize, *de*serialize). Many Rust crates have optional feature flags that make their
+types compatible with it.
 
 | Name      | Description                                                                                                                                                                          |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -54,9 +52,9 @@ Serde supports a variety of formats. You can find a list of supported formats
 
 ## Bincode
 
-Bincode is a binary serialization library, designed for inter-process
-communication. It is compatible with serde, but also has the option of using its
-own traits for more control of the layout.
+Bincode is a binary serialization library, designed for inter-process communication. It is
+compatible with serde, but also has the option of using its own traits for more control of the
+layout.
 
 ## Facet
 
@@ -64,12 +62,11 @@ own traits for more control of the layout.
 
 ## Conclusion
 
-If you don't have any specific requirements, sticking to `serde` is a good
-choice. The other crates are more specialized and are useful if you have
-specific requirements. Most of the time, the deciding factor is compatibility
-with the ecosystem. Many existing crates already use `serde` for their
-serialization needs, or have a feature flag that you can enable which makes
-their types compatibhttps://serde.rs/#data-formatsle with `serde`.
+If you don't have any specific requirements, sticking to `serde` is a good choice. The other crates
+are more specialized and are useful if you have specific requirements. Most of the time, the
+deciding factor is compatibility with the ecosystem. Many existing crates already use `serde` for
+their serialization needs, or have a feature flag that you can enable which makes their types
+compatibhttps://serde.rs/#data-formatsle with `serde`.
 
 ## Reading
 

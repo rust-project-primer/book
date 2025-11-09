@@ -1,29 +1,25 @@
 # Web Backend
 
-A common use-case of Rust is building backends for web applications. Rust is
-particularily suited for this, because it offers great performance and a strong
-async ecosystem that allows you to scale to many concurrent requests easily.
+A common use-case of Rust is building backends for web applications. Rust is particularily suited
+for this, because it offers great performance and a strong async ecosystem that allows you to scale
+to many concurrent requests easily.
 
-While you can build a web backend manually by using crates such as [hyper][] for
-HTTP and [h3][] for HTTP/3, generally you will want to use a framework to
-implement the backend. Web backend frameworks handle things such as request
-routing, route authentication, parameter deserialization and building responses
-for you to make sure your application stays maintainable.
+While you can build a web backend manually by using crates such as [hyper][] for HTTP and [h3][] for
+HTTP/3, generally you will want to use a framework to implement the backend. Web backend frameworks
+handle things such as request routing, route authentication, parameter deserialization and building
+responses for you to make sure your application stays maintainable.
 
-But the important question is then: which framework do you use? The rust crate
-ecosystem has come up with a large amount of web framework crates with varying
-levels of popularity.
+But the important question is then: which framework do you use? The rust crate ecosystem has come up
+with a large amount of web framework crates with varying levels of popularity.
 
-In general, the two most popular frameworks are Axum and Actix-Web, and they
-should be your go-to frameworks of choice if you have no specific requirements.
-Axum is nice because it integrates into the Tower ecosystem of middleware,
-meaning that you will easily find some existing middleware implementations for
-whatever you are trying to do, such as adaptive rate limiting. Actix-Web is
+In general, the two most popular frameworks are Axum and Actix-Web, and they should be your go-to
+frameworks of choice if you have no specific requirements. Axum is nice because it integrates into
+the Tower ecosystem of middleware, meaning that you will easily find some existing middleware
+implementations for whatever you are trying to do, such as adaptive rate limiting. Actix-Web is
 known for being easy to get started with, and for being very fast.
 
-On a reasonably powerful system, either one of these can handle up to one
-million requests per second, meaning that most likely your database will be the
-bottleneck in scaling Rust web backends.
+On a reasonably powerful system, either one of these can handle up to one million requests per
+second, meaning that most likely your database will be the bottleneck in scaling Rust web backends.
 
 [hyper]: https://hyper.rs/
 [h3]: https://github.com/hyperium/h3
@@ -60,11 +56,10 @@ https://lib.rs/template-engine
 
 ## Axum
 
-[Axum](https://github.com/tokio-rs/axum) is currently the most popular web
-framework in the Rust ecosystem. It is developed by the same people that wrote
-Tokio, and uses hyper as the underlying HTTP implementation. It supports
-WebSockets, has built-in routing and parameter decoding. It also integrates with
-the [tracing](https://github.com/tokio-rs/tracing) ecosystem and uses
+[Axum](https://github.com/tokio-rs/axum) is currently the most popular web framework in the Rust
+ecosystem. It is developed by the same people that wrote Tokio, and uses hyper as the underlying
+HTTP implementation. It supports WebSockets, has built-in routing and parameter decoding. It also
+integrates with the [tracing](https://github.com/tokio-rs/tracing) ecosystem and uses
 [tower](https://github.com/tower-rs/tower) to build middleware.
 
 ```rust
@@ -84,17 +79,16 @@ async fn main() {
 }
 ```
 
-One thing that is nice about Axum is that it does not use custom proc-macros to
-implement routing or request handling, which makes it easier to use it with IDEs
-that might not understand the syntax. The downside is that it's generics
-approach sometimes leads to difficult-to-understand error messages.
+One thing that is nice about Axum is that it does not use custom proc-macros to implement routing or
+request handling, which makes it easier to use it with IDEs that might not understand the syntax.
+The downside is that it's generics approach sometimes leads to difficult-to-understand error
+messages.
 
 ## [Actix-Web](https://actix.rs/)
 
-Actix started out as a framework implementing the actor model for
-message-passing concurrency. Actix-Web, a framework for building web application
-on top of it gained quite a lot of popularity. It remains the second-most
-popular framework for building web backend application.
+Actix started out as a framework implementing the actor model for message-passing concurrency.
+Actix-Web, a framework for building web application on top of it gained quite a lot of popularity.
+It remains the second-most popular framework for building web backend application.
 
 ```rust
 use actix_web::{get, web, App, HttpServer, Responder};
@@ -119,9 +113,8 @@ Actix-Web is quite fast
 
 ## Rocket
 
-[Rocket](https://rocket.rs) was an early framework for building web backends.
-Initially, it only supported blocking code and used threads, but since version
-0.5.0 it supports async as well.
+[Rocket](https://rocket.rs) was an early framework for building web backends. Initially, it only
+supported blocking code and used threads, but since version 0.5.0 it supports async as well.
 
 ```rust
 extern crate rocket;

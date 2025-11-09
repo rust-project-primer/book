@@ -1,18 +1,17 @@
 # Error handling
 
-Error handling is essential to writing robust software. Rust has chosen a model
-for error handling that emphasizes correctness.
+Error handling is essential to writing robust software. Rust has chosen a model for error handling
+that emphasizes correctness.
 
-Many programming languages use _exceptions_ to communicate errors. In some way,
-exceptions are a kind of hidden return value: a function can either return the
-value it declares it will return, or it can _throw_ an exception.
+Many programming languages use _exceptions_ to communicate errors. In some way, exceptions are a
+kind of hidden return value: a function can either return the value it declares it will return, or
+it can _throw_ an exception.
 
-Rust deliberately chose not to do this, and rather uses return types. This
-ensures that it is always clearly communicated which failure modes a function
-has, and failure handling does not use a different channel. It also forces
-programmers to handle errors, at least to some degree: a fallible function
-returns a `Result<T, E>`, and you have to either handle the error (with a
-`match` statement), or propagate it up with a `?`.
+Rust deliberately chose not to do this, and rather uses return types. This ensures that it is always
+clearly communicated which failure modes a function has, and failure handling does not use a
+different channel. It also forces programmers to handle errors, at least to some degree: a fallible
+function returns a `Result<T, E>`, and you have to either handle the error (with a `match`
+statement), or propagate it up with a `?`.
 
 ```admonish note
 In some ways, this is only partially true. Rust does have a kind of *exception*,
@@ -20,39 +19,35 @@ through the `panic!()` and `.unwrap()` mechanism. However, the difference is
 that these are generally only used for *unrecoverable* errors.
 ```
 
-Part of the reason that doing this is ergonomic in Rust is because Rust has
-great syntactical support for pattern matching. This is not the case for many
-other languages, which is partially why _exceptions_ were created and remain in
-use.
+Part of the reason that doing this is ergonomic in Rust is because Rust has great syntactical
+support for pattern matching. This is not the case for many other languages, which is partially why
+_exceptions_ were created and remain in use.
 
 ### Communicating Failures in Rust
 
-Rust has three principal methods of communicating failures. In the order of
-utility, this is what they are:
+Rust has three principal methods of communicating failures. In the order of utility, this is what
+they are:
 
-- **Missing data**: Rust has the `Option<T>` type, which can communicate if
-  something is missing. Generally, this is not an error. For example, when you
-  look up a value in a map, it will return either `None` or `Some(T)`.
-- **Recoverable errors**: Rust has the `Result<T, E>` type, which can either
-  contain your data as `Ok(T)`, or contain an error as `Err(E)`.
-- **Unrecoverable errors**: Panics are the Rust way to express an error that
-  cannot be recovered from. This is perhaps the closest thing Rust has to
-  exceptions. These are generated when invariants are invalid, or when memory
-  cannot be allocated. When they are encountered, a backtrace is printed and
-  your program is aborted, although there are some ways to catch them if need
-  be.
+- **Missing data**: Rust has the `Option<T>` type, which can communicate if something is missing.
+  Generally, this is not an error. For example, when you look up a value in a map, it will return
+  either `None` or `Some(T)`.
+- **Recoverable errors**: Rust has the `Result<T, E>` type, which can either contain your data as
+  `Ok(T)`, or contain an error as `Err(E)`.
+- **Unrecoverable errors**: Panics are the Rust way to express an error that cannot be recovered
+  from. This is perhaps the closest thing Rust has to exceptions. These are generated when
+  invariants are invalid, or when memory cannot be allocated. When they are encountered, a backtrace
+  is printed and your program is aborted, although there are some ways to catch them if need be.
 
-Rust also has ways to convert between these types of errors. For example, if a
-missing key in a map is to be treated as an error, you can write:
+Rust also has ways to convert between these types of errors. For example, if a missing key in a map
+is to be treated as an error, you can write:
 
 ```rust
 // get user name, or else return a user missing error
 let value = map.get("user").ok_or(Error::UserMissing)?;
 ```
 
-If an error is unrecoverable (or perhaps, you are prototyping some code and
-chose not to properly handle errors yet), then you can turn a `Err(T)` into a
-panic using `unwrap()` or `expect()`.
+If an error is unrecoverable (or perhaps, you are prototyping some code and chose not to properly
+handle errors yet), then you can turn a `Err(T)` into a panic using `unwrap()` or `expect()`.
 
 ```rust
 let file = std::fs::read_to_string("file.txt").unwrap();
@@ -60,19 +55,19 @@ let file = std::fs::read_to_string("file.txt").unwrap();
 
 ### Panics in Rust
 
-We can't talk about error handling in Rust without mentioning _panicking_.
-Panics are a way to signify failures that cannot reasonably be recovered from.
-Panics are not a general way to communicate errors, they are a method of last
-resort. Usually, when a panic is encountered, it means that something went wrong
-that the programmer did not anticipate or handle and the program should abort.
+We can't talk about error handling in Rust without mentioning _panicking_. Panics are a way to
+signify failures that cannot reasonably be recovered from. Panics are not a general way to
+communicate errors, they are a method of last resort. Usually, when a panic is encountered, it means
+that something went wrong that the programmer did not anticipate or handle and the program should
+abort.
 
-There are different ways to trigger panics in Rust. Commonly, panics are used
-when writing prototype code, because you want to focus on the code and defer
-implementing error handling when the code works.
+There are different ways to trigger panics in Rust. Commonly, panics are used when writing prototype
+code, because you want to focus on the code and defer implementing error handling when the code
+works.
 
-For example, when you write some code which traverses a data structure, you
-might defer implementing the functionality for all edge cases. You can do this
-by using the `todo!()` macro, which will trigger a panic if called.
+For example, when you write some code which traverses a data structure, you might defer implementing
+the functionality for all edge cases. You can do this by using the `todo!()` macro, which will
+trigger a panic if called.
 
 ```rust
 fn test_value(value: &Value) -> bool {
@@ -85,9 +80,8 @@ fn test_value(value: &Value) -> bool {
 }
 ```
 
-Using
-[catch_unwind()](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html), you
-can catch panics. This might be useful if you use libraries that might panic.
+Using [catch_unwind()](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html), you can catch
+panics. This might be useful if you use libraries that might panic.
 
 ```rust
 std::panic::catch_unwind(|| {
@@ -95,10 +89,10 @@ std::panic::catch_unwind(|| {
 });
 ```
 
-For example, the `axum` framework uses `catch_unwind` to catch panics in request
-handlers, which makes it convenient to use it during development, because the
-server will not crash when it encounters a panic. However, they warn that this
-is not recommended for production usage because it has performance implications.
+For example, the `axum` framework uses `catch_unwind` to catch panics in request handlers, which
+makes it convenient to use it during development, because the server will not crash when it
+encounters a panic. However, they warn that this is not recommended for production usage because it
+has performance implications.
 
 ```admonish warning
 While it is possible to catch panics with
@@ -118,70 +112,63 @@ result in the default behaviour, which is the application aborting.
 
 ### The `Result` type
 
-In general, fallible functions in Rust use the `Result` return type to signify
-this. It is an enumeration that represents either success with an expected
-result value `Ok(value)` or failure with an error `Err(error)`.
+In general, fallible functions in Rust use the `Result` return type to signify this. It is an
+enumeration that represents either success with an expected result value `Ok(value)` or failure with
+an error `Err(error)`.
 
-If you have a common error type that you use in your application, then it is
-possible to make an alias of the `Result` type that defaults to your error type,
-but allows you to override it with a different error type if needed:
+If you have a common error type that you use in your application, then it is possible to make an
+alias of the `Result` type that defaults to your error type, but allows you to override it with a
+different error type if needed:
 
 ```rust
 type Result<T, E = MyError> = Result<T, E>;
 ```
 
-When you do this, `Result<String>` will resolve to `Result<String, MyError>`.
-However, you can still write `Result<String, OtherError>` to use a specific
-error type. Your custom error type is only used as the default when you don't
-specify any other type.
+When you do this, `Result<String>` will resolve to `Result<String, MyError>`. However, you can still
+write `Result<String, OtherError>` to use a specific error type. Your custom error type is only used
+as the default when you don't specify any other type.
 
 ### The `Error` trait
 
-In general, all error types in Rust implement the [`Error`][error] trait. This
-trait allows for getting a simple textual description of an error and
-information about the source of the error.
+In general, all error types in Rust implement the [`Error`][error] trait. This trait allows for
+getting a simple textual description of an error and information about the source of the error.
 
-If you create custom error types, you should implement this trait on them. There
-are some common libraries that help with doing this.
+If you create custom error types, you should implement this trait on them. There are some common
+libraries that help with doing this.
 
 [error]: https://doc.rust-lang.org/stable/std/error/trait.Error.html
 
 ### Libraries for custom error types
 
-Rust comes with some libraries, which can help you integrate into the Rust error
-system. On a high level, these libraries fall into one of two categories:
+Rust comes with some libraries, which can help you integrate into the Rust error system. On a high
+level, these libraries fall into one of two categories:
 
-- **Custom error types**: these libraries allow you to define custom error
-  types, by implementing the `Error` trait and any necessary other traits. A
-  common pattern is to define an error type, which is an enumeration of all
-  possible errors your application (or this particular function) may produce.
-  These libraries often also help you by implementing a `From<T>` implementation
-  for errors that your error type wraps.
-- **Dealing with arbitrary errors**: In some cases, you want to be able to
-  handle arbitrary errors. If you are writing a crate which is to be used by
-  others, this is generally a bad idea, because you want to expose the raw
-  errors to consumers of your library. But if you are writing an application,
-  and all you want to do is to render the error at some point, it is usually
-  beneficial to use some library which has the equivalent of `Box<dyn Error>`
-  and lets you not worry about defining custom error types. Often times, these
-  libraries also contain functionality for pretty-printing error chains and
-  stack traces.
-- **Error reporting**: Some libraries focus specifically on presenting errors to
-  users in a readable way, often with rich formatting, source code snippets, and
-  helpful hints. These libraries are particularly useful for developer tools,
-  compilers, and applications that need to provide detailed error information.
+- **Custom error types**: these libraries allow you to define custom error types, by implementing
+  the `Error` trait and any necessary other traits. A common pattern is to define an error type,
+  which is an enumeration of all possible errors your application (or this particular function) may
+  produce. These libraries often also help you by implementing a `From<T>` implementation for errors
+  that your error type wraps.
+- **Dealing with arbitrary errors**: In some cases, you want to be able to handle arbitrary errors.
+  If you are writing a crate which is to be used by others, this is generally a bad idea, because
+  you want to expose the raw errors to consumers of your library. But if you are writing an
+  application, and all you want to do is to render the error at some point, it is usually beneficial
+  to use some library which has the equivalent of `Box<dyn Error>` and lets you not worry about
+  defining custom error types. Often times, these libraries also contain functionality for
+  pretty-printing error chains and stack traces.
+- **Error reporting**: Some libraries focus specifically on presenting errors to users in a readable
+  way, often with rich formatting, source code snippets, and helpful hints. These libraries are
+  particularly useful for developer tools, compilers, and applications that need to provide detailed
+  error information.
 
-In general, if you write a crate that is to be used as a library by other
-crates, you should be using a library which allows you to define custom error
-types. You want the users of your crate to be able to handle the different
-failure modes, and if the failure modes change (your error enums change), you
-want to force them to adjust their code. This makes the failure modes explicit.
+In general, if you write a crate that is to be used as a library by other crates, you should be
+using a library which allows you to define custom error types. You want the users of your crate to
+be able to handle the different failure modes, and if the failure modes change (your error enums
+change), you want to force them to adjust their code. This makes the failure modes explicit.
 
-If you write an application (such as a command-line application, a web
-application, or any other code where you are not exposing the errors in any kind
-of API), then using the latter kind of error-handling library is appropriate. In
-this case, all you care about is reporting errors and metadata (where they
-occurred) to an end-user.
+If you write an application (such as a command-line application, a web application, or any other
+code where you are not exposing the errors in any kind of API), then using the latter kind of
+error-handling library is appropriate. In this case, all you care about is reporting errors and
+metadata (where they occurred) to an end-user.
 
 ```admonish warning
 When using error handling libraries, keep in mind the trade-offs:
@@ -198,25 +185,21 @@ When using error handling libraries, keep in mind the trade-offs:
   a major version bump.
 ```
 
-If you're writing a library, you should use a structured error library like
-[thiserror](#thiserror) to define custom error types, with useful metadata and
-context. This will allow downstream consumers to work with and handle the
-errors. If you write an application, you may want to consider using a more
-dynamic library like [anyhow](#anyhow), which allows you to not worry about
-specific error types and simply propagate them. If you need a library that
-focusses on good error reporting, consider using [miette](#miette) or
-[eyre](#eyre).
+If you're writing a library, you should use a structured error library like [thiserror](#thiserror)
+to define custom error types, with useful metadata and context. This will allow downstream consumers
+to work with and handle the errors. If you write an application, you may want to consider using a
+more dynamic library like [anyhow](#anyhow), which allows you to not worry about specific error
+types and simply propagate them. If you need a library that focusses on good error reporting,
+consider using [miette](#miette) or [eyre](#eyre).
 
 ## Thiserror
 
-The [thiserror](https://docs.rs/thiserror/latest/thiserror/) crate is a popular
-crate for defining custom structured errors. It helps you to implement the
-`Error` trait for your custom error types.
+The [thiserror](https://docs.rs/thiserror/latest/thiserror/) crate is a popular crate for defining
+custom structured errors. It helps you to implement the `Error` trait for your custom error types.
 
-Imagine you have an application that uses an SQLite database to store data and
-properties. Every query to the database returns some custom error type of the
-database library. However, you want consumers of your crate to be able to
-differentiate between different error cases.
+Imagine you have an application that uses an SQLite database to store data and properties. Every
+query to the database returns some custom error type of the database library. However, you want
+consumers of your crate to be able to differentiate between different error cases.
 
 For example:
 
@@ -230,17 +213,16 @@ pub enum MyError {
 }
 ```
 
-The crate is specifically useful for implementing your own structured error
-types, or for composing multiple existing error types into a wrapper enum.
+The crate is specifically useful for implementing your own structured error types, or for composing
+multiple existing error types into a wrapper enum.
 
-By writing wrapper enums, you are also able to _refine_ errors, for example
-classifying errors you receive from an underlying database.
+By writing wrapper enums, you are also able to _refine_ errors, for example classifying errors you
+receive from an underlying database.
 
 ## Anyhow
 
-The [anyhow](https://docs.rs/anyhow/latest/anyhow/) crate gives you the ability
-to work with dynamic and ad-hoc errors. It exports the `anyhow::Error` type,
-which can capture any Rust error.
+The [anyhow](https://docs.rs/anyhow/latest/anyhow/) crate gives you the ability to work with dynamic
+and ad-hoc errors. It exports the `anyhow::Error` type, which can capture any Rust error.
 
 ```rust
 use anyhow::Error;
@@ -251,19 +233,17 @@ fn main() -> Result<(), Error> {
 }
 ```
 
-The anyhow crate also has a `Result` alias, which defaults to using its Error
-type.
+The anyhow crate also has a `Result` alias, which defaults to using its Error type.
 
-This library is very useful for when you are writing an application that uses
-multiple libraries, and you don't want to inspect or handle the errors
-explicitly. Rather, you can use anyhow's Error type to pass them around and
-render them to the user.
+This library is very useful for when you are writing an application that uses multiple libraries,
+and you don't want to inspect or handle the errors explicitly. Rather, you can use anyhow's Error
+type to pass them around and render them to the user.
 
 ## Eyre
 
-[Eyre](https://docs.rs/eyre/latest/eyre/) is similar to anyhow but focuses more
-on customizable error reporting. It provides a context-aware error type that can
-capture information about where and why an error occurred.
+[Eyre](https://docs.rs/eyre/latest/eyre/) is similar to anyhow but focuses more on customizable
+error reporting. It provides a context-aware error type that can capture information about where and
+why an error occurred.
 
 ```rust
 use eyre::{eyre, Result};
@@ -275,18 +255,17 @@ fn main() -> Result<()> {
 }
 ```
 
-Eyre is particularly useful when you want to add additional context to errors as
-they propagate through your application.
+Eyre is particularly useful when you want to add additional context to errors as they propagate
+through your application.
 
-The [color-eyre](https://docs.rs/color-eyre/latest/color_eyre/) crate extends
-Eyre with colorful, pretty error reports and even better panic messages with
-backtraces.
+The [color-eyre](https://docs.rs/color-eyre/latest/color_eyre/) crate extends Eyre with colorful,
+pretty error reports and even better panic messages with backtraces.
 
 ## Miette
 
-[Miette](https://docs.rs/miette/latest/miette/) is an error reporting library
-that focuses on providing detailed, human-readable diagnostic information. It
-excels at displaying code snippets with error spans and fancy formatting.
+[Miette](https://docs.rs/miette/latest/miette/) is an error reporting library that focuses on
+providing detailed, human-readable diagnostic information. It excels at displaying code snippets
+with error spans and fancy formatting.
 
 ```rust
 use miette::{Diagnostic, Result};
@@ -307,17 +286,17 @@ struct ConfigError {
 }
 ```
 
-Miette is ideal for applications that need to provide detailed, contextual error
-information to users, such as compilers, linters, or configuration validators.
+Miette is ideal for applications that need to provide detailed, contextual error information to
+users, such as compilers, linters, or configuration validators.
 
 ## Other Error Libraries
 
 ### Error-Stack
 
-[Error-stack](https://docs.rs/error-stack/latest/error_stack/) is a more recent
-error handling library that provides an extended approach to error creation and
-propagation. It allows for attaching arbitrary context to errors as they bubble
-up through your program, creating a detailed "stack" of information.
+[Error-stack](https://docs.rs/error-stack/latest/error_stack/) is a more recent error handling
+library that provides an extended approach to error creation and propagation. It allows for
+attaching arbitrary context to errors as they bubble up through your program, creating a detailed
+"stack" of information.
 
 ```rust
 use error_stack::{Report, ResultExt};
@@ -329,15 +308,14 @@ fn read_config(path: &str) -> error_stack::Result<String, ConfigError> {
 }
 ```
 
-Error-stack excels at creating rich error contexts without the overhead of
-capturing full backtraces.
+Error-stack excels at creating rich error contexts without the overhead of capturing full
+backtraces.
 
 ### SNAFU
 
-[SNAFU](https://docs.rs/snafu/latest/snafu/) (Situation Normal: All Fouled Up)
-is another library for defining error types and context information. It uses a
-different approach than thiserror, relying on context selectors rather than
-derive macros.
+[SNAFU](https://docs.rs/snafu/latest/snafu/) (Situation Normal: All Fouled Up) is another library
+for defining error types and context information. It uses a different approach than thiserror,
+relying on context selectors rather than derive macros.
 
 ```rust
 use snafu::{prelude::*, Whatever};
@@ -354,29 +332,26 @@ fn open_config() -> Result<(), Error> {
 }
 ```
 
-SNAFU is particularly useful for situations where you need fine-grained control
-over how context is attached to errors.
+SNAFU is particularly useful for situations where you need fine-grained control over how context is
+attached to errors.
 
 ### Ariadne
 
-[Ariadne](https://docs.rs/ariadne/latest/ariadne/) is an alternative to miette
-that focuses on displaying source code diagnostics. It's designed for parsers,
-compilers, and interpreters that need to report syntax errors or other issues in
-source code.
+[Ariadne](https://docs.rs/ariadne/latest/ariadne/) is an alternative to miette that focuses on
+displaying source code diagnostics. It's designed for parsers, compilers, and interpreters that need
+to report syntax errors or other issues in source code.
 
 ## Conclusion
 
-In this section, we've explored several error handling libraries in Rust,
-including thiserror, snafu, anyhow, and miette. We've seen how each library
-provides a different approach to error handling, and how they can be used in
-different situations.
+In this section, we've explored several error handling libraries in Rust, including thiserror,
+snafu, anyhow, and miette. We've seen how each library provides a different approach to error
+handling, and how they can be used in different situations.
 
-When you write libraries, you may want to use a library like `thiserror` or
-`snafu` to provide structured errors to users of your library where the focus is
-on providing context and allowing users to handle errors. When you write
-applications, you may want to use a library like `anyhow` or `miette` that
-provide convenient, generic containers for arbitrary errors where the focus is
-on communicating errors to end-users.
+When you write libraries, you may want to use a library like `thiserror` or `snafu` to provide
+structured errors to users of your library where the focus is on providing context and allowing
+users to handle errors. When you write applications, you may want to use a library like `anyhow` or
+`miette` that provide convenient, generic containers for arbitrary errors where the focus is on
+communicating errors to end-users.
 
 ## Reading
 

@@ -1,25 +1,23 @@
 # Binary Size Optimization
 
-When you compile Rust code, you have some control over the compiler as to what
-it prioritizes when building your executables. Everything is a tradeoff, so when
-you prioritize one aspect, you might see a regression in another aspect. Common
-priorities are:
+When you compile Rust code, you have some control over the compiler as to what it prioritizes when
+building your executables. Everything is a tradeoff, so when you prioritize one aspect, you might
+see a regression in another aspect. Common priorities are:
 
-- **Speed**: You want your executables to run as fast as possible. This might
-  lead to an increase in code size, because the compiler will use techniques
-  like inlining or loop unrolling to achieve this.
-- **Binary size**: You want your executables to be as small as possible, for
-  example because you are targeting a resource-constrained platform like
-  embedded microcontrollers with limited flash memory sizes, or you want to be
-  able to easily distribute your binary. This might lead to a negative impact on
-  performance.
+- **Speed**: You want your executables to run as fast as possible. This might lead to an increase in
+  code size, because the compiler will use techniques like inlining or loop unrolling to achieve
+  this.
+- **Binary size**: You want your executables to be as small as possible, for example because you are
+  targeting a resource-constrained platform like embedded microcontrollers with limited flash memory
+  sizes, or you want to be able to easily distribute your binary. This might lead to a negative
+  impact on performance.
 
 ### Compilation Profiles
 
-In general, the way you exercise control over this is by creating _profiles_.
-Every profile comes with a set of parameters that let you tweak how the compiler
-performs. Typically, when you make debug builds, your main priority is fast
-compilation times, so you are happy to sacrifice some runtime speed.
+In general, the way you exercise control over this is by creating _profiles_. Every profile comes
+with a set of parameters that let you tweak how the compiler performs. Typically, when you make
+debug builds, your main priority is fast compilation times, so you are happy to sacrifice some
+runtime speed.
 
 A profile definition looks like this:
 
@@ -33,22 +31,19 @@ opt-level = 3
 
 ## Binary Size
 
-_One of your customers deploys the Rust-based tool that you are developing on
-very small embedded systems which run in an industrial environment. They are
-severely resource-constrained, making Rust an ideal language to target them.
-However, the customer has started complaining that the binaries you are shipping
-him are getting quite large. You are wondering if there are some strategies you
-can use to reduce the size of the binaries._
+_One of your customers deploys the Rust-based tool that you are developing on very small embedded
+systems which run in an industrial environment. They are severely resource-constrained, making Rust
+an ideal language to target them. However, the customer has started complaining that the binaries
+you are shipping him are getting quite large. You are wondering if there are some strategies you can
+use to reduce the size of the binaries._
 
-There are some low-hanging fruits that can be configured to drastically reduce
-binary sized in Rust projects. Note that some of these have a cost, in that they
-lead to longer compile times (for release builds). There are also some
-structural decisions that can lead to smaller binary sizes.
+There are some low-hanging fruits that can be configured to drastically reduce binary sized in Rust
+projects. Note that some of these have a cost, in that they lead to longer compile times (for
+release builds). There are also some structural decisions that can lead to smaller binary sizes.
 
 ### Configuration
 
-The simplest way to reduce code size is to set some configuration in the Cargo
-manifest.
+The simplest way to reduce code size is to set some configuration in the Cargo manifest.
 
 ```toml
 [profile.release]
@@ -61,11 +56,10 @@ lto = true
 
 ### Dependencies
 
-Sometimes, the binary size is caused by some dependencies that you are using. To
-analyze this, [`cargo-bloat`][cargo-bloat] can be used, which measures the
-resulting binary and lists the amount that each dependency contributes to the
-final binary size. In some cases, this can allow you to investigate if the
-dependency could be replaced with a lighter one, or if there are any features
+Sometimes, the binary size is caused by some dependencies that you are using. To analyze this,
+[`cargo-bloat`][cargo-bloat] can be used, which measures the resulting binary and lists the amount
+that each dependency contributes to the final binary size. In some cases, this can allow you to
+investigate if the dependency could be replaced with a lighter one, or if there are any features
 that could be disabled.
 
 ### Structural

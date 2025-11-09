@@ -6,10 +6,10 @@ https://rustc-dev-guide.rust-lang.org/debugging-support-in-rustc.html
 
 ## Time-travel Debugging
 
-The [rr](https://rr-project.org/) debugger allows you to record and replay the
-execution of a program. This is useful for debugging asynchronous applications,
-as it allows you to step through the execution of the program at a slower pace,
-and inspect the state of the program at any point in time.
+The [rr](https://rr-project.org/) debugger allows you to record and replay the execution of a
+program. This is useful for debugging asynchronous applications, as it allows you to step through
+the execution of the program at a slower pace, and inspect the state of the program at any point in
+time.
 
 https://gist.github.com/spacejam/15f27007c0b1bcc1d6b4c9169b18868c
 

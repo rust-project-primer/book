@@ -46,31 +46,54 @@
             pkgs.brotli
           ];
           unpackPhase = ''
-            pwd
             cp -r ${book.out}/* .
             chmod -R u+rw .
           '';
           buildPhase = ''
-            pwd
             find . -not -name '*.gz' -not -name '*.br' -not -name '*.pdf' -type f -exec gzip -vk {} \;
             find . -not -name '*.gz' -not -name '*.br' -not -name '*.pdf' -type f -exec brotli -vk {} \;
           '';
           installPhase = ''
-            pwd
             mkdir -p $out
             cp -r . $out/
           '';
         };
       in
       {
-        packages = rec {
+        packages = {
           rust-project-primer = book;
           gitlab-pages = pages;
           default = book;
         };
-        apps = rec {
-          #hello = flake-utils.lib.mkApp { drv = self.packages.${system}.hello; };
-          #default = hello;
+        apps = {
+          fmt = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "prettier-fmt" ''
+              ${pkgs.nodePackages.prettier}/bin/prettier --write 'src/**/*.md' '*.md'
+            '';
+          };
+          serve = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "serve-book" ''
+              echo "Building book..."
+              BOOK_DIR=$(mktemp -d)
+              cp -r ${book}/* $BOOK_DIR/
+              echo "Book built successfully!"
+              echo "Starting server at http://localhost:8000"
+              echo "Press Ctrl+C to stop the server"
+              cd $BOOK_DIR
+              ${pkgs.python3}/bin/python3 -m http.server 8000
+            '';
+          };
+          default = self.apps.${system}.serve;
+        };
+        devShells.default = pkgs.mkShell {
+          buildInputs = [
+            pkgs.nodePackages.prettier
+            pkgs.mdbook
+            pkgs.just
+            pkgs.mdbook-admonish
+            mdbook-files.packages.${system}.default
+            mdbook-reading.packages.${system}.default
+          ];
         };
         checks = {
           prettier-md = pkgs.stdenv.mkDerivation {
@@ -78,7 +101,7 @@
             src = ./.;
             nativeBuildInputs = [ pkgs.nodePackages.prettier ];
             buildPhase = ''
-              prettier --check '**/*.md'
+              prettier --check 'src/**/*.md' '*.md'
             '';
             installPhase = ''
               mkdir -p $out

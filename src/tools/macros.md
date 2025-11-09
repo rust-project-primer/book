@@ -1,56 +1,47 @@
 # Expand Macros
 
-On a high level, a macro is some code that generates code. In languages such as
-C or C++, they are expanded by the preprocessor in a step just before
-compilation happens. They are commonly used to reduce code repetition, avoid
-boilerplate.
+On a high level, a macro is some code that generates code. In languages such as C or C++, they are
+expanded by the preprocessor in a step just before compilation happens. They are commonly used to
+reduce code repetition, avoid boilerplate.
 
-Instead of relying on a preprocessor, the Rust compiler has built-in support for
-macros. It supports two kinds of macros:
-[declarative macros](https://doc.rust-lang.org/reference/macros-by-example.html)
-and
-[procedural macros](https://doc.rust-lang.org/reference/procedural-macros.html).
-Declarative macros work as a kind of pattern-match-and-replace on tokens. They
-are fast and functional, but are limited in terms of what they can do.
-Procedural macros work by compiling a separate Rust program, which is fed the
-arguments of the macro and outputs Rust code that it is replaced with. They are
-more powerful, can do potentially non-deterministic things, but have higher
-overhead.
+Instead of relying on a preprocessor, the Rust compiler has built-in support for macros. It supports
+two kinds of macros:
+[declarative macros](https://doc.rust-lang.org/reference/macros-by-example.html) and
+[procedural macros](https://doc.rust-lang.org/reference/procedural-macros.html). Declarative macros
+work as a kind of pattern-match-and-replace on tokens. They are fast and functional, but are limited
+in terms of what they can do. Procedural macros work by compiling a separate Rust program, which is
+fed the arguments of the macro and outputs Rust code that it is replaced with. They are more
+powerful, can do potentially non-deterministic things, but have higher overhead.
 
-Declarative macros can be used to implement Domain-Specific Languages within
-Rust. For example, the [`json!`][json] macro allows you to write JSON within
-Rust, or the [`html!`](https://yew.rs/docs/next/concepts/html) macro allows you
-to write HTML within Rust. Procedural derive macros are often used to allow you
-to derive traits for your types automatically. Commonly used examples are the
-`Serialize` and `Deserialize` derive macros from the
-[serde](https://docs.rs/serde/latest/serde/index.html) crate. Procedural
-attribute macros such as
-[`rocket::get`](https://docs.rs/rocket/latest/rocket/attr.get.html) are used to
-provide metadata for routing requests in the Rocket web backend framework.
+Declarative macros can be used to implement Domain-Specific Languages within Rust. For example, the
+[`json!`][json] macro allows you to write JSON within Rust, or the
+[`html!`](https://yew.rs/docs/next/concepts/html) macro allows you to write HTML within Rust.
+Procedural derive macros are often used to allow you to derive traits for your types automatically.
+Commonly used examples are the `Serialize` and `Deserialize` derive macros from the
+[serde](https://docs.rs/serde/latest/serde/index.html) crate. Procedural attribute macros such as
+[`rocket::get`](https://docs.rs/rocket/latest/rocket/attr.get.html) are used to provide metadata for
+routing requests in the Rocket web backend framework.
 
-Using macros, where appropriate, is good style because it allows you to reduce
-boilerplate code. At times, they can feel quite magic. However, there are
-downsides to relying on them heavily as well:
+Using macros, where appropriate, is good style because it allows you to reduce boilerplate code. At
+times, they can feel quite magic. However, there are downsides to relying on them heavily as well:
 
-1. When you use procedural macros, a separate Rust application needs to be built
-   and run for the compilation, slowing down your compilations.
-2. Formatting often does not work within macro invocations. Some projects work
-   around this by providing their own formatting tools that are able to do this,
-   for example [leptosfmt](https://github.com/bram209/leptosfmt).
-3. Macros can be difficult to understand. Because macros are expanded at
-   compile-time, it can be difficult to inspect or debug them, because you
-   cannot see what code the macro expands to.
+1. When you use procedural macros, a separate Rust application needs to be built and run for the
+   compilation, slowing down your compilations.
+2. Formatting often does not work within macro invocations. Some projects work around this by
+   providing their own formatting tools that are able to do this, for example
+   [leptosfmt](https://github.com/bram209/leptosfmt).
+3. Macros can be difficult to understand. Because macros are expanded at compile-time, it can be
+   difficult to inspect or debug them, because you cannot see what code the macro expands to.
 
-This section looks at how you can work around (3), by showing you how you can
-inspect what your code looks like after macro expansion.
+This section looks at how you can work around (3), by showing you how you can inspect what your code
+looks like after macro expansion.
 
 ## Cargo Expand
 
-[cargo expand](https://github.com/dtolnay/cargo-expand) is a Cargo plugin that
-allows you to view your code after macro expansion. In addition to performing
-macro expansion, it will also run `rustfmt` over the result (because the code
-that macros expands to is often machine-generated and therefore unformatted) and
-syntax-highlights the result.
+[cargo expand](https://github.com/dtolnay/cargo-expand) is a Cargo plugin that allows you to view
+your code after macro expansion. In addition to performing macro expansion, it will also run
+`rustfmt` over the result (because the code that macros expands to is often machine-generated and
+therefore unformatted) and syntax-highlights the result.
 
 You can install it simply using Cargo:
 
@@ -64,30 +55,29 @@ To run it, simply run it as a Cargo subcommand within a Rust crate:
 cargo expand
 ```
 
-It has some command-line options that you can use to control the output options,
-for example turning off the syntax highlighting or selecting a different theme
-that plays nicer with your terminal color scheme.
+It has some command-line options that you can use to control the output options, for example turning
+off the syntax highlighting or selecting a different theme that plays nicer with your terminal color
+scheme.
 
 ### Example: Inspecting your own macro
 
-If you want to create a `Vec<T>`, Rust has a built-in macro for doing so:
-`vec![]`. However, the same is not true for creating maps, such as
-`BTreeMap<T>`. You can work around this by creating your own macro:
+If you want to create a `Vec<T>`, Rust has a built-in macro for doing so: `vec![]`. However, the
+same is not true for creating maps, such as `BTreeMap<T>`. You can work around this by creating your
+own macro:
 
 ```rust
 {{#include ../../examples/macro-expand/src/btreemap.rs:macro}}
 ```
 
-But how do you verify that this macro works correctly? Besides writing unit
-tests for it, you can write a small test program that uses this macro, for
-example:
+But how do you verify that this macro works correctly? Besides writing unit tests for it, you can
+write a small test program that uses this macro, for example:
 
 ```rust
 {{#include ../../examples/macro-expand/src/btreemap.rs:main}}
 ```
 
-Finally, you can run `cargo expand` on this test program to verify that it is
-expanding to the right thing.
+Finally, you can run `cargo expand` on this test program to verify that it is expanding to the right
+thing.
 
 ```rust ignore
 {{#include ../../examples/macro-expand/output/btreemap.rs}}
@@ -95,37 +85,35 @@ expanding to the right thing.
 
 ### Example: Inspecting the [`json!`][json] macro
 
-The [`json!`][json] macro from `serde_json` allows you to write JSON inline in
-Rust, and get a JSON `Value` back. It supports all of JSON syntax, and allows
-you to interpolate Rust values inside it as well.
+The [`json!`][json] macro from `serde_json` allows you to write JSON inline in Rust, and get a JSON
+`Value` back. It supports all of JSON syntax, and allows you to interpolate Rust values inside it as
+well.
 
 ```rust ignore
 {{#include ../../examples/macro-expand/src/json.rs}}
 ```
 
-To see what this code actually does, calling `cargo expand` on it yields the
-following:
+To see what this code actually does, calling `cargo expand` on it yields the following:
 
 ```rust ignore
 {{#include ../../examples/macro-expand/output/json.rs}}
 ```
 
-This shows that under the hood, the macro expands to manual creations of a map,
-filling it with values.
+This shows that under the hood, the macro expands to manual creations of a map, filling it with
+values.
 
 ### Example: Inspecting the `Serialize` procedural macro
 
-The `Serialize` procedural macro auto-generates an implementation for the
-`Serialize` trait that the `serde` crate uses to be able to serialize your
-struct to arbitrary data formats. If you have some struct which uses this derive
-macro:
+The `Serialize` procedural macro auto-generates an implementation for the `Serialize` trait that the
+`serde` crate uses to be able to serialize your struct to arbitrary data formats. If you have some
+struct which uses this derive macro:
 
 ```rust
 {{#include ../../examples/macro-expand/src/serialize.rs}}
 ```
 
-You may want to know what the expanded code looks like. Again, running
-`cargo expand` can show you this.
+You may want to know what the expanded code looks like. Again, running `cargo expand` can show you
+this.
 
 ```rust ignore
 {{#include ../../examples/macro-expand/output/serialize.rs}}

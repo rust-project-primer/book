@@ -1,14 +1,12 @@
 # Conclusion
 
-The Rust ecosystem has a lot of great tooling that can be used to verify
-properties of software projects. Every check has a certain cost associated with
-it: if it runs in the CI system, it means the CI system needs more resources. If
-the checks are to be run locally, it takes resources to ensure everyone is using
-the right checks and in the right way.
+The Rust ecosystem has a lot of great tooling that can be used to verify properties of software
+projects. Every check has a certain cost associated with it: if it runs in the CI system, it means
+the CI system needs more resources. If the checks are to be run locally, it takes resources to
+ensure everyone is using the right checks and in the right way.
 
-In this section, I will summarize all of the available checks, what I consider
-their value and costs to be and give a recommendation of whether and where to
-run them.
+In this section, I will summarize all of the available checks, what I consider their value and costs
+to be and give a recommendation of whether and where to run them.
 
 | Goal                  | Tool                     | Value           | Cost   | Use            |
 | --------------------- | ------------------------ | --------------- | ------ | -------------- |

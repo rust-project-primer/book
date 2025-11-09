@@ -1,8 +1,7 @@
 # Tiers
 
-Ideally, what we would like to achieve is having different tiers of tests so
-that local development can happen with little friction, but the project is still
-robus.
+Ideally, what we would like to achieve is having different tiers of tests so that local development
+can happen with little friction, but the project is still robus.
 
 | Tier   | Description                                                                                                              |
 | ------ | ------------------------------------------------------------------------------------------------------------------------ |

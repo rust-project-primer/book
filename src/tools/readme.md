@@ -1,7 +1,7 @@
 # Tools
 
-This chapter showcases some tools the Rust community has come up with that can
-help you in maintaining, navigating or developing Rust software projects.
+This chapter showcases some tools the Rust community has come up with that can help you in
+maintaining, navigating or developing Rust software projects.
 
 ## Readme
 

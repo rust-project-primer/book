@@ -1,59 +1,51 @@
 # Nix
 
-Nix is a declarative package manager and build system. It lets you define
-dependencies and configurations in a functional language, and uses build
-isolation to ensure consistent and reproducible builds across machines.
+Nix is a declarative package manager and build system. It lets you define dependencies and
+configurations in a functional language, and uses build isolation to ensure consistent and
+reproducible builds across machines.
 
-The declarative nature of Nix makes it great at dealing with complex
-environments. It handles cross-platform builds correctly. Despite being over 20
-years old, it has recently gained a lot of support. It is useful for providing
-consistent development setups between teams, ensuring that the code has the same
-environments between developers, CI machines and deployment machines.
+The declarative nature of Nix makes it great at dealing with complex environments. It handles
+cross-platform builds correctly. Despite being over 20 years old, it has recently gained a lot of
+support. It is useful for providing consistent development setups between teams, ensuring that the
+code has the same environments between developers, CI machines and deployment machines.
 
-Nix is quite versatile. It can be used to configure your system, set up a
-hygienic development shell containing only the dependencies you explicitly
-requested, build Docker images with the minimal set of runtime dependencies.
+Nix is quite versatile. It can be used to configure your system, set up a hygienic development shell
+containing only the dependencies you explicitly requested, build Docker images with the minimal set
+of runtime dependencies.
 
 ## Nix Explainer
 
 There are three main ways you can use Nix:
 
-- **Operating system**: NixOS, which is built on top of Nix, is an entire
-  operating system that you can use. It allows you to define everything on your
-  work machine with the Nix language.
-- **Package manager**: you can use Nix as a package manager. For example, you
-  can use it to define (in your project) which dependencies it should make
-  available (think libraries, frameworks, compilers). Nix will make these
-  available, and it will make sure that no matter what machine or platform you
-  build on, you always have _exactly_ the same versions of those dependencies.
-  On top of this, you can use a different build system, for example Buck or
-  Bazel. In this configuration, Nix is only responsible for providing the
-  dependencies your project needs to build.
-- **Build system**: using something like Nix Flakes (we will discuss them
-  later), you can define how every part of your project is built. Then Nix will
-  build your project. Depending on what you are building, it can be a bit of
-  work to get it building with Nix. The advantage you have if you do this is
-  that you get reproducible builds, so no matter which machine you build on, you
-  always get exactly the same output. You can also use caching, which makes
-  builds faster for developers.
+- **Operating system**: NixOS, which is built on top of Nix, is an entire operating system that you
+  can use. It allows you to define everything on your work machine with the Nix language.
+- **Package manager**: you can use Nix as a package manager. For example, you can use it to define
+  (in your project) which dependencies it should make available (think libraries, frameworks,
+  compilers). Nix will make these available, and it will make sure that no matter what machine or
+  platform you build on, you always have _exactly_ the same versions of those dependencies. On top
+  of this, you can use a different build system, for example Buck or Bazel. In this configuration,
+  Nix is only responsible for providing the dependencies your project needs to build.
+- **Build system**: using something like Nix Flakes (we will discuss them later), you can define how
+  every part of your project is built. Then Nix will build your project. Depending on what you are
+  building, it can be a bit of work to get it building with Nix. The advantage you have if you do
+  this is that you get reproducible builds, so no matter which machine you build on, you always get
+  exactly the same output. You can also use caching, which makes builds faster for developers.
 
-In this section, we will not take a look at NixOS. Mainly we will focus on using
-Nix as a build system, but we will also show how you could use it as a package
-manager in combination with another build system.
+In this section, we will not take a look at NixOS. Mainly we will focus on using Nix as a build
+system, but we will also show how you could use it as a package manager in combination with another
+build system.
 
 ### Nix Terminology
 
-If you are new to Nix, it can be a bit confusing. Nix is both a language, and a
-package manager, and a build system. It uses Flakes and derivation. If you
-already know them, you can skip past the subheadings here, but it makes sense to
-explain how this all works together.
+If you are new to Nix, it can be a bit confusing. Nix is both a language, and a package manager, and
+a build system. It uses Flakes and derivation. If you already know them, you can skip past the
+subheadings here, but it makes sense to explain how this all works together.
 
 ### Derivations
 
-At the very core of Nix is a _derivation_. This is how Nix tracks how to compile
-things. It can take other derivations as input (via `nativeBuildInputs`,
-`buildInputs`), some files (via `src`), and it has some shell scripts that
-define how it is built, and how it is installed.
+At the very core of Nix is a _derivation_. This is how Nix tracks how to compile things. It can take
+other derivations as input (via `nativeBuildInputs`, `buildInputs`), some files (via `src`), and it
+has some shell scripts that define how it is built, and how it is installed.
 
 <center>
 
@@ -61,8 +53,7 @@ define how it is built, and how it is installed.
 
 </center>
 
-Here's an example derivation (this is just a snippet, and not a full, working
-Nix config):
+Here's an example derivation (this is just a snippet, and not a full, working Nix config):
 
 ```nix
 pkgs.stdenv.mkDerivation {
@@ -83,48 +74,42 @@ pkgs.stdenv.mkDerivation {
 };
 ```
 
-Derivations are _deterministic_, which means that if you execute them again at a
-later date, or on a different machine, they are expected to produce exactly the
-same output. Nix uses some strategies to make that happen. For example, when
-your derivation is built, it runs in a sandbox where it only has access to the
-derivations it declared as inputs, nothing else. When it attempts to get the
-current time, it receives a timestamp of zero. Network access is blocked. Any
-external data the derivation uses must have a hashsum, and Nix checks it to make
-sure the data is still the same.
+Derivations are _deterministic_, which means that if you execute them again at a later date, or on a
+different machine, they are expected to produce exactly the same output. Nix uses some strategies to
+make that happen. For example, when your derivation is built, it runs in a sandbox where it only has
+access to the derivations it declared as inputs, nothing else. When it attempts to get the current
+time, it receives a timestamp of zero. Network access is blocked. Any external data the derivation
+uses must have a hashsum, and Nix checks it to make sure the data is still the same.
 
-This allows Nix to use an aggressive caching strategy. It can use the hash of
-the derivation (this includes the hash of all transitive dependencies) as a key,
-and the output of it as values.
+This allows Nix to use an aggressive caching strategy. It can use the hash of the derivation (this
+includes the hash of all transitive dependencies) as a key, and the output of it as values.
 
-One of the important problems that Nix addresses here is that even Rust code has
-_implicit_ dependencies. For example, your Rust program is linked with some kind
-of libc, typically `glibc` or `musl`. Which version you have depends on your
-distribution, and how frequently you install updates. So if some code works on
-your machine, it might not work on someone else's machine, because you don't use
-the same versions. Similarly, if you use native dependencies like SQLite, it is
-possible that you don't have the same version as your coworker. What Nix ensures
-is that, when you do build your code, everyone builds it with _exactly_ the same
-versions of all dependencies (compilers, libraries, headers).
+One of the important problems that Nix addresses here is that even Rust code has _implicit_
+dependencies. For example, your Rust program is linked with some kind of libc, typically `glibc` or
+`musl`. Which version you have depends on your distribution, and how frequently you install updates.
+So if some code works on your machine, it might not work on someone else's machine, because you
+don't use the same versions. Similarly, if you use native dependencies like SQLite, it is possible
+that you don't have the same version as your coworker. What Nix ensures is that, when you do build
+your code, everyone builds it with _exactly_ the same versions of all dependencies (compilers,
+libraries, headers).
 
 ### Nixpkgs
 
-When you build some code, you typically need a compiler. You might also need
-some libraries, and you may want to use some tools (linters, maybe script
-interpreters if your build process involves running scripts). Instead of having
-to define derivations for each of these, Nix has a centralized repository called
-_nixpkgs_, which contains Nix derivations for most popular packages. In the
-derivation earlier, we showed that we used the `nativeBuildInputs`. The `pkgs`
-that we wrote there refers to nixpkgs.
+When you build some code, you typically need a compiler. You might also need some libraries, and you
+may want to use some tools (linters, maybe script interpreters if your build process involves
+running scripts). Instead of having to define derivations for each of these, Nix has a centralized
+repository called _nixpkgs_, which contains Nix derivations for most popular packages. In the
+derivation earlier, we showed that we used the `nativeBuildInputs`. The `pkgs` that we wrote there
+refers to nixpkgs.
 
 ### Nix Shell
 
-Nix Shell is the feature that you can use if you want to use Nix as a package
-manager. When you define a Nix Shell, you can tell Nix which dependencies you
-need. When you launch it, Nix will open a new shell that has the dependencies
-you specified available in its `$PATH`.
+Nix Shell is the feature that you can use if you want to use Nix as a package manager. When you
+define a Nix Shell, you can tell Nix which dependencies you need. When you launch it, Nix will open
+a new shell that has the dependencies you specified available in its `$PATH`.
 
-For example, this is what a simple shell might look like. Typically, you will
-save this as `shell.nix`:
+For example, this is what a simple shell might look like. Typically, you will save this as
+`shell.nix`:
 
 ```nix
 {
@@ -132,12 +117,11 @@ save this as `shell.nix`:
 }
 ```
 
-You can launch the shell with `nix-shell`. It will recognize the `shell.nix`
-file in your current directory, and create a shell that links the tools you
-specified.
+You can launch the shell with `nix-shell`. It will recognize the `shell.nix` file in your current
+directory, and create a shell that links the tools you specified.
 
-You can use this in combination with other build systems. For example, if you
-use Bazel, then you can use a simple definition that includes Bazel.
+You can use this in combination with other build systems. For example, if you use Bazel, then you
+can use a simple definition that includes Bazel.
 
 Here is an example:
 
@@ -145,28 +129,24 @@ Here is an example:
 # todo
 ```
 
-Note that even if you only use the Nix Shell, you may still want to use Nix
-Flakes, for reasons that we will explain later (it has to do with pinning the
-version of `nixpkgs` that you are using).
+Note that even if you only use the Nix Shell, you may still want to use Nix Flakes, for reasons that
+we will explain later (it has to do with pinning the version of `nixpkgs` that you are using).
 
 ### Nix Flakes
 
-We've explained what a derivation is. But how do you write one? Nix has an
-_experimental_ feature called _flakes_, which is typically what you want to use.
-Nix Flakes make it easy for you to specify the version of nixpkgs (that is where
-all preexisting software is packaged) and import Nix definitions from other
-repositories.
+We've explained what a derivation is. But how do you write one? Nix has an _experimental_ feature
+called _flakes_, which is typically what you want to use. Nix Flakes make it easy for you to specify
+the version of nixpkgs (that is where all preexisting software is packaged) and import Nix
+definitions from other repositories.
 
-When you write your Nix derivations to build your code components, you typically
-want to use existing code. For example, you might want to use a Rust compiler
-toolchain, the SQLite library, and some tools. Nix has a large repository called
-_nixpkgs_ which contain Nix definitions for most packages that you would find in
-other package managers.
+When you write your Nix derivations to build your code components, you typically want to use
+existing code. For example, you might want to use a Rust compiler toolchain, the SQLite library, and
+some tools. Nix has a large repository called _nixpkgs_ which contain Nix definitions for most
+packages that you would find in other package managers.
 
-But you might also want to import derivations from another source. For example,
-you might want to import some Nix code that helps you turn Rust's build metadata
-(your `Cargo.toml`) into something Nix can understand and build. Or you might
-import derivations from another repository that you use.
+But you might also want to import derivations from another source. For example, you might want to
+import some Nix code that helps you turn Rust's build metadata (your `Cargo.toml`) into something
+Nix can understand and build. Or you might import derivations from another repository that you use.
 
 <center>
 
@@ -174,12 +154,11 @@ import derivations from another repository that you use.
 
 </center>
 
-Nix Flakes allow you to write Nix code that has two definitions: a set of
-_inputs_, which are typically Git repositories. This can be `nixpkgs`, or
-helpers, or other flakes (in which case you can access their exported
-derivations). And you can export _outputs_, which can be packagess
-(derivations), _apps_ (which are commands you can run) and definitions for how
-to spawn a development shell.
+Nix Flakes allow you to write Nix code that has two definitions: a set of _inputs_, which are
+typically Git repositories. This can be `nixpkgs`, or helpers, or other flakes (in which case you
+can access their exported derivations). And you can export _outputs_, which can be packagess
+(derivations), _apps_ (which are commands you can run) and definitions for how to spawn a
+development shell.
 
 Here is an example for what a derivation looks like:
 
@@ -202,44 +181,38 @@ Even if the syntax might be unfamiliar, you can see two things:
 
 - The flake has a description, which is just an informative string.
 - The flake has some inputs, which are specified by URL.
-- The flake has some outputs. This is a function that takes the parsed input
-  flakes as input, and returns some kind of structure. In this example, we
-  define some keys in the `packages` field of the output structure.
-- We have hard-coded only output packages for the `x86_64-linux` architecture.
-  We could also hard-code outputs for other architectures, or use some Nix
-  features to automatically make this work for a set of platforms we want to
-  support.
+- The flake has some outputs. This is a function that takes the parsed input flakes as input, and
+  returns some kind of structure. In this example, we define some keys in the `packages` field of
+  the output structure.
+- We have hard-coded only output packages for the `x86_64-linux` architecture. We could also
+  hard-code outputs for other architectures, or use some Nix features to automatically make this
+  work for a set of platforms we want to support.
 
-With this simple configuration, we can run it if we save it as `flake.nix` and
-run `nix run`:
+With this simple configuration, we can run it if we save it as `flake.nix` and run `nix run`:
 
 ```bash
 $ nix run
 Hello
 ```
 
-Earlier, I mentioned that Nix is _deterministic_. But how does that work here?
-We have referenced other Git repositories by their branches, but the branches
-might change. However, when you run any Nix command, Nix will resolve the inputs
-to a commit hash, and record that in the `flake.lock` file.
+Earlier, I mentioned that Nix is _deterministic_. But how does that work here? We have referenced
+other Git repositories by their branches, but the branches might change. However, when you run any
+Nix command, Nix will resolve the inputs to a commit hash, and record that in the `flake.lock` file.
 
 ### Nix Limitations
 
-As explained earlier, Nix has a central repository called _nixpkgs_ that
-contains definitions for how to build packages. Nix does not store each and
-every version for each package. Rather, it always points to the latest release
-of each package.
+As explained earlier, Nix has a central repository called _nixpkgs_ that contains definitions for
+how to build packages. Nix does not store each and every version for each package. Rather, it always
+points to the latest release of each package.
 
-For example, you cannot tell Nix that you want SQLite version 3.12.1. Instead,
-you can only tell Nix that you want SQLite version 3, which is the package
-`sqlite3`. If for some reason you need to use an older version of SQLite (which
-is not recommended), you need to use an earlier version of the entire nixpkgs
-(which means you will also get older versions of other packages).
+For example, you cannot tell Nix that you want SQLite version 3.12.1. Instead, you can only tell Nix
+that you want SQLite version 3, which is the package `sqlite3`. If for some reason you need to use
+an older version of SQLite (which is not recommended), you need to use an earlier version of the
+entire nixpkgs (which means you will also get older versions of other packages).
 
-In general, this is a good thing. Because usually, you do want to use the latest
-versions of packages, in order to get the latest features, but most importantly,
-to get the latest security fixes. But if for some reason you don't, then it can
-get in your way.
+In general, this is a good thing. Because usually, you do want to use the latest versions of
+packages, in order to get the latest features, but most importantly, to get the latest security
+fixes. But if for some reason you don't, then it can get in your way.
 
 ```admonish info
 You can always manually write derivations for the packages where you need a
@@ -248,38 +221,34 @@ specific version, and otherwise use the latest nixpkgs.
 
 ## What can you use Nix for?
 
-Nix is a bit of an oddball in this section because it is more than just a build
-system. You can use it, or even combine it with other build systems. Some common
-setups are:
+Nix is a bit of an oddball in this section because it is more than just a build system. You can use
+it, or even combine it with other build systems. Some common setups are:
 
 - Using Nix to define a development environment
 - Using Nix to define CI tasks that can be easily run locally
 - Using Nix as a build system
 - Using Nix to deploy your application
 
-Nix has great support for caching. This is one of the principal reasons why it
-is useful as a build system.
+Nix has great support for caching. This is one of the principal reasons why it is useful as a build
+system.
 
 ## Nix Development Environment
 
-The Rust project comes with `rustup`, which you can use to manage your Rust
-toolchains. It allows you to install multiple versions of Rust side-by-side,
-update them, and select a toolchain version per-project. You can even put a
-`rust-toolchain.toml` file in your project root, and have `rustup` pick this up
-and select the appropriate toolchain for you. This is explained in the
+The Rust project comes with `rustup`, which you can use to manage your Rust toolchains. It allows
+you to install multiple versions of Rust side-by-side, update them, and select a toolchain version
+per-project. You can even put a `rust-toolchain.toml` file in your project root, and have `rustup`
+pick this up and select the appropriate toolchain for you. This is explained in the
 [Cargo](./cargo.md) chapter.
 
-However, this doesn't quite solve all of your environment needs. What if you
-need to have a specific C library in your environment? What if you need to have
-specific tooling in your environment? Rustup is great at managing Rust
-toolchains, that is the primary purpose it serves. But it will not manage all of
-your native dependencies.
+However, this doesn't quite solve all of your environment needs. What if you need to have a specific
+C library in your environment? What if you need to have specific tooling in your environment? Rustup
+is great at managing Rust toolchains, that is the primary purpose it serves. But it will not manage
+all of your native dependencies.
 
-This is where Nix comes in. With Nix, you can declaratively define an
-environment, and you can use `nix-shell` to spawn a new shell with everything
-declared in that environment accessible. That way, you can declare which native
-dependencies you need _once_, and make sure that no matter what platform your
-developers happen to use, Nix can make sure that all requirements are satisfied.
+This is where Nix comes in. With Nix, you can declaratively define an environment, and you can use
+`nix-shell` to spawn a new shell with everything declared in that environment accessible. That way,
+you can declare which native dependencies you need _once_, and make sure that no matter what
+platform your developers happen to use, Nix can make sure that all requirements are satisfied.
 
 ### Example: Bazel and Rust
 
@@ -287,13 +256,12 @@ developers happen to use, Nix can make sure that all requirements are satisfied.
 
 ## Nix as a build system
 
-You can use Nix as your primary build system. Doing so gives you reproducible
-builds, and caching for free. The downside is that you need to write (and
-maintain) the Nix configuration for building your project. You can't just use
-Cargo directly, because Cargo defaults to downloading dependencies from the
-internet. Instead, you need to use some kind of wrapper that provides you with a
-Rust toolchain of your choice, parses your Cargo dependencies lock file and
-makes your Rust dependencies available in a Nix-native way.
+You can use Nix as your primary build system. Doing so gives you reproducible builds, and caching
+for free. The downside is that you need to write (and maintain) the Nix configuration for building
+your project. You can't just use Cargo directly, because Cargo defaults to downloading dependencies
+from the internet. Instead, you need to use some kind of wrapper that provides you with a Rust
+toolchain of your choice, parses your Cargo dependencies lock file and makes your Rust dependencies
+available in a Nix-native way.
 
 There are some popular wrappers that make this easy:
 
@@ -367,20 +335,18 @@ https://jordankaye.dev/posts/rust-wasm-nix/
 
 ## Nix for Continuous Integration
 
-A common issue that developers have is that software works on one machine, but
-doesn't work on another one. Usually, this is caused by differences in the
-environment.
+A common issue that developers have is that software works on one machine, but doesn't work on
+another one. Usually, this is caused by differences in the environment.
 
-It is very frustrating when tests work perfectly locally, but fail in CI. Often
-times, the CI system uses runner nodes that are not easily accessible, making it
-hard to debug or reproduce the issue.
+It is very frustrating when tests work perfectly locally, but fail in CI. Often times, the CI system
+uses runner nodes that are not easily accessible, making it hard to debug or reproduce the issue.
 
-Because Nix is deterministic, it can help alleviate this. It makes for a good
-development experience, where there is trust that when tests work locally, they
-also work in CI (and vice versa).
+Because Nix is deterministic, it can help alleviate this. It makes for a good development
+experience, where there is trust that when tests work locally, they also work in CI (and vice
+versa).
 
-Nix has built-in support for running tests. Nix calls them _checks_. In your
-`flake.nix`, you can define a set of commands to run when checking code:
+Nix has built-in support for running tests. Nix calls them _checks_. In your `flake.nix`, you can
+define a set of commands to run when checking code:
 
 ```nix
 {
@@ -401,8 +367,8 @@ When you define your tests this way, then you can run them with:
 
     nix flake check
 
-An added bonus is that if you do use some tools for checking crates, such as
-`cargo-hack`, Nix is able to provide them for you.
+An added bonus is that if you do use some tools for checking crates, such as `cargo-hack`, Nix is
+able to provide them for you.
 
 There are even some CI systems that focus on running Nix checks:
 
@@ -426,9 +392,9 @@ https://x86.lol/generic/2024/08/28/systemd-sysupdate.html
 
 ## Nix as a build cache
 
-By default, Nix will cache build outputs on your local machine. But if many
-people work on a project, and tend to compile the same code frequently, then it
-makes sense to use a shared build cache.
+By default, Nix will cache build outputs on your local machine. But if many people work on a
+project, and tend to compile the same code frequently, then it makes sense to use a shared build
+cache.
 
 <center>
 
@@ -436,32 +402,28 @@ makes sense to use a shared build cache.
 
 </center>
 
-In a typical configuration, the CI system has write access to the build cache.
-Any commits that are pushed and run through it, have their build outputs
-uploaded to the cache. Developer machines have read-only access to the cache.
-This ensures that builds that don't change frequently (such as dependencies,
-tooling) are always in the build cache. New code is in the cache, as soon as it
-is pushed to the repository, and is available for example when other developers
-do code review.
+In a typical configuration, the CI system has write access to the build cache. Any commits that are
+pushed and run through it, have their build outputs uploaded to the cache. Developer machines have
+read-only access to the cache. This ensures that builds that don't change frequently (such as
+dependencies, tooling) are always in the build cache. New code is in the cache, as soon as it is
+pushed to the repository, and is available for example when other developers do code review.
 
-You can use hosted solutions like Cachix for your build cache, or you can set up
-an S3 bucket on some provider (Hetzner, Wasabi, Backblaze, AWS) and configure
-it. You should take care that only trusted people or machines are able to write
-into it, because this can be a security issue.
+You can use hosted solutions like Cachix for your build cache, or you can set up an S3 bucket on
+some provider (Hetzner, Wasabi, Backblaze, AWS) and configure it. You should take care that only
+trusted people or machines are able to write into it, because this can be a security issue.
 
 ## Nix as distributed compiler
 
-Finally, you can use Nix to speed up compilation by using it as a distributed
-compiler.
+Finally, you can use Nix to speed up compilation by using it as a distributed compiler.
 
 _Todo_
 
 ## Summary
 
-In this section, we've shown that Nix has a very strict determinism. This allows
-you to use it for reproducible builds, have confidence that software built on
-one machine behaves the same way on a different machine. It also allows it to
-use very aggressive caching, and to run compilation on different machines.
+In this section, we've shown that Nix has a very strict determinism. This allows you to use it for
+reproducible builds, have confidence that software built on one machine behaves the same way on a
+different machine. It also allows it to use very aggressive caching, and to run compilation on
+different machines.
 
 ## Reading
 

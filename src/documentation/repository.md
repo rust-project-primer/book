@@ -1,21 +1,18 @@
 # Repository
 
-The purpose of a README is for people to get a very brief introduction to what
-your project does. For open-source projects it is essential, when people decide
-if your crate solves the issue they are trying to solve. It does not need to be
-a comprehensive documentation document, rather a very dense summary that
-contains some vital pieces of information of what your crate does, how it
-compares to other crates that achieve similar goals, and what limitations it
-has.
+The purpose of a README is for people to get a very brief introduction to what your project does.
+For open-source projects it is essential, when people decide if your crate solves the issue they are
+trying to solve. It does not need to be a comprehensive documentation document, rather a very dense
+summary that contains some vital pieces of information of what your crate does, how it compares to
+other crates that achieve similar goals, and what limitations it has.
 
-There are some common patterns that make for useful README files, and this
-chapter will attempt to illustrate them.
+There are some common patterns that make for useful README files, and this chapter will attempt to
+illustrate them.
 
 ## Badges
 
-Badges are little images that you can embed into your README that show
-up-to-date information on your Rust project. These are useful because they do
-not need need to be updated manually.
+Badges are little images that you can embed into your README that show up-to-date information on
+your Rust project. These are useful because they do not need need to be updated manually.
 
 Generally, you can put them in your README like this:
 
@@ -28,11 +25,10 @@ Generally, you can put them in your README like this:
 
 ### Common badges for Rust crates
 
-These badges pull information on crates published on [crates.io][]. By
-definition, these will not pull data from source control, but rather from
-whatever is published. They render information such as the most recent version,
-status of automatically built documentation, download counts, and health checks
-for dependencies.
+These badges pull information on crates published on [crates.io][]. By definition, these will not
+pull data from source control, but rather from whatever is published. They render information such
+as the most recent version, status of automatically built documentation, download counts, and health
+checks for dependencies.
 
 Crate: <input id="crate-input" type="text" value="serde" /><br />
 
@@ -95,7 +91,7 @@ window.addEventListener("load", (event) => {
 
 ### Generating a readme file from crate-level documentation
 
-The [Readme](../tools/repository.md) section shows some tools that you can use
-to generate a README file from crate-level documentation.
+The [Readme](../tools/repository.md) section shows some tools that you can use to generate a README
+file from crate-level documentation.
 
 [crates.io]: https://crates.io/

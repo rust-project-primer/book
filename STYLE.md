@@ -1,37 +1,33 @@
 # Style Guide
 
-This book should be a primer on starting, maintaining and understanding
-real-world Rust projects. It tries to cover the most common problems one might
-encounter in a real-world Rust project, and give some advice and context for how
-to solve them. It should give advise on structing them and on tools used to
-solve common problems. It should reference existing articles and guides for more
-detailed information.
+This book should be a primer on starting, maintaining and understanding real-world Rust projects. It
+tries to cover the most common problems one might encounter in a real-world Rust project, and give
+some advice and context for how to solve them. It should give advise on structing them and on tools
+used to solve common problems. It should reference existing articles and guides for more detailed
+information.
 
 ## Structure
 
-The structure of the book should not be overly nested. For the time being, it is
-limited to chapters and sections. Chapters organize it into high-level topics,
-while sections focus on a specific sub-topic.
+The structure of the book should not be overly nested. For the time being, it is limited to chapters
+and sections. Chapters organize it into high-level topics, while sections focus on a specific
+sub-topic.
 
-Every chapter should start with a brief introduction and high-level explanation
-of what topic it is about. If possible, it should link to articles that cover
-this topic.
+Every chapter should start with a brief introduction and high-level explanation of what topic it is
+about. If possible, it should link to articles that cover this topic.
 
-Every section should start with a brief introduction to explain what the problem
-is that it is trying to solve. It should have subheadings for solutions to the
-problem. Where possible, it should give examples of how to solve the problem,
-and reference articles, tutorials or chapters in other books that go into more
-detail. Every section should end with a _Reading_ section that provides a list
-of resources for further learning.
+Every section should start with a brief introduction to explain what the problem is that it is
+trying to solve. It should have subheadings for solutions to the problem. Where possible, it should
+give examples of how to solve the problem, and reference articles, tutorials or chapters in other
+books that go into more detail. Every section should end with a _Reading_ section that provides a
+list of resources for further learning.
 
 ## Writing Style
 
 ### Voice and Tone
 
-The writing should use second person ("you") to directly address the reader,
-creating a conversational but professional tone. The book acts as a guide for
-the reader's Rust journey. Avoid overly academic or formal language in favor of
-clear, practical explanations.
+The writing should use second person ("you") to directly address the reader, creating a
+conversational but professional tone. The book acts as a guide for the reader's Rust journey. Avoid
+overly academic or formal language in favor of clear, practical explanations.
 
 Examples:
 
@@ -41,10 +37,9 @@ Examples:
 
 ### Problem-Driven Approach
 
-Many sections begin with italicized scenario descriptions that set up real-world
-problems the reader might face. These scenarios should be specific and
-relatable, often framed as situations where something has gone wrong or a need
-has emerged.
+Many sections begin with italicized scenario descriptions that set up real-world problems the reader
+might face. These scenarios should be specific and relatable, often framed as situations where
+something has gone wrong or a need has emerged.
 
 Format:
 
@@ -64,10 +59,9 @@ artifacts in a global cache that your team and the CI server can make use of._
 
 ### Technical Terminology
 
-- Use backticks for code elements, file names, command names, crate names, and
-  technical terms: `rustfmt`, `Cargo.toml`, `cargo build`
-- Use italics (_text_) for emphasis on concepts: _cross compilation_,
-  _derivation_
+- Use backticks for code elements, file names, command names, crate names, and technical terms:
+  `rustfmt`, `Cargo.toml`, `cargo build`
+- Use italics (_text_) for emphasis on concepts: _cross compilation_, _derivation_
 - Use bold (**text**) sparingly for major concepts or section highlights
 - Define technical terms when first introduced in a section
 - Assume basic Rust knowledge but explain more complex concepts
@@ -87,8 +81,7 @@ Provide practical, working examples rather than abstract demonstrations:
 - Include complete command lines with flags
 - Show both the command and expected output when helpful
 - Use realistic crate names and scenarios
-- Prefer inline code blocks over separate files unless the example is
-  substantial
+- Prefer inline code blocks over separate files unless the example is substantial
 
 ## Admonitions
 
@@ -139,8 +132,7 @@ Use italicized placeholders for content to be written later:
 
 - `_TODO_` for missing sections
 - `_Todo_` for minor missing content
-- More descriptive placeholders like
-  `_TODO: Explain monomorphization and boxed trait objects_`
+- More descriptive placeholders like `_TODO: Explain monomorphization and boxed trait objects_`
 
 ## Resources
 
@@ -187,8 +179,8 @@ See the [Rust Book][rust-book] for more information.
 
 ### Line Length
 
-Wrap markdown at approximately 80 characters for better readability in text
-editors and version control diffs.
+Wrap markdown at approximately 80 characters for better readability in text editors and version
+control diffs.
 
 ### Code Blocks
 
@@ -212,8 +204,8 @@ default_file = "src/lib.rs"
 ```
 ````
 
-Projects should be placed in the `examples/` directory and can use git
-submodules for external repositories.
+Projects should be placed in the `examples/` directory and can use git submodules for external
+repositories.
 
 ## Diagrams
 

@@ -1,15 +1,14 @@
 # Semantic Versioning
 
-_The crate you are working on is used by others, either in your own company or
-externally. You often release new versions of it with added functionality.
-However, sometimes you get complaints from downstream users that a newly
-released version introduces breaking changes. Usually, you try to correctly
-release a new major version when that happens, but sometimes you don't notice
-it. How can you make sure that version numbers are correctly managed?_
+_The crate you are working on is used by others, either in your own company or externally. You often
+release new versions of it with added functionality. However, sometimes you get complaints from
+downstream users that a newly released version introduces breaking changes. Usually, you try to
+correctly release a new major version when that happens, but sometimes you don't notice it. How can
+you make sure that version numbers are correctly managed?_
 
-Rust is built heavily on [Semantic Versioning][semver] to make it easy to
-compose software and update dependencies without needing to worry about
-everything breaking when dependencies are updated.
+Rust is built heavily on [Semantic Versioning][semver] to make it easy to compose software and
+update dependencies without needing to worry about everything breaking when dependencies are
+updated.
 
 ```admonish title="Semantic Versioning"
 Semantic versioning, often abbreviated as SemVer, is a versioning scheme for
@@ -23,26 +22,25 @@ This system helps developers and users understand the impact of updating to a
 new version, ensuring more predictable and manageable software upgrades.
 ```
 
-This also puts some responsibilities on you as a crate author: you have to
-ensure that when you release new versions of your crates, you do not violate
-semantic versioning by accidentally publishing versions with breaking changes
-but not marking them as such by incrementing the major version.
+This also puts some responsibilities on you as a crate author: you have to ensure that when you
+release new versions of your crates, you do not violate semantic versioning by accidentally
+publishing versions with breaking changes but not marking them as such by incrementing the major
+version.
 
-Doing this manually is possible, but difficult and it does not always scale
-well. The more widely used your crate is, the more frustration it causes when
-you get it wrong. Thankfully, there exists some tooling that can help here by
-automating the process of determining if you are correctly versioning your
-crate.
+Doing this manually is possible, but difficult and it does not always scale well. The more widely
+used your crate is, the more frustration it causes when you get it wrong. Thankfully, there exists
+some tooling that can help here by automating the process of determining if you are correctly
+versioning your crate.
 
 ## `cargo-semver-checks`
 
-[`cargo-semver-checks`][cargo-semver-checks] is an amazing tool designed to
-detect invalid semantic versioning in crates automatically, by parsing both your
-crate and the current latest version and determining if the changes between them
-can be considered a _patch_, a _minor_ change or a _major_ change.
+[`cargo-semver-checks`][cargo-semver-checks] is an amazing tool designed to detect invalid semantic
+versioning in crates automatically, by parsing both your crate and the current latest version and
+determining if the changes between them can be considered a _patch_, a _minor_ change or a _major_
+change.
 
-As it relies of pulling the latest version of your crate from a registry, it is
-only really useful for crates which are published.
+As it relies of pulling the latest version of your crate from a registry, it is only really useful
+for crates which are published.
 
 You can use it by installing it with `cargo`, and running it:
 
@@ -51,8 +49,8 @@ cargo install cargo-semver-checks
 cargo semver-checks
 ```
 
-It will check if the version you have currently specified in the crate is
-aligned with what it should be. This is a good check to run in a CI system.
+It will check if the version you have currently specified in the crate is aligned with what it
+should be. This is a good check to run in a CI system.
 
 ```admonish example
 TODO: example using cargo-semver-checks

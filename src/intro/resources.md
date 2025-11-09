@@ -1,28 +1,24 @@
 # Resources
 
-This guide is aimed at developers and project managers already comfortable with
-the Rust programming language. It does not cover any fundamentals of the
-language itself, only how to structure projects.
+This guide is aimed at developers and project managers already comfortable with the Rust programming
+language. It does not cover any fundamentals of the language itself, only how to structure projects.
 
-You don't necessarily need to be good at Rust for this book to be useful to you,
-for example if you are reading it from the perspective of an engineering manager
-or software architect who just wants to understand what Rust is all about or
-what tools it comes with. But if you do want to write effective Rust, then these
-resources should be helpful to you to get started.
+You don't necessarily need to be good at Rust for this book to be useful to you, for example if you
+are reading it from the perspective of an engineering manager or software architect who just wants
+to understand what Rust is all about or what tools it comes with. But if you do want to write
+effective Rust, then these resources should be helpful to you to get started.
 
-I have categorized these resources into two sections: _foundational_ contains
-resources that explain concepts and strategies, whereas the _practical_
-resources contain hands-on projects for you to follow. None of the links here
-earn me any commission. I am recommending them because I think they are useful,
-and not because I earn any money from doing so.
+I have categorized these resources into two sections: _foundational_ contains resources that explain
+concepts and strategies, whereas the _practical_ resources contain hands-on projects for you to
+follow. None of the links here earn me any commission. I am recommending them because I think they
+are useful, and not because I earn any money from doing so.
 
 ## Foundational
 
-Below is a list of books that I've personally found useful resources for
-understanding the Rust programming language, and some of the more complex
-features it has (for example, how async works under the hood, or how atomics
-work). You should have read at least one of these before you embark on your Rust
-project.
+Below is a list of books that I've personally found useful resources for understanding the Rust
+programming language, and some of the more complex features it has (for example, how async works
+under the hood, or how atomics work). You should have read at least one of these before you embark
+on your Rust project.
 
 ```reading
 style: book
@@ -107,10 +103,9 @@ SIMD auto-vectorization). This book is useful if you care about low-level
 details, even if you know little about x86 assembly.
 ```
 
-There may be more useful foundational Rust resources that I have not listed
-here, because I might not be aware of them. There are some sites that maintain
-collections of useful Rust books, for example
-[The Little Book of Rust Books](https://lborb.github.io/book/title-page.html),
+There may be more useful foundational Rust resources that I have not listed here, because I might
+not be aware of them. There are some sites that maintain collections of useful Rust books, for
+example [The Little Book of Rust Books](https://lborb.github.io/book/title-page.html),
 [The Rust Bookshelf](https://bookshelf.rs/).
 
 [effective-rust]: https://www.lurklurk.org/effective-rust/
@@ -120,48 +115,42 @@ collections of useful Rust books, for example
 
 ## Practical
 
-Some people, including myself, enjoy learning new things through interactive
-exploration. These resources teach Rust concepts primarily in such a way.
+Some people, including myself, enjoy learning new things through interactive exploration. These
+resources teach Rust concepts primarily in such a way.
 
-**Effective Rust** by David Drysdale is a book that lists hands-on
-recommendations for writing effective Rust code. It focusses on idioms, giving
-practical advice on implementing types, traits, Rust concepts, dependencies, and
-tooling. I would consider it a must-read for anyone new to Rust. Available
-[online](https://effective-rust.com/), in
+**Effective Rust** by David Drysdale is a book that lists hands-on recommendations for writing
+effective Rust code. It focusses on idioms, giving practical advice on implementing types, traits,
+Rust concepts, dependencies, and tooling. I would consider it a must-read for anyone new to Rust.
+Available [online](https://effective-rust.com/), in
 [print](https://www.oreilly.com/library/view/effective-rust/9781098151393/),
 [archived](/archived/2024-11-09-effective-rust.pdf).
 
-**Zero to Production** by Luca Palmieri is a practical guide for building
-production-ready Rust web applications. This is a great book to get started on
-understanding how to build real-world Rust application, including handling
-migrations, logging, error reporting, metrics. Available
+**Zero to Production** by Luca Palmieri is a practical guide for building production-ready Rust web
+applications. This is a great book to get started on understanding how to build real-world Rust
+application, including handling migrations, logging, error reporting, metrics. Available
 [online][zero-to-production].
 
-**Comprehensive Rust** is a Rust training course developed by Google, aimed at
-getting people new to Rust up to speed on development quickly. Available
+**Comprehensive Rust** is a Rust training course developed by Google, aimed at getting people new to
+Rust up to speed on development quickly. Available
 [online](https://google.github.io/comprehensive-rust/).
 
-**CodeCrafters** is a learning platform with support for Rust. While not
-specific to Rust, CodeCrafters has a growing number of courses that are all
-built around the idea of reimplementing popular software yourself. Some of the
-courses they have are _Build your own Git_, _Build your own Redis_, and _Build
-your own SQLite_, to name but a few. What makes the courses fun is that they are
-broken down into small steps and come with unit tests that allow you to test
-your implementation as your progress. Available
-[online](https://codecrafters.io/).
+**CodeCrafters** is a learning platform with support for Rust. While not specific to Rust,
+CodeCrafters has a growing number of courses that are all built around the idea of reimplementing
+popular software yourself. Some of the courses they have are _Build your own Git_, _Build your own
+Redis_, and _Build your own SQLite_, to name but a few. What makes the courses fun is that they are
+broken down into small steps and come with unit tests that allow you to test your implementation as
+your progress. Available [online](https://codecrafters.io/).
 
-**Rust Adventure** by Chris Biscardi is a collection of interactive courses that
-teaches you how to build things in Rust through a set of workshops. Available
-[online](https://www.rustadventure.dev/).
+**Rust Adventure** by Chris Biscardi is a collection of interactive courses that teaches you how to
+build things in Rust through a set of workshops. Available [online](https://www.rustadventure.dev/).
 
 [zero-to-production]: https://www.zero2prod.com/
 
 ## Articles
 
-Some people in the Rust community have written articles and guides with a
-similar scope as this book. While some of the takes may be different from those
-presented in this book, it can be valuable to review these to see which
-conclusions others in the Rust community have arrived at.
+Some people in the Rust community have written articles and guides with a similar scope as this
+book. While some of the takes may be different from those presented in this book, it can be valuable
+to review these to see which conclusions others in the Rust community have arrived at.
 
 ```reading
 style: article
@@ -177,17 +166,14 @@ community, such as [rust-analyzer](https://github.com/rust-lang/rust-analyzer).
 ```
 
 [Writing Software that's reliable enough for production](https://www.sciagraph.com/docs/understanding/reliable/)
-by [Sciagraph](https://www.sciagraph.com/): Sciagraph is a profiler for Python
-data processing pipelines. In this blog post, they explain how they approach
-writing software that is reliable, with some very similar approaches as this
-guide recommends.
+by [Sciagraph](https://www.sciagraph.com/): Sciagraph is a profiler for Python data processing
+pipelines. In this blog post, they explain how they approach writing software that is reliable, with
+some very similar approaches as this guide recommends.
 
-[Basic Things](https://matklad.github.io/2024/03/22/basic-things.html) by Alex
-Kladov
+[Basic Things](https://matklad.github.io/2024/03/22/basic-things.html) by Alex Kladov
 
-_Alex argues for some basic properties of software projects. He discusses how
-getting these right can be a force-multiplier as projects grow in scope,
-developers and users._
+_Alex argues for some basic properties of software projects. He discusses how getting these right
+can be a force-multiplier as projects grow in scope, developers and users._
 
 [My Ideal Rust Workflow](https://fasterthanli.me/articles/my-ideal-rust-workflow#building-checking-testing-linting)
 by [fasterthanlime](https://fasterthanli.me/)
@@ -203,9 +189,9 @@ by [pascalhertleif](https://pascalhertleif.de/) (_published in 2015_)
 [Setting up CI and property testing for a Rust crate](https://www.youtube.com/watch?v=xUH-4y92jPg)
 by Jon Gjengset
 
-_In this video, Jon shows how to set up a CI pipeline and property testing for a
-crate he has authored. This primer explains a lot of the things he does here and
-why he does them. This stream is worth watching if you are interested in
-watching the process of getting useful testing setup for a project._
+_In this video, Jon shows how to set up a CI pipeline and property testing for a crate he has
+authored. This primer explains a lot of the things he does here and why he does them. This stream is
+worth watching if you are interested in watching the process of getting useful testing setup for a
+project._
 
 https://guidebook.theopensourceway.org/license

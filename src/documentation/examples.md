@@ -1,7 +1,7 @@
 # Examples
 
-There are some things that I consider to be part of _documentation_ even though
-technically, they are not documentation. These are _unit tests_ and _examples_.
+There are some things that I consider to be part of _documentation_ even though technically, they
+are not documentation. These are _unit tests_ and _examples_.
 
 ## Reading
 

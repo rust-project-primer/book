@@ -1,14 +1,12 @@
 # Measure
 
-Everybody talks about being _data-driven_, but few software projects actually
-are. There might be a set of properties of your software that you care about.
-For example, some of these properties might be correctness (measured by the
-ability of the test suite to test all edge cases your software may run into),
-performance (measured by the execution time of a set of operations that is
-representative for what your software might do in the real world). Any
-properties that are critical to the project should be continuously measured, and
-these (aggregated) measurements made available to engineers to help them shape
-the direction and implementation of the project.
+Everybody talks about being _data-driven_, but few software projects actually are. There might be a
+set of properties of your software that you care about. For example, some of these properties might
+be correctness (measured by the ability of the test suite to test all edge cases your software may
+run into), performance (measured by the execution time of a set of operations that is representative
+for what your software might do in the real world). Any properties that are critical to the project
+should be continuously measured, and these (aggregated) measurements made available to engineers to
+help them shape the direction and implementation of the project.
 
 <center>
 
@@ -16,28 +14,24 @@ the direction and implementation of the project.
 
 </center>
 
-If you have a Rust software project, you should ask yourself the question: are
-there any important properties that this software must uphold? Based on your
-responses to this question, you should think about how you can measure these
-properties, and ensure that they are continuously monitored. Some of the
-properties might be implicit and difficult to identify. For example, if you are
-running a web application, you want users to have a good experience. Part of
-that could be that your application should be _snappy_, but it is difficult to
-quantify that. If there are less users on your side, is it because it is slower?
-Or is the design worse than it was? One part of being data-driven is identifying
-what data is critical.
+If you have a Rust software project, you should ask yourself the question: are there any important
+properties that this software must uphold? Based on your responses to this question, you should
+think about how you can measure these properties, and ensure that they are continuously monitored.
+Some of the properties might be implicit and difficult to identify. For example, if you are running
+a web application, you want users to have a good experience. Part of that could be that your
+application should be _snappy_, but it is difficult to quantify that. If there are less users on
+your side, is it because it is slower? Or is the design worse than it was? One part of being
+data-driven is identifying what data is critical.
 
-Software constantly changes, and just because you have come up with a data
-structure that performed well on the workload today, does not mean that it will
-still be the best data structure for the job tomorrow. Coming up with metrics
-and continuously monitoring them allows you to notice regressions _before_ they
-hit production.
+Software constantly changes, and just because you have come up with a data structure that performed
+well on the workload today, does not mean that it will still be the best data structure for the job
+tomorrow. Coming up with metrics and continuously monitoring them allows you to notice regressions
+_before_ they hit production.
 
-Here are some examples for properties that you might want to measure over time,
-and why they might be critical to a project. Every project is different, and not
-all proprties might be of equal importance. Setting up and maintaining
-measurement pipelines takes time, so you should choose the properties you
-optimize for wisely.
+Here are some examples for properties that you might want to measure over time, and why they might
+be critical to a project. Every project is different, and not all proprties might be of equal
+importance. Setting up and maintaining measurement pipelines takes time, so you should choose the
+properties you optimize for wisely.
 
 |    Properties    | Use-case                                                                                                                                                                                                     |
 | :--------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -46,20 +40,18 @@ optimize for wisely.
 | **Correctness**  | Your project includes a bespoke lock-free data structure to handle data for many concurrent requests, and you want to make sure that it is correct for all possible use-cases.                               |
 | **Performance**  | Your application includes some custom data processing code that is mission-critical. You want to measure the performance of them over time to ensure that there are no regressions as it is being developed. |
 
-But measuring them is only one half of the equation. The other half is: how do
-you collect, aggregate this information and make it available to your engineers
-to shape the decision process? There are some tools that can help with this, for
-example:
+But measuring them is only one half of the equation. The other half is: how do you collect,
+aggregate this information and make it available to your engineers to shape the decision process?
+There are some tools that can help with this, for example:
 
 | Tool                            | Purpose                                                                                                                                                                        |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [Bencher](https://bencher.dev/) | Aggregates benchmark results, allowing you to see how performance changes over time.                                                                                           |
 | [GitLab](https://gitlab.com/)   | GitLab has the ability to visualize code coverage and test results measured in CI jobs in merge requests, allowing developers to assess how well new code is covered by tests. |
 
-This chapter focusses on showing you how you can measure properties of your
-codebase continuously, and what options you have for aggregating this
-information and use it in decision-making processes. Naturally, this chapter
-can't cover every single metric you might care about, but it can give you an
+This chapter focusses on showing you how you can measure properties of your codebase continuously,
+and what options you have for aggregating this information and use it in decision-making processes.
+Naturally, this chapter can't cover every single metric you might care about, but it can give you an
 appreciation for how you can approach this.
 
 ## Reading

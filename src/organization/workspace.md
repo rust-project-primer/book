@@ -1,23 +1,20 @@
 # Workspace
 
-As your project grows, you may feel the need to split it up into multiple
-crates. Maybe the compilation times are becoming a problem, and having multiple
-smaller crates means that most of the application does not need to be rebuilt
-when you make a change in one file. Or maybe you want to enforce more loose
-coupling between the application, and split the responsibility of various parts
+As your project grows, you may feel the need to split it up into multiple crates. Maybe the
+compilation times are becoming a problem, and having multiple smaller crates means that most of the
+application does not need to be rebuilt when you make a change in one file. Or maybe you want to
+enforce more loose coupling between the application, and split the responsibility of various parts
 to separate teams.
 
-Rust is designed to cope well with projects that contain a lot of crates. It
-even has a feature catered to exactly this use-case: the _workspace_. When you
-use a workspace, you tell Cargo that group of crates are related and should
-share the same build cache, and optionally some metadata.
+Rust is designed to cope well with projects that contain a lot of crates. It even has a feature
+catered to exactly this use-case: the _workspace_. When you use a workspace, you tell Cargo that
+group of crates are related and should share the same build cache, and optionally some metadata.
 
 - statistics on how many Rust projects use workspaces
 
 ## Creating a Workspace
 
-You can create a Cargo workspace by adding a `[workspace]` section in your
-`Cargo.toml`:
+You can create a Cargo workspace by adding a `[workspace]` section in your `Cargo.toml`:
 
 ```toml
 [workspace]
@@ -25,19 +22,18 @@ resolver = "2"
 members = ["crates/crate-a", "crates/crate-b"]
 ```
 
-The main reasons why you would want to use workspaces rather than simply putting
-several crates into a repository is twofold:
+The main reasons why you would want to use workspaces rather than simply putting several crates into
+a repository is twofold:
 
-- When you use a `workspace`, then your entire project uses a single `target`
-  folder, meaning that every dependency is built exactly once. This speeds up
-  the build time.
-- When you run operations, such as tests, then you can tell `cargo` to run them
-  for all crates in the workspace.
+- When you use a `workspace`, then your entire project uses a single `target` folder, meaning that
+  every dependency is built exactly once. This speeds up the build time.
+- When you run operations, such as tests, then you can tell `cargo` to run them for all crates in
+  the workspace.
 
-Workspaces have some other interesting properties. When you run `cargo test` in
-a workspace, it defaults to running all tests for all crates. Some of the Rust
-tooling has `--workspace` or `--all` flags which tell the tools to act on the
-entire workspace instead of only the crate you are currently located in.
+Workspaces have some other interesting properties. When you run `cargo test` in a workspace, it
+defaults to running all tests for all crates. Some of the Rust tooling has `--workspace` or `--all`
+flags which tell the tools to act on the entire workspace instead of only the crate you are
+currently located in.
 
 ### Examples
 
@@ -55,16 +51,16 @@ default_file = "Cargo.toml"
 
 ## Dependencies
 
-When you work in a large workspace, often times you have a set of dependencies
-that all of the crates in the workspace use. In that case, typically you want to
-ensure that they all use the same version of the dependency.
+When you work in a large workspace, often times you have a set of dependencies that all of the
+crates in the workspace use. In that case, typically you want to ensure that they all use the same
+version of the dependency.
 
-For that use-case, Cargo Workspaces allows you to declare dependencies on a
-workspace level, and reference them in the daughter crates. This makes it easier
-to keep versions of dependencies in sync when they are used by a lot of crates.
+For that use-case, Cargo Workspaces allows you to declare dependencies on a workspace level, and
+reference them in the daughter crates. This makes it easier to keep versions of dependencies in sync
+when they are used by a lot of crates.
 
-To use this feature, you can simply set the `workspaces.dependencies` in the
-same way that you would set `dependencies` in a regular crate.
+To use this feature, you can simply set the `workspaces.dependencies` in the same way that you would
+set `dependencies` in a regular crate.
 
 ```toml
 [workspace.dependencies]
@@ -87,10 +83,9 @@ anyhow = { workspace = true, features = ["abc"] }
 
 ## Metadata
 
-Another commonly used feature of Cargo Workspaces is the ability to set shared
-metadata. For example, you can use it to set a license for all crates, or keep
-the version of the crates in sync. To do this, you set metadata in the
-`workspace.package` in the workspace config, like this:
+Another commonly used feature of Cargo Workspaces is the ability to set shared metadata. For
+example, you can use it to set a license for all crates, or keep the version of the crates in sync.
+To do this, you set metadata in the `workspace.package` in the workspace config, like this:
 
 ```toml
 [workspace.package]
@@ -107,18 +102,16 @@ license.workspace = true
 authors.workspace = true
 ```
 
-Doing this makes sense if you want all child crates to share some amount of
-metadata, as is often the case with licenses or authors.
+Doing this makes sense if you want all child crates to share some amount of metadata, as is often
+the case with licenses or authors.
 
 ## When to split crates
 
-When is the right time to split crates? This is a question that is not so easy
-to answer. Splitting crates has a cost: it means you need to define the
-interface well. But if you do it well, it also has advantages. Maybe the code
-can be reused for future projects, because it is generic enough. Splitting
-crates out prematurely is probably not a good idea, but doing it too late risks
-that your code will depend on and use private interfaces that you don't want it
-to use.
+When is the right time to split crates? This is a question that is not so easy to answer. Splitting
+crates has a cost: it means you need to define the interface well. But if you do it well, it also
+has advantages. Maybe the code can be reused for future projects, because it is generic enough.
+Splitting crates out prematurely is probably not a good idea, but doing it too late risks that your
+code will depend on and use private interfaces that you don't want it to use.
 
 ## Reading
 
@@ -203,10 +196,9 @@ in workspaces.
 
 [rfc: collapse Tokio sub crates into single tokio crate](https://github.com/tokio-rs/tokio/issues/1318)
 
-_The Tokio project did the reverse: they used to be composed of many small
-crates, and merged them all into one crate. This discussion contains important
-context for why this decision was made, and has some arguments against having
-many small crates._
+_The Tokio project did the reverse: they used to be composed of many small crates, and merged them
+all into one crate. This discussion contains important context for why this decision was made, and
+has some arguments against having many small crates._
 
 [Why is my Rust build so slow: splitting into more crates](https://fasterthanli.me/articles/why-is-my-rust-build-so-slow#splitting-into-more-crates)
 

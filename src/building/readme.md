@@ -1,22 +1,22 @@
 # Building
 
-Usually, building a Rust project is as simple as running the appropriate Cargo
-command, and everything just works:
+Usually, building a Rust project is as simple as running the appropriate Cargo command, and
+everything just works:
 
 ```
 cargo build --release
 ```
 
-However, doing builds on a larger scale can present some more challenges. For
-example, always building the same dependencies in CI can be wasteful. Some
-projects want to provide builds for multiple architectures.
+However, doing builds on a larger scale can present some more challenges. For example, always
+building the same dependencies in CI can be wasteful. Some projects want to provide builds for
+multiple architectures.
 
-This chapter discusses some issues you might run into when building Rust code in
-your project, and strategies for how you might solve them.
+This chapter discusses some issues you might run into when building Rust code in your project, and
+strategies for how you might solve them.
 
-You can also use [cargo-wizard](https://github.com/Kobzol/cargo-wizard) to apply
-some preset templates to optimize your project's build process for faster
-builds, smaller binaries, or better runtime performance.
+You can also use [cargo-wizard](https://github.com/Kobzol/cargo-wizard) to apply some preset
+templates to optimize your project's build process for faster builds, smaller binaries, or better
+runtime performance.
 
 ## Reading
 

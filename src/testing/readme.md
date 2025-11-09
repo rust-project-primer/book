@@ -1,64 +1,59 @@
 # Testing
 
-Testing is the process of ensuring that code is correct. It can be done
-manually, but typically it is done in an automated way because it is cheaper
-over the long run. There are even some development paradigms that use tests as
-the primary artifacts of development, such as [Test-Driven Development][tdd].
+Testing is the process of ensuring that code is correct. It can be done manually, but typically it
+is done in an automated way because it is cheaper over the long run. There are even some development
+paradigms that use tests as the primary artifacts of development, such as [Test-Driven
+Development][tdd].
 
 ## Why Tests are needed
 
 Having rigid tests ensures three things:
 
-1. Features are implemented and work correctly for all inputs, expected or
-   unexpected.
+1. Features are implemented and work correctly for all inputs, expected or unexpected.
 2. Features that are correct now don't break in the future
-3. In the case of missing documentation, tests are often the only thing close to
-   documenting how code is intended to be used.
+3. In the case of missing documentation, tests are often the only thing close to documenting how
+   code is intended to be used.
 
-Having thorough tests makes development more pleasant (and speedy), because it
-allows developers to implement new features or refactor code, without having to
-worry about accidentally breaking existing functionality and only finding out
-when the code is deployed. But this is only possible when there is a reasonable
-test coverage.
+Having thorough tests makes development more pleasant (and speedy), because it allows developers to
+implement new features or refactor code, without having to worry about accidentally breaking
+existing functionality and only finding out when the code is deployed. But this is only possible
+when there is a reasonable test coverage.
 
-If you look at some of the most widely deployed and robust software, it tends to
-have one thing in common: there is an extensive set of tests for it. It goes so
-far that some projects charge a fee to get the tests. For example, SQLite, the
-most widely deployed database, is open-source. But the developers charge for
-access to the private test suite.
+If you look at some of the most widely deployed and robust software, it tends to have one thing in
+common: there is an extensive set of tests for it. It goes so far that some projects charge a fee to
+get the tests. For example, SQLite, the most widely deployed database, is open-source. But the
+developers charge for access to the private test suite.
 
 ## How tests are written
 
 Tests are often divided into different categories:
 
-1. Unit tests test small units of code. They often have access to the private
-   internal state of the code. Every unit test tests exactly one feature.
-2. Integration tests test the code from an outside perspective, they don't have
-   access to the internal state of the code. They often don't test individual
-   features, but functionality as a whole.
+1. Unit tests test small units of code. They often have access to the private internal state of the
+   code. Every unit test tests exactly one feature.
+2. Integration tests test the code from an outside perspective, they don't have access to the
+   internal state of the code. They often don't test individual features, but functionality as a
+   whole.
 
-Typically, the aim is to have many unit tests, to make sure the features work,
-and have some integration tests that tie the system together as a whole.
-Ideally, running unit tests does not require external dependencies, but
-integration tests might.
+Typically, the aim is to have many unit tests, to make sure the features work, and have some
+integration tests that tie the system together as a whole. Ideally, running unit tests does not
+require external dependencies, but integration tests might.
 
 - testing pyramid graphic
 
-Another advantage of writing tests early is that it influences the system design
-to be in such a way that it is easy to test.
+Another advantage of writing tests early is that it influences the system design to be in such a way
+that it is easy to test.
 
-Rust has another category of tests: documentation tests. In Rust, documentation
-can include code examples, and Cargo will test these as well. This ensures that
-documentation does not inadvertently get out of date, for example by changing
-interfaces.
+Rust has another category of tests: documentation tests. In Rust, documentation can include code
+examples, and Cargo will test these as well. This ensures that documentation does not inadvertently
+get out of date, for example by changing interfaces.
 
 ## What this chapter covers
 
 - culture
 - testability engineering
 
-This chapter discusses various features of Rust and the ecosystem and strategies
-for using them to ensure correctness of the code.
+This chapter discusses various features of Rust and the ecosystem and strategies for using them to
+ensure correctness of the code.
 
 ## Reading
 

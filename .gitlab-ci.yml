@@ -1,4 +1,5 @@
 stages:
+  - check
   - publish
 
 # make sure to fetch submodules
@@ -7,13 +8,22 @@ variables:
   GIT_SUBMODULE_DEPTH: 1
 
 # release book on gitlab pages
+check:
+  image: nixos/nix:latest
+  stage: check
+  before_script:
+    - echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf
+  script:
+    - nix flake check
+
+# release book on gitlab pages
 pages:
   image: nixos/nix:latest
   stage: publish
   before_script:
     - echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf
   script:
-    - nix build .?submodules=1#gitlab-pages -L
+    - nix build .?submodules=1#pages -L
     - cp -r $(readlink result) public
   artifacts:
     paths:

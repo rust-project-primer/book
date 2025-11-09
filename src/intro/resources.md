@@ -207,3 +207,5 @@ _In this video, Jon shows how to set up a CI pipeline and property testing for a
 crate he has authored. This primer explains a lot of the things he does here and
 why he does them. This stream is worth watching if you are interested in
 watching the process of getting useful testing setup for a project._
+
+https://guidebook.theopensourceway.org/license

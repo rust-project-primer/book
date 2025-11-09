@@ -61,8 +61,9 @@
       in
       {
         packages = {
+          book = book;
           rust-project-primer = book;
-          gitlab-pages = pages;
+          pages = pages;
           default = book;
         };
         apps = {

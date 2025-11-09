@@ -8,8 +8,16 @@
     mdbook-reading.url = "github:rust-project-primer/mdbook-reading";
   };
 
-  outputs = { self, nixpkgs, flake-utils, mdbook-files, mdbook-reading }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      mdbook-files,
+      mdbook-reading,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         book = pkgs.stdenv.mkDerivation {
@@ -33,7 +41,10 @@
         pages = pkgs.stdenv.mkDerivation {
           name = "rust-project-primer-pages";
           src = null;
-          nativeBuildInputs = [ pkgs.gzip pkgs.brotli ];
+          nativeBuildInputs = [
+            pkgs.gzip
+            pkgs.brotli
+          ];
           unpackPhase = ''
             pwd
             cp -r ${book.out}/* .
@@ -50,16 +61,31 @@
             cp -r . $out/
           '';
         };
-      in {
+      in
+      {
         packages = rec {
           rust-project-primer = book;
           gitlab-pages = pages;
           default = book;
         };
         apps = rec {
-          hello =
-            flake-utils.lib.mkApp { drv = self.packages.${system}.hello; };
-          default = hello;
+          #hello = flake-utils.lib.mkApp { drv = self.packages.${system}.hello; };
+          #default = hello;
         };
-      });
+        checks = {
+          prettier-md = pkgs.stdenv.mkDerivation {
+            name = "prettier-markdown-check";
+            src = ./.;
+            nativeBuildInputs = [ pkgs.nodePackages.prettier ];
+            buildPhase = ''
+              prettier --check '**/*.md'
+            '';
+            installPhase = ''
+              mkdir -p $out
+              echo "Prettier markdown check passed" > $out/result
+            '';
+          };
+        };
+      }
+    );
 }

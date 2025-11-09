@@ -20,7 +20,7 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        book = pkgs.stdenv.mkDerivation {
+        html = pkgs.stdenv.mkDerivation {
           src = pkgs.lib.fileset.toSource {
             root = ./.;
             fileset = pkgs.lib.fileset.unions [
@@ -47,26 +47,6 @@
             cp -r book/* $out/
           '';
         };
-        pages = pkgs.stdenv.mkDerivation {
-          name = "rust-project-primer-pages";
-          src = null;
-          nativeBuildInputs = [
-            pkgs.gzip
-            pkgs.brotli
-          ];
-          unpackPhase = ''
-            cp -r ${book.out}/* .
-            chmod -R u+rw .
-          '';
-          buildPhase = ''
-            find . -not -name '*.gz' -not -name '*.br' -not -name '*.pdf' -type f -exec gzip -vk {} \;
-            find . -not -name '*.gz' -not -name '*.br' -not -name '*.pdf' -type f -exec brotli -vk {} \;
-          '';
-          installPhase = ''
-            mkdir -p $out
-            cp -r . $out/
-          '';
-        };
         pdf = pkgs.stdenv.mkDerivation {
           name = "rust-project-primer-pdf";
           src = null;
@@ -77,7 +57,7 @@
             pkgs.xorg.xvfb
           ];
           unpackPhase = ''
-            cp -r ${book.out}/* .
+            cp -r ${html.out}/* .
             chmod -R u+rw .
           '';
           buildPhase = ''
@@ -117,14 +97,34 @@
             cp rust-project-primer.pdf $out/rust-project-primer.pdf
           '';
         };
+        pages = pkgs.stdenv.mkDerivation {
+          name = "rust-project-primer-pages";
+          src = null;
+          nativeBuildInputs = [
+            pkgs.gzip
+            pkgs.brotli
+          ];
+          unpackPhase = ''
+            cp -r ${html.out}/* .
+            chmod -R u+rw .
+          '';
+          buildPhase = ''
+            find . -not -name '*.gz' -not -name '*.br' -not -name '*.pdf' -type f -exec gzip -vk {} \;
+            find . -not -name '*.gz' -not -name '*.br' -not -name '*.pdf' -type f -exec brotli -vk {} \;
+          '';
+          installPhase = ''
+            mkdir -p $out
+            cp -r . $out/
+            cp ${pdf.out}/rust-project-primer.pdf $out/rust-project-primer.pdf
+          '';
+        };
       in
       {
         packages = {
-          book = book;
-          rust-project-primer = book;
+          html = html;
           pdf = pdf;
           pages = pages;
-          default = book;
+          default = html;
         };
         apps = {
           fmt = {
@@ -141,7 +141,7 @@
             program = "${pkgs.writeShellScriptBin "serve-book" ''
               echo "Building book..."
               BOOK_DIR=$(mktemp -d)
-              cp -r ${book}/* $BOOK_DIR/
+              cp -r ${html}/* $BOOK_DIR/
               echo "Book built successfully!"
               echo "Starting server at http://localhost:8000"
               echo "Press Ctrl+C to stop the server"

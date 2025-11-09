@@ -21,7 +21,16 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         book = pkgs.stdenv.mkDerivation {
-          src = ./.;
+          src = pkgs.lib.fileset.toSource {
+            root = ./.;
+            fileset = pkgs.lib.fileset.unions [
+              ./src
+              ./examples
+              ./theme
+              ./assets
+              ./book.toml
+            ];
+          };
           name = "rust-project-primer";
           nativeBuildInputs = [
             pkgs.mdbook
@@ -107,7 +116,13 @@
         checks = {
           prettier-md = pkgs.stdenv.mkDerivation {
             name = "prettier-markdown-check";
-            src = ./.;
+            src = pkgs.lib.fileset.toSource {
+              root = ./.;
+              fileset = pkgs.lib.fileset.unions [
+                (pkgs.lib.fileset.fileFilter (file: file.hasExt "md") ./.)
+                ./.prettierrc.toml
+              ];
+            };
             nativeBuildInputs = [ pkgs.nodePackages.prettier ];
             buildPhase = ''
               prettier --check 'src/**/*.md' '*.md'

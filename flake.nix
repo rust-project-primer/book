@@ -67,13 +67,18 @@
           default = book;
         };
         apps = {
-          fmt = flake-utils.lib.mkApp {
-            drv = pkgs.writeShellScriptBin "prettier-fmt" ''
+          fmt = {
+            type = "app";
+            program = "${pkgs.writeShellScriptBin "prettier-fmt" ''
               ${pkgs.nodePackages.prettier}/bin/prettier --write 'src/**/*.md' '*.md'
-            '';
+            ''}/bin/prettier-fmt";
+            meta = {
+              description = "Format Markdown files with Prettier";
+            };
           };
-          serve = flake-utils.lib.mkApp {
-            drv = pkgs.writeShellScriptBin "serve-book" ''
+          serve = {
+            type = "app";
+            program = "${pkgs.writeShellScriptBin "serve-book" ''
               echo "Building book..."
               BOOK_DIR=$(mktemp -d)
               cp -r ${book}/* $BOOK_DIR/
@@ -82,7 +87,10 @@
               echo "Press Ctrl+C to stop the server"
               cd $BOOK_DIR
               ${pkgs.python3}/bin/python3 -m http.server 8000
-            '';
+            ''}/bin/serve-book";
+            meta = {
+              description = "Build and serve the mdbook on localhost:8000";
+            };
           };
           default = self.apps.${system}.serve;
         };

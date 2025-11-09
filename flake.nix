@@ -67,11 +67,62 @@
             cp -r . $out/
           '';
         };
+        pdf = pkgs.stdenv.mkDerivation {
+          name = "rust-project-primer-pdf";
+          src = null;
+          nativeBuildInputs = [
+            pkgs.chromium
+            pkgs.fontconfig
+            pkgs.liberation_ttf
+            pkgs.xorg.xvfb
+          ];
+          unpackPhase = ''
+            cp -r ${book.out}/* .
+            chmod -R u+rw .
+          '';
+          buildPhase = ''
+            export HOME=$(pwd)/home
+            export FONTCONFIG_PATH=${pkgs.fontconfig.out}/etc/fonts
+            export FONTCONFIG_FILE=${pkgs.fontconfig.out}/etc/fonts/fonts.conf
+            export DISPLAY=:99
+
+            mkdir -p $HOME/.config/google-chrome/Crashpad
+            mkdir -p $HOME/.cache/fontconfig
+            mkdir -p $HOME/.local/share/fonts
+
+            # Copy fonts to user directory
+            cp -r ${pkgs.liberation_ttf}/share/fonts/truetype/* $HOME/.local/share/fonts/
+
+            # Start virtual display
+            ${pkgs.xorg.xvfb}/bin/Xvfb :99 -screen 0 1920x1080x24 &
+            XVFB_PID=$!
+
+            # Wait for display to be ready
+            sleep 2
+
+            # Generate PDF with timeout
+            timeout 120 ${pkgs.chromium}/bin/chromium \
+              --headless \
+              --disable-gpu \
+              --no-sandbox \
+              --no-pdf-header-footer \
+              --print-to-pdf=rust-project-primer.pdf \
+              file://$(pwd)/print.html
+
+            # Clean up
+            kill $XVFB_PID 2>/dev/null || true
+          '';
+          installPhase = ''
+            mkdir -p $out
+            cp rust-project-primer.pdf $out/rust-project-primer.pdf
+          '';
+        };
       in
       {
         packages = {
           book = book;
           rust-project-primer = book;
+          pdf = pdf;
           pages = pages;
           default = book;
         };

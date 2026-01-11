@@ -77,6 +77,10 @@ https://github.com/cat-in-136/cargo-generate-rpm
 
 ## AppImage
 
+https://github.com/stratusfearme21/cargo-appimage
+
+## Reading
+
 [cargo-deb-systemd]: https://github.com/kornelski/cargo-deb/blob/main/systemd.md
 [apt repo]: https://earthly.dev/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/
 [tarball]: https://en.wikipedia.org/wiki/Tar_(computing)

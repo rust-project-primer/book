@@ -30,7 +30,7 @@ cargo install cargo-upgrades
 cargo upgrades
 ```
 
-```admonish example title="Using <cargo-upgrades> to check for outdated dependencies in CI"
+```admonish example title="Using cargo-upgrades to check for outdated dependencies in CI"
 
 ```
 
@@ -47,7 +47,7 @@ cargo install cargo-outdated
 cargo outdated
 ```
 
-```admonish example title="Using <cargo-outdated> to check for outdated dependencies in CI"
+```admonish example title="Using cargo-outdated to check for outdated dependencies in CI"
 
 ```
 

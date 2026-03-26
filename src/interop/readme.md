@@ -253,3 +253,5 @@ https://viruta.org/rust-stable-abi.html
 https://blaz.is/blog/post/we-dont-need-a-stable-abi/
 
 https://doc.rust-lang.org/reference/abi.html
+
+https://www.possiblerust.com/guide/inbound-outbound-ffi

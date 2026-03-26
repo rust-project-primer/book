@@ -6,6 +6,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     mdbook-files.url = "github:xfbs/mdbook-files";
     mdbook-reading.url = "github:rust-project-primer/mdbook-reading";
+    mdbook-admonish-src = {
+      url = "github:padamson/mdbook-admonish/feat/mdbook-0.5-compat";
+      flake = false;
+    };
   };
 
   outputs =
@@ -15,11 +19,18 @@
       flake-utils,
       mdbook-files,
       mdbook-reading,
+      mdbook-admonish-src,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        mdbook-admonish = pkgs.rustPlatform.buildRustPackage {
+          pname = "mdbook-admonish";
+          version = "0.5-compat";
+          src = mdbook-admonish-src;
+          cargoHash = "sha256-FQo58eT9SyO5bhuoRQOAfBcAi1acBOPjYH6WUtiJPIE=";
+        };
         html = pkgs.stdenv.mkDerivation {
           src = pkgs.lib.fileset.toSource {
             root = ./.;
@@ -35,7 +46,7 @@
           nativeBuildInputs = [
             pkgs.mdbook
             pkgs.just
-            pkgs.mdbook-admonish
+            mdbook-admonish
             mdbook-files.packages.${system}.default
             mdbook-reading.packages.${system}.default
           ];
@@ -159,7 +170,7 @@
             pkgs.nodePackages.prettier
             pkgs.mdbook
             pkgs.just
-            pkgs.mdbook-admonish
+            mdbook-admonish
             mdbook-files.packages.${system}.default
             mdbook-reading.packages.${system}.default
           ];

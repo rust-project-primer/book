@@ -162,11 +162,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1774561445,
-        "narHash": "sha256-aKF3kuZnSBlSxmUrEjuHPGYrZfSfoFzCdS2TB/5YuAY=",
+        "lastModified": 1774575696,
+        "narHash": "sha256-YCmxaF/mqPNgpnnNck5WRX4i0NGOpZh+r0C+UbnszJ8=",
         "owner": "rust-project-primer",
         "repo": "mdbook-reading",
-        "rev": "7f06f6bec0a435a0ed64a6cad21da0a5777feddf",
+        "rev": "a79089cb6561c4c8d538e1660a3f348e390c2c61",
         "type": "github"
       },
       "original": {

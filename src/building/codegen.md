@@ -1,63 +1,55 @@
-# Codegen
+# Codegen Backend
 
-_You've been working on a large Rust project and notice that your development
-builds are taking longer and longer. While you don't mind waiting a bit for
-release builds since they need to be optimized, the slow compilation during
-development is really hurting your productivity. You wonder if there's a way to
-get faster builds during development, even if it means sacrificing some runtime
-performance for your debug binaries._
+Rust uses LLVM as its default code generation backend. LLVM produces highly
+optimized binaries and supports a wide range of targets, but it is designed to
+produce _fast binaries_, not to _produce binaries fast_. For release builds this
+is the right tradeoff. For development, where you care about iteration speed
+more than runtime performance, LLVM's thoroughness becomes a cost.
 
-Rust is built on top of the LLVM compiler, which means it can make use of the
-optimizations and the wide range of backends. This is a good thing, Rust would
-not be able to support as many targets as it does without the LLVM underpinnings
-of its code generation.
-
-However, LLVM is a rather heavy dependency. It is designed to produce fast
-binaries, not to produce binaries fast. This is a good property when building
-release binaries, however when you are actively developing on a project, you
-tend to care about a fast iteration loop more than getting the best performance
-out of your binaries (which, in this case, will mostly be unit tests).
-
-Therefore, there is an advantage in switching to a different codegen backend
-during development (non-release builds), if that leads to faster iterations.
+The Rust compiler supports alternative codegen backends that make a different
+tradeoff: faster compilation at the expense of less optimized output. For
+development builds — where most of what you run is unit tests — this can
+meaningfully improve the edit-compile-test cycle.
 
 ## Cranelift
 
-[Cranelift](https://cranelift.dev/) started out as a library to help in
-implementing the JIT-based WebAssembly runtime
-[wasmtime](https://wasmtime.dev/). However, due to the way in which it was
-built, it can be used in more than just this application. The Rust compiler team
-has adopted it as an alternative codegen backend, in addition to LLVM. Since it
-is relatively young, it is not as mature as LLVM. It does have some properties
-that make it very appealing in certain scenarios: because it focusses on
-generating binaries quickly, it tends to be faster than LLVM. This makes it
-useful for building in development code, where a fast iteration time is more
-important than good runtime performance.
+[Cranelift][cranelift] is a compiler backend originally developed for the
+[Wasmtime](https://wasmtime.dev/) WebAssembly runtime. The Rust compiler team
+has adopted it as an [alternative codegen backend][rustc-cranelift]. Because
+Cranelift focuses on generating code quickly rather than optimizing it
+aggressively, it compiles faster than LLVM at the cost of producing slower
+binaries.
 
-In my testing, I was able to get around a 30% speedup by using the cranelift
-backend instead of the default LLVM backend, but your mileage may vary.
+To use Cranelift, install the preview component on a nightly toolchain:
 
-https://github.com/rust-lang/rustc_codegen_cranelift
+```bash
+rustup component add rustc-codegen-cranelift-preview --toolchain nightly
+```
 
-### Example
+Then build with it:
 
-Install the Cranelift codegen for the Rust compiler using:
+```bash
+CARGO_PROFILE_DEV_CODEGEN_BACKEND=cranelift cargo +nightly build -Zcodegen-backend
+```
 
-    rustup component add rustc-codegen-cranelift-preview --toolchain nightly
-
-Then compile using:
-
-    CARGO_PROFILE_DEV_CODEGEN_BACKEND=cranelift cargo +nightly build -Zcodegen-backend
-
-Note that Cranelift is only available on nightly Rust, so you'll need to use a
-nightly toolchain for development builds if you want to take advantage of this
-optimization.
-
-Using Cranelift makes builds roughly 30% faster than using LLVM.
+Cranelift currently requires a nightly toolchain. The speedup depends on the
+project, but as a rough benchmark:
 
 | Crate   | LLVM  | Cranelift | Speedup |
 | ------- | ----- | --------- | ------- |
-| ripgrep | 7.50s | 5.72s     | 30%     |
+| ripgrep | 7.50s | 5.72s     | ~24%    |
+
+The benefit is most noticeable for larger projects where LLVM's optimization
+passes dominate compile time. For small crates, the difference may be negligible
+because most time is spent in the frontend (parsing, type checking, borrow
+checking) rather than code generation.
+
+[cranelift]: https://cranelift.dev/
+[rustc-cranelift]: https://github.com/rust-lang/rustc_codegen_cranelift
+
+<!-- TODO: benchmark Cranelift with more crates (clap, ripgrep, regex). Update
+     the table with results and note exact compiler/crate versions used for
+     reproducibility. -->
 
 ## Reading
 
@@ -68,8 +60,9 @@ url: https://lwn.net/Articles/964735/
 author: Daroc Alden
 archived: lwn-rust-cranelift.pdf
 ---
-Daroc announces the availability of the Cranelift compiler backend for Rust.
-He explains the history behind the Cranelift project, having been developed for
-the Wasmtime runtime, and that it can generate code faster than the LLVM
-project, at the expense of doing less optimizations.
+Covers the history of Cranelift (built for Wasmtime, adopted by the Rust
+compiler team), how it differs from LLVM architecturally (single-pass vs
+multi-pass optimization), and what it means for Rust developers. Explains that
+Cranelift is not a replacement for LLVM — it targets development builds where
+compilation speed matters more than runtime performance.
 ```

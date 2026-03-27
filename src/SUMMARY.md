@@ -71,7 +71,6 @@
   - [Fuzzing](testing/fuzzing.md)
   - [Mutation Testing](testing/mutations.md)
   - [Dynamic analysis](testing/dynamic-analysis.md)
-  - [Conclusion](testing/conclusion.md)
 - [Measure](measure/readme.md)
   - [Coverage](measure/coverage.md)
   - [Performance](measure/performance.md)

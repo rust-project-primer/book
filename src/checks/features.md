@@ -1,13 +1,13 @@
 # Crate Features
 
 _Following advice from [Crate Features](../organization/features.md), you have
-added optional features into your crate to reduce compilation times for when they
-are not required by downstream users. This has been working well, however in a
-recent release you have received a bug report that a specific combination of
-enabled features triggers a compilation error. You have fixed the error, which
-was introduced by some refactoring that moved a `#[cfg]` block. However, you are
-wondering whether it is possible to catch these kinds of issues automatically in
-CI rather than having downstream users discover them._
+added optional features into your crate to reduce compilation times for when
+they are not required by downstream users. This has been working well, however
+in a recent release you have received a bug report that a specific combination
+of enabled features triggers a compilation error. You have fixed the error,
+which was introduced by some refactoring that moved a `#[cfg]` block. However,
+you are wondering whether it is possible to catch these kinds of issues
+automatically in CI rather than having downstream users discover them._
 
 ## The Problem
 
@@ -56,9 +56,9 @@ You need to tell `cargo-hack` which sets of features to test. The two main
 options are `--each-feature` and `--feature-powerset`. To illustrate the
 difference, consider a crate with features `a`, `b`, and `c`:
 
-| Flag                 | Feature Sets                                  |
-| -------------------- | --------------------------------------------- |
-| `--each-feature`     | (none); `a`; `b`; `c`                         |
+| Flag                 | Feature Sets                                        |
+| -------------------- | --------------------------------------------------- |
+| `--each-feature`     | (none); `a`; `b`; `c`                               |
 | `--feature-powerset` | (none); `a`; `b`; `c`; `a,b`; `a,c`; `b,c`; `a,b,c` |
 
 The `--each-feature` flag tests each feature in isolation (plus no features at

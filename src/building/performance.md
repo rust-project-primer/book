@@ -121,13 +121,13 @@ implementation works best on your chipset, regardless of what target features
 you compile with.
 
 In theory, when you enable target features, the compiler is able to use them to
-produce faster code. This process is called [automatic
-vectorization](https://en.wikipedia.org/wiki/Automatic_vectorization). In
-practise, this might not make much of a difference. Either you have number
+produce faster code. This process is called
+[automatic vectorization](https://en.wikipedia.org/wiki/Automatic_vectorization).
+In practise, this might not make much of a difference. Either you have number
 crunching code, and you really care about the memory layout, and use SIMD calls
-to precisely speed it up, or you have mixed code with memory layouts that
-poorly vectorize. That is why generally, you don't need to worry about
-enabling target CPU features, and if you do, you already know about it.
+to precisely speed it up, or you have mixed code with memory layouts that poorly
+vectorize. That is why generally, you don't need to worry about enabling target
+CPU features, and if you do, you already know about it.
 
 ## Profile-Guided Optimization
 
@@ -165,11 +165,11 @@ The [`cargo-pgo`][cargo-pgo] tool simplifies this workflow by managing the
 instrumentation, profiling, merging, and rebuild steps for you.
 
 These kinds of optimizations are commonly applied for large GUI applications,
-for example the Chromium and Firefox browsers use them. For them it makes
-sense, if a build takes multiple hours because they need to generate this
-profdata, but they deploy their software out to billions of devices, and it
-makes their browsers run 3% faster, that is worth it. For your garden-variety
-backend Rust project, you likely don't need it.
+for example the Chromium and Firefox browsers use them. For them it makes sense,
+if a build takes multiple hours because they need to generate this profdata, but
+they deploy their software out to billions of devices, and it makes their
+browsers run 3% faster, that is worth it. For your garden-variety backend Rust
+project, you likely don't need it.
 
 <!-- todo: find out what other projects use PGO, and why -->
 

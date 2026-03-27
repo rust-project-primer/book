@@ -44,8 +44,8 @@ You can also set this permanently in your `.cargo/config.toml`:
 rustc-wrapper = "sccache"
 ```
 
-After a build, you can check the cache statistics with `sccache --show-stats`
-to see hit rates and how much time was saved.
+After a build, you can check the cache statistics with `sccache --show-stats` to
+see hit rates and how much time was saved.
 
 ```admonish example title="Using sccache in GitHub Actions"
 This example uses sccache with a cloud storage bucket in GitHub Actions. The

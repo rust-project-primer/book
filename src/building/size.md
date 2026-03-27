@@ -107,8 +107,8 @@ cargo bloat --release --crates
 ```
 
 This is often more actionable: if a single dependency accounts for a large
-fraction of your binary, you can investigate whether you actually need all of its
-features, or whether a lighter alternative exists.
+fraction of your binary, you can investigate whether you actually need all of
+its features, or whether a lighter alternative exists.
 
 ### Monomorphization
 
@@ -170,9 +170,10 @@ fn read_file(path: impl Into<PathBuf>) -> std::io::Result<String> {
 }
 ```
 
-This is particularly useful for public API functions that accept `impl Into<String>`
-or `impl AsRef<Path>`, which are convenient for callers but would otherwise
-generate a separate copy for every call site that passes a different type.
+This is particularly useful for public API functions that accept
+`impl Into<String>` or `impl AsRef<Path>`, which are convenient for callers but
+would otherwise generate a separate copy for every call site that passes a
+different type.
 
 ### Trait objects
 
@@ -192,8 +193,8 @@ fn process(items: &[&dyn Display]) {
 
 This trades a small amount of runtime performance (one pointer indirection per
 method call) for a reduction in binary size. For hot loops this may not be
-worthwhile, but for code that isn't performance-critical (logging, configuration,
-error formatting) it's a reasonable tradeoff.
+worthwhile, but for code that isn't performance-critical (logging,
+configuration, error formatting) it's a reasonable tradeoff.
 
 The standard library itself uses this technique internally. For example,
 `std::fmt` uses trait objects to avoid monomorphizing the formatting machinery

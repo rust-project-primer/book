@@ -7,8 +7,8 @@ connection to a cloud API, developers can't easily run it locally, which slows
 down their iteration loop and pushes bug discovery to CI.
 
 Whenever possible, try to make it so that the full test suite can run locally
-without any manual setup. This chapter outlines several strategies for
-achieving that, roughly ordered from lightest to heaviest.
+without any manual setup. This chapter outlines several strategies for achieving
+that, roughly ordered from lightest to heaviest.
 
 ```admonish note
 When interfacing with external systems in tests, you need to make sure that
@@ -50,9 +50,9 @@ writing boilerplate. For HTTP services specifically,
 HTTP server that returns canned responses.
 
 The downside of mocking is that your tests only verify that your code interacts
-with the mock correctly, not that it works with the real service. Schema changes,
-subtle behavioral differences, and integration bugs will slip through. For this
-reason, mocks are best used for unit tests of business logic, not as a
+with the mock correctly, not that it works with the real service. Schema
+changes, subtle behavioral differences, and integration bugs will slip through.
+For this reason, mocks are best used for unit tests of business logic, not as a
 replacement for integration testing against real services.
 
 ## Service as Dependency
@@ -62,8 +62,8 @@ workspace (or is available as a crate), you can add it as a dev-dependency and
 launch it directly in your tests. This gives you a real instance without any
 Docker or external infrastructure.
 
-For example, if your project has an `api` crate and a `client` crate, the
-client can depend on the API in its test configuration:
+For example, if your project has an `api` crate and a `client` crate, the client
+can depend on the API in its test configuration:
 
 ```toml
 [dev-dependencies]
@@ -118,8 +118,8 @@ services:
       - "6379:6379"
 ```
 
-Your tests then connect to these services on localhost. To ensure isolation, each
-test should create its own database or use a unique key prefix:
+Your tests then connect to these services on localhost. To ensure isolation,
+each test should create its own database or use a unique key prefix:
 
 ```rust
 async fn create_test_db(pool: &PgPool) -> String {
@@ -134,9 +134,9 @@ async fn create_test_db(pool: &PgPool) -> String {
 
 The advantage of Docker Compose is its simplicity: the file is declarative,
 developers understand it, and it works with any service that has a Docker image.
-The downside is that it's a manual step (developers need to remember to start the
-containers), and services are shared across all tests rather than being isolated
-per-test.
+The downside is that it's a manual step (developers need to remember to start
+the containers), and services are shared across all tests rather than being
+isolated per-test.
 
 ## Testcontainers
 

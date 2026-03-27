@@ -1,23 +1,23 @@
 # Fuzzing
 
 Fuzzing is an approach to testing that generates random inputs for your code and
-uses instrumentation to monitor which branches are being triggered, with the goal
-of triggering all branches inside the code. In doing so, it can test your code
-very thoroughly and often discover edge cases that you might not have thought of
-when writing unit tests.
+uses instrumentation to monitor which branches are being triggered, with the
+goal of triggering all branches inside the code. In doing so, it can test your
+code very thoroughly and often discover edge cases that you might not have
+thought of when writing unit tests.
 
 The general approach looks something like this: a fuzzer generates a randomized
 input, feeds it to your program, and monitors the result. If the program crashes
-or triggers some kind of invalid behaviour, the fuzzer records the failing input.
-The fuzzer uses code coverage instrumentation to track which branches are taken,
-and uses this feedback to guide future inputs towards unexplored paths. When a
-crash is found, the fuzzer attempts to _reduce_ the input to the smallest
+or triggers some kind of invalid behaviour, the fuzzer records the failing
+input. The fuzzer uses code coverage instrumentation to track which branches are
+taken, and uses this feedback to guide future inputs towards unexplored paths.
+When a crash is found, the fuzzer attempts to _reduce_ the input to the smallest
 possible reproducer.
 
 Fuzzing is usually an effective technique for testing parsers. Fuzzing
-implementations are usually able to use valid, working inputs as a starting point
-and randomly mutate them to try to find inputs that either crash the program, or
-lead to some kind of invalid behaviour.
+implementations are usually able to use valid, working inputs as a starting
+point and randomly mutate them to try to find inputs that either crash the
+program, or lead to some kind of invalid behaviour.
 
 ```admonish note
 Fuzzing is a popular technique for testing parsers written in memory-unsafe
@@ -67,9 +67,9 @@ its own `Cargo.toml` and a `fuzz_targets/` directory for your fuzz targets:
 cargo fuzz init
 ```
 
-Each fuzz target is a small program that receives arbitrary bytes from the fuzzer
-and passes them to the code you want to test. For example, if you have a config
-file parser:
+Each fuzz target is a small program that receives arbitrary bytes from the
+fuzzer and passes them to the code you want to test. For example, if you have a
+config file parser:
 
 ```rust
 {{#include ../../examples/fuzzing/src/lib.rs:parser}}
@@ -93,8 +93,8 @@ You run the fuzzer with:
 cargo fuzz run fuzz_parse_config
 ```
 
-The fuzzer will run indefinitely, printing status updates as it explores new code
-paths. When it finds a crash, it writes the failing input to
+The fuzzer will run indefinitely, printing status updates as it explores new
+code paths. When it finds a crash, it writes the failing input to
 `fuzz/artifacts/fuzz_parse_config/` and prints the path. You can then reproduce
 the crash with:
 
@@ -139,9 +139,9 @@ inputs that fail to deserialize.
 ### Corpus Management
 
 The fuzzer maintains a _corpus_ of interesting inputs: ones that triggered new
-code paths. Over time, this corpus grows and helps the fuzzer explore deeper into
-your code. You can seed the corpus with known valid inputs to give it a head
-start:
+code paths. Over time, this corpus grows and helps the fuzzer explore deeper
+into your code. You can seed the corpus with known valid inputs to give it a
+head start:
 
 ```bash
 mkdir -p fuzz/corpus/fuzz_parse_config
@@ -165,8 +165,9 @@ it can catch issues that cause the entire process to hang or enter infinite
 loops, which libFuzzer cannot easily detect.
 
 AFL also comes with a set of companion tools for corpus management and crash
-triage. It has a distinctive terminal UI that displays real-time statistics about
-the fuzzing campaign, including execution speed, code coverage, and crash counts.
+triage. It has a distinctive terminal UI that displays real-time statistics
+about the fuzzing campaign, including execution speed, code coverage, and crash
+counts.
 
 In general, cargo-fuzz (libFuzzer) is the more common choice in the Rust
 ecosystem and is easier to set up. afl.rs is worth considering if you need its

@@ -36,5 +36,9 @@ title: using rust with rr
 url: https://gist.github.com/spacejam/15f27007c0b1bcc1d6b4c9169b18868c
 author: Tyler Neely
 ---
-TODO
+Tyler explains how to use rr, a record-and-replay debugger, with Rust. rr
+records program execution and allows deterministic replay with forward and
+reverse stepping, making it easier to track down non-deterministic bugs. The
+guide covers recording test runs, setting breakpoints and watchpoints, and
+Rust-specific tips like configuring gdb with a pretty-printer.
 ```

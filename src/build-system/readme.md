@@ -1,10 +1,9 @@
 # Build system
 
-With Cargo, Rust has some fantastic tooling for building, cross-compiling and
-testing Rust software. Cargo supports installing plugins that extend its
-functionality, a lot of which are discussed in this book. If your Rust project
-has a relatively simple setup, where it consists only of Rust crates, then Cargo
-is the ideal tool to get it to build:
+Cargo is a great tool for building, cross-compiling and testing Rust software.
+It supports installing plugins that extend its functionality, many of which are
+discussed in this book. If your project consists only of Rust crates, then Cargo
+is all you need:
 
 <center>
 
@@ -13,9 +12,9 @@ is the ideal tool to get it to build:
 </center>
 
 Things start to get tricky when you involve other languages (such as mixing Rust
-with C, C++, TypeScript) or when the build involves building code for different
-targets (for example, that some crates need to be built as WebAssembly and the
-resulting code is needed by other builds.
+with C, C++, TypeScript) or when parts of your project need to be compiled for
+different targets (for example, compiling some crates to WebAssembly and
+embedding the output into other builds).
 
 ### Example architectures
 
@@ -119,7 +118,10 @@ title: "Chapter 4: Multi-language build system options"
 url: https://cxx.rs/building.html
 author: cxx crate
 ---
-*TODO*
+The CXX crate's documentation discusses build system options for projects that
+mix Rust and C++. It recommends Cargo for projects without an existing C++ build
+system, Bazel for multi-language projects, and CMake for codebases already using
+it.
 ```
 
 ```reading
@@ -139,6 +141,13 @@ title: Merkle trees and build systems
 url: https://lwn.net/Articles/821367/
 author: David Röthlisberger
 ---
+David explores using Merkle trees to track build outputs. By storing build
+artifacts in OSTree (a content-addressable store where each directory's hash
+is derived from its contents), any change to a file automatically propagates
+up through the tree. The build system can then use a single root hash to
+determine whether a rebuild is needed, enabling deduplication, automatic
+incremental rebuilds, and passing intermediate outputs between build steps
+without explicit naming.
 ```
 
 ```reading
@@ -148,7 +157,12 @@ url: https://gist.github.com/terabyte/15a2d3d407285b8b5a0a7964dd6283b0
 author: Carl Meyers
 archived: terabyte-amazon-build-tool.pdf
 ---
-Carl explains the build system that Amazon uses.
+Carl describes Brazil, Amazon's internal build system. Brazil enforces
+reproducible builds through strict dependency isolation (only explicitly declared
+dependencies are available), uses "version sets" to manage compatible collections
+of package versions across hundreds of services, and separates interface versions
+from concrete build versions. The article argues that these properties are
+inevitable discoveries of any large engineering organization.
 ```
 
 ```reading

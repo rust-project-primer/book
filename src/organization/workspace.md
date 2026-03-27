@@ -159,6 +159,10 @@ title: An Opinionated Guide To Structuring Rust Projects
 url: https://www.justanotherdot.com/posts/an-opinionated-guide-to-structuring-rust-projects.html
 author: Ryan James Spencer
 ---
+Ryan gives practical advice on organizing Rust projects as they grow, including
+when to split code into separate crates, using workspaces to manage them,
+naming conventions, and compilation optimization strategies like sccache and
+alternative linkers.
 ```
 
 ```reading
@@ -189,6 +193,11 @@ title: Cargo Workspace and the Feature Unification Pitfall
 url: https://nickb.dev/blog/cargo-workspace-and-the-feature-unification-pitfall/
 author: Nick B
 ---
+Nick explains how Cargo unifies features across workspace members: when multiple
+crates depend on the same library with different features, Cargo enables the
+union of all requested features for every crate. This can cause unexpected build
+failures and binary bloat. The article discusses workarounds including Cargo's
+resolver v2 and building packages separately.
 ```
 
 ```reading

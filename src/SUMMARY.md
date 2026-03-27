@@ -77,7 +77,7 @@
   - [Performance](measure/performance.md)
   - [Memory](measure/memory.md)
 - [Building](building/readme.md)
-  - [Optimizations](building/size.md)
+  - [Binary Size](building/size.md)
   - [Performance](building/performance.md)
   - [Codegen](building/codegen.md)
   - [Caching](building/cache.md)

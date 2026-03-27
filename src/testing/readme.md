@@ -68,6 +68,11 @@ title: "Item 30: Write more than unit tests"
 url: https://effective-rust.com/testing.html
 author: Effective Rust
 ---
+This chapter advocates for a comprehensive testing strategy beyond unit tests,
+covering integration tests, doc tests, examples, benchmarks, and fuzz testing.
+It emphasizes that different test types serve distinct purposes: unit tests
+verify internals, while integration tests and examples validate the public
+contract.
 ```
 
 ```reading

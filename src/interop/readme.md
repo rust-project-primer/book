@@ -246,6 +246,11 @@ title: Nomicon
 url: https://doc.rust-lang.org/stable/nomicon/
 author: Rust Language
 ---
+The Rustonomicon is a guide to unsafe Rust programming. It covers the meaning
+of safety and unsafety, unsafe primitives, techniques for creating safe
+abstractions from unsafe code, and advanced topics including FFI, subtyping,
+variance, and uninitialized memory. Essential reading for anyone writing unsafe
+code or FFI bindings.
 ```
 
 ```reading
@@ -255,6 +260,10 @@ url: https://blog.pnkfx.org/blog/2022/05/12/linking-rust-crates/
 author: Felix S. Klock II
 archived: pnkfx-linking-rust-crates.pdf
 ---
+Felix explores how Rust crates are linked together, demonstrating the different
+crate types (rlib, dylib, cdylib, staticlib) through practical examples using
+rustc directly. He explains the tradeoffs between static and dynamic linking
+and how compiler flags like `-C prefer-dynamic` affect the result.
 ```
 
 ```reading
@@ -264,6 +273,11 @@ url: https://stepfunc.io/blog/bindings/
 author: Émile Grégoire
 archived: stepfunc-bindings.pdf
 ---
+Émile describes an approach to generating language bindings from Rust using a
+single abstract API model. By defining a C-compatible interface once and
+generating bindings for each target language (Java, .NET, etc.), the technique
+reduces an O(N*M) problem to separate O(N) and O(M) problems and produces
+idiomatic APIs in each language.
 ```
 
 https://viruta.org/rust-stable-abi.html

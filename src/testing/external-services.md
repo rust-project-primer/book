@@ -1,117 +1,203 @@
 # External Services
 
-_You notice that in a lot of pull requests, authors need to push several fix
-commits to get the CI pipelines to run correctly. A lot of the time, some simple
-unit tests need to be fixed. When asked, developers note that they cannot run
-the test suite locally because it depends on services that run in the cloud.
-This makes you wonder, if there is a way to increase iteration speed by making
-sure that tests can run locally._
+Most non-trivial applications depend on external services: databases, message
+queues, caches, APIs. Testing code that interacts with these services can be
+challenging. If your test suite requires a running PostgreSQL instance or a
+connection to a cloud API, developers can't easily run it locally, which slows
+down their iteration loop and pushes bug discovery to CI.
 
-Having a fast iteration loop is key to fast software development. To make that
-possible, it is generally advantageous if test suites have no external
-dependencies, making it easy for developers to launch them locally and test
-projects end-to-end.
+Whenever possible, try to make it so that the full test suite can run locally
+without any manual setup. This chapter outlines several strategies for
+achieving that, roughly ordered from lightest to heaviest.
 
-Whenever possible, try to make it such that you can run all tests locally, and
-that you can do so relatively easily.
-
-```admonish
-When interfacing with external systems, you need to make sure that every test
-is isolated. Tests in Rust are designed to be able to be run in parallel. This
-means that every test needs, ideally, a fresh, empty environment to run
-against.
+```admonish note
+When interfacing with external systems in tests, you need to make sure that
+every test is isolated. Rust's test harness runs tests in parallel by default,
+so every test needs its own clean environment. For databases, this typically
+means creating a fresh database or schema per test. For services, it means
+launching a separate instance or using non-overlapping namespaces.
 ```
 
-In general, there are three strategies that I have used, and I will outline them
-here. If you can make use of one of these strategies, then it might be a
-worthwhile investment. In some cases, however, it is not possible.
+## Mocking
 
-## Use Service as Dependency
+The simplest approach is to replace the external service with a mock that
+implements the same interface. This works well when the behavior you need from
+the service is straightforward and you are primarily testing your own logic, not
+the interaction with the service.
 
-If you are writing tests for a component which talks to some API, and the API is
-also written in Rust, then you might be able to simply add a development
-dependency to the API and launch it for the unit tests.
+In Rust, this is typically done by defining a trait for the service interaction
+and providing both a real implementation and a mock:
 
-For example, if you have a project which consists of two crates: `api` and
-`client`, then in the `client` crate you could add the `api` crate as a test
-dependency in the Cargo manifest:
+```rust
+trait UserStore {
+    fn get_user(&self, id: u64) -> Result<User, Error>;
+    fn create_user(&self, name: &str) -> Result<User, Error>;
+}
+
+struct PostgresUserStore { /* ... */ }
+impl UserStore for PostgresUserStore { /* ... */ }
+
+struct MockUserStore {
+    users: std::sync::Mutex<Vec<User>>,
+}
+impl UserStore for MockUserStore { /* ... */ }
+```
+
+The [mockall](https://docs.rs/mockall/latest/mockall/) crate can generate mock
+implementations automatically using a procedural macro, which saves you from
+writing boilerplate. For HTTP services specifically,
+[wiremock](https://docs.rs/wiremock/latest/wiremock/) lets you set up a local
+HTTP server that returns canned responses.
+
+The downside of mocking is that your tests only verify that your code interacts
+with the mock correctly, not that it works with the real service. Schema changes,
+subtle behavioral differences, and integration bugs will slip through. For this
+reason, mocks are best used for unit tests of business logic, not as a
+replacement for integration testing against real services.
+
+## Service as Dependency
+
+If the service you depend on is also written in Rust and lives in the same
+workspace (or is available as a crate), you can add it as a dev-dependency and
+launch it directly in your tests. This gives you a real instance without any
+Docker or external infrastructure.
+
+For example, if your project has an `api` crate and a `client` crate, the
+client can depend on the API in its test configuration:
 
 ```toml
 [dev-dependencies]
 api = { path = "../api" }
 ```
 
-And then you could write your unit tests in such a way that you launch a fresh
-instance of the API for every test. You may have to pick a random free port or
-use some feature to bypass the network and inject requests directly.
+Then each test can spin up a fresh server instance:
 
 ```rust
-#[test]
-fn test_some_call() {
-    let server = api::Server::launch();
+#[tokio::test]
+async fn test_create_user() {
+    // Launch the API on a random available port.
+    let server = api::Server::start("127.0.0.1:0").await;
+    let addr = server.local_addr();
 
-    // make request
-    assert_eq!(make_request(), Response {});
+    let client = Client::new(&format!("http://{addr}"));
+    let user = client.create_user("alice").await.unwrap();
+    assert_eq!(user.name, "alice");
 }
 ```
 
-```admonish example
-*TODO*
-```
+This approach works well for microservice architectures where the services are
+all Rust crates in a single workspace. It doesn't require Docker and tests start
+fast. The limitation is that it only works when you control the dependency and
+it can be embedded as a library.
 
 ## Docker Compose
 
-In many cases, you do not need to run a separate copy of your dependencies for
-every unit test. Many services, such as databases, allow you to create a fresh,
-empty database for every unit test. In that case, using docker compose is a good
-strategy. A docker-compose file can be written which defines all the
-prerequisite services, which can be launched manually before running the tests.
+When your tests depend on services that can't be embedded as a Rust dependency
+(PostgreSQL, Redis, Kafka, etc.), Docker Compose is a straightforward way to
+provide them. You write a `docker-compose.yml` that defines the services, and
+developers run `docker compose up -d` before running the test suite.
 
-```admonish example title="Example project using a docker-compose file"
-*TODO*
+This also works with [Podman][podman], which is a daemonless container engine
+that can serve as a drop-in replacement for Docker. Podman supports both
+`docker-compose` (through its Docker-compatible socket) and its own
+`podman-compose` tool. If your team prefers rootless containers or wants to
+avoid the Docker daemon, Podman is worth considering.
+
+```yaml
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
 ```
+
+Your tests then connect to these services on localhost. To ensure isolation, each
+test should create its own database or use a unique key prefix:
+
+```rust
+async fn create_test_db(pool: &PgPool) -> String {
+    let db_name = format!("test_{}", uuid::Uuid::new_v4().simple());
+    sqlx::query(&format!("CREATE DATABASE \"{db_name}\""))
+        .execute(pool)
+        .await
+        .unwrap();
+    db_name
+}
+```
+
+The advantage of Docker Compose is its simplicity: the file is declarative,
+developers understand it, and it works with any service that has a Docker image.
+The downside is that it's a manual step (developers need to remember to start the
+containers), and services are shared across all tests rather than being isolated
+per-test.
 
 ## Testcontainers
 
-[Testcontainers](https://testcontainers.com/) is a project that aims to make it
-simple to use Docker containers in unit tests. They maintain the
-[testcontainers](https://github.com/testcontainers/testcontainers-rs) crate,
-which is the Rust implementation of this project.
+[Testcontainers][testcontainers] combines the real-service advantage of Docker
+Compose with per-test isolation. Instead of requiring developers to manually
+start containers, the testcontainers library launches them programmatically from
+within your tests. Each test (or test group) gets a fresh container that is
+automatically cleaned up when the test finishes.
 
-This makes it easy to run a fresh copy of whichever service your unit tests need
-when you execute them.
+The Rust implementation is the
+[testcontainers](https://docs.rs/testcontainers/latest/testcontainers/) crate.
+It provides built-in support for common services through companion crates like
+`testcontainers-modules`:
 
-```admonish example
-*TODO*
+```rust
+use testcontainers::runners::AsyncRunner;
+use testcontainers_modules::postgres::Postgres;
+
+#[tokio::test]
+async fn test_with_postgres() {
+    let container = Postgres::default().start().await.unwrap();
+    let port = container.get_host_port_ipv4(5432).await.unwrap();
+
+    let connection_string =
+        format!("postgres://postgres:postgres@127.0.0.1:{port}/postgres");
+
+    // Use the connection string to set up your database pool
+    // and run your tests against a real PostgreSQL instance.
+}
 ```
 
-## Mock Service
+Every test gets its own PostgreSQL instance running in a dedicated container.
+There is no shared state between tests, and no manual setup step for developers.
+The tradeoff is startup time: launching a container takes a few hundred
+milliseconds to a few seconds, which adds up if you have many tests. For this
+reason, testcontainers is best suited for integration tests rather than fast
+unit tests.
 
-If you can easily mock the service, that is a good approach as well.
+## Choosing a Strategy
 
-For example, the [mockall](https://docs.rs/mockall/latest/mockall/) crate lets
-you easily mock external services.
+These strategies are not mutually exclusive. A common pattern is to use mocks
+for unit tests that exercise business logic, and testcontainers or Docker
+Compose for integration tests that verify the actual service interaction. The
+service-as-dependency approach is ideal when you control both sides and they're
+in the same workspace.
 
-Some external systems might have a built-in ability to create an environment.
-For example, when talking to a storage system, every test might get it's own
-bucket with a randomized name. When talking to Postgres, every test might get
-it's own database.
-
-Some systems do not have that built-in, in this case one can use something like
-the Testcontainers crate, which is designed to launch a fresh container for
-every invocation of a test.
+The general principle is: use the lightest approach that gives you confidence in
+the behavior you're testing. Mocks are fast but low-fidelity. Real services are
+high-fidelity but slower. Pick the right tool for each layer of your test suite.
 
 ## Reading
 
 ```reading
 style: article
 title: Increase Test Fidelity By Avoiding Mocks
-url: https://testing.googleblog.com/2024/02/increase-test-fidelity-by-avoiding-mocks.html)
+url: https://testing.googleblog.com/2024/02/increase-test-fidelity-by-avoiding-mocks.html
 author: Google Testing Blog
 ---
-In this post from Google's Testing on the Toilet series, the topic of how to
-interact with external services is discussed. The preference to use real
-instances is mentioned.
+In this post from Google's Testing on the Toilet series, the preference to use
+real service instances over mocks is discussed, and the tradeoffs between test
+fidelity and test speed are outlined.
 ```
 
 ```reading
@@ -120,7 +206,8 @@ title: Rust Mock Shootout!
 url: https://asomers.github.io/mock_shootout/
 author: Alan Somers
 ---
-In this post, Alan discusses various mocking crates in Rust.
+A comparison of various mocking crates in Rust, covering their strengths,
+limitations, and the kinds of mocking patterns each one supports.
 ```
 
 ```reading
@@ -129,8 +216,10 @@ title: Rust Development with Testcontainers
 url: https://blog.ediri.io/rust-development-with-testcontainers
 author: Engin Diri
 ---
-*In this blog post, Engin discussed how
-[testcontainers](https://docs.rs/testcontainers/latest/testcontainers/) can be
-used to make sure external dependencies are spawned in Docker containers for
-each unit test.*
+Engin discusses how the testcontainers crate can be used to spawn external
+dependencies in Docker containers for each unit test, with practical examples
+using PostgreSQL.
 ```
+
+[testcontainers]: https://testcontainers.com/
+[podman]: https://podman.io/

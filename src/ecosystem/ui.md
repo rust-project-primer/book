@@ -45,7 +45,10 @@ around the quirks of GTK with decent documentation and procedural macros.
 style: article
 title: Are We GUI Yet
 url: https://areweguiyet.com/
-author: Unknown
+author: Are We GUI Yet
 ---
-Overview of current Rust GUI frameworks.
+A community-maintained directory tracking the state of GUI development in Rust.
+It catalogs frameworks by approach (native bindings, pure Rust, immediate mode,
+reactive) with download statistics, and aggregates news about the evolving
+ecosystem.
 ```

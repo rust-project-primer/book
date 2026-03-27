@@ -293,6 +293,9 @@ title: "Complete Guide to Testing Code in Rust: Property testing"
 url: https://zerotomastery.io/blog/complete-guide-to-testing-code-in-rust/#Property-testing
 author: Jayson Lennon
 ---
+Jayson gives an overview of property testing in Rust as part of a broader
+testing guide, covering how to use the proptest crate to generate randomized
+inputs and test properties of your code.
 ```
 
 ```reading

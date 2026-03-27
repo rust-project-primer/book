@@ -107,6 +107,9 @@ title: Rust compile times
 url: https://endler.dev/2020/rust-compile-times/
 author: Matthias Endler
 ---
+Matthias covers a wide range of strategies for reducing Rust compile times,
+from updating your toolchain and removing unused dependencies to splitting
+crates, using faster linkers, and optimizing CI with caching and cargo-nextest.
 ```
 
 ```reading
@@ -115,6 +118,11 @@ title: The Dark side of inlining and monomorphization
 url: https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/
 author: Nick Babcock
 ---
+Nick explores how aggressive inlining and monomorphization can unexpectedly
+bloat compiled artifacts. He demonstrates how a single `#[inline(always)]`
+annotation on a large function caused massive code duplication across generic
+instantiations, and shows how trait objects and removing inline hints reduced
+binary size with negligible performance impact.
 ```
 
 ```reading
@@ -123,6 +131,11 @@ title: Delete Cargo Integration Tests
 url: https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html
 author: Alex Kladov
 ---
+Alex argues for consolidating multiple integration test files into a single
+test crate. Each integration test file compiles into a separate binary that
+must be linked independently, and Cargo runs test binaries sequentially. When
+the Cargo project itself consolidated its integration tests, compile time
+dropped 3x and on-disk artifacts shrank 5x.
 ```
 
 [^proc]:

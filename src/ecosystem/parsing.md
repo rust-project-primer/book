@@ -59,4 +59,7 @@ title: LALRPOP book
 url: https://lalrpop.github.io/lalrpop/
 author: LALRPOP Team
 ---
+The official book for LALRPOP, a parser generator for Rust that aims to be
+easy to use. It covers how to define grammars, generate parsers, and integrate
+them into Rust projects.
 ```

@@ -115,7 +115,11 @@ url: https://abseil.io/resources/swe-book/html/ch12.html
 title: Unit Testing
 author: Software Engineering at Google
 ---
-TODO
+This chapter discusses how Google approaches unit testing. It argues for testing
+via public APIs rather than implementation details, testing state rather than
+interactions, and structuring tests around behaviors rather than methods. It
+also advocates for DAMP (Descriptive And Meaningful Phrases) over DRY in test
+code, accepting some duplication in exchange for clarity.
 ```
 
 [pretty-assertions-repo]:

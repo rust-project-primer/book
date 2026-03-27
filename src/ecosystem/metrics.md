@@ -185,7 +185,10 @@ url: https://www.hamzak.xyz/blog-posts/how-to-setup-and-use-metrics-in-rust
 style: article
 archived: hamza-setup-use-metrics.pdf
 ---
-Todo
+Hamza walks through setting up metrics collection in a Rust application using
+the metrics-rs crate with a Prometheus exporter and Grafana for visualization.
+He covers defining counters, gauges, and histograms in a centralized module and
+integrating them throughout the application.
 ```
 
 ```reading
@@ -195,5 +198,8 @@ url: https://www.elias.sh/posts/opentelemetry_timeseries_metrics_and_a_bit_of_ru
 author: Elias Granja
 archived: elias-telemetry-metrics.pdf
 ---
-Todo
+Elias explains the concepts behind OpenTelemetry, including metrics, structured
+events, and distributed tracing. He demonstrates instrumenting an Actix-web
+service using the OpenTelemetry SDK to emit metrics via the OTLP protocol,
+highlighting the vendor-agnostic nature of the approach.
 ```

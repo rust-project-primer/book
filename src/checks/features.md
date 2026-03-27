@@ -1,13 +1,11 @@
 # Crate Features
 
-_Following advice from [Crate Features](../organization/features.md), you have
-added optional features into your crate to reduce compilation times for when
-they are not required by downstream users. This has been working well, however
-in a recent release you have received a bug report that a specific combination
-of enabled features triggers a compilation error. You have fixed the error,
-which was introduced by some refactoring that moved a `#[cfg]` block. However,
-you are wondering whether it is possible to catch these kinds of issues
-automatically in CI rather than having downstream users discover them._
+Crate features let you gate functionality behind compile-time flags, reducing
+build times and dependency footprint for users who don't need everything. But
+features introduce a combinatorial testing problem: code that compiles with all
+features enabled can break when only a subset is active. These bugs are easy to
+introduce (a refactored `#[cfg]` block, a missing feature gate on a new
+function) and hard to catch without testing each combination.
 
 ## The Problem
 
@@ -124,6 +122,38 @@ you manage the features of your dependencies. It shows which features each of
 your dependencies has and lets you toggle them interactively. This is useful for
 auditing your dependency tree and disabling features you don't need, which
 reduces compile times and binary size.
+
+## CI Examples
+
+```admonish example title="Feature checking in GitHub Actions"
+~~~yaml
+name: Features
+on: [pull_request]
+
+jobs:
+  feature-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-hack
+      - run: cargo hack check --feature-powerset --depth 2
+      - run: cargo hack test --each-feature
+~~~
+```
+
+```admonish example title="Feature checking in GitLab CI"
+~~~yaml
+features:
+  image: rust:latest
+  script:
+    - cargo install cargo-hack
+    - cargo hack check --feature-powerset --depth 2
+    - cargo hack test --each-feature
+~~~
+```
 
 [cfg_if]: https://docs.rs/cfg-if/latest/cfg_if/
 [cargo-hack]: https://github.com/taiki-e/cargo-hack

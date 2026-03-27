@@ -57,7 +57,6 @@
   - [Cargo Manifest](checks/manifest.md)
   - [Crate Features](checks/features.md)
   - [Minimum Supported Rust Version](checks/msrv.md)
-  - [Conclusion](checks/conclusion.md)
 - [Testing](testing/readme.md)
   - [Unit Tests](testing/unit-tests.md)
   - [Integration Tests](testing/integration-tests.md)

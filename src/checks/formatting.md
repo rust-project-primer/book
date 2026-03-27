@@ -1,79 +1,39 @@
 # Formatting
 
-From the point of view of the Rust compiler, whitespace is insignificant. The
-Rust compiler does not care how many spaces or tabs you use, how far you indent
-lines, or how long the lines in your source files are.
-
-However, code is not only read by the compiler. It is also read by humans, who
-collaborate on it, read it together, and discuss it. If you have inconsistent
-formatting, it can create friction when people contribute to your project.
-
-Ensuring consistent formatting across a project helps reduce friction. It allows
-Code Reviews to focus on the content, and not the formatting of the code.
-
-To ensure that code is consistently formatted, you can use a code formatter.
-This is a tool that parses your code and applies a set of rules to format it.
-These rules are designed to ensure that the code is easy to read and understand.
-It means that Rust code is globally consistent, no matter if it is an
-open-source project, or which company you work for.
-
-Rust comes with a code formatter called `rustfmt`. It is a core piece of Rust
-tooling and used by the whole Rust community.
+Consistent formatting removes an entire category of friction from collaboration.
+Code reviews focus on substance rather than style, and contributors don't need
+to guess where to put braces or how far to indent. Rust has a standard
+formatter, `rustfmt`, that ships with the toolchain and is used across nearly
+all Rust projects. Because the community has converged on a single style, Rust
+code looks the same whether it is an open-source library or an internal
+codebase.
 
 ## Rustfmt
 
-Rustfmt is part of the Rust toolchain and is used to format Rust code according
-to a set of rules. It works by parsing your code, applying formatting rules, and
-writing the formatted code back to your files.
-
-There are a few ways you can use `rustfmt`:
-
-- You can run it manually on your code using the `cargo fmt` command. This will
-  format all code files inside your package.
-- You can configure your editor to automatically format your code when you save
-  it.
-- You can integrate `rustfmt` into your CI system to ensure that all code is
-  properly formatted before it is merged into the main branch.
-- You can use `rustfmt` as a pre-commit hook to ensure that all code is properly
-  formatted before it is committed to the repository.
-
-While `rustfmt` comes with sane default configuration, it is possible to
-override the rules that it uses. In general, you don't need to do this, it is
-recommended to use the default configuration. However, if you do want to
-override the rules, you can do so by creating a `.rustfmt.toml` file in the root
-of your project.
-
-### Installation
-
-Usually, `rustfmt` comes preinstalled when you install Rust. However, if you do
-not have it, you can install it using:
-
-    rustup component add rustfmt
-
-You can run `rustfmt` against a crate like this:
+Rustfmt parses your Rust source files, applies formatting rules, and writes the
+result back. It usually comes preinstalled with Rust, or can be added with
+`rustup component add rustfmt`. To format all code in a package:
 
 ```
 cargo fmt
 ```
 
-In a CI system, you can check if the code is properly formatted using the
-`--check` command-line flag.
+To check whether code is formatted without modifying it (useful in CI), pass
+`--check`. This returns a nonzero exit code if any file needs formatting:
 
 ```
 cargo fmt --check
 ```
 
-If the code is not properly formatted, this will return a nonzero exit code and
-cause the CI check to fail.
-
 ### Configuration
 
-Rustfmt can also optionally take some [configuration][rustfmt-conf] in a
-`rustfmt.toml` file. This allows you to override specific behaviour, for example
-to set how it will group imports.
+Rustfmt's defaults are intentionally opinionated and used by the vast majority
+of Rust projects. If you need to override specific rules (for example, to change
+how imports are grouped), you can create a `rustfmt.toml` or `.rustfmt.toml`
+file in the project root. See the [configuration reference][rustfmt-conf] for
+available options.
 
-Some configuration options are unstable at the moment and therefore require an
-unstable build of Rustfmt. When using it you have to call `rustfmt` like this:
+Some options are unstable and require a nightly toolchain:
 
 ```
 cargo +nightly fmt
@@ -89,15 +49,11 @@ path = "check-formatting"
 git_ignore = true
 ```
 
-### Format on save
+### Format on Save
 
-If you don't want to worry about formatting, you can configure your editor to
-automatically run the formatter when you save a file. Doing this ensures that
-you cannot forget to run `rustfmt`, and find out that your code isn't formatted
-properly due to a CI failure or during code review.
-
-If you use the Zed editor, then you can configure it to format your code on
-save. Add the following to your `settings.json` file:
+Most editors can be configured to run `rustfmt` automatically when you save a
+file, so formatting never falls out of sync. In Zed, add the following to your
+`settings.json`:
 
 ```json
 {
@@ -105,27 +61,73 @@ save. Add the following to your `settings.json` file:
 }
 ```
 
-If you use VS Code, you can install the Rust extension and configure it to
-format your code on save. Add the following to your `settings.json` file:
+In VS Code with the rust-analyzer extension, enable format on save in
+`settings.json`:
 
 ```json
 {
-  "rust.formatOnSave": true
+  "editor.formatOnSave": true
 }
 ```
 
-Other editors have similar features. Check your editor's documentation for
-instructions on how to configure it to format your code on save.
+### Format before Commit
 
-### Format before commit
+If you want to ensure formatting even when someone forgets to enable
+format-on-save, you can add a Git pre-commit hook that runs `cargo fmt --check`
+and rejects the commit if any file is not formatted. Tools like
+[lefthook](https://github.com/evilmartians/lefthook) or
+[pre-commit](https://pre-commit.com/) make it straightforward to manage these
+hooks across a team. This is a lighter-weight alternative to catching formatting
+issues in CI, since it provides feedback before the code is even pushed.
 
 ### Format with Nix
 
-## Formatting TOML Configuration
+If your project uses Nix, you can define a formatter app in your flake that runs
+`rustfmt` (and any other formatters you need) with pinned versions. This lets
+contributors run `nix run .#fmt` to format everything without installing tools
+manually, and ensures that everyone uses the exact same formatter version
+regardless of what is installed on their system.
 
-In your Rust projects, you also have some configuration files in the TOML format
-that need to be formatted properly. You can use
-[Taplo](https://taplo.tamasfe.dev/) to achieve this.
+## Formatting TOML
+
+Rust projects also contain TOML configuration files (`Cargo.toml`,
+`rustfmt.toml`, `deny.toml`, etc.) that benefit from consistent formatting.
+[Taplo][taplo] is a TOML formatter and validator that can sort keys, normalize
+whitespace, and check for syntax errors. Like `rustfmt`, it supports a `--check`
+flag for CI usage.
+
+## CI Examples
+
+```admonish example title="Formatting check in GitHub Actions"
+~~~yaml
+name: Format
+on: [pull_request]
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rustfmt
+      - run: cargo +nightly fmt --check
+~~~
+
+Using nightly `rustfmt` in CI ensures that unstable configuration options are
+applied. If you only use stable options, `dtolnay/rust-toolchain@stable` is
+sufficient.
+```
+
+```admonish example title="Formatting check in GitLab CI"
+~~~yaml
+fmt:
+  image: rust:latest
+  script:
+    - rustup component add rustfmt
+    - cargo fmt --check
+~~~
+```
 
 ## Reading
 
@@ -135,11 +137,11 @@ title: Configuring Rustfmt
 url: https://rust-lang.github.io/rustfmt/
 author: Rustfmt Project
 ---
-Overview of all of the configuration options of Rustfmt. In general, you
-should not need to tweak these: the defaults that it comes with out-of-the-box
-are sane and used by the majority of Rust projects. However, if you have a good
-reason, you can look around here and configure Rustfmt. Keep in mind that using
-a non-standard Rustfmt configuration might alienate some developers.
+Full reference of all `rustfmt` configuration options: import grouping, brace
+style, line width, comment formatting, and more. Most projects never need to
+change the defaults, but this is where to look if you have a specific rule you
+want to override. Keep in mind that non-standard configuration can surprise
+contributors who expect the community defaults.
 ```
 
 ```reading
@@ -148,11 +150,13 @@ title: The Rust Style Guide
 url: https://doc.rust-lang.org/stable/style-guide/index.html
 author: The Rust Foundation
 ---
-Style guide issued by the Rust foundation. This is a concise document that
-outlines good style recommendations for Rust code. Usually, reading these is
-not as important because Rustfmt will enforce these automatically, but it can
-be useful to read.
+The official style guide that `rustfmt` implements. Covers indentation (4
+spaces), line width (100 characters), trailing commas, blank lines, and
+formatting rules for items, expressions, types, and attributes. Since `rustfmt`
+enforces these rules automatically, reading the guide is mainly useful for
+understanding the reasoning behind specific formatting decisions.
 ```
 
 [rustfmt-conf]: https://rust-lang.github.io/rustfmt/
 [rustfmt]: https://github.com/rust-lang/rustfmt
+[taplo]: https://taplo.tamasfe.dev/

@@ -1,26 +1,47 @@
 # Checks
 
-The Rust compiler is very good at finding bugs in the code, thanks to the type
-system and the borrow checker. However, there are some other things in a Rust
-project that can be checked continuously to avoid writing broken code.
+The Rust compiler catches a lot through its type system and borrow checker, but
+there are properties of a project that the compiler does not verify: formatting
+consistency, semver compliance, dependency security, spelling, and more. The
+Rust ecosystem has tooling to check each of these automatically, and this
+chapter covers the most useful ones.
 
-This chapter deals with some other aspects of Rust projects that should be
-checked, and offers some tooling that can be used to check them. It gives you
-suggestions that you can adopt in your workflows or CI jobs to give you
-confidence that your project is correct.
+Not all of these checks will be relevant to every project. For each one, you
+need to decide whether it runs in CI on every pull request, on a schedule, or
+only locally. Some checks (formatting, linting) are fast and cheap enough to
+gate every merge. Others (dependency auditing, feature powerset testing) are
+more expensive and may be better suited to scheduled runs. The summary table
+below gives recommendations for each tool.
 
-Not all of these checks might be interesting or relevant to you. You can use
-your own judgement of which checks you find are valuable and which ones are not
-worth adopting.
+Note that several of these checks go beyond Rust source code — they cover your
+dependency graph, your `Cargo.toml` manifests, and your documentation.
 
-For every check, you need to decide what the process is. Is it something that
-you want your developers to be able to run locally? If so, you need to give them
-instructions on how to install the necessary tooling locally, and how to ensure
-that they are all using the same version. Is it something you want to run in the
-CI, or periodically? At the end of this chapter, I provide an overview of each
-of the tools discussed, and how I would apply them.
+## Summary
 
-_This chapter includes sections that show you how to check properties of your
-entire project, rather than just your Rust code._
+Which checks matter depends on the project: a published library needs semver and
+minimum version checks that a binary never will, and `cargo-vet` is overkill for
+a personal project but essential for security-sensitive work. The table below
+summarizes each tool and suggests when to run it, ordered by lifecycle stage.
+
+| Goal                  | Tool                     | Cost   | When     |
+| --------------------- | ------------------------ | ------ | -------- |
+| Formatting            | `rustfmt`                | Low    | Commit   |
+| TOML Formatting       | `taplo`                  | Low    | Commit   |
+| Spelling              | `typos`                  | Low    | Commit   |
+| Linting               | `clippy`                 | Medium | Merge    |
+| Unused Dependencies   | `cargo-machete`          | Low    | Periodic |
+| Auditing Dependencies | `cargo-deny`             | Medium | Merge    |
+| Auditing Dependencies | `cargo-vet`              | High   | Merge    |
+| Outdated Dependencies | `cargo-upgrades`         | Low    | Periodic |
+| Crate Features        | `cargo-hack`             | High   | Merge    |
+| SemVer                | `cargo-semver-checks`    | Medium | Release  |
+| Minimum Versions      | `cargo-minimal-versions` | Medium | Release  |
+| MSRV                  | `cargo-msrv`             | Medium | Release  |
+
+**Commit** checks are fast enough to run locally as pre-commit hooks or
+format-on-save. **Merge** checks gate pull requests in CI. **Release** checks
+only matter when publishing a new version. **Periodic** checks run on a schedule
+(weekly, for example) to flag maintenance work without blocking day-to-day
+development.
 
 ## Reading

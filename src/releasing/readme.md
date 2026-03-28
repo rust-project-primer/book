@@ -1,25 +1,41 @@
 # Releasing
 
-Releasing is the process of publishing new versions of software. Typically,
-there is some process around it, which includes thorough testing to ensure that
-it is bug-free, and the publishing of artefacts (binaries).
+Releasing means publishing artifacts that others can use: source code to a
+package registry, compiled binaries as downloadable assets, system packages for
+distribution through a package manager, or container images for deployment. A
+release also communicates what changed, through version numbers and a changelog,
+so that users and downstream maintainers can decide when and how to upgrade.
 
-The release process for every project is different. Some projects combine
-releases with deployments of the updated software, which is called _Continuous
-Deployment_. Some projects create releases when there are enough new features to
-warrant a new version, others use a fixed calendar-based release cycle where a
-new version is released at fixed schedules.
+## Communication
 
-Some of the challenges when it comes to releases are:
+Every release needs to answer two questions: what version is this, and what
+changed? [Versioning](versioning.md) covers semantic versioning, how Cargo
+interprets version ranges, and conventions around pre-1.0 crates and
+prereleases. [Changelog](changelog.md) covers the _Keep A Changelog_ format and
+tools like `git-cliff` that generate changelogs from commit history. Together,
+version numbers and changelogs give downstream users enough information to
+decide whether an upgrade is safe and worth the effort.
 
-- How do you communicate breaking changes? Breaking changes are typically
-  encoded in the release version using _Semantic versioning_, and a changelog is
-  published that documents all changes for downstream users.
-- How do you make the software usable? This includes publishing binaries (for
-  applications), publishing packages (Debian packages, Flatpak files, RPM
-  packages), publishing it to Crate registries (for libraries), publishing
-  Docker containers.
-- How do you automate the release process so that it runs smoothly with little
-  human intervention?
+## Distribution
 
-This section addresses some of these questions.
+What you publish depends on what you're building. A library publishes to a
+[crate registry](crates.md), either crates.io or a private registry for internal
+code. An application has more options: [container images](containers.md) for
+server deployments, [system packages](packaging.md) like `.deb` files for
+end-user installation, or compiled binaries attached to a GitHub or GitLab
+release. Most projects use one or two of these; few need all of them.
+
+## Automation
+
+The Rust ecosystem has two main tools for automating the full release workflow.
+[`cargo-release`](changelog.md#cargo-release) runs locally: it bumps the version
+in `Cargo.toml`, generates changelog entries, creates a git tag, and publishes
+to crates.io in a single command. It handles workspace releases where multiple
+crates need coordinated version bumps. [`release-plz`](changelog.md#release-plz)
+takes a CI-first approach: it runs in your pipeline and opens a release PR
+containing the version bump and updated changelog. Merging the PR triggers
+publication automatically. Both tools integrate with
+[`git-cliff`](changelog.md#git-cliff) for changelog generation and
+[`cargo-semver-checks`](../checks/semver.md) for verifying that version bumps
+match the actual API changes. The [CI chapter](../ci/readme.md) covers how to
+wire these into your pipeline.

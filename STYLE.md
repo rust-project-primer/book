@@ -3,9 +3,9 @@
 This book should be a primer on starting, maintaining and understanding
 real-world Rust projects. It tries to cover the most common problems one might
 encounter in a real-world Rust project, and give some advice and context for how
-to solve them. It should give advise on structing them and on tools used to
+to solve them. It should give advice on structuring them and on tools used to
 solve common problems. It should reference existing articles and guides for more
-detailed information.
+detailed information. The book uses American English throughout.
 
 ## Structure
 
@@ -13,16 +13,17 @@ The structure of the book should not be overly nested. For the time being, it is
 limited to chapters and sections. Chapters organize it into high-level topics,
 while sections focus on a specific sub-topic.
 
-Every chapter should start with a brief introduction and high-level explanation
-of what topic it is about. If possible, it should link to articles that cover
-this topic.
+Every chapter should start with a structured overview that explains the topic
+and previews the subchapters with cross-references. The strongest chapter
+readmes frame what the chapter covers, why it matters, and how the subchapters
+relate to each other (see `src/releasing/readme.md` or `src/ci/readme.md` for
+examples).
 
-Every section should start with a brief introduction to explain what the problem
-is that it is trying to solve. It should have subheadings for solutions to the
-problem. Where possible, it should give examples of how to solve the problem,
-and reference articles, tutorials or chapters in other books that go into more
-detail. Every section should end with a _Reading_ section that provides a list
-of resources for further learning.
+Every section should open by explaining the concept or problem directly, then
+cover the tools and approaches for solving it. Where possible, it should give
+examples and reference articles, tutorials or chapters in other books that go
+into more detail. Every section should end with a `## Reading` section (always
+that exact heading) that provides a list of resources for further learning.
 
 ## Writing Style
 
@@ -39,28 +40,24 @@ Examples:
 - "If you want to use this, you first need to add support..."
 - "You can install it with Cargo..."
 
-### Problem-Driven Approach
+### Opening Sections
 
-Many sections begin with italicized scenario descriptions that set up real-world
-problems the reader might face. These scenarios should be specific and
-relatable, often framed as situations where something has gone wrong or a need
-has emerged.
+Sections should open by explaining the concept or problem directly, not by
+framing a hypothetical scenario. Do not use italicized "you notice that..."
+style openings. The strongest sections get to the point immediately: what the
+tool or concept is, why you would use it, and how it works.
 
-Format:
+Good:
 
-```
-_Scenario description explaining the problem context and why the reader would
-need the solution presented in this section._
-```
+> Semantic versioning encodes information into the version string. A version
+> looks like `1.2.3`, where the three numbers are called major, minor, and
+> patch.
 
-Example:
+Avoid:
 
-```
-_While Rust does have a local build cache in the `target` folder, you notice
-that this is not always useful. Especially in the CI system, the entire project
-is always rebuilt. It makes you wonder if there is some way to cache the build
-artifacts in a global cache that your team and the CI server can make use of._
-```
+> _You just released a new version of your crate, but a user reports that their
+> code broke after upgrading. You realize you need a way to communicate breaking
+> changes..._
 
 ### Technical Terminology
 
@@ -75,20 +72,22 @@ artifacts in a global cache that your team and the CI server can make use of._
 
 ### Lists and Structure
 
-- Use bullet points for procedural steps, feature lists, and options
-- Use numbered lists only when order matters (like installation steps)
-- Prefer prose paragraphs over excessive bullet points for better flow
-- Keep paragraphs focused on single concepts
+Bullet-point lists are fine for feature lists, options, or procedural steps, but
+overusing them makes sections read like notes rather than prose. If a section is
+mostly bullet points, rewrite the key content as paragraphs and keep lists for
+items that genuinely benefit from the format (comparison tables, command
+references, short enumerations). Use numbered lists only when order matters.
 
 ### Code Examples
 
-Provide practical, working examples rather than abstract demonstrations:
+Provide practical, working examples rather than abstract demonstrations. Include
+complete command lines with flags, and show expected output when it helps
+clarify behavior. Use realistic crate names and scenarios.
 
-- Include complete command lines with flags
-- Show both the command and expected output when helpful
-- Use realistic crate names and scenarios
-- Prefer inline code blocks over separate files unless the example is
-  substantial
+Code examples should live in the `examples/` directory and be pulled into
+chapters using `{{#include ...}}` directives. This keeps examples buildable and
+testable. Short inline code blocks (a few lines of configuration, a single
+command) are fine directly in the markdown.
 
 ## Admonitions
 
@@ -162,7 +161,9 @@ Brief description of the resource content and why it's relevant.
 
 - Always provide full name of author when known (not just handles)
 - Include archived PDF versions when possible to protect against link rot
-- Write concise but informative descriptions explaining the resource's value
+- Write summaries based on the actual content of the article, not just
+  restating the title. A good summary tells the reader what they will learn and
+  why it is worth reading.
 - Use appropriate style tags: `article`, `book`, `video`
 - Archive PDFs should be in A4 format without headers/footers in `src/archived/`
 
@@ -183,7 +184,9 @@ See the [Rust Book][rust-book] for more information.
 - Use a single top-level heading (`#`) per file
 - Limit to sections (`##`) and subsections (`###`)
 - Avoid deeply nested heading structures
-- Use descriptive, concise headings
+- Use descriptive, concise noun phrases ("Link-Time Optimization", not
+  "Enabling Link-Time Optimization")
+- Tool headings use backtick style: `` ## `cargo-foo` ``, not "## Cargo Foo"
 
 ### Line Length
 

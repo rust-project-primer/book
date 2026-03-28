@@ -12,7 +12,7 @@ new version is released at fixed schedules.
 
 Some of the challenges when it comes to releases are:
 
-- How do you communicate breaking changes? Often times, breaking changes are
+- How do you communicate breaking changes? Breaking changes are typically
   encoded in the release version using _Semantic versioning_, and a changelog is
   published that documents all changes for downstream users.
 - How do you make the software usable? This includes publishing binaries (for

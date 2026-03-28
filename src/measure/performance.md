@@ -1,8 +1,8 @@
 # Performance
 
-Rust often attracts people that care about performance. Often times, performance
-is not the end goal: instead, higher performance means higher efficiency. In an
-era of cloud computing, this translates to lower costs per request.
+Rust often attracts people that care about performance. Performance is rarely
+the end goal: instead, higher performance means higher efficiency. In an era of
+cloud computing, this translates to lower costs per request.
 
 Performance optimizations are a large subject, and this book will not go into
 depth when it comes to it. There are other books that do a better job of
@@ -25,12 +25,12 @@ performance of your code over time, by running benchmarks on every commit or
 periodically by a platform such as [Bencher][bencher] or the [Continuous
 Benchmark GitHub Action][continuous-benchmark].
 
-Often times, performance is a tradeoff. While Rust has some zero-cost
-abstrations that allow you to write simple code that is still fast, there are
-many situations where you have to make a choice between a simpler implementation
-or some tech debt, and doing it properly, resulting in more development time or
-more complex code. The only way to make these decisions properly is to have data
-for them. How much runtime performance are you trading by keeping your simple
+Performance is often a tradeoff. While Rust has some zero-cost abstrations that
+allow you to write simple code that is still fast, there are many situations
+where you have to make a choice between a simpler implementation or some tech
+debt, and doing it properly, resulting in more development time or more complex
+code. The only way to make these decisions properly is to have data for them.
+How much runtime performance are you trading by keeping your simple
 implementation? How much performance are you gaining by having a more complex
 implementation? Projects should make these decisions based on measurements, and
 not guesses.

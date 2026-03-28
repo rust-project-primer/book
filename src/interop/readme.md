@@ -1,11 +1,11 @@
 # Interfacing
 
 There are various reasons why you may want to interoperate with another language
-in a Rust project. Often times, code is not written in a vacuum, but rather the
-code you write needs to interact with an existing system. Or you need to make
-use of a library writte nin another language. The reverse could also be true:
-maybe you did write something useful in Rust, and you want to make it usable for
-people in another language.
+in a Rust project. Code is rarely written in a vacuum, but rather the code you
+write needs to interact with an existing system. Or you need to make use of a
+library writte nin another language. The reverse could also be true: maybe you
+did write something useful in Rust, and you want to make it usable for people in
+another language.
 
 ### Reasons for interop
 

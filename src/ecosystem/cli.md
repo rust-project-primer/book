@@ -42,7 +42,7 @@ flags and positional arguments.
   multiple actions (with different sets of flags and positional arguments).
 - **Flags** are used to modify the behavior of a command, such as `-v` or
   `--verbose`. Some flags can take values, such as `--log-level info` or
-  `-l info`. Often times it is also possible to set defaults using environment
+  `-l info`. It is also often possible to set defaults using environment
   variables. For example, specifying `LOG_LEVEL=info` will set the log level to
   _info_ by default, but setting the flag will override it.
 - **Positional arguments** are used to specify the input or output of a command.

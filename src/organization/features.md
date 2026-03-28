@@ -43,9 +43,8 @@ a = []
 b = []
 ```
 
-Often times, enabling a feature requires a dependency. In that case, you can
-tell Cargo that the dependency is only needed when the feature is enabled like
-this:
+Enabling a feature often requires a dependency. In that case, you can tell Cargo
+that the dependency is only needed when the feature is enabled like this:
 
 ```toml
 [dependencies]

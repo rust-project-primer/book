@@ -3,8 +3,8 @@
 Cross-compilation is the process of compiling code on one platform to produce
 executables for a different platform. Rust identifies platforms using [_target
 triples_][triple] like `x86_64-unknown-linux-gnu` or `aarch64-apple-darwin`. The
-compiler maintains a [list of supported targets][platform-support] organized into
-tiers based on the level of support each receives.
+compiler maintains a [list of supported targets][platform-support] organized
+into tiers based on the level of support each receives.
 
 <center>
 
@@ -122,7 +122,8 @@ QEMU's userspace emulators on the host:
 
     docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
-This uses the [`multiarch/qemu-user-static`](https://github.com/multiarch/qemu-user-static)
+This uses the
+[`multiarch/qemu-user-static`](https://github.com/multiarch/qemu-user-static)
 image to install binfmt handlers. The registration persists until reboot.
 
 ### Example: Dockerfile for cross-compiling for ARM64

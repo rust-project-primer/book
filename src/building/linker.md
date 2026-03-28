@@ -1,13 +1,13 @@
 # Linking
 
 Linking is often the bottleneck in Rust compile times, especially during
-development. After the compiler has translated each crate into object files,
-the linker combines them into a single executable. For a large project with
-hundreds of dependencies, there is a lot of data to process. Debug builds make
-this worse: Rust emits extensive debug information by default, and a typical
-backend service can produce debug binaries of 200 MB or more. Most of that
-volume passes through the linker, which on many systems defaults to GNU `ld` — a
-capable but single-threaded linker that was not designed for this scale.
+development. After the compiler has translated each crate into object files, the
+linker combines them into a single executable. For a large project with hundreds
+of dependencies, there is a lot of data to process. Debug builds make this
+worse: Rust emits extensive debug information by default, and a typical backend
+service can produce debug binaries of 200 MB or more. Most of that volume passes
+through the linker, which on many systems defaults to GNU `ld` — a capable but
+single-threaded linker that was not designed for this scale.
 
 There are three approaches to reducing link times: reducing the amount of data
 the linker has to process, using a faster linker, and using a parallel linker.
@@ -34,14 +34,14 @@ split-debuginfo = "packed"
 debug = "line-tables-only"
 ```
 
-For release builds, stripping debug information entirely is covered in [Binary
-Size](size.md).
+For release builds, stripping debug information entirely is covered in
+[Binary Size](size.md).
 
 ## `rust-lld`
 
 Starting with Rust 1.90, the Rust toolchain ships with and uses `rust-lld` (a
-bundled copy of LLVM's LLD linker) by default on `x86_64-unknown-linux-gnu`.
-LLD is significantly faster than GNU `ld` because it is designed for parallel
+bundled copy of LLVM's LLD linker) by default on `x86_64-unknown-linux-gnu`. LLD
+is significantly faster than GNU `ld` because it is designed for parallel
 processing and has a more efficient architecture for handling large inputs.
 
 Benchmarks from the Rust team show that LLD provides roughly 7x faster linking
@@ -59,8 +59,8 @@ The tradeoff is that mold must be installed separately and does not support all
 platforms. But if you are on Linux and link times are a bottleneck, mold is
 worth trying.
 
-To use mold, install it through your system package manager (e.g. `apt install
-mold` on Debian/Ubuntu) and configure Cargo to use it:
+To use mold, install it through your system package manager (e.g.
+`apt install mold` on Debian/Ubuntu) and configure Cargo to use it:
 
 ```toml
 [target.x86_64-unknown-linux-gnu]
@@ -159,7 +159,6 @@ recommends trying `mold`, `lld`, or `zld` (now deprecated) and shows how to
 configure each. Also covers other approaches that complement faster linking:
 removing unused dependencies, splitting large crates, and compilation caching.
 ```
-
 
 [mold]: https://github.com/rui314/mold
 [sold]: https://github.com/bluewhalesystems/sold

@@ -19,7 +19,7 @@ What property-testing frameworks typically do is:
   that you specify. Typically, this works by generating a random seed, and using
   that in combination with a [pseudorandom number generator][prng] to randomly
   generate data structures that are used as input.
-- **Simplify** failing inputs to crate a small failing test-case, also called
+- **Simplify** failing inputs to create a small failing test-case, also called
   _test case shrinking_. This attempts to reduce the input test case to
   something smaller to eliminate parts of the input data that don't matter, and
   to make it easier to reproduce and track down the bug.
@@ -34,16 +34,18 @@ What property-testing frameworks typically do is:
 ```admonish note
 There is some overlap between property testing and [fuzzing](./fuzzing.md).
 Both are testing strategies that rely on randomly generating input cases.
-Usually, the difference is that property testing focusses on testing a single
+Usually, the difference is that property testing focuses on testing a single
 component, whereas fuzzing tries to test a whole program. Additionally, fuzzing
 usually employs instrumentation, where it monitors at runtime which branches
-are taken and attempts to try to archieve full coverage. You can replicate
+are taken and attempts to achieve full coverage. You can replicate
 some of that by measuring [Test Coverage](../measure/coverage.md).
 
 Usually, property tests run fast and can be part of your regular unit tests,
 while fuzzing tests are run for hours and are not part of your regular testing
-routing.
+routine.
 ```
+
+## Overview
 
 ### General Principle
 
@@ -65,12 +67,12 @@ runs some _action_ on the input, and then verifies the output.
 If you are testing a stateful system, then the initial state of the system will
 be the input, and the resulting state will be the output.
 
-For exampe: if you have an API, and you are testing the _crate user_
+For example: if you have an API, and you are testing the _crate user_
 functionality, then your initial API (and database) state will be the input.
 Then you will run the action (create user). The property that you will test for
 in the output state will be that the user exists.
 
-### Testing against a reference
+### Testing Against a Reference
 
 Rather than manually testing properties, you can also write property tests to
 apply some operations onto both your implementation and a reference
@@ -86,8 +88,8 @@ approach lets you test more complex interactions.
 
 The way this works is that you create an enum that holds possible actions. These
 actions can be anything, for example if you are testing a data structure you
-might mimick the public interface of the data structure. If you are testing a
-REST API, this struct would mimick the API endpoints that you want to test.
+might mimic the public interface of the data structure. If you are testing a
+REST API, this struct would mimic the API endpoints that you want to test.
 
 ```rust
 pub enum Action {
@@ -117,37 +119,26 @@ fn test_interaction(actions: Vec<Action>) {
 }
 ```
 
-One of the ways you can use this is with a proxy object, which tracks a subset
-of the state.
+You can extend this pattern by adding a proxy object that tracks expected state
+alongside the real system. After each action, you assert that the real system's
+state matches the proxy's. This is essentially the "testing against a reference"
+approach from above, but applied to state transitions rather than pure
+functions.
 
-### Rust Crates
+### Frameworks
 
-There are three ecosystems of property-testing frameworks that you can use.
+There are three main property-testing ecosystems in Rust: `proptest`,
+`quickcheck`, and `arbtest`. They all follow the generate-shrink-record-replay
+pattern described above but differ in API design, shrinking strategy, and how
+test inputs are defined.
 
-To use property testing, you need a framework. Two popular ones in Rust are
-[quickcheck](https://github.com/BurntSushi/quickcheck) and
-[proptest](https://docs.rs/proptest/latest/proptest/). While they are both good,
-I recommend you use the latter.
+## `proptest`
 
-## Proptest
-
-Proptest is a framework that makes it easy to set up property-based testing in
-Rust. It lets you generate randomized inputs for your property-based tests. When
-it hits a failure, it attempts to reduce the input to a minimal example. It
-records failing test inputs such that they will be retried.
-
-If you use `proptest`, I recommend you to use it with the `test-strategy` crate,
-which just contains some macros that make it simpler to set it up and use it to
-test async code, for example.
-
-An example proptest, using the `test-strategy` crate looks like this:
-
-```rust
-#[proptest]
-fn test_parser(input: &str) {
-    let ast = parse(input);
-}
-```
+[`proptest`](https://docs.rs/proptest/latest/proptest/) is the most widely used
+property-testing framework in Rust. It uses composable _strategies_ to define
+how inputs are generated, and it has a powerful shrinking algorithm that reduces
+failing inputs to minimal examples. Failing seeds are recorded so they are
+replayed on future runs.
 
 ### Example
 
@@ -212,7 +203,7 @@ implementation of our sorting algorithm, it does not work for all inputs.
 ```
 
 Helpfully, proptest records this failure. Typically, it will save the failing
-seeds into a file adjacant to the source file that contains the test. In our
+seeds into a file adjacent to the source file that contains the test. In our
 case, it saves them into `tests/tests.proptest-regressions`.
 
 ```
@@ -223,7 +214,7 @@ Can we fix this? For sure. Looking at the test, we can deduce what the issue is.
 The problem seems to be that we remove all values from the input array, but we
 only add it to the output once. So when the input array contains duplicate
 values, the output will only contain a single one. We can fix this in the code
-by counting the occurences, and adding that many to the output:
+by counting the occurrences, and adding that many to the output:
 
 ```rust
 {{#include ../../examples/property-testing/src/lib.rs:sort_fixed}}
@@ -239,8 +230,8 @@ This example was maybe a bit simplistic, unit testing could have also caught
 this issue. But it shows the general principle of doing property testing: you
 identify general properties that your application should uphold after certain
 actions. It works well for stateless code that has an input and an output, like
-this. But you can also use it to test state transitions, which we will explain
-next.
+this. But you can also use it to test state transitions, as described in the
+Action Strategy section above.
 
 ```admonish warning
 Property testing is not guaranteed to find an issue, because it is randomized.
@@ -253,28 +244,98 @@ But if proptest does catch an issue, it makes it easy to reproduce it, debug it
 and ensure that it does not occur again (regression).
 ```
 
-## Test-Strategy
+### `test-strategy`
 
-The [test_strategy](https://docs.rs/test-strategy/latest/test_strategy/) is a
-supplementary crate for proptest. It has three useful features:
+The [`test-strategy`](https://docs.rs/test-strategy/latest/test_strategy/) crate
+is a companion to proptest that provides three features:
 
-- It allows you to write proptests more easily with an attribute macro
-- It allows you to write proptests that are async (with support for `tokio` and
-  `async-std` executors)
-- It allows you derive an `Arbitrary` implementation for your custom types,
-  making it easier to use them in property tests.
+- An attribute macro (`#[proptest]`) that lets you write property tests as
+  regular functions instead of using proptest's `proptest!` macro.
+- Support for async property tests (with `tokio` and `async-std` executors).
+- A derive macro for `Arbitrary` that makes it easy to generate custom types.
 
-## QuickCheck
+For example, writing a property test with `proptest` and the `test-strategy`
+crate looks like this:
 
-[QuickCheck](https://github.com/BurntSushi/quickcheck) is another property
-testing crate, named after the similarly named Haskell
-[QuickCheck](https://hackage.haskell.org/package/QuickCheck) package.
+```rust
+use test_strategy::proptest;
 
-## Arbitrary and Arbtest
+// regular test
+#[proptest]
+fn test_parser(input: String) {
+    let _ = parse(&input);
+}
 
-https://crates.io/crates/arbtest
+// async proptest (uses tokio executor)
+#[proptest(async = "tokio")]
+async fn test_async_parser(input: String) {
+    let _ = parse(&input).await;
+}
+```
 
-# Reading
+The advantage in using `test-strategy` is the pleasant syntax, and the fact that
+it handles async code easily.
+
+The derive macro for `Arbitrary` makes it easy to generate random test inputs
+for your custom structs.
+
+```rust
+use test_strategy::{proptest, Arbitrary};
+
+#[derive(Arbitrary)]
+pub struct User {
+    name: String,
+    age: u16,
+}
+
+#[proptest]
+fn test_user(user: User) {
+    // ...
+}
+```
+
+## `quickcheck`
+
+[`quickcheck`](https://github.com/BurntSushi/quickcheck) is the other
+established property-testing crate in Rust, named after the original Haskell
+[QuickCheck](https://hackage.haskell.org/package/QuickCheck) package. It
+predates proptest and has a simpler API: you implement the `Arbitrary` trait for
+your types and write test functions that return `bool`. QuickCheck handles
+shrinking automatically.
+
+The main difference from proptest is in how inputs are generated. Proptest uses
+composable strategies that are separate from the types being tested, while
+quickcheck ties generation to the type itself through `Arbitrary`. This makes
+proptest more flexible for complex input shapes, but quickcheck simpler for
+straightforward cases.
+
+## `arbtest`
+
+[`arbtest`](https://github.com/matklad/arbtest) is a minimalist property-testing
+library that builds on the
+[`arbitrary`](https://docs.rs/arbitrary/latest/arbitrary/) crate. Where proptest
+has its own strategy system and quickcheck has its own `Arbitrary` trait,
+`arbtest` reuses the `Arbitrary` trait from the `arbitrary` crate — the same
+trait used by fuzzing tools like `cargo-fuzz`. This means types you've already
+made fuzzable are immediately usable in property tests, and vice versa.
+
+The API is intentionally tiny:
+
+```rust
+use arbtest::arbtest;
+
+arbtest(|u| {
+    let input: Vec<u8> = u.arbitrary()?;
+    let sorted = sort(&input);
+    assert!(sorted.windows(2).all(|w| w[0] <= w[1]));
+    Ok(())
+});
+```
+
+<!-- TODO: research arbtest more deeply — shrinking behavior, comparison with
+     proptest strategies, real-world usage examples. Collect articles. -->
+
+## Reading
 
 ```reading
 style: book
@@ -318,7 +379,7 @@ url: https://www.lpalmieri.com/posts/an-introduction-to-property-based-testing-i
 author: Luca Palmieri
 archived: lpalmieri-an-introduction-to-property-based-testing-in-rust.pdf
 ---
-An exerpt from his book, *Zero to Production in Rust*, Luca does a deep-dive
+An excerpt from his book, *Zero to Production in Rust*, Luca does a deep-dive
 into property testing in Rust. He shows how to test a web backend using its
 REST API using both the `proptest` crate and the `quickcheck` crate.
 ```
@@ -336,7 +397,7 @@ implement property-testing in Rust.
 
 ```reading
 style: article
-title: Bridging fuzzzing and property testing
+title: Bridging fuzzing and property testing
 url: https://blog.yoshuawuyts.com/bridging-fuzzing-and-property-testing/
 author: Yoshua Wuyts
 archived: yoshuawuyts-bridging-fuzzing-and-property-testing.pdf
@@ -364,8 +425,31 @@ custom strategies for generating arbitrary test cases, and uses them to
 test his parser.
 ```
 
-https://www.tedinski.com/2018/12/11/fuzzing-and-property-testing.html
+```reading
+style: article
+title: Fuzzing and Property Testing
+url: https://www.tedinski.com/2018/12/11/fuzzing-and-property-testing.html
+author: Ted Kaminski
+---
+Compares fuzzing and property testing as complementary techniques rather than
+competing ones. Argues that property testing has a design advantage through
+co-design (iteratively refining code, invariants, and tests together), while
+fuzzing excels at security testing by avoiding human assumptions about which
+inputs matter. Also notes that with modern instrumentation, the gap between
+the two is narrowing.
+```
 
-https://jo3-l.dev/posts/proptest/
+```reading
+style: article
+title: Property-Based Testing in Rust with Proptest
+url: https://jo3-l.dev/posts/proptest/
+author: Joe L.
+---
+Demonstrates property-based testing with two concrete examples: validating a
+sorting algorithm produces sorted output, and roundtrip-testing a parser
+(`stringify(parse(x)) == x`). Shows how proptest uncovered real bugs in the
+author's profanity detection library that would have been difficult to find
+with example-based tests.
+```
 
 [fuzzing]: https://en.wikipedia.org/wiki/Fuzzing

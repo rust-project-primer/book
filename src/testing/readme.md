@@ -1,54 +1,45 @@
 # Testing
 
-Testing is the process of ensuring that code is correct. It can be done
-manually, but typically it is done in an automated way because it is cheaper
-over the long run. There are even some development paradigms that use tests as
-the primary artifacts of development, such as [Test-Driven Development][tdd].
+Testing is the process of verifying that code is correct. It can be done
+manually, but automated testing is cheaper over the long run because the same
+checks run on every change without human effort. Some development paradigms,
+like [Test-Driven Development][tdd], go further and use tests as the primary
+artifacts that drive design.
 
 ## Why Tests are Needed
 
-Having rigid tests ensures three things:
+Thorough tests give you three things: confidence that features work correctly
+for both expected and unexpected inputs, protection against regressions when
+code changes, and, when documentation is lacking, a form of executable
+specification that shows how code is intended to be used.
 
-1. Features are implemented and work correctly for all inputs, expected or
-   unexpected.
-2. Features that are correct now don't break in the future.
-3. In the case of missing documentation, tests are often the only thing close to
-   documenting how code is intended to be used.
+This matters for development speed. With good test coverage, developers can
+implement new features or refactor code without worrying about silently breaking
+existing functionality. Without it, bugs surface only in production.
 
-Having thorough tests makes development more pleasant (and speedy), because it
-allows developers to implement new features or refactor code, without having to
-worry about accidentally breaking existing functionality and only finding out
-when the code is deployed. But this is only possible when there is a reasonable
-test coverage.
-
-If you look at some of the most widely deployed and robust software, it tends to
-have one thing in common: there is an extensive set of tests for it. It goes so
-far that some projects charge a fee to get the tests. For example, SQLite, the
-most widely deployed database, is open-source. But the developers charge for
-access to the private test suite.
+The most robust software tends to have the most extensive tests. SQLite, the
+most widely deployed database, is a good example: the source code is free and
+open-source, but the developers charge for access to their test suite. This
+reflects a practical insight — for a database that must guarantee data integrity
+across billions of deployments, the value lies not in the code itself but in the
+tests that make it safe to change. SQLite has 100% branch coverage and millions
+of test cases.
 
 ## How Tests are Written
 
-Tests are often divided into different categories:
+Tests are typically divided into unit tests and integration tests. Unit tests
+exercise small pieces of code in isolation, often with access to private
+internals, and each test verifies a single behavior. Integration tests exercise
+the code from the outside, without access to internals, and verify that
+components work together correctly. The aim is to have many fast unit tests for
+individual behaviors and a smaller set of integration tests that tie the system
+together. Writing tests early influences the system design toward code that is
+easy to test.
 
-1. Unit tests test small units of code. They often have access to the private
-   internal state of the code. Every unit test tests exactly one feature.
-2. Integration tests test the code from an outside perspective, they don't have
-   access to the internal state of the code. They often don't test individual
-   features, but functionality as a whole.
-
-Typically, the aim is to have many unit tests, to make sure the features work,
-and have some integration tests that tie the system together as a whole.
-Ideally, running unit tests does not require external dependencies, but
-integration tests might.
-
-Another advantage of writing tests early is that it influences the system design
-to be in such a way that it is easy to test.
-
-Rust has another category of tests: documentation tests. In Rust, documentation
-can include code examples, and Cargo will test these as well. This ensures that
-documentation does not inadvertently get out of date, for example by changing
-interfaces.
+Rust adds a third category: documentation tests. Code examples in doc comments
+are compiled and executed by `cargo test`, which ensures that documentation
+stays in sync with the code. If an interface changes in a way that breaks a doc
+example, the test suite catches it.
 
 ## What this Chapter Covers
 
@@ -60,6 +51,7 @@ and costs, and they complement each other rather than competing.
 | ----------------- | ------------------------------------- | ------ | ------------ | ------------------- |
 | Unit tests        | Logic errors, regressions             | Fast   | Every commit | Every change        |
 | Integration tests | Interface mismatches, system behavior | Medium | Every commit | Before push         |
+| Doc tests         | Outdated documentation examples       | Fast   | Every commit | Every change        |
 | Snapshot tests    | Unintended output changes             | Fast   | Every commit | Every change        |
 | Property tests    | Edge cases, invariant violations      | Fast   | Every commit | Every change        |
 | Fuzzing           | Crashes, panics on untrusted input    | Slow   | Scheduled    | Occasionally        |
@@ -100,7 +92,7 @@ title: How to organize Rust tests
 url: https://blog.logrocket.com/how-to-organize-rust-tests/
 author: Andre Bogus
 ---
-In this article, Andre discusses how tests are best organized in Rust project.
+In this article, Andre discusses how tests are best organized in a Rust project.
 He goes over the various facilities that Rust has for writing tests, from
 testing that code in the documentation compiles (doctests), to simple unit
 tests, to integration tests, and explains concepts such as snapshot-testing and
@@ -111,11 +103,14 @@ fuzzing.
 style: article
 title: Writing software that's reliable enough for production
 url: https://www.sciagraph.com/docs/understanding/reliable/
-author: Scigraph
+author: Sciagraph
 ---
-In this article, approaches for building reliable real-world software are
-outlined. The article goes into depth explaining various testing strategies
-that ensure that software stays correct over time.
+Describes the testing strategy for Sciagraph, a Python memory profiler built
+with Rust. Covers coverage marks (verifying specific code paths are hit),
+property-based testing with proptest, end-to-end tests in both debug and
+release modes, and panic injection testing. Also discusses choosing Rust for
+memory safety, wrapping unsafe APIs in safe interfaces, and environmental
+assertions at startup to catch configuration mismatches.
 ```
 
 ```reading
@@ -200,7 +195,11 @@ title: Advanced Rust testing
 url: https://rust-exercises.com/advanced-testing/00_intro/00_welcome.html
 author: rust-exercises.com
 ---
-This course teaches advanced Rust testing concepts.
+Hands-on course that goes beyond basic testing into testing interactions with
+external systems like APIs and databases. Progresses through small lessons with
+exercises, building up to a comprehensive testing strategy for complex
+applications. Aimed at intermediate Rust developers who already know the
+basics of `#[test]` and want to expand their toolkit.
 ```
 
 [tdd]: https://en.wikipedia.org/wiki/Test-driven_development

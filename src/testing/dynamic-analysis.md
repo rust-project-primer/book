@@ -73,34 +73,32 @@ issues that might not manifest in normal testing environments. It is also useful
 for testing code that interfaces with external libraries through FFI, as this is
 a common source of unsafety.
 
-Miri is a bit limited, there are certain functionality that it does not support.
-For eaxmple, Miri does not support multithreading or SIMD instructions.
+Miri has some limitations that are worth knowing about. For example, Miri runs
+as a single-threaded interpreter (it simulates threads sequentially, like a
+multi-threaded OS on a single-core CPU), so it cannot detect bugs that depend on
+specific thread interleavings — but it can and does detect data races. SIMD
+support is limited, with only a subset of intrinsics implemented. Miri also
+cannot access platform-specific APIs, FFI, or networking.
 
-## Cargo Careful
+## `cargo-careful`
 
-[Cargo Careful](https://github.com/RalfJung/cargo-careful) is a lightweight tool
-that adds additional checks to your Rust code without the overhead of a full
-interpreter like Miri. It works by adding runtime checks for undefined behavior
-to your code through compiler flags and environment variables.
-
-Cargo Careful is particularly useful for:
-
-- Detecting issues in `unsafe` code during regular testing
-- Finding integer overflow in debug builds (which would panic in debug mode but
-  could cause undefined behavior in release mode)
-- Validating alignment requirements for memory accesses
-- Detecting uninitialized memory usage
-
-To use Cargo Careful, install it and run your tests with it:
+[`cargo-careful`](https://github.com/RalfJung/cargo-careful), by the same author
+as Miri (Ralf Jung), is a lighter-weight tool that adds extra runtime checks to
+your code without the overhead of a full interpreter. It works by enabling
+additional debug assertions in the standard library and your code, catching
+issues like uninitialized memory usage, misaligned memory accesses, and integer
+overflow.
 
 ```bash
 cargo install cargo-careful
-cargo careful test
+cargo +nightly careful test
 ```
 
-Cargo Careful offers a significant speed advantage over Miri, making it suitable
-for integration into regular test workflows. However, it detects fewer types of
-issues than Miri's more comprehensive analysis.
+The key advantage over Miri is speed: `cargo-careful` runs your tests at near
+normal speed, making it practical to include in regular test runs or CI. The
+tradeoff is that it catches fewer issues — it cannot detect aliasing violations
+or data races the way Miri can. Think of it as a middle ground between normal
+testing and a full Miri run.
 
 ## Valgrind
 
@@ -122,13 +120,15 @@ human-readable format.
 ## LLVM Sanitizers
 
 LLVM sanitizers ([AddressSanitizer][], [ThreadSanitizer][],
-[UndefinedBehaviorSanitizer][], [LeakSanitizer][]) must be enabled at compile
-time. They instrument your binary with additional checks on memory accesses or
-operations, depending on the sanitizer type. This instrumentation introduces
-performance overhead that varies by sanitizer type. These tools can detect
-certain issues beyond Valgrind's capabilities. issues these can detect that go
-beyond what Valgrind can detect, because of the instrumentation and metadata
-that they have.
+[UndefinedBehaviorSanitizer][], [LeakSanitizer][]) are compile-time
+instrumentation tools. Unlike Valgrind, which emulates execution, sanitizers
+insert checks directly into your binary during compilation. This gives them
+access to richer metadata (type information, allocation context) and lets them
+detect certain issues that Valgrind cannot, at the cost of requiring a
+recompilation with the appropriate flags.
+
+All sanitizers currently require a nightly toolchain because they use the
+unstable `-Z sanitizer` flag.
 
 [AddressSanitizer]: https://clang.llvm.org/docs/AddressSanitizer.html
 [ThreadSanitizer]: https://clang.llvm.org/docs/ThreadSanitizer.html
@@ -145,10 +145,10 @@ AddressSanitizer is designed to detect memory errors such as:
 - Stack-use-after-return
 - Double-free, invalid free
 
-You can use ASan with Rust by setting the following environment variables:
+You can use ASan with Rust by passing the sanitizer flag:
 
 ```bash
-RUSTFLAGS="-Z sanitizer=address" cargo test
+RUSTFLAGS="-Z sanitizer=address" cargo +nightly test
 ```
 
 ASan typically introduces a 2-3x runtime overhead but runs significantly faster
@@ -161,7 +161,7 @@ bugs that are hard to track down. Unlike ASan, MSan focuses specifically on
 detecting reads from uninitialized memory.
 
 ```bash
-RUSTFLAGS="-Z sanitizer=memory" cargo test
+RUSTFLAGS="-Z sanitizer=memory" cargo +nightly test
 ```
 
 MSan is particularly valuable for code that manually manages memory or
@@ -179,7 +179,7 @@ runtime, including:
 - Unreachable code execution
 
 ```bash
-RUSTFLAGS="-Z sanitizer=undefined" cargo test
+RUSTFLAGS="-Z sanitizer=undefined" cargo +nightly test
 ```
 
 UBSan has relatively low performance overhead (typically 20-50%) and can detect
@@ -192,7 +192,7 @@ valuable in Rust when using `unsafe` to implement concurrent data structures or
 when interfacing with external threading libraries.
 
 ```bash
-RUSTFLAGS="-Z sanitizer=thread" cargo test
+RUSTFLAGS="-Z sanitizer=thread" cargo +nightly test
 ```
 
 TSan has higher overhead (5-15x) but excels at identifying race conditions that
@@ -232,7 +232,7 @@ archived: herbsutter-safety-in-context.pdf
 ---
 In this article, Herb Sutter discusses the safety issues C++ has. While this is
 not directly relevant to Rust, he does make a good point about the fact that
-there is good tooling to catch a lot of issues (sanitiziers, for example) and
+there is good tooling to catch a lot of issues (sanitizers, for example) and
 that they should be more widely used, even by projects that use languages that
 are safer by design, such as Rust. While some consider C++ to be
 [defective](https://yosefk.com/c++fqa/defective.html), with the right tooling a
@@ -259,7 +259,7 @@ title: Rust and Valgrind
 url: https://nnethercote.github.io/2022/01/05/rust-and-valgrind.html
 author: Nicholas Nethercote
 ---
-Nicolas explains why your should use Valgrind with Rust, and what kinds
+Nicholas explains why you should use Valgrind with Rust, and what kinds
 of issues it can detect.
 ```
 

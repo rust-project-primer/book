@@ -1,36 +1,27 @@
 # Snapshot Testing
 
-Snapshot testing is a software testing technique that captures the output of a
-component or system and saves it as a reference for future comparisons. It helps
-ensure that the output **remains consistent over time** by comparing current
-results to previously stored snapshots, highlighting any changes that may
-indicate bugs or unintended modifications. In other words, a snapshot test
-asserts that _the output of this should not change_.
+Snapshot testing captures the output of some code and saves it as a reference
+file. On subsequent test runs, the output is compared against the saved
+snapshot, and any difference is flagged as a failure. The idea is simple: rather
+than writing expected values by hand, you let the framework record them for you
+and then verify that they don't change unexpectedly.
 
 ```admonish
-The name *snapshot testing* comes from the idea that the first time you run
-the tests, they will record the current output (take a *snapshot*), and then
-on subsequent runs compare the output to the previously recorded output.
-
-Some people also refer to it as *golden testing* (the snapshot being the
-*golden master*). *Transcript tests* is a related concept, that focusses
-on using the external APIs only.
+Some people also refer to this as *golden testing* (the snapshot being the
+*golden master*). *Transcript tests* are a related concept that focus on
+testing only the external interface of a tool.
 ```
 
-Generally, to use snapshot testing you will use some kind of framework which is
-responsible for creating, reading and updating the snapshots.
+Snapshot testing is not a replacement for unit testing. It is a complementary
+technique that makes it easy to add test cases and maintain them when output
+changes. This is especially valuable for code whose output is large or complex
+enough that writing expected values by hand would be tedious and error-prone.
 
-Snapshot testing is not a replacement for traditional unit-testing, rather it is
-a tool in your toolbelt that makes it easier for you to add more test cases, and
-maintain them when your code changes. Making it easy to add and maintain tests
-leads to having more test cases, which is beneficial for your codebase.
+### Snapshot testing vs unit testing
 
-## Example
-
-If you want to test that a function works correctly, with regular unit testing
-you would come up with test cases where you define and input and compare it with
-the expected output. You would then use some kind of assertion macro (in Rust,
-`assert_eq!` is used) to ensure that the output matches the expected output.
+With traditional unit testing, you tend to compare the output of some process to
+some known result. This requires you to be able to specify what the desired
+output should be.
 
 ```rust
 #[test]
@@ -47,13 +38,9 @@ fn test_to_json() {
 }
 ```
 
-Coming up with these test cases takes time. Also, there are situations where you
-don't care what the exact output is, just that it doesn't change. Also,
-maintaining the tests takes time, because you need to update the source code.
-
-With snapshot testing, instead you use the testing framework to record and
-compare the expected outputs. Here, we use the imagined `assert_snapshot!` macro
-to compare the output of `input.to_json()` to whatever was previously recorded.
+With snapshot testing, you assert the output of some process. Generally, you
+don't specify what that output is (the snapshot testing framework will help you
+with that), all you care about is that it stays the same.
 
 ```rust
 #[test]
@@ -63,86 +50,111 @@ fn test_to_json() {
         email: "name@example.com".to_string(),
     };
 
-    // pseudocode, replace this with whatever framework you use.
+    // the framework records the output on first run
+    // and compares against the saved snapshot on subsequent runs
     assert_snapshot!(input.to_json());
 }
 ```
 
-The first time you run this, it will run `input.to_json()`, record the output
-and save it in your repository as a snapshot. Depending on your framework, it
-may have a tool that lets you review the output before you save it.
+The snapshot testing framework will ensure that the output of `input.to_json()`
+will stay the same. If it does change, usually the frameworks will show you a
+diff so that you can find out what the change is. You can then choose if you
+accept the change (it was intended) or not.
 
-On subsequent test runs, it will use the saved snapshot as reference and compare
-it to the current output. If the output is different, it may be able to show you
-a diff that highlights where the output differs from what was previously
-recorded.
+### Use Cases
 
-If you ever change the implementation of the function you are testing, for
-example to alphabetically order the fields (so _email_ is serialized before
-_name_), the snapshot testing tool may help you by allowing you to review each
-changed output and accept it, rather than having to copy-and-paste changed
-output into the test sources.
+Snapshot testing works well for code that transforms data into a textual
+representation:
 
-## Use-Cases
+- **Serialization formats**: ensuring that a type always encodes to the same
+  JSON, TOML, or YAML.
+- **Data transformations**: capturing the output of a pipeline or compiler pass.
+- **UI component rendering**: capturing the generated HTML output of frontend
+  components, to make sure they don't change.
+- **Command-line tools**: recording the stdout/stderr of a CLI invocation for
+  various inputs.
 
-Some common use-cases of snapshot testing are:
+```admonish note
+The test suite for Cargo uses snapshot testing, but with a twist: it checks not
+only the output (standard error and standard output), it also tests the before
+and after filesystem state. It does that using [fixtures](https://github.com/rust-lang/cargo/tree/master/tests/testsuite/cargo_add/add_basic)
+which have the start state, the command to run, the expected console output,
+and the expected filesystem state after the command is run.
+```
 
-- **Data formats**: If you want to write tests for an encoding format, you can
-  use snapshot testing to ensure that the library will always encode types in
-  the same way deterministically.
-- **Data transformations**: When you want to test a function that transforms
-  data, you can use it to record outputs.
-- **Command-line tools**: If you want to write unit tests for a CLI tool, you
-  can use snapshot testing to capture and compare the standard output that the
-  CLI tool produces for various invocations.
+### How snapshot testing works
 
-# Insta
+The first time this test runs, it records the output and saves it. On subsequent
+runs, it compares the current output to the saved snapshot. If the output
+changes (for example, because you reordered the JSON fields), the snapshot tool
+shows you a diff and lets you accept the new output rather than forcing you to
+copy-paste updated values into your test source.
 
-Insta ([website][insta], [docs][insta-docs], [repo][insta-repo]) is at the time
-of writing the most popular snapshot testing framework in the Rust ecosystem. It
-comes batteries-included with support for different snapshot serialization
-formats and a command-line tool that allows you to review and record the outputs
-of your snapshot tests.
+## Insta
 
-### Insta Concepts
+[Insta][insta] ([docs][insta-docs], [repo][insta-repo]) is the most widely used
+snapshot testing framework in the Rust ecosystem. It ships with multiple
+serialization formats and a command-line tool for reviewing and accepting
+snapshot changes.
 
-Insta has a command-line tool called `cargo-insta` that you can use to record
-and update stored snapshots. Using this is not mandatory, but it makes it easier
-to manage, review and update snapshots. You can install it with cargo:
+### Macros
 
-    cargo install cargo-insta
+Insta provides several assertion macros that differ in how they serialize the
+value being snapshotted:
 
-It has several macros that allow you to take a snapshot of some value, which
-will be written into a file. They differ in how they serialize the value:
-depending on what you want to take a snapshot of, you can use the `Display`
-output, the `Debug` output, or a variety of serde encodings (JSON, TOML, YAML,
-CSV, RON). When using the serde encodings, the types that you are storing
-snapshots of must implement serde's `Serialize`.
+| Macro                    | Serialization                      |
+| ------------------------ | ---------------------------------- |
+| `assert_snapshot!`       | Uses the `Display` representation. |
+| `assert_debug_snapshot!` | Uses the `Debug` representation.   |
+| `assert_json_snapshot!`  | Uses JSON serialization.           |
+| `assert_yaml_snapshot!`  | Uses YAML serialization.           |
+| `assert_toml_snapshot!`  | Uses TOML serialization.           |
+| `assert_csv_snapshot!`   | Uses CSV serialization.            |
+| `assert_ron_snapshot!`   | Uses RON serialization.            |
 
-| Macro                           | Description                        |
-| ------------------------------- | ---------------------------------- |
-| `insta::assert_snapshot!`       | Uses the `Display` representation. |
-| `insta::assert_debug_snapshot!` | Uses the `Debug` representation.   |
-| `insta::assert_json_snapshot!`  | Uses the JSON serialisation.       |
-| `insta::assert_yaml_snapshot!`  | Uses the YAML serialisation.       |
-| `insta::assert_toml_snapshot!`  | Uses the TOML serialisation.       |
-| `insta::assert_csv_snapshot!`   | Uses the CSV serialisation.        |
-| `insta::assert_ron_snapshot!`   | Uses the RON serialisation.        |
+The serde-based macros (JSON, YAML, TOML, CSV, RON) require the snapshotted type
+to implement `Serialize`.
 
-Instead of running `cargo test`, you can run `cargo insta test`. The first time,
-this will record the initial values. The tool will show you each snapshot, allow
-you to review it, and if you are happy with it, store it.
+### Workflow
 
-Snapshots are by default stored in a `snapshot/` folder next to your code.
+The typical insta workflow has three steps:
 
-### Managing Snapshots
+1. **Run tests**: `cargo insta test` runs your test suite and writes any new or
+   changed snapshots to `.snap.new` files next to your code.
+2. **Review**: `cargo insta review` opens an interactive terminal UI that shows
+   you each pending snapshot change as a diff. You can accept or reject each one
+   individually.
+3. **Commit**: accepted snapshots are promoted from `.snap.new` to `.snap`
+   files, which you commit alongside your code.
 
-_TODO_
+These can be combined into a single command with `cargo insta test --review`.
+
+Snapshots are stored as `.snap` files in a `snapshots/` directory next to your
+test code by default.
+
+### Inline snapshots
+
+Insta also supports [inline snapshots][insta-inline], where the reference value
+is stored directly in the test source code using a `@"..."` syntax —
+`cargo insta review` updates the source file automatically when you accept a
+change.
+
+### CI
+
+In CI, you want tests to fail if any snapshot is out of date, without writing
+new snapshot files. Setting the `CI` environment variable (which most CI
+providers set automatically) enables this behavior. You can also explicitly
+control it:
+
+```bash
+# fail if any snapshot doesn't match, don't write .snap.new files
+INSTA_UPDATE=no cargo test
+```
 
 ### Testing Command-Line Tools
 
-Insta has an optional extension called insta-cmd ([repo][insta-cmd-repo],
-[docs][insta-cmd-docs]) that makes it easy to test command-line tools.
+Insta has an optional extension called [insta-cmd][insta-cmd-docs]
+([repo][insta-cmd-repo]) for snapshotting the output of external commands:
 
 ```rust
 use std::process::Command;
@@ -154,50 +166,52 @@ fn test_command() {
 }
 ```
 
-## Examples
+## Expect-Test
 
-_TODO_
+[`expect-test`][expect-test-docs] ([repo][expect-test-repo]) takes a different
+approach: instead of storing snapshots in separate files, it stores them inline
+in your test source code. When the output changes, running the tests with
+`UPDATE_EXPECT=1` rewrites the expected value in your source file directly.
 
-# Expect-Test
+```rust
+use expect_test::expect;
 
-expect-test ([repo][expect-test-repo], [docs][expect-test-docs]) is another
-crate that allows you to do snapshot testing. It is very minimal, offering only
-an `expect!` macro. It uses a different approach to insta, in that it stores the
-snapshots _inside your source code_. The interesting bit about it is that it is
-able to modifiy your source code to update the snapshot value, if needed. In
-some ways, that makes it a hybrid of unit-testing and snapshot testing.
+#[test]
+fn test_greeting() {
+    let actual = greet("World");
+    expect![[r#"Hello, World!"#]].assert_eq(&actual);
+}
+```
 
-Insta has support for doing this as well, with the [Inline
-Snapshots][insta-inline] feature.
+This makes expect-test a hybrid between unit testing and snapshot testing: the
+expected values live in the test code (like a unit test), but they are
+maintained automatically (like a snapshot test). Insta supports a similar
+workflow through its [inline snapshots][insta-inline] feature.
 
 ## Runt
 
-Runt ([repo][runt-repo], [docs][runt-docs]) is a tool for snapshot-testing
-binaries. It implements _transcript tests_, which are related to snapshot tests
-but generally work a bit different.
+[Runt][runt-repo] ([docs][runt-docs]) is a tool for snapshot-testing
+command-line programs. It implements _transcript tests_: you write a file
+containing commands and their expected output, and runt verifies that running
+the commands still produces the same output. This is related to snapshot testing
+but focuses specifically on testing the external behavior of text-processing
+tools.
 
 ## Reading
 
 ```reading
 style: article
-title: Insta - Snapshot Testing for Rust
-url: https://blog.bryantluk.com/insta-rs-snapshot-testing-library/
-author: Bryant Luk
+title: What if writing tests was a joyful experience?
+url: https://blog.janestreet.com/the-joy-of-expect-tests/
+author: James Somers
 ---
-Bryant explores insta, explaining how using it helps with development speed
-because changes in code do not require fixing many test cases, but simply
-reviewing changes in snapshots. He highlights a feature of insta that allows
-for running tests against multiple input files.
-```
-
-```reading
-style: article
-title: Using Insta for Rust snapshot testing
-url: https://blog.logrocket.com/using-insta-rust-snapshot-testing/
-author: Agustinus Theodorus
----
-In this article, Agustinus explains how to use insta-rs to do snapshot testing
-in Rust. He shows how to set it up, and demonstrates using it by an example.
+Describes how expect tests at Jane Street make testing feel like a REPL
+session: developers write minimal test code with blank expect blocks, the
+system fills in the actual output, and you accept the diff with a keybinding.
+Argues that by removing the friction of writing assertions, expect tests
+encourage more comprehensive testing because "by relieving you from having to
+dream up exactly what you want to assert, expect tests make it easier to
+implicitly assert more."
 ```
 
 ```reading
@@ -206,11 +220,11 @@ title: Try Snapshot Testing for Compilers and Compiler-Like Things
 url: https://www.cs.cornell.edu/%7Easampson/blog/turnt.html
 author: Adrian Sampson
 ---
-Adrian argues that snapshot testing is a good tool for programs that turn text
-into other text, which describes compilers and lots of compiler-like things. He
-describes turnt, a Python implementation of a snapshot-testing tool. He
-explains that using snapshot testing makes it easy to add new tests, and that
-the resulting tests can serve as a kind of documentation.
+Argues that snapshot testing is ideal for programs that transform text into
+other text — compilers, linters, formatters, and similar tools. Introduces
+turnt, a minimal snapshot testing tool, and makes the case that prioritizing
+easy test creation over precise assertions is a worthwhile tradeoff when human
+review of output changes is cheap.
 ```
 
 ```reading
@@ -219,22 +233,35 @@ title: Building Industrial Strength Software without Unit Tests
 url: https://chrispenner.ca/posts/transcript-tests
 author: Chris Penner
 ---
-Chris describes a concept called transcript tests, which are a kind of
-snapshot test that focus on testing the external behaviour of a tool, commonly
-a text-based tool. He explains how these allow for writing tests without
-actually writing tests.
+Introduces transcript tests: markdown files that document expected behavior
+through executable code blocks and their outputs, serving as both tests and
+user-facing documentation. The key insight is that testing the external
+interface (rather than internal implementation) means refactors don't break
+tests unless observable behavior changes, removing a major psychological
+barrier to improving code.
 ```
 
 ```reading
 style: article
-title: What if writing tests was a joyful experience?
-url: https://blog.janestreet.com/the-joy-of-expect-tests/
-author: James Somers
+title: Insta - Snapshot Testing for Rust
+url: https://blog.bryantluk.com/insta-rs-snapshot-testing-library/
+author: Bryant Luk
 ---
-James describes a pattern that is commonly used at Jane Street: expect tests.
-He explains how writing tests this way makes them fun, and sometimes more
-useful because all of the state is easily visible. He explains how they work,
-and how they relate to some Rust libraries such as `expect-test` and `insta`.
+Walkthrough of using insta in a Rust project, highlighting how snapshot
+testing speeds up development because code changes don't require manually
+fixing test cases — you review snapshot diffs instead. Demonstrates insta's
+glob feature for running tests against multiple input files.
+```
+
+```reading
+style: article
+title: Using Insta for Rust snapshot testing
+url: https://blog.logrocket.com/using-insta-rust-snapshot-testing/
+author: Agustinus Theodorus
+---
+Step-by-step tutorial showing how to set up insta, write snapshot tests, and
+use `cargo-insta` to review and accept changes. Good starting point if you
+want a hands-on introduction.
 ```
 
 [expect-test-docs]: https://docs.rs/expect-test/latest/expect_test/

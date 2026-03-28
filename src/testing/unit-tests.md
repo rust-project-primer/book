@@ -12,12 +12,12 @@ they are placed, they have visibility into non-`pub` methods and functions,
 allowing them to test internal state.
 
 Integration tests on the other hand are compiled as if they were an external
-crate that happens to depend on your crate. They can only test anything that
-is publically visible, and not internal state of your structs.
+crate that happens to depend on your crate. They can only test what is
+publicly visible, not internal state of your structs.
 ```
 
 In Rust, you can annotate any function with `#[test]` and it will be a (unit or
-integration) test. Here is how a simple test case might look like:
+integration) test. Here is what a simple test case looks like:
 
 ```rust
 #[test]
@@ -72,11 +72,71 @@ But you can do more than this: you can add members to your structs that only
 exist during unit testing. For example, if you want visibility into internal
 states, this allows you to enable extra member methods.
 
+### Testing Panics
+
+Sometimes you want to verify that code panics under certain conditions — for
+example, that an out-of-bounds index triggers a panic rather than silently
+returning garbage. The `#[should_panic]` attribute marks a test that is expected
+to panic:
+
+```rust
+#[test]
+#[should_panic(expected = "index out of bounds")]
+fn out_of_bounds() {
+    let v = vec![1, 2, 3];
+    let _ = v[5];
+}
+```
+
+The `expected` parameter is optional but recommended: it matches against the
+panic message, so the test fails if the code panics for a different reason than
+you intended.
+
+### Ignoring Tests
+
+The `#[ignore]` attribute marks a test that should be skipped during normal
+`cargo test` runs. This is useful for tests that are slow, require special
+setup, or depend on external services:
+
+```rust
+#[test]
+#[ignore]
+fn slow_integration_test() {
+    // takes minutes to run
+}
+```
+
+Ignored tests can be run explicitly with `cargo test -- --ignored`, or you can
+run all tests including ignored ones with `cargo test -- --include-ignored`.
+
+### Parameterized Tests with rstest
+
+The [`rstest`][rstest] crate lets you write parameterized tests — running the
+same test logic with multiple inputs without duplicating the test function:
+
+```rust
+use rstest::rstest;
+
+#[rstest]
+#[case(0, 0)]
+#[case(1, 1)]
+#[case(2, 1)]
+#[case(3, 2)]
+#[case(4, 3)]
+fn fibonacci(#[case] input: u32, #[case] expected: u32) {
+    assert_eq!(fib(input), expected);
+}
+```
+
+Each `#[case]` generates a separate test, so failures point you directly to
+which input combination failed. `rstest` also supports fixtures for shared setup
+logic across tests.
+
 ### Pretty Assertions
 
-The pretty-assertions crate ([repo][pretty-assertions-repo],
-[docs][pretty-assertions-docs]) helps you understand breaking test cases better
-by showing you a diff when two values don't match.
+The [`pretty-assertions`][pretty-assertions-repo] crate
+([docs][pretty-assertions-docs]) helps you understand test failures by showing a
+colored diff when two values don't match, rather than just printing both values.
 
 ## Testing async code
 
@@ -126,3 +186,4 @@ code, accepting some duplication in exchange for clarity.
   https://github.com/rust-pretty-assertions/rust-pretty-assertions
 [pretty-assertions-docs]:
   https://docs.rs/pretty_assertions/latest/pretty_assertions/
+[rstest]: https://docs.rs/rstest/latest/rstest/

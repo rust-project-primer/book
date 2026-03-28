@@ -1,16 +1,11 @@
 # Features
 
-_A Rust library that you are working on implements a web server. Your webserver
-comes with support for doing TLS, however not all of your users require it. The
-support for TLS requires several dependencies. Your users complain that they
-like to use your webserver, however they are unhappy with it making their builds
-slow because it pulls in a lot of dependencies. What can you do to ensure that
-your webserver does not take too much time to build?_
-
-In this situation, you have two options: you can move the TLS-related
-functionality into a separate crates (as discussed in the previous section), or
-you can turn it into an optional feature of your crate such that it can be
-disabled.
+Sometimes a library crate supports functionality that not all users need, and
+that functionality pulls in heavy dependencies. For example, a web server crate
+might support TLS, but users who terminate TLS at a load balancer don't need
+those dependencies. There are two ways to handle this: move the functionality
+into a separate crate (as discussed in the previous section), or make it an
+optional feature that users can disable.
 
 ```admonish
 When you have optional features that can easily be pulled out into a separate

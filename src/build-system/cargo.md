@@ -135,13 +135,22 @@ correctly.
 
 [cc]: https://docs.rs/cc/latest/cc/
 
-### Compiling CMake projects
+### Compiling CMake Projects
 
-- use the `cmake` crate
+If the native code you need to build uses CMake as its build system, the
+[`cmake`](https://docs.rs/cmake/latest/cmake/) crate provides a build script
+helper that invokes CMake and links the resulting library into your Rust binary.
+It handles finding CMake, passing the right flags for the target platform, and
+telling Cargo where the compiled library lives.
 
 ### Generating Bindings for C/C++ Libraries
 
-- using rust-bindgen
+Writing `extern "C"` declarations by hand is tedious and error-prone.
+[`bindgen`](https://rust-lang.github.io/rust-bindgen/) automates this by parsing
+C/C++ header files and generating the corresponding Rust FFI declarations. It is
+typically used inside a build script to regenerate bindings whenever the headers
+change. See the [Interop](../interop/readme.md) chapter for more detail on
+working with C and C++ from Rust.
 
 [build-script-input]:
   https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-build-scripts
@@ -185,7 +194,8 @@ The way you can solve this is by putting a
 instruct `rustup` to fetch the exact toolchain mentioned in this file whenever
 you run any operations in the project.
 
-Typically, such a file simply looks like this:
+A minimal `rust-toolchain.toml` that pins the stable toolchain and ensures
+`rustfmt` and `clippy` are available looks like this:
 
 ```toml
 [toolchain]
@@ -194,18 +204,13 @@ components = ["rustfmt", "clippy"]
 ```
 
 Keep in mind that this file is only picked up by people who use `rustup` to
-manage their Rust toolchains.
+manage their Rust toolchains. However, `rustup` is commonly used by Rust
+developers to install and update their Rust toolchains, so this works well in
+practise.
 
-```admonish note
-Putting `rust-toolchain.toml` file in your project lets you specify exactly which
-version of the Rust compiler is used by the people working on the project.
-```
-
-Example:
-
-```admonish example title="Specifying Rust toolchain version using a rust-toolchain.toml file"
-TODO
-```
+External tooling is also able to read and use these files. For example, when
+using Nix to build Rust projects, the `crane` module can read this file and use
+it to tell Nix which Rust toolchain to pick.
 
 ### Specifying the minimum toolchain version for library crates
 
@@ -228,17 +233,26 @@ should always specify this.
 ```
 
 ```admonish example title="Specifying the MSRV for library crates"
-TODO
+Set the `rust-version` field in your `Cargo.toml`:
+
+~~~toml
+[package]
+name = "my-library"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+~~~
+
+Cargo will warn or error when someone tries to use your library with a
+toolchain older than this. See the [MSRV](../checks/msrv.md) chapter for how
+to verify this value is correct.
 ```
 
-## Convenience Commands
+## Common Commands
 
-Cargo has a useful selection of convenience commands built-in to it that make
-using it to manage Rust projects easy.
+Cargo has a useful selection of built-in commands for managing Rust projects.
 
-https://blog.logrocket.com/demystifying-cargo-in-rust/
-
-## Initializing Cargo project
+## Initializing a Project
 
 To quickly create a Cargo project, you can use `cargo new`. By default, it will
 create a binary crate, but you can use the `--lib` flag to create a library
@@ -314,6 +328,9 @@ incorporated into Cargo by the team due to it being useful.
 
 ### Building Documentation
 
+Cargo can generate API documentation from your doc comments using `rustdoc`. See
+the [Documentation](../documentation/readme.md) chapter for more detail.
+
 ```
 cargo doc
 ```
@@ -327,16 +344,19 @@ supporting tools.
 
     cargo install ripgrep
 
-- mention cargo-binstall
+Compiling from source can be slow.
+[`cargo-binstall`](https://github.com/cargo-bins/cargo-binstall) is an
+alternative that downloads pre-built binaries when available, falling back to
+source compilation when not. Many popular tools publish pre-built binaries that
+`cargo-binstall` can find automatically.
 
 ## Profiling Builds
 
-If you want to figure out what Cargo is spending most of the time on during
-builds, you can use the built-in profiling support. This generates a HTML report
-of the timings of the build and allows you to debug slow builds. However, it
-only works using nightly Rust.
+If you want to understand where Cargo is spending time during builds, you can
+use the built-in timing report. This generates an HTML page showing which crates
+took the longest to compile and how they overlapped:
 
-    cargo +nightly build --timings=html
+    cargo build --timings
 
 ## Conclusion
 
@@ -388,7 +408,10 @@ url: https://weihanglo.tw/posts/2024/the-missing-parts-in-cargo/
 author: Weihang Lo
 archived: weihanglo-the-missing-parts-in-cargo.pdf
 ---
-Weihang discusses Cargo, and what is missing from it.
+Weihang, a Cargo team member, discusses features that Cargo lacks or that
+are still in development: pre/post-build hooks, better support for non-Rust
+code, build script sandboxing, and cross-compilation ergonomics. Useful
+context for understanding why some projects turn to external build systems.
 ```
 
 ```reading

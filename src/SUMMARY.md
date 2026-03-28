@@ -90,7 +90,7 @@
   - [Changelog](releasing/changelog.md)
   - [Versioning](releasing/versioning.md)
   - [Crate Registry](releasing/crates.md)
-  - [Containerize](releasing/docker.md)
+  - [Containers](releasing/containers.md)
   - [Packaging](releasing/packaging.md)
 - [Continuous Integration](ci/readme.md)
   - [GitHub Actions](ci/github.md)

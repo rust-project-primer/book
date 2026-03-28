@@ -1,31 +1,20 @@
 # Task Runners
 
-Often times, it can be useful to automate tasks in code projects. This could
-involve:
+Every project accumulates commands that developers need to run repeatedly:
+building releases, starting databases for tests, generating documentation,
+checking for unused dependencies. A task runner gives these commands names and
+makes them discoverable, so developers don't have to remember (or look up) the
+exact invocations.
 
-- Automating processes, such as creating releases of the project,
-- Launching services required for running or testing the software, such as a
-  database
-- Generating documentation
-- Maintenance commands, such as checking for unused dependencies
+Many open-source projects use [Makefiles](https://ivan.sh/make/) for this, but
+Makefiles were designed for build dependency tracking, not running tasks. They
+require workarounds like `.PHONY` targets and have surprising behavior around
+quoting and shell compatibility. The tools in this section are purpose-built for
+task running.
 
-These tasks can often be captured as command-line scripts of tool invocations.
-To make developer's lives easier, it can be useful to use some tool to make it
-easy to run these tasks. This is what task runners do, they allow you to define
-a list of preset tasks along with the commands that need to be run, and give
-developers an easy way to run them.
-
-Some IDEs are even able to parse these definitions and offer some graphical
-interface for invoking them.
-
-A common pattern that can be found in open-source software is the
-[use of Makefiles to automate tasks](https://ivan.sh/make/). However, Makefiles
-are often not ideal, requiring some workarounds such as making the tasks as
-`.PHONY` to work.
-
-High-level build system such as Bazel typically have some built-in support for
-creating custom tasks that can be run, and don't benefit as much from task
-runners described in this section.
+Some IDEs can parse task runner definitions and offer a graphical interface for
+invoking them. Build systems like Bazel and Buck2 have their own task
+infrastructure and don't benefit as much from these tools.
 
 ## Just
 
@@ -55,21 +44,37 @@ test:
 
 With this definition, you can run the tasks like this:
 
-    just release
-    just test
+```bash
+just release
+just test
+```
 
 You can also list all available tasks:
 
-    just --list
+```bash
+$ just --list
+Available recipes:
+    release # release this version
+    test    # run unit and integration tests, starts database before tests
+```
+
+A common pattern is setting up `just` so that it shows the available commands
+when run with no arguments. You can do that like this:
+
+```
+# List available recipes
+default:
+    @just --list
+```
 
 Just has support for tasks taking arguments, integrations with various IDEs,
 some built-in functions, support for variables and much more. The
 [Just Programmer's Manual](https://just.systems/man/en/) describes all of the
 features it has to offer.
 
-## Cargo Make
+## `cargo-make`
 
-[cargo-make](https://github.com/sagiegurari/cargo-make) is a Rust task runner
+[`cargo-make`](https://github.com/sagiegurari/cargo-make) is a Rust task runner
 and build tool. It lets you define tasks in a `Makefile.toml`. It supports task
 dependencies and has some built-in features that are useful in Rust projects,
 such as the ability to install crates.
@@ -98,12 +103,24 @@ Tasks can also have dependencies on other tasks, and these dependencies can be
 set conditionally, such as per-platform, allowing you to write platform-specific
 or environment-specific implementations for tasks.
 
-## Cargo XTask
+## `cargo-xtask`
 
-[Cargo XTask](https://github.com/matklad/cargo-xtask) is less of a tool and more
-a pattern for defining bespoke tasks for Rust projects. The advantage of it is
-that you write the tasks themselves in Rust, and `cargo-xtask` is only used to
-run them.
+[`cargo-xtask`](https://github.com/matklad/cargo-xtask) is less of a tool and
+more of a pattern. You add a `xtask` crate to your workspace that contains your
+automation scripts written in Rust, and a Cargo alias that runs it:
+
+```toml
+# .cargo/config.toml
+[alias]
+xtask = "run --package xtask --"
+```
+
+The advantage is that your task definitions are type-checked Rust code with
+access to all the crates in your ecosystem (file manipulation, HTTP requests,
+argument parsing). The disadvantage is more boilerplate than a `Justfile` for
+simple tasks. The `cargo-xtask` pattern works best for projects that already
+have complex build logic or where tasks need to interact with Rust APIs
+directly.
 
 ## Reading
 

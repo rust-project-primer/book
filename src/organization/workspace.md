@@ -12,8 +12,6 @@ even has a feature catered to exactly this use-case: the _workspace_. When you
 use a workspace, you tell Cargo that group of crates are related and should
 share the same build cache, and optionally some metadata.
 
-- statistics on how many Rust projects use workspaces
-
 ## Creating a Workspace
 
 You can create a Cargo workspace by adding a `[workspace]` section in your
@@ -55,8 +53,8 @@ default_file = "Cargo.toml"
 
 ## Dependencies
 
-When you work in a large workspace, often times you have a set of dependencies
-that all of the crates in the workspace use. In that case, typically you want to
+When you work in a large workspace, you often have a set of dependencies that
+all of the crates in the workspace use. In that case, typically you want to
 ensure that they all use the same version of the dependency.
 
 For that use-case, Cargo Workspaces allows you to declare dependencies on a
@@ -95,7 +93,7 @@ the version of the crates in sync. To do this, you set metadata in the
 ```toml
 [workspace.package]
 license = "MIT"
-authors = ["John Doe <john.doe@example.com"]
+authors = ["John Doe <john.doe@example.com>"]
 ```
 
 To use this, you have to then reference it in the child crates.
@@ -210,15 +208,39 @@ This chapter in the Cargo Book explains how Cargo resolves crate features
 in workspaces.
 ```
 
-[rfc: collapse Tokio sub crates into single tokio crate](https://github.com/tokio-rs/tokio/issues/1318)
+```reading
+style: article
+title: "Collapse Tokio sub crates into single tokio crate"
+url: https://github.com/tokio-rs/tokio/issues/1318
+author: Tokio Project
+---
+The Tokio project did the reverse of what this chapter recommends: they used to
+be composed of many small crates and merged them into a single crate. This
+discussion contains important context for why that decision was made, including
+the overhead of managing cross-crate dependencies, version coordination, and
+the confusion it caused for users. A useful counterpoint to the "prefer small
+crates" advice.
+```
 
-_The Tokio project did the reverse: they used to be composed of many small
-crates, and merged them all into one crate. This discussion contains important
-context for why this decision was made, and has some arguments against having
-many small crates._
+```reading
+style: article
+title: "Why is my Rust build so slow: splitting into more crates"
+url: https://fasterthanli.me/articles/why-is-my-rust-build-so-slow#splitting-into-more-crates
+author: Amos Wenger
+---
+Section from a longer article on Rust build performance. Amos walks through
+splitting a project into multiple crates and measures the compile time impact,
+showing where it helps and where the overhead of additional linking and
+dependency resolution can offset the gains.
+```
 
-[Why is my Rust build so slow: splitting into more crates](https://fasterthanli.me/articles/why-is-my-rust-build-so-slow#splitting-into-more-crates)
-
-https://corrode.dev/blog/tips-for-faster-rust-compile-times/#split-big-crates-into-smaller-ones-using-workspaces
-
-_TODO_
+```reading
+style: article
+title: "Split big crates into smaller ones using workspaces"
+url: https://corrode.dev/blog/tips-for-faster-rust-compile-times/#split-big-crates-into-smaller-ones-using-workspaces
+author: Matthias Endler
+---
+Section from Matthias' compile time tips article. Explains how to use
+workspaces to split large crates and the compile time benefits of doing so,
+including better incremental compilation and parallelism.
+```

@@ -1,11 +1,9 @@
 # Organization
 
-In Rust, code organization is facilitated through a range of structures:
-_files_, _modules_, _crates_, and _workspaces_. This chapter aims to provide
-guidance on how to best utilize these elements to structure your Rust projects
-effectively. The emphasis will be on achieving two key objectives: _enhancing
-development speed_ and _promoting loose coupling_ for better code
-maintainability.
+Rust organizes code through _files_, _modules_, _crates_, and _workspaces_. How
+you use these structures affects two things that matter as a project grows:
+_development speed_ (how fast you can compile and iterate) and _loose coupling_
+(how easily you can change one part without breaking another).
 
 <figure>
 
@@ -34,34 +32,21 @@ project.
 
 ## Development Speed
 
-Rust emphasizes a feature known as _zero-cost abstractions_. These are
-programming abstractions that are beneficial for developers, offering utility
-without incurring any runtime cost. This focus sets Rust apart from many other
-programming languages, which offer similar abstractions but with a runtime
-penalty. However, these zero-cost abstractions in Rust are not without their own
-trade-off: they often lead to longer compile times[^proc].
-
-This trade-off means Rust code is typically optimized for fast execution at the
-expense of compile speed. Yet, faster compile times hold their own importance.
-They are crucial in maintaining a tight iteration loop, allowing developers to
-quickly make code changes, compile, and test. This rapid feedback loop is
-essential for efficient feature development and debugging.
-
-In this chapter, we'll delve into various choices that can be made while setting
-up a Rust project to optimize compile times. We'll explore these options and
-their implications, aiming to balance efficient development cycles with optimal
-runtime performance.
+Rust's zero-cost abstractions produce fast binaries, but at the expense of
+compile times[^proc]. This tradeoff means that how you organize your project
+directly affects how fast you can iterate. A tight compile-test loop is
+essential for productive development, and the organizational choices in this
+chapter (splitting into crates, using workspaces, managing features) are the
+main levers you have to keep compile times under control as a project grows.
 
 ## Loose Coupling
 
-To ensure a system remains maintainable, testable, and easily adaptable,
-employing a strategy of loose coupling[^coupling] is often useful. Working with
-a large, monolithic application that's tightly coupled can be challenging and
-complex, making changes difficult. The ideal scenario involves creating code
-composed of smaller, independent units that can be tested on an individual
-basis. In this chapter, we'll explore how to achieve this level of modularity
-and loose coupling in Rust, laying out strategies to build systems that are both
-robust and flexible.
+Large, monolithic codebases become difficult to change because everything
+depends on everything else. Splitting code into smaller, independent units with
+well-defined interfaces makes it easier to test components in isolation, assign
+ownership to different teams, and change implementations without cascading
+breakage. Rust's module and crate system provides natural boundaries for
+achieving this[^coupling].
 
 ## Reading
 

@@ -1,14 +1,7 @@
 # Small Crates
 
-_When you started your Rust project, you just created a new carte using
-`cargo new` and started developing. Initially, everything seemed to go well,
-however over time the complexity and the number of features grew. More and more
-you are feeling held back by very long compile times and a very long time needed
-to run all of the unit tests. You feel that there should be a better way to do
-this._
-
-It is very easy to get started with a Rust project simply by creating a new
-crate, adding some dependencies to it and calling it a day.
+Starting a Rust project is easy: `cargo init`, add some dependencies, and start
+writing code.
 
 ```
 cargo init my-project

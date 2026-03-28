@@ -44,7 +44,7 @@ so.
 
 To fully build the book, run
 
-    nix build
+    nix build .?submodules=1
 
 To work on it, first launch a development shell with:
 

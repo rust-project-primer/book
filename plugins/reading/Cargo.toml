@@ -1,0 +1,21 @@
+[package]
+name = "mdbook-reading"
+version = "0.3.0"
+edition = "2024"
+authors = ["Patrick Elsen <pelsen@xfbs.net>"]
+license = "MIT"
+description = "Preprocessor for mdbook which renders reading blocks using mdbook-admonish"
+
+[dependencies]
+anyhow = "1.0.75"
+clap = { version = "4.4.8", features = ["derive"] }
+env_logger = "0.10.1"
+log = "0.4.20"
+mdbook-preprocessor = "0.5.2"
+pulldown-cmark = "0.13.0"
+pulldown-cmark-to-cmark = "21.0.0"
+serde = { version = "1.0.192", features = ["derive"] }
+serde_json = "1.0.108"
+serde_yaml = "0.9.34"
+tera = { version = "1.20.0", default-features = false, features = ["builtins"] }
+url = { version = "2.5.4", features = ["serde"] }

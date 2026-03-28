@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     mdbook-files.url = "github:xfbs/mdbook-files";
-    mdbook-reading.url = "github:rust-project-primer/mdbook-reading";
+    mdbook-reading.url = "path:./plugins/reading";
     mdbook-admonish-src = {
       url = "github:padamson/mdbook-admonish/feat/mdbook-0.5-compat";
       flake = false;

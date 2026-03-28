@@ -1,0 +1,43 @@
+stages:
+    - build
+    - upload
+    - release
+
+variables:
+    PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/mdbook-reading/${CI_COMMIT_TAG}"
+    TARGET_NAME: x86_64-unknown-linux-musl
+
+build:
+    stage: build
+    image: rust:latest
+    script:
+        - rustup target add $TARGET_NAME
+        - cargo build --release --target $TARGET_NAME
+        - mkdir bin
+        - mv target/$TARGET_NAME/release/mdbook-reading bin/mdbook-reading-${CI_COMMIT_TAG}
+    cache:
+        paths:
+            - target/release/
+    artifacts:
+        paths:
+            - bin
+    rules:
+        - if: $CI_COMMIT_TAG
+
+upload:
+    stage: upload
+    image: curlimages/curl:latest
+    rules:
+        - if: $CI_COMMIT_TAG
+    script:
+        - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file bin/mdbook-reading-${CI_COMMIT_TAG} ${PACKAGE_REGISTRY_URL}/mdbook-reading-${CI_COMMIT_TAG}'
+
+
+release:
+    stage: release
+    image: registry.gitlab.com/gitlab-org/release-cli:latest
+    rules:
+        - if: $CI_COMMIT_TAG
+    script:
+      - 'release-cli create --name "mdbook-reading-$CI_COMMIT_TAG" --tag-name $CI_COMMIT_TAG --assets-link "{\"name\":\"mdbook-reading-${CI_COMMIT_TAG}\", \"url\":\"${PACKAGE_REGISTRY_URL}/mdbook-reading-${CI_COMMIT_TAG}\",\"filepath\":\"/mdbook-reading-amd64\"}"'
+

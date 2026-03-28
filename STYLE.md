@@ -161,9 +161,9 @@ Brief description of the resource content and why it's relevant.
 
 - Always provide full name of author when known (not just handles)
 - Include archived PDF versions when possible to protect against link rot
-- Write summaries based on the actual content of the article, not just
-  restating the title. A good summary tells the reader what they will learn and
-  why it is worth reading.
+- Write summaries based on the actual content of the article, not just restating
+  the title. A good summary tells the reader what they will learn and why it is
+  worth reading.
 - Use appropriate style tags: `article`, `book`, `video`
 - Archive PDFs should be in A4 format without headers/footers in `src/archived/`
 
@@ -184,8 +184,8 @@ See the [Rust Book][rust-book] for more information.
 - Use a single top-level heading (`#`) per file
 - Limit to sections (`##`) and subsections (`###`)
 - Avoid deeply nested heading structures
-- Use descriptive, concise noun phrases ("Link-Time Optimization", not
-  "Enabling Link-Time Optimization")
+- Use descriptive, concise noun phrases ("Link-Time Optimization", not "Enabling
+  Link-Time Optimization")
 - Tool headings use backtick style: `` ## `cargo-foo` ``, not "## Cargo Foo"
 
 ### Line Length

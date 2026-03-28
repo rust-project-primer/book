@@ -42,6 +42,11 @@ mdbook serve
 
 ### Examples
 
+- https://docs.rust-embedded.org/book/
+- todo: find more examples
+- todo: explain how to use it
+- pattern: change src/ to docs/ and put output in target/docs
+
 ### Usage
 
 ## Reading

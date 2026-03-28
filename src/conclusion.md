@@ -17,4 +17,20 @@ In my opinion, software development can only be sustainable and scale if we can
 automate the boring parts. I hope that this book does a good job of teaching you
 just how to do that, in the context of working on Rust software projects.
 
-[Ready-to-go CI pipelines](https://www.lpalmieri.com/posts/2020-06-06-zero-to-production-1-setup-toolchain-ides-ci/#6-2-ready-to-go-ci-pipelines)
+## Contributing
+
+If you want to give something back to the Rust community, consider getting
+involved:
+
+- Helping with the [Rust compiler][rustc], the [RFC process][rfc], or joining a
+  [working group][governance].
+- Contributing to the [crate ecosystem][crates]: features, bug fixes, or
+  improving documentation.
+- Sharing what you learn through blog posts, guides, or tutorials.
+
+[rustc]: https://github.com/rust-lang/rust
+[rfc]: https://github.com/rust-lang/rfcs
+[governance]: https://www.rust-lang.org/governance
+[crates]: https://crates.io
+
+<!-- [Ready-to-go CI pipelines](https://www.lpalmieri.com/posts/2020-06-06-zero-to-production-1-setup-toolchain-ides-ci/#6-2-ready-to-go-ci-pipelines) -->

@@ -1,61 +1,32 @@
 # Preface
 
-I have always been a bit of a programming language nerd. Growing up, I realized
-that we live in some of the most exciting times to be alive, the digital
-revolution is in full force. In the span of a century, we have fundamentally
-changed the way we operate and communicate, by bringing computers into our daily
-lives.
+This book exists because learning Rust and learning how to run a Rust project
+are two different things. There are excellent resources for the language itself:
+The Rust Book, Rust by Example, to name just a few. But once you know the syntax
+and the borrow checker, you still need to figure out how to structure a
+codebase, set up CI, manage dependencies across a workspace, write tests that
+actually catch bugs, and ship the result to users. There are established
+patterns in the Rust community, but that knowledge is scattered across blog
+posts, README files, and tribal experience. I wrote this book to bring it
+together in one place.
 
-Every programming language is a product of its time. Early programming languages
-existed in much more resource-constrained environments. They had to be designed
-so that they could be compiled without needing to use too much computing power
-or memory.
+The book assumes you already know Rust. It is not a language tutorial. Instead,
+it focuses on the practical side of running a Rust project: how to organize
+code, which tools to use for formatting, linting, testing, and benchmarking, how
+to set up continuous integration, how to document and release your work, and how
+to make good choices when the ecosystem gives you several options. Where
+possible, I try to explain the tradeoffs rather than just prescribing a single
+answer.
 
-But now, well into the 21st century, we live in an overabundance of computing
-resources. Yet, we still continue using the same languages that we came up with
-50 years ago. And we can feel the pain: the applications we use are often either
-insecure or slow.
+Much of what is in here comes from years of working with Rust professionally and
+learning from open-source projects, and from studying how well-run projects in
+the ecosystem handle the same problems. I have tried to make it
+information-dense and practical: something you can read through once to get the
+lay of the land, and come back to later when you need to set up a specific tool
+or make a specific decision.
 
-In my mind, Rust is a bit of fresh air in the programming language world. It is
-unique in being one of the few languages that manages to pack revolutionary
-ideas (memory safety in a systems language, borrow checker) into a language that
-is usable in the real world. Previous attempts at adding safety have typically
-ended up as language that are neat from an academic viewpoint but not usable in
-practice. But now, even Microsoft and Google are adopting it.
-
-To me, Rust makes programming very joyful. It is like LEGO, you have all these
-little pieces and you can put them together any way you want. You can write
-multithreaded code with confidence. You can write async code with confidence.
-You can mix and match. And unlike C and C++, you can have confidence that they
-actually work, and that your application doesn't collapse like a Jenga tower
-once it gets too big.
-
-Rust certainly isn't perfect, but in my opinion it is _fun_. And I would like
-more people to be able to enjoy it. In this book, I try to compress all of the
-things I have learned from using Rust in the past 8 years, to make sure that you
-can build cool things, too.
-
-## License
-
-I'm licensing this book under the _CC BY-NC-SA 4.0_ license. Licensing it this
-way gives you a lot of freedom to adapt this book and update it, as long as you
-do not do so for commercial gain. I hope that it will be useful to some.
-
-If you want to give something back to the Rust community, I suggest you get
-involved in the community, for example:
-
-- Helping with the [Rust compiler development][rustc], [RFC process][rfc] or
-  joining a [workgroup][governance],
-- Helping the Rust [crate ecosystem][crates], by participating in building
-  features or fixing bugs,
-- Sharing your knowledge through blog posts, guides or tutorials.
-
-[rustc]: https://github.com/rust-lang/rust
-[rfc]: https://github.com/rust-lang/rfcs
-[governance]: https://www.rust-lang.org/governance
-[crates]: https://crates.io
-
-If you are new to the Rust programming language, I recommend you to spend some
-time writing documentation for Rust crates that need it. It is a good way to be
-exposed to some Rust code and make an impact. Adding good documentation is
-usually appreciated and uncontroversial.
+Rust is not perfect, but it is a language that rewards investment. The tooling
+is good, the ecosystem is maturing rapidly, and the community cares deeply about
+quality. I hope this book helps you build on that foundation, and helps give you
+the tools you need to structure your project well, so that you can focus on
+writing great code and get the most out of the ecosystem.

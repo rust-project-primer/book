@@ -33,12 +33,33 @@ In addition to that, there are some mdBook plugins that are used:
 - mdbook-reading
 - mdbook-files
 
-## Building
+## Development
 
-To build the book, you can do one of:
+This book uses Nix to make sure you have the right versions of the dependencies
+needed to build it. If you don't already have Nix, install it. Using
+[Determinate](https://docs.determinate.systems/) is the recommended way to do
+so.
 
-- Install dependencies and run `just build`
-- Run `nix build .?submodules=1`
+To fully build the book, run
+
+    nix build
+
+To work on it, first launch a development shell with:
+
+    nix develop
+
+Within that shell, you can run the expected `mdbook` commands:
+
+    mdbook build
+    mdbook serve
+
+To apply the automatic formatter to the markdown files, run this command from
+the root of the repository:
+
+    nix run .#fmt
+
+This needs to be done before making a commit, otherwise CI will reject the
+changes.
 
 ## Style
 

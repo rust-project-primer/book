@@ -150,14 +150,16 @@ and the plan to expand to other Linux targets.
 ```reading
 style: article
 title: Tips For Faster Rust Compile Times
+archived: corrode-faster-rust-compile-times.pdf
 url: https://corrode.dev/blog/tips-for-faster-rust-compile-times/
 author: Matthias Endler
-archived: corrode-faster-rust-compile-times.pdf
 ---
-Broad survey of techniques for reducing Rust compile times. The linker section
-recommends trying `mold`, `lld`, or `zld` (now deprecated) and shows how to
-configure each. Also covers other approaches that complement faster linking:
-removing unused dependencies, splitting large crates, and compilation caching.
+Comprehensive list of techniques for reducing Rust compile times, covering the
+full range: updating the toolchain, enabling the parallel compiler frontend,
+removing unused dependencies, diagnosing slow crates with `cargo build
+--timings`, splitting large crates, workspace-level optimizations, and
+compilation caching. A good starting point if you want to survey all available
+options before diving into the specific chapters below.
 ```
 
 [mold]: https://github.com/rui314/mold

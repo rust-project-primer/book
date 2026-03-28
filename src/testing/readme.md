@@ -101,7 +101,7 @@ fuzzing.
 
 ```reading
 style: article
-title: Writing software that's reliable enough for production
+title: Writing Software that's Reliable Enough for Production
 url: https://www.sciagraph.com/docs/understanding/reliable/
 author: Sciagraph
 ---

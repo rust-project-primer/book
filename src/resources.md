@@ -198,11 +198,12 @@ title: Writing Software that's Reliable Enough for Production
 url: https://www.sciagraph.com/docs/understanding/reliable/
 author: Sciagraph
 ---
-Uses a production memory profiler as a case study to demonstrate
-reliability strategies: language choice, comprehensive testing (unit,
-end-to-end, property-based, panic injection), startup validation, and
-careful dependency management. Shows how many of the practices in this
-book work together in a real system.
+Describes the testing strategy for Sciagraph, a Python memory profiler built
+with Rust. Covers coverage marks (verifying specific code paths are hit),
+property-based testing with proptest, end-to-end tests in both debug and
+release modes, and panic injection testing. Also discusses choosing Rust for
+memory safety, wrapping unsafe APIs in safe interfaces, and environmental
+assertions at startup to catch configuration mismatches.
 ```
 
 ## Videos

@@ -164,19 +164,16 @@ author.
 
 ```reading
 style: article
-title: Rust Documentation Ecosystem Review
+title: "Rust Documentation Ecosystem Review"
 archived: rust-documentation-ecosystem-review.pdf
 url: https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/
 author: Gio Genre De Asis
 ---
 A thorough evaluation of documentation quality across ~25 popular Rust crates
-(rand, chrono, jiff, axum, bevy, tokio, clap, and more) using the Diátaxis
-framework, which categorizes documentation into four types: tutorials (learning
-by doing), how-to guides (goal-oriented), reference (factual), and explanation
-(philosophy/rationale). The author scores each crate on comprehensiveness,
-discoverability, approachability, and whether the library's design philosophy
-is documented. The jiff crate stands out as a model for documentation
-quality, with its `_documentation` module pattern (`include_str!` for
-COMPARE.md, DESIGN.md) making design rationale discoverable through docs.rs.
-A valuable read for anyone thinking about how to document their own crate.
+using the Diátaxis framework (tutorials, how-to guides, reference,
+explanation). Scores each crate on comprehensiveness, discoverability,
+approachability, and design philosophy. The jiff crate stands out for its
+`_documentation` module pattern and design rationale docs; ratatui for its
+iterative tutorials and website. A valuable read for understanding what
+separates adequate documentation from genuinely helpful documentation.
 ```

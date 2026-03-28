@@ -1,4 +1,5 @@
-use anyhow::{Context as _, Result};
+use anyhow::{Context as _, Result, bail};
+use log::{error, warn};
 use mdbook_preprocessor::{
     Preprocessor, PreprocessorContext,
     book::{Book, BookItem, Chapter},
@@ -6,6 +7,7 @@ use mdbook_preprocessor::{
 use pulldown_cmark::{CodeBlockKind, CowStr, Event, Options, Parser, Tag, TagEnd};
 use pulldown_cmark_to_cmark::cmark;
 use serde::Deserialize;
+use std::path::PathBuf;
 use url::Url;
 
 fn default_label() -> String {
@@ -24,28 +26,39 @@ pub struct Config {
 #[derive(Debug)]
 pub struct Instance {
     config: Config,
+    /// The directory where the book source files live (root + src).
+    src_dir: PathBuf,
 }
 
 impl Instance {
-    pub fn new(config: Config) -> Self {
-        Self { config }
+    pub fn new(config: Config, src_dir: PathBuf) -> Self {
+        Self { config, src_dir }
     }
 
     fn map(&self, book: Book) -> Result<Book> {
         let mut book = book;
+        let mut errors: Vec<String> = Vec::new();
         book.items = std::mem::take(&mut book.items)
             .into_iter()
-            .map(|section| self.map_book_item(section))
+            .map(|section| self.map_book_item(section, &mut errors))
             .collect::<Result<_, _>>()?;
+        if !errors.is_empty() {
+            for err in &errors {
+                error!("{}", err);
+            }
+            let msg = format!("found {} archived file(s) that do not exist", errors.len());
+            error!("{}", msg);
+            bail!("{}", msg);
+        }
         Ok(book)
     }
 
-    fn map_book_item(&self, item: BookItem) -> Result<BookItem> {
+    fn map_book_item(&self, item: BookItem, errors: &mut Vec<String>) -> Result<BookItem> {
         let result = match item {
             BookItem::Chapter(chapter) => {
                 let title = chapter.name.clone();
                 let chapter = self
-                    .map_chapter(chapter)
+                    .map_chapter(chapter, errors)
                     .with_context(|| format!("mapping chapter {title:?}"))?;
                 BookItem::Chapter(chapter)
             }
@@ -55,16 +68,26 @@ impl Instance {
         Ok(result)
     }
 
-    fn map_chapter(&self, mut chapter: Chapter) -> Result<Chapter> {
-        chapter.content = self.map_markdown(&chapter.content)?;
+    fn map_chapter(&self, mut chapter: Chapter, errors: &mut Vec<String>) -> Result<Chapter> {
+        let chapter_path = chapter
+            .source_path
+            .as_deref()
+            .map(|p| p.display().to_string())
+            .unwrap_or_else(|| chapter.name.clone());
+        chapter.content = self.map_markdown(&chapter.content, &chapter_path, errors)?;
         chapter.sub_items = std::mem::take(&mut chapter.sub_items)
             .into_iter()
-            .map(|item| self.map_book_item(item))
+            .map(|item| self.map_book_item(item, errors))
             .collect::<Result<_, _>>()?;
         Ok(chapter)
     }
 
-    fn map_markdown(&self, markdown: &str) -> Result<String> {
+    fn map_markdown(
+        &self,
+        markdown: &str,
+        chapter_path: &str,
+        errors: &mut Vec<String>,
+    ) -> Result<String> {
         let mut parser = Parser::new_ext(markdown, Options::all());
         let mut events = vec![];
 
@@ -76,7 +99,9 @@ impl Instance {
                     if *label == self.config.label =>
                 {
                     let mapped = match parser.next() {
-                        Some(Event::Text(code)) => self.map_code(code).context("Mapping code")?,
+                        Some(Event::Text(code)) => self
+                            .map_code(code, chapter_path, errors)
+                            .context("Mapping code")?,
                         other => unreachable!("Got {other:?}"),
                     };
 
@@ -95,9 +120,39 @@ impl Instance {
         Ok(output)
     }
 
-    fn map_code(&self, code: CowStr<'_>) -> Result<Vec<Event<'static>>> {
+    fn map_code(
+        &self,
+        code: CowStr<'_>,
+        chapter_path: &str,
+        errors: &mut Vec<String>,
+    ) -> Result<Vec<Event<'static>>> {
         let (header, content) = code.split_once("---").unwrap();
         let header: Header = serde_yaml::from_str(header)?;
+
+        // Validate archive status for articles
+        if header.style == "article" {
+            match &header.archived {
+                None => {
+                    warn!(
+                        "{}: missing archived for article: {}",
+                        chapter_path, header.url
+                    );
+                }
+                Some(filename) => {
+                    let prefix = self.config.archives.as_deref().unwrap_or("");
+                    let prefix = prefix.trim_start_matches('/');
+                    let archive_path = self.src_dir.join(prefix).join(filename);
+                    if !archive_path.exists() {
+                        errors.push(format!(
+                            "{}: archived file not found: {} (expected at {})",
+                            chapter_path,
+                            filename,
+                            archive_path.display()
+                        ));
+                    }
+                }
+            }
+        }
 
         let title = header.title(&self.config);
 
@@ -151,7 +206,8 @@ impl Preprocessor for ReadingPreprocessor {
     fn run(&self, ctx: &PreprocessorContext, book: Book) -> Result<Book> {
         let key = format!("preprocessor.{}", self.name());
         let config: Config = ctx.config.get(&key)?.unwrap();
-        let instance = Instance::new(config);
+        let src_dir = ctx.root.join(&ctx.config.book.src);
+        let instance = Instance::new(config, src_dir);
         instance.map(book)
     }
 }

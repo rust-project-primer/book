@@ -1,69 +1,76 @@
-# Crate Registry
+# Crate Registries
 
-The default way to release Rust crates (libraries and binaries) is to a Crate
-registry. The default crate registry for Rust is [crates.io][], with 150k crates
-published, almost a million crate versions and (at the time of writing) 77
-million crate downloads, it is the largest repository of Rust code.
+The standard way to distribute Rust crates is through a registry.
+[Crates.io][crates.io] is the public registry used by the Rust community. It is
+free, integrates with [docs.rs][] for automatic documentation hosting, and is
+where the vast majority of open-source Rust libraries are published. Publishing
+a library there makes it available to anyone via `cargo add`, and binary crates
+can be installed with `cargo install`.
 
-Publishing your crates on there is free, and it allows others to use the
-libraries you have written as simple as running `cargo add your-library`. If you
-publish your code there, the documentation for it is also generated
-automatically and published on [docs.rs][], Rust's public crate documentation
-browser.
+## Publishing to crates.io
 
-Any binary crates you have published there are easily installable by other Rust
-users with `cargo install`. For example, if you want to install [ripgrep][], a
-useful tool for searching through local git repositories, you can do so simply
-by running:
+To publish, you need a GitHub account to log in to crates.io and generate an API
+token. Authenticate with Cargo and publish:
 
-    cargo install ripgrep
+```bash
+cargo login <api-token>
+cargo publish
+```
 
-But in a commerical setting, you may have some internal crates that you want to
-share, but not publically. Using a crate repository makes for a more pleasant
-experience than having direct git dependencies, because Cargo supports semantic
-versioning (but this does not work with git dependencies). [RFC 2141][rfc2141]
-specifies how this works, and today there are some commercial private crate
-registries that you can use, or you can even host your own registry.
+Your crate must include certain metadata in `Cargo.toml` (name, version,
+license, description) before it can be published. See [Publishing on
+crates.io][publishing] for the full requirements.
 
-## Rust Crate Registry
+If you publish a version by mistake, you can yank it. Yanking prevents new
+projects from depending on that version, but does not delete it — existing
+projects that already depend on it continue to work. This avoids the kind of
+breakage seen in the
+[left-pad incident](https://www.theregister.com/2016/03/23/npm_left_pad_chaos/),
+where deleting a package from NPM broke a large part of the JavaScript
+ecosystem.
 
-[Crates.io][crates.io] is the public Rust package index. It is free and used by
-the Rust community to share libraries and tooling. It integrates with
-[docs.rs][] to automatically build and host documentation for any crates that
-are published to it.
+```bash
+cargo yank --version 1.2.3
+```
 
-To use it, all you need is a GitHub account. You can log in on their website and
-generate an API token. With that, you can log in using Cargo:
+## Private Registries
 
-    cargo login <api-token>
+In a commercial setting, you may have internal crates that you want to share
+within your organization but not publish publicly. While Cargo supports git
+dependencies, a private registry is preferable because it enables semantic
+versioning and version resolution — features that do not work with git
+dependencies. [RFC 2141][rfc2141] specifies how alternative registries work with
+Cargo.
 
-Once you are ready to publish your crate, you can do so using Cargo:
+Several private registry options exist:
 
-    cargo publish
+- [**Shipyard**](https://shipyard.rs/) is a hosted private registry service. It
+  replicates the crates.io experience for private crates, with authentication
+  and access control.
+- [**Kellnr**](https://kellnr.io/) is a self-hosted private registry that you
+  can run on your own infrastructure.
+- [**JFrog Artifactory**](https://jfrog.com/) supports Cargo registries as part
+  of its broader artifact management platform, alongside npm, Maven, Docker, and
+  other package formats.
 
-If you accidentally published a version that you did not intend to publish, you
-can yank it. Yanking does not delete it, to avoid situations like the
-[left-pad disaster](https://www.theregister.com/2016/03/23/npm_left_pad_chaos/),
-where a developer deleted a package from NPM that a lot of JavaScript libraries
-relied upon, temporarily breaking the internet.
+To configure Cargo to use an alternative registry, add it to your
+`.cargo/config.toml`:
 
-    cargo yank
+```toml
+[registries.my-registry]
+index = "sparse+https://my-registry.example.com/index/"
+```
 
-In order to be able to publish your package, it must contain some required
-metadata. See
-[Publishing on crates.io](https://doc.rust-lang.org/cargo/reference/publishing.html)
-for more details on what is required and how you can manage your packages.
+Then publish to it or depend on crates from it:
 
-## Shipyard
+```bash
+cargo publish --registry my-registry
+```
 
-[Shipyard](https://shipyard.rs/) is a private cargo registry service. It
-replicates
-
-## JFrog
-
-## Kellnr
-
-[Kellnr](https://kellnr.io/)
+```toml
+[dependencies]
+my-internal-crate = { version = "1.0", registry = "my-registry" }
+```
 
 ## Reading
 
@@ -73,8 +80,9 @@ title: "Chapter 14.2: Publishing to Crates.io"
 url: https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html
 author: The Rust Book
 ---
-In this section of the Rust book, it shows you how you can write a Rust crate and
-publish it on Rust's crate index, crates.io.
+Walks through the full process of publishing a crate: adding metadata to
+`Cargo.toml`, writing documentation, choosing a license, and running
+`cargo publish`. Also covers managing crate owners and yanking versions.
 ```
 
 ```reading
@@ -84,12 +92,25 @@ url: https://fasterthanli.me/series/building-a-rust-service-with-nix/part-7
 author: Amos Wenger
 archived: fasterthanlime-build-a-rust-service-shipyard.pdf
 ---
-Amos explains how you can publish your crates to a private crate registry
-hosted by Shipyard. He shows how you can configure Cargo to authenticate with
-Shipyard, and how to push packages to it both locally and from CI.
+Practical walkthrough of setting up a private crate registry with Shipyard,
+including configuring Cargo authentication, publishing crates from both local
+development and CI, and using the registry inside Docker builds where
+credential handling requires extra care.
 ```
 
-[ripgrep]: https://github.com/BurntSushi/ripgrep
+```reading
+style: book
+title: "Registries"
+url: https://doc.rust-lang.org/cargo/reference/registries.html
+author: The Cargo Book
+---
+Reference for how Cargo interacts with registries: the registry protocol,
+authentication, configuring alternative registries, and publishing. Covers
+both the older git-based index protocol and the newer sparse protocol that
+crates.io uses by default since Rust 1.70.
+```
+
 [crates.io]: https://crates.io
 [docs.rs]: https://docs.rs
+[publishing]: https://doc.rust-lang.org/cargo/reference/publishing.html
 [rfc2141]: https://rust-lang.github.io/rfcs/2141-alternative-registries.html

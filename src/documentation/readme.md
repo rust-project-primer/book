@@ -96,19 +96,19 @@ End-user documentation should contain:
   releases
 - Code-level documentation (if it is a library)
 
-Often times, this documentation exists in a Readme file and/or a web book that
-is hosted by the project.
+This documentation typically lives in a README file and/or a web book hosted by
+the project.
 
-### Developer documentation
+### Developer Documentation
 
 Developers are programmers that want to understand how your project works.
 Typically, this is because they are working on it, they want to implement a
 feature, they want to improve it, or they want to fix a bug with it. They need
-to be able to easily clone and compile it locally, run unit tests to see if they
-changes broke anything, run benchmarks to check if they changes introduced a
-regression. They need to be able to submit a patch (merge request) with their
-changes. Some developers (maintainers) also need to be able to release new
-versions of the code.
+to be able to easily clone and compile it locally, run unit tests to see if
+their changes broke anything, run benchmarks to check if their changes
+introduced a regression. They need to be able to submit a patch (merge request)
+with their changes. Some developers (maintainers) also need to be able to
+release new versions of the code.
 
 Developer documentation should contain:
 
@@ -123,20 +123,12 @@ Developer documentation should contain:
 - Documentation of processes (how to submit a patch, how to cut a release)
 - Code-level documentation (APIs, data structures, invariants)
 
-### Tools to write and publish documentation
+### What this Chapter Covers
 
-<!-- places for documentation: readme, crate metadata, standalone documentation, code documentation -->
-
-In the sections of this chapter, I will go through some of the functionality
-Rust has built-in for generating documentation for software projects, and some
-tools that are useful for writing the kinds of end-user and developer
-documentation outlined here. I will focus on:
-
-- Types of documentation documents (readme files, code comments, standalone
-  documentation)
-- Tools to write effective documentation (diagramming tools, documentation
-  generators)
-- Patterns for documentation (changelogs, patterns for documenting architecture)
+The rest of this chapter covers the tools and formats available for writing
+documentation in Rust projects: README files and repository metadata, code-level
+documentation with rustdoc, standalone books with mdBook, diagramming tools, and
+architecture decision records.
 
 ## Reading
 
@@ -176,4 +168,14 @@ title: Rust Documentation Ecosystem Review
 url: https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/
 author: Gio Genre De Asis
 ---
+A thorough evaluation of documentation quality across ~25 popular Rust crates
+(rand, chrono, jiff, axum, bevy, tokio, clap, and more) using the Diátaxis
+framework, which categorizes documentation into four types: tutorials (learning
+by doing), how-to guides (goal-oriented), reference (factual), and explanation
+(philosophy/rationale). The author scores each crate on comprehensiveness,
+discoverability, approachability, and whether the library's design philosophy
+is documented. The jiff crate stands out as a model for documentation
+quality, with its `_documentation` module pattern (`include_str!` for
+COMPARE.md, DESIGN.md) making design rationale discoverable through docs.rs.
+A valuable read for anyone thinking about how to document their own crate.
 ```

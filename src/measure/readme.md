@@ -12,7 +12,7 @@ the direction and implementation of the project.
 
 <center>
 
-![Measurement feedback loop](measurment-loop.svg)
+![Measurement feedback loop](measurement-loop.svg)
 
 </center>
 
@@ -23,9 +23,9 @@ properties, and ensure that they are continuously monitored. Some of the
 properties might be implicit and difficult to identify. For example, if you are
 running a web application, you want users to have a good experience. Part of
 that could be that your application should be _snappy_, but it is difficult to
-quantify that. If there are less users on your side, is it because it is slower?
-Or is the design worse than it was? One part of being data-driven is identifying
-what data is critical.
+quantify that. If there are fewer users on your site, is it because it is
+slower? Or is the design worse than it was? One part of being data-driven is
+identifying what data is critical.
 
 Software constantly changes, and just because you have come up with a data
 structure that performed well on the workload today, does not mean that it will
@@ -35,7 +35,7 @@ hit production.
 
 Here are some examples for properties that you might want to measure over time,
 and why they might be critical to a project. Every project is different, and not
-all proprties might be of equal importance. Setting up and maintaining
+all properties might be of equal importance. Setting up and maintaining
 measurement pipelines takes time, so you should choose the properties you
 optimize for wisely.
 
@@ -56,7 +56,7 @@ example:
 | [Bencher](https://bencher.dev/) | Aggregates benchmark results, allowing you to see how performance changes over time.                                                                                           |
 | [GitLab](https://gitlab.com/)   | GitLab has the ability to visualize code coverage and test results measured in CI jobs in merge requests, allowing developers to assess how well new code is covered by tests. |
 
-This chapter focusses on showing you how you can measure properties of your
+This chapter focuses on showing you how you can measure properties of your
 codebase continuously, and what options you have for aggregating this
 information and use it in decision-making processes. Naturally, this chapter
 can't cover every single metric you might care about, but it can give you an

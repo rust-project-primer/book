@@ -13,6 +13,8 @@ development. Embedded microcontrollers are tiny, they have flash storage (for
 storing their firmware) and RAM that is on the order of kilobytes to megabytes,
 not large enough for a full operating system.
 
+## Overview
+
 ### What embedded development looks like
 
 Embedded microcontrollers often use simple 32-bit or 8-bit [Instruction Set
@@ -103,7 +105,7 @@ easy to flash a binary onto the microcontroller and debug it using a debugger.
 
 [probe-rs]: https://probe.rs/
 [mcu]: https://en.wikipedia.org/wiki/Memory_controller
-[rtos]: https://example.com/
+[rtos]: https://en.wikipedia.org/wiki/Real-time_operating_system
 
 ### Using Rust for embedded development
 
@@ -143,7 +145,7 @@ have a memory allocator, meaning that you cannot use dynamic data structures
 like `Vec`, `String` or `HashMap`. However, many popular Rust crates either
 support `no_std` out-of-the-box, or have features that allow you to use them
 without a memory allocator (either by disabling a default `std` feature, or
-enabling a `no_str` feature)
+enabling a `no_std` feature).
 
 [no_std]: https://docs.rust-embedded.org/book/intro/no-std.html
 
@@ -204,10 +206,10 @@ over the underlying hardware.
 embedded code feel like magic. It is a framework for building firmware for a
 variety of mostly ARM-based microcontrollers.
 
-What makes Embassy special is that it supports Async. The async programming
-model maps very well to embedded systems: often times, there are many
-simultaneous pieces of code waiting for various events to happen, for example
-button presses, timers firing, or data coming in from various ports.
+What makes Embassy special is that it supports async. The async programming
+model maps very well to embedded systems: there are often many simultaneous
+pieces of code waiting for various events to happen, for example button presses,
+timers firing, or data coming in from various ports.
 
 If you were to write firmware manually, you would have the choice of manually
 programming timers, writing interrupt handlers and building a giant, complicated
@@ -315,6 +317,10 @@ title: Rust Embedded Book
 url: https://docs.rust-embedded.org/book/
 author: Rust-Embedded Project
 ---
+The official guide to embedded Rust development. Covers setting up a
+development environment, writing your first no_std program, working with
+registers and peripherals, and common patterns for embedded development.
+Start here if you are new to embedded Rust.
 ```
 
 ```reading
@@ -323,6 +329,9 @@ title: Embassy Book
 url: https://embassy.dev/book/
 author: Embassy Project
 ---
+Official documentation for the Embassy framework. Walks through setting up
+a project, writing async tasks, using HAL drivers for common peripherals
+(GPIO, UART, SPI, I2C), and deploying to supported microcontrollers.
 ```
 
 ```reading
@@ -332,6 +341,13 @@ url: https://security.googleblog.com/2024/09/deploying-rust-in-existing-firmware
 author: Ivan Lozano and Dominik Maier
 archived: google-security-deploying-rust-in-existing-firmware.pdf
 ---
+Google describes their approach to incrementally introducing Rust into
+existing C/C++ firmware, focusing on new code and security-critical
+components rather than full rewrites. Covers the practical challenges:
+working with only `core`, finding no_std-compatible crates, configuring
+custom LLVM targets, and maintaining backward compatibility through thin
+wrapper shims. Demonstrates that Rust can match C/C++ performance in
+bare-metal environments while eliminating memory safety vulnerabilities.
 ```
 
 ```reading
@@ -341,7 +357,9 @@ url: https://tweedegolf.nl/en/blog/65/async-rust-vs-rtos-showdown
 author: Dion Dokter
 archived: tweedegolf-async-rust-vs-rtos-showdown.pdf
 ---
-Dion compares a simple firmware for an STM32F446 ARMv7 microcontroller
+Compares Embassy's async approach against an RTOS (FreeRTOS) for a simple
+firmware on an STM32F446 ARMv7 microcontroller. Measures binary size, RAM
+usage, and interrupt latency to help you decide between the two approaches.
 ```
 
 ```reading
@@ -351,6 +369,10 @@ url: https://beaurivage.io/atsamd-hal-async
 author: Justin Beaurivage
 archived: beaurivage-atsamd-hal-async.pdf
 ---
+Explains how to implement async APIs on top of hardware abstraction layers
+for microcontroller peripherals, using the ATSAMD HAL as a concrete
+example. Useful if you want to understand how Embassy-style async drivers
+work under the hood.
 ```
 
 ```reading
@@ -359,6 +381,9 @@ title: Hubris Reference
 url: https://oxidecomputer.github.io/hubris/reference/
 author: Oxide Computer Company
 ---
+Reference documentation for Hubris, Oxide's microkernel OS for embedded
+systems. Covers the task model, IPC mechanism, build system, and how
+components are isolated from each other.
 ```
 
 ```reading
@@ -367,4 +392,7 @@ title: The Tock Book
 author: Tock developers
 url: https://book.tockos.org/introduction.html
 ---
+Documentation for the Tock operating system. Covers the kernel architecture
+(trusted kernel vs untrusted capsules), how applications are sandboxed, and
+how to write both kernel capsules and userspace applications.
 ```

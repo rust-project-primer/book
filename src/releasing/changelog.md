@@ -1,31 +1,22 @@
 # Changelog
 
-As you release new versions of your software, you often times need to
-communicate important changes of your software to users and developers. If your
-software is user-facing, these changes have to do with the user experience, such
-as new features, bug fixes, and performance improvements. If your software is a
-library, these changes have to do with the API, such as new functions, bug
-fixes, and performance improvements and targets developers using your library.
+When you release a new version, users and downstream developers need to know
+what changed. Semantic versioning tells them the _kind_ of change (breaking,
+feature, or fix), but a changelog documents _what specifically changed_ and why
+it matters. For libraries, this means new API surface, deprecations, and
+migration instructions. For applications, this means user-visible features,
+bugfixes, and behavioral changes.
 
-Semantic versioning tells you the _type_ of change—whether it's breaking, adds
-features, or fixes bugs—but a changelog documents _what specifically changed_.
-While Rust's strong type system and testing culture mean breaking changes are
-often caught at compile time, a well-maintained changelog remains valuable for
-understanding the evolution of an API and making informed decisions about
-upgrades.
+Changelogs typically live in a `CHANGELOG.md` file in the repository root,
+updated during development or just before release. Some projects also use
+GitHub/GitLab releases to write notes when tagging a version, or generate one
+from the other automatically.
 
-Changelogs typically live in one of two places. Many projects maintain a
-`CHANGELOG.md` file in the repository root, updated during development or just
-before release. Others use GitHub/GitLab releases, writing detailed notes when
-tagging a version. Some projects do both, auto-generating `CHANGELOG.md` from
-release notes or vice versa.
+## Format
 
-## Changelog Example
-
-A common format is specified in
-[Keep A Changelog](https://keepachangelog.com/en/1.1.0/), which organizes
-changes by version and category—Added, Changed, Deprecated, Removed, Fixed, and
-Security. Here's what that looks like:
+A common format is specified by [Keep A Changelog](https://keepachangelog.com/),
+which organizes changes by version and category (Added, Changed, Deprecated,
+Removed, Fixed, Security):
 
 ```markdown
 ## [1.2.0] - 2024-01-15
@@ -40,12 +31,12 @@ Security. Here's what that looks like:
 ```
 
 The version header often links to a diff or tag. For breaking changes, be
-explicit about what changed and how to migrate. Many Rust projects also note the
-minimum supported Rust version (MSRV) changes in their changelogs, since this
-affects when users can upgrade.
+explicit about what changed and how to migrate. Many Rust projects also note
+MSRV changes in their changelogs, since bumping the minimum supported Rust
+version affects when users can upgrade.
 
-You can see some example crates for the [rand][rand-changelog],
-[hashbrown][hashbrown-changelog], [bitflags][bitflags-changelog] crates.
+For real-world examples, see the changelogs of [rand][rand-changelog],
+[hashbrown][hashbrown-changelog], and [bitflags][bitflags-changelog].
 
 [rand-changelog]: https://github.com/rust-random/rand/blob/master/CHANGELOG.md
 [hashbrown-changelog]:
@@ -53,20 +44,56 @@ You can see some example crates for the [rand][rand-changelog],
 [bitflags-changelog]:
   https://github.com/bitflags/bitflags/blob/master/CHANGELOG.md
 
-## Cargo-Release
+## `git-cliff`
 
-[`cargo-release`][] automates the release process for Rust crates, including
-changelog management. It can generate changelog entries from Git history,
-particularly if you use conventional commit messages. This approach trades
-manual curation for consistency and reduced effort. See [FAQ: Maintaining
-Changelog][maintain-changelog] for details on how it handles changelogs.
-Internally, it uses [git-cliff][].
+[`git-cliff`][git-cliff] is a changelog generator that creates structured
+changelogs from your Git commit history. It works best when your project follows
+[Conventional Commits](https://www.conventionalcommits.org/) (commit messages
+like `feat: add config parser` or `fix: handle empty input`), but its
+regex-powered parser can be configured to work with other commit message styles.
 
-There are some alternatives to this tool, for example
-[release-plz](https://release-plz.dev/).
+```bash
+cargo install git-cliff
+git-cliff --init  # generate a cliff.toml configuration
+git-cliff         # generate changelog from commit history
+```
+
+`git-cliff` outputs in the Keep A Changelog format by default and can be
+configured to group commits by type, filter out certain categories, and link to
+issues or pull requests. It is used internally by both `cargo-release` and
+`release-plz`.
+
+## `cargo-release`
+
+[`cargo-release`][cargo-release] automates the full release workflow for Rust
+crates: bumping the version in `Cargo.toml`, updating the changelog (using
+`git-cliff`), creating a git tag, and publishing to crates.io. It handles
+workspace releases where multiple crates need coordinated version bumps.
+
+```bash
+cargo install cargo-release
+cargo release patch  # bump patch version, update changelog, tag, publish
+```
+
+See the [changelog FAQ][maintain-changelog] for details on how it manages
+changelog entries.
+
+## `release-plz`
+
+[`release-plz`](https://release-plz.dev/) takes a CI-first approach to
+releasing. Rather than running release commands locally, it runs in your CI
+pipeline and opens a _release PR_ that contains the version bump, updated
+changelog, and any other metadata changes. When you merge the PR, it
+automatically creates git tags, publishes to crates.io, and creates
+GitHub/GitLab releases.
+
+`release-plz` uses `git-cliff` for changelog generation and
+[`cargo-semver-checks`](../checks/semver.md) to detect whether a change is
+breaking, ensuring the version bump matches the actual API change. This makes it
+a good fit for projects that want fully automated releases gated by code review.
 
 [git-cliff]: https://git-cliff.org/
-[`cargo-release`]: https://github.com/crate-ci/cargo-release
+[cargo-release]: https://github.com/crate-ci/cargo-release
 [maintain-changelog]:
   https://github.com/crate-ci/cargo-release/blob/master/docs/faq.md#maintaining-changelog
 
@@ -79,7 +106,23 @@ url: https://keepachangelog.com/en/1.1.0/
 author: Olivier Lacan
 archived: keep-a-changelog.pdf
 ---
-Keep A Changelog is a specification for how to structure changelogs. It
-attempts to standardize their structure and make them useful, and explains why
-they are useful.
+The specification that defines how changelogs should be structured: one
+section per version, categorized by type of change (Added, Changed, Fixed,
+etc.), with the most recent version first. Short and worth reading — the FAQ
+section addresses common questions like whether changelogs should be
+auto-generated (the author argues no, but the Rust ecosystem tooling makes
+auto-generation practical).
+```
+
+```reading
+style: article
+title: Conventional Commits
+url: https://www.conventionalcommits.org/
+author: Conventional Commits Project
+---
+A specification for writing commit messages that tools like `git-cliff` and
+`release-plz` can parse automatically. Commits are prefixed with a type
+(`feat:`, `fix:`, `chore:`) and optionally a scope. Breaking changes are
+marked with `!` or a `BREAKING CHANGE:` footer. Adopting this convention is
+not required for changelog generation, but it makes the output much better.
 ```

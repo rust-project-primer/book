@@ -3,7 +3,7 @@
 On a high level, a macro is some code that generates code. In languages such as
 C or C++, they are expanded by the preprocessor in a step just before
 compilation happens. They are commonly used to reduce code repetition, avoid
-boilerplate.
+boilerplate code.
 
 Instead of relying on a preprocessor, the Rust compiler has built-in support for
 macros. It supports two kinds of macros:
@@ -44,9 +44,9 @@ downsides to relying on them heavily as well:
 This section looks at how you can work around (3), by showing you how you can
 inspect what your code looks like after macro expansion.
 
-## Cargo Expand
+## `cargo-expand`
 
-[cargo expand](https://github.com/dtolnay/cargo-expand) is a Cargo plugin that
+[`cargo-expand`](https://github.com/dtolnay/cargo-expand) is a Cargo plugin that
 allows you to view your code after macro expansion. In addition to performing
 macro expansion, it will also run `rustfmt` over the result (because the code
 that macros expands to is often machine-generated and therefore unformatted) and
@@ -151,7 +151,9 @@ title: Rust Macros and inspection with cargo expand
 url: https://medium.com/@adamszpilewicz/rust-macros-and-inspection-with-cargo-expand-9236b6ccff17
 author: Adam Szpilewicz
 ---
-Adam explains Rust macros and how they can be inspected with `cargo expand`.
+Walkthrough of using `cargo-expand` to understand what macros generate,
+including declarative macros and derive macros. Shows the workflow of writing
+a macro, expanding it, and verifying the output matches expectations.
 ```
 
 [json]: https://docs.rs/serde_json/latest/serde_json/macro.json.html

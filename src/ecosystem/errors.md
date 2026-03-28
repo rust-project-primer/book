@@ -25,6 +25,8 @@ great syntactical support for pattern matching. This is not the case for many
 other languages, which is partially why _exceptions_ were created and remain in
 use.
 
+## Overview
+
 ### Communicating Failures in Rust
 
 Rust has three principal methods of communicating failures. In the order of
@@ -127,7 +129,7 @@ possible to make an alias of the `Result` type that defaults to your error type,
 but allows you to override it with a different error type if needed:
 
 ```rust
-type Result<T, E = MyError> = Result<T, E>;
+type Result<T, E = MyError> = std::result::Result<T, E>;
 ```
 
 When you do this, `Result<String>` will resolve to `Result<String, MyError>`.
@@ -163,9 +165,9 @@ system. On a high level, these libraries fall into one of two categories:
   errors to consumers of your library. But if you are writing an application,
   and all you want to do is to render the error at some point, it is usually
   beneficial to use some library which has the equivalent of `Box<dyn Error>`
-  and lets you not worry about defining custom error types. Often times, these
-  libraries also contain functionality for pretty-printing error chains and
-  stack traces.
+  and lets you not worry about defining custom error types. These libraries
+  often also contain functionality for pretty-printing error chains and stack
+  traces.
 - **Error reporting**: Some libraries focus specifically on presenting errors to
   users in a readable way, often with rich formatting, source code snippets, and
   helpful hints. These libraries are particularly useful for developer tools,
@@ -204,7 +206,7 @@ context. This will allow downstream consumers to work with and handle the
 errors. If you write an application, you may want to consider using a more
 dynamic library like [anyhow](#anyhow), which allows you to not worry about
 specific error types and simply propagate them. If you need a library that
-focusses on good error reporting, consider using [miette](#miette) or
+focuses on good error reporting, consider using [miette](#miette) or
 [eyre](#eyre).
 
 ## Thiserror
@@ -366,17 +368,12 @@ source code.
 
 ## Conclusion
 
-In this section, we've explored several error handling libraries in Rust,
-including thiserror, snafu, anyhow, and miette. We've seen how each library
-provides a different approach to error handling, and how they can be used in
-different situations.
-
-When you write libraries, you may want to use a library like `thiserror` or
-`snafu` to provide structured errors to users of your library where the focus is
-on providing context and allowing users to handle errors. When you write
-applications, you may want to use a library like `anyhow` or `miette` that
-provide convenient, generic containers for arbitrary errors where the focus is
-on communicating errors to end-users.
+The rule of thumb is: libraries should expose structured error types (using
+`thiserror` or `snafu`) so consumers can match on specific failures, while
+applications can use opaque error types (using `anyhow` or `eyre`) since they
+only need to report errors, not handle them programmatically. If your
+application needs rich diagnostic output (source spans, help text), `miette` or
+`color-eyre` add that on top.
 
 ## Reading
 

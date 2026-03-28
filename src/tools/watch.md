@@ -12,9 +12,8 @@ rebuilds and reloads your browser automatically on every change.
 
 ## `cargo-watch`
 
-[`cargo-watch`](https://github.com/watchexec/cargo-watch) is a tool you
-can use to watch your Rust projects and execute commands whenever a file
-changes.
+[`cargo-watch`](https://github.com/watchexec/cargo-watch) is a tool you can use
+to watch your Rust projects and execute commands whenever a file changes.
 
 You can install it using Cargo:
 

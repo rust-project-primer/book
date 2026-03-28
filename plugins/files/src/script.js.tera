@@ -1,0 +1,18 @@
+window.addEventListener("load", (event) => {
+    const uuids = {{ uuids | json_encode() }};
+    function set_visible(uuid) {
+        uuids.forEach((uuid) => {
+            document.getElementById(`button-${uuid}`).classList.remove("active");
+            document.getElementById(`file-${uuid}`).classList.remove("visible");
+        });
+        const button = document.getElementById(`button-${uuid}`).classList.add("active");
+        const file = document.getElementById(`file-${uuid}`).classList.add("visible");
+    }
+    function add_hook(uuid) {
+        const button = document.getElementById(`button-${uuid}`);
+        button.addEventListener("click", (event) => set_visible(uuid));
+    }
+    uuids.forEach((uuid) => add_hook(uuid));
+    set_visible({{ visible | json_encode() }});
+});
+

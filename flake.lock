@@ -141,18 +141,14 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1774561344,
-        "narHash": "sha256-Y7CwEFlSN2YpEPZm4fCo9txBBbmw6FZzu7AnfmyL66I=",
-        "owner": "xfbs",
-        "repo": "mdbook-files",
-        "rev": "044902b7f50cdc6e4df19068b7c8882e06b71ab3",
-        "type": "github"
+        "path": "./plugins/files",
+        "type": "path"
       },
       "original": {
-        "owner": "xfbs",
-        "repo": "mdbook-files",
-        "type": "github"
-      }
+        "path": "./plugins/files",
+        "type": "path"
+      },
+      "parent": []
     },
     "mdbook-reading": {
       "inputs": {

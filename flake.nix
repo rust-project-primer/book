@@ -1,10 +1,10 @@
 {
-  description = "A very basic flake";
+  description = "Rust Project Primer: A Practical Guide on how to Structure and Maintain your Rust Projects";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    mdbook-files.url = "github:xfbs/mdbook-files";
+    mdbook-files.url = "path:./plugins/files";
     mdbook-reading.url = "path:./plugins/reading";
     mdbook-admonish-src = {
       url = "github:padamson/mdbook-admonish/feat/mdbook-0.5-compat";

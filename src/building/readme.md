@@ -36,6 +36,7 @@ each option.
 ```reading
 style: article
 title: Tips For Faster Rust Compile Times
+archived: corrode-faster-rust-compile-times.pdf
 url: https://corrode.dev/blog/tips-for-faster-rust-compile-times/
 author: Matthias Endler
 ---

@@ -165,6 +165,7 @@ author.
 ```reading
 style: article
 title: Rust Documentation Ecosystem Review
+archived: rust-documentation-ecosystem-review.pdf
 url: https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/
 author: Gio Genre De Asis
 ---

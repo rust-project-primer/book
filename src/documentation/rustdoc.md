@@ -360,6 +360,7 @@ API Guidelines that cover naming, interoperability, and type safety.
 ```reading
 style: article
 title: "Making Great Docs with Rustdoc"
+archived: making-great-docs-with-rustdoc.pdf
 url: https://www.tangramvision.com/blog/making-great-docs-with-rustdoc
 author: Tangram Vision
 ---
@@ -372,6 +373,7 @@ changes.
 ```reading
 style: article
 title: "Rust Documentation Ecosystem Review"
+archived: rust-documentation-ecosystem-review.pdf
 url: https://www.harudagondi.space/blog/rust-documentation-ecosystem-review/
 author: Gio Genre De Asis
 ---

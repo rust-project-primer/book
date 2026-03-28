@@ -349,6 +349,7 @@ transparently.
 style: article
 title: Zig makes Rust cross-compilation just work
 url: https://actually.fyi/posts/zig-makes-rust-cross-compilation-just-work/
+archived: zig-makes-rust-cross-compilation-just-work.pdf
 author: Max Hollmann
 ---
 Demonstrates wrapping Zig's compiler as the C compiler and linker for Rust

@@ -206,6 +206,7 @@ for every type that implements `Display`.
 style: article
 title: Min Sized Rust
 url: https://github.com/johnthagen/min-sized-rust
+archived: min-sized-rust.pdf
 author: John T. Hagen
 ---
 This is a comprehensive guide to producing minimally sized binaries in Rust. It

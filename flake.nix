@@ -6,6 +6,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     mdbook-files.url = "path:./plugins/files";
     mdbook-reading.url = "path:./plugins/reading";
+    mdbook-frames.url = "path:./plugins/frames";
     mdbook-admonish-src = {
       url = "github:padamson/mdbook-admonish/feat/mdbook-0.5-compat";
       flake = false;
@@ -19,6 +20,7 @@
       flake-utils,
       mdbook-files,
       mdbook-reading,
+      mdbook-frames,
       mdbook-admonish-src,
     }:
     flake-utils.lib.eachDefaultSystem (
@@ -49,6 +51,7 @@
             mdbook-admonish
             mdbook-files.packages.${system}.default
             mdbook-reading.packages.${system}.default
+            mdbook-frames.packages.${system}.default
           ];
           buildPhase = ''
             mdbook build
@@ -173,6 +176,7 @@
             mdbook-admonish
             mdbook-files.packages.${system}.default
             mdbook-reading.packages.${system}.default
+            mdbook-frames.packages.${system}.default
           ];
         };
         checks = {

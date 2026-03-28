@@ -1,0 +1,72 @@
+/* style for mdbook-frames */
+
+.mdbook-frames-window {
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1em 0;
+    border: 1px solid var(--table-border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.mdbook-frames-titlebar {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0 12px;
+    background-color: var(--sidebar-bg);
+    border-bottom: 1px solid var(--table-border-color);
+    user-select: none;
+}
+
+.mdbook-frames-title {
+    flex: 1;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--sidebar-fg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.mdbook-frames-buttons {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.mdbook-frames-button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.mdbook-frames-close {
+    background-color: #ff5f57;
+}
+
+.mdbook-frames-minimize {
+    background-color: #febc2e;
+}
+
+.mdbook-frames-maximize {
+    background-color: #28c840;
+}
+
+.mdbook-frames-content {
+    margin: 0;
+}
+
+/* Remove default code block styling so it sits flush inside the frame */
+.mdbook-frames-content > pre {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.mdbook-frames-content > pre > code {
+    border-radius: 0;
+}

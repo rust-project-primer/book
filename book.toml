@@ -20,6 +20,10 @@ archives = "/archived/"
 command = "mdbook-files"
 prefix = "examples"
 
+[preprocessor.frames]
+command = "mdbook-frames"
+after = ["admonish"]
+
 [preprocessor.admonish]
 command = "mdbook-admonish"
 assets_version = "3.1.0"    # do not edit: managed by `mdbook-admonish install`
@@ -46,6 +50,7 @@ additional-css = [
     "assets/mdbook-files.css",
     "./assets/mdbook-admonish.css",
     "assets/mdbook-admonish-custom.css",
+    "assets/mdbook-frames.css",
 ]
 git-repository-url = "https://github.com/rust-project-primer/book"
 git-repository-icon = "fas-code-fork"

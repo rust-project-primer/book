@@ -1,0 +1,54 @@
+use anyhow::{Result, bail};
+use clap::Parser;
+use mdbook_frames::FramesPreprocessor;
+use mdbook_preprocessor::Preprocessor;
+use std::io;
+
+#[derive(Parser, Debug)]
+#[command(author, version, about)]
+pub struct Options {
+    #[clap(subcommand)]
+    pub command: Option<Command>,
+}
+
+#[derive(Parser, Debug)]
+pub enum Command {
+    Supports(SupportsCommand),
+    Process,
+}
+
+#[derive(Parser, Debug)]
+pub struct SupportsCommand {
+    pub renderer: String,
+}
+
+impl Options {
+    fn run(&self, preprocessor: &dyn Preprocessor) -> Result<()> {
+        match &self.command {
+            Some(Command::Supports(command)) => {
+                if preprocessor.supports_renderer(&command.renderer)? {
+                    Ok(())
+                } else {
+                    bail!("unknown renderer {}", command.renderer);
+                }
+            }
+            None | Some(Command::Process) => {
+                let (ctx, book) = mdbook_preprocessor::parse_input(io::stdin())?;
+                let output = preprocessor.run(&ctx, book)?;
+                serde_json::to_writer(io::stdout(), &output)?;
+                Ok(())
+            }
+        }
+    }
+}
+
+fn main() -> Result<()> {
+    env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("warn"))
+        .format_timestamp(None)
+        .format_module_path(false)
+        .format_target(false)
+        .init();
+    let options = Options::parse();
+    let preprocessor = FramesPreprocessor;
+    options.run(&preprocessor)
+}

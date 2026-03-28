@@ -30,3 +30,6 @@ submodules-update:
 compress:
   find public -not -name '*.gz' -not -name '*.br' -type f -exec gzip -vk {} \;
   find public -not -name '*.gz' -not -name '*.br' -type f -exec brotli -vk {} \;
+
+serve:
+  nix develop --command mdbook serve

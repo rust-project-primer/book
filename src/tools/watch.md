@@ -1,31 +1,18 @@
 # Watch Files
 
-While you are developing, having a quick feedback loop can be invaluable. What
-this means is that the time between you writing some code, and getting feedback
-if it is syntactically incorrect or if it breaks unit tests should be as short
-as possible.
+A short feedback loop between writing code and seeing whether it compiles or
+passes tests is important for productive development. Your
+[development environment](../development-environment/index.md) can give you
+immediate feedback on syntax errors, but for running tests or rebuilding an
+application on every change, a file watcher is useful.
 
-Often times, the [development environment](../development-environment/index.md)
-you use can give you fast feedback on syntaxtical issues. Some even let you
-define shortcuts for quickly running unit tests or other actions.
+If you build [web frontends](../ecosystem/web-frontend.md) in Rust using
+[Trunk](https://trunkrs.dev), file watching is built in: Trunk's serve mode
+rebuilds and reloads your browser automatically on every change.
 
-Another approach is to use a tool that watches your code for changes, and runs
-some command whenever you make a change. There are some situations where this is
-useful:
+## `cargo-watch`
 
-- You want to run some custom tests on the code
-- You want to rebuild and relaunch your application, so that you can test it
-  interactively.
-
-If you build [Web Frontends](../ecosystem/web-frontend.md) in Rust and use the
-[Trunk](https://trunkrs.dev) tool to build them, you will get this for free.
-When you run Trunk in _serve_ mode, it will automatically rebuild your frontend
-and reload your browser whenever it detects a change, to minimze your
-development feedback loop.
-
-## Cargo Watch
-
-[Cargo Watch](https://github.com/watchexec/cargo-watch) is a generic tool you
+[`cargo-watch`](https://github.com/watchexec/cargo-watch) is a tool you
 can use to watch your Rust projects and execute commands whenever a file
 changes.
 

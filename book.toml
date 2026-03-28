@@ -53,7 +53,7 @@ mathjax-support = true
 
 # redirects for moved pages
 [output.html.redirect]
-"/intro/prerequisites.html" = "/intro/resources.html"
+"/intro/prerequisites.html" = "/resources.html"
 "/build.html" = "/build-system/index.html"
 "/build/cargo.html" = "/build-system/cargo.html"
 "/checks/style.html" = "/checks/lints.html"
@@ -67,7 +67,7 @@ mathjax-support = true
 "/organization/features.html" = "/organization/crates.html#crate-features"
 "/organization/library-first.html" = "/organization/crates.html"
 "/organization/workspace-metadata.html" = "/organization/workspace.html"
-"/reading.html" = "/intro/prerequisites.html"
+"/reading.html" = "/resources.html"
 "/releasing/flatpak.html" = "/releasing/packaging.html"
 "/releasing/rpm.html" = "/releasing/packaging.html"
 "/testing/undefined-behavior.html" = "/testing/dynamic-analysis.html"
@@ -76,3 +76,5 @@ mathjax-support = true
 "/platform/github.html" = "/ci/github.html"
 "/platform/gitlab.html" = "/ci/gitlab.html"
 "/testing/conclusion.html" = "/testing/index.html"
+"/intro/why-rust.html" = "/intro.html"
+"/intro/resources.html" = "/resources.html"

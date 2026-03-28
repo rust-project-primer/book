@@ -35,6 +35,8 @@ In addition to that, there are some mdBook plugins that are used:
 
 ## Development
 
+In order to clone this repository, you need to have `git-lfs` setup.
+
 This book uses Nix to make sure you have the right versions of the dependencies
 needed to build it. If you don't already have Nix, install it. Using
 [Determinate](https://docs.determinate.systems/) is the recommended way to do

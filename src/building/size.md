@@ -54,7 +54,7 @@ structural decisions that can lead to smaller binary sizes.
 The simplest way to reduce binary size is to set some options in the Cargo
 profile:
 
-```toml
+```toml framed title="Cargo.toml"
 [profile.release]
 # Automatically strip symbols from the binary.
 strip = true

@@ -128,7 +128,7 @@ image to install binfmt handlers. The registration persists until reboot.
 
 ### Example: Dockerfile for cross-compiling for ARM64
 
-```docker
+```dockerfile framed title="Dockerfile"
 FROM rust
 
 # install rustfmt and clippy
@@ -162,7 +162,7 @@ ENV PKG_CONFIG_ALLOW_CROSS=true
 
 ### Example: Dockerfile for cross-compiling for ARM32
 
-```docker
+```dockerfile framed title="Dockerfile"
 FROM rust
 
 # install rustfmt and clippy
@@ -196,7 +196,7 @@ ENV PKG_CONFIG_ALLOW_CROSS=true
 
 ### Example: Dockerfile for cross-compiling for RISC-V
 
-```docker
+```dockerfile framed title="Dockerfile"
 FROM rust
 
 # install rustfmt and clippy

@@ -29,7 +29,7 @@ To get started, you can install it using Cargo:
 To use it, all you need to do is create a `Justfile` in your project, which
 contains all of the tasks. A sample justfile might look like this:
 
-```just
+```just framed title="Justfile"
 # release this version
 release:
   just test

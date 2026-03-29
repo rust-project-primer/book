@@ -62,7 +62,7 @@ worth trying.
 To use mold, install it through your system package manager (e.g.
 `apt install mold` on Debian/Ubuntu) and configure Cargo to use it:
 
-```toml
+```toml framed title=".cargo/config.toml"
 [target.x86_64-unknown-linux-gnu]
 linker = "clang"
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]

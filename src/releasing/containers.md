@@ -26,7 +26,7 @@ most builds.
 A common technique is to copy only `Cargo.toml` and `Cargo.lock` first, build
 dependencies, and then copy your source code and build the final binary:
 
-```docker
+```dockerfile framed title="Dockerfile"
 FROM rust AS builder
 
 # copy manifests and build dependencies only
@@ -61,7 +61,7 @@ then split into three stages:
    cached).
 3. **Build**: copy your source code and build the final binary.
 
-```docker
+```dockerfile framed title="Dockerfile"
 FROM rust AS chef
 RUN cargo install cargo-chef
 WORKDIR /app
@@ -116,7 +116,7 @@ For even smaller images, you can build a statically linked binary using the
 `x86_64-unknown-linux-musl` target and use `scratch` or `distroless` as the
 base:
 
-```docker
+```dockerfile framed title="Dockerfile"
 FROM rust AS builder
 RUN rustup target add x86_64-unknown-linux-musl
 WORKDIR /app

@@ -183,7 +183,7 @@ to spawn a development shell.
 
 Here is an example for what a derivation looks like:
 
-```nix
+```nix framed title="flake.nix"
 {
   description = "A very basic flake";
 
@@ -305,7 +305,7 @@ There are some popular wrappers that make this easy:
 [crane]: https://github.com
 [naersk]: https://github.com
 
-```nix
+```nix framed title="flake.nix"
 {
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";

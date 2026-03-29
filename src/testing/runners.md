@@ -50,7 +50,7 @@ specified.
 
 A typical configuration covers several areas:
 
-```toml
+```toml framed title=".config/nextest.toml"
 [profile.default]
 # Stop running tests after the first failure.
 fail-fast = true

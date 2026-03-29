@@ -46,7 +46,7 @@ the `workflow_call` trigger. The
 [GitHub Actions documentation](https://docs.github.com/en/actions) covers all of
 these features in detail.
 
-```yaml
+```yaml framed title=".github/workflows/ci.yaml"
 name: CI
 on: [push, pull_request]
 jobs:

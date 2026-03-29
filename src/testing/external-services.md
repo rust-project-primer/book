@@ -103,7 +103,7 @@ that can serve as a drop-in replacement for Docker. Podman supports both
 `podman-compose` tool. If your team prefers rootless containers or wants to
 avoid the Docker daemon, Podman is worth considering.
 
-```yaml
+```yaml framed title="docker-compose.yml"
 services:
   postgres:
     image: postgres:17

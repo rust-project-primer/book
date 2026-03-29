@@ -67,7 +67,7 @@ WebSockets, has built-in routing and parameter decoding. It also integrates with
 the [tracing](https://github.com/tokio-rs/tracing) ecosystem and uses
 [tower](https://github.com/tower-rs/tower) to build middleware.
 
-```rust
+```rust framed title="src/main.rs"
 use axum::{
     routing::get,
     Router,
@@ -96,7 +96,7 @@ message-passing concurrency. Actix-Web, a framework for building web application
 on top of it gained quite a lot of popularity. It remains the second-most
 popular framework for building web backend application.
 
-```rust
+```rust framed title="src/main.rs"
 use actix_web::{get, web, App, HttpServer, Responder};
 
 #[get("/hello/{name}")]
@@ -123,7 +123,7 @@ Actix-Web is quite fast
 Initially, it only supported blocking code and used threads, but since version
 0.5.0 it supports async as well.
 
-```rust
+```rust framed title="src/main.rs"
 extern crate rocket;
 
 #[get("/")]

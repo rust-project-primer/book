@@ -503,7 +503,7 @@ To get started with Trunk, you need to create an `index.html` file. This is used
 by Trunk as a template, and it contains some metadata for Trunk that tells it
 what assets you want to include in the build.
 
-```html
+```html framed title="index.html"
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -560,7 +560,7 @@ frontend, and to have it talk to your backend via API requests. To make it
 easier to route the API requests to your backend, you can tell Trunk to forward
 proxy requests matching a specific route to another service.
 
-```toml
+```toml framed title="Trunk.toml"
 [[proxy]]
 rewrite = "/api/v1/"
 backend = "http://localhost:9000/"

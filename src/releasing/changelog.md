@@ -18,7 +18,7 @@ A common format is specified by [Keep A Changelog](https://keepachangelog.com/),
 which organizes changes by version and category (Added, Changed, Deprecated,
 Removed, Fixed, Security):
 
-```markdown
+```markdown framed title="CHANGELOG.md"
 ## [1.2.0] - 2024-01-15
 
 ### Added

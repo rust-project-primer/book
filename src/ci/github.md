@@ -269,7 +269,7 @@ GitHub Pages requires a dedicated deployment workflow using the
 need to configure the repository to deploy from GitHub Actions (Settings >
 Pages > Source > GitHub Actions).
 
-```yaml
+```yaml framed title=".github/workflows/pages.yaml"
 name: Pages
 
 on:
@@ -458,7 +458,7 @@ realistic CI setup. It demonstrates the fast-tier checks on every PR, a
 thorough-tier audit on merge to `main`, cross-platform testing, and several
 practical patterns explained in inline comments.
 
-```yaml
+```yaml framed title=".github/workflows/ci.yaml"
 name: CI
 
 on:

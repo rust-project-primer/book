@@ -36,8 +36,7 @@ published.
 
 ## CI Examples
 
-```admonish example title="Semver checking in GitHub Actions"
-~~~yaml
+```yaml framed title=".github/workflows/semver.yml"
 name: Semver
 on: [pull_request]
 
@@ -51,17 +50,14 @@ jobs:
         with:
           tool: cargo-semver-checks
       - run: cargo semver-checks
-~~~
 ```
 
-```admonish example title="Semver checking in GitLab CI"
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 semver:
   image: rust:latest
   script:
     - cargo install cargo-semver-checks
     - cargo semver-checks
-~~~
 ```
 
 ## Reading

@@ -58,14 +58,11 @@ my-feature = ["dep:extra-dependency"]
 
 ## Examples
 
-````admonish example
 ```files
 path = "crate_features"
 git_ignore = true
 ```
-````
 
-````admonish example
 A library containing data structures, which has an optional `serde` feature to enable
 serialization and deserialization with serde. Using `#[cfg(feature = "serde")]`, lines
 of the code can turned on conditionally. Using `#[cfg_attr(feature = "serde", ...)]`,
@@ -77,7 +74,6 @@ files = ["!Cargo.lock"]
 git_ignore = true
 hidden = true
 ```
-````
 
 ## Reading
 

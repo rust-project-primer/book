@@ -146,13 +146,12 @@ fn test_that_uses_shared_database() {
 
 ## CI Examples
 
-```admonish example title="Running tests in GitHub Actions"
 This workflow installs nextest, runs all tests with the `ci` profile, and
 uploads the JUnit XML report. The `dorny/test-reporter` action parses the
 report and displays individual test results as check annotations on the pull
 request, so you can see which tests failed without opening the CI logs.
 
-~~~yaml
+```yaml framed title=".github/workflows/test.yml"
 name: Test
 on: [pull_request]
 
@@ -172,15 +171,13 @@ jobs:
           name: Tests
           path: results.xml
           reporter: java-junit
-~~~
 ```
 
-```admonish example title="Running tests in GitLab CI"
 GitLab natively understands JUnit XML reports. When you declare the report as
 an artifact, GitLab displays test results in the merge request's test tab,
 showing which tests were added, removed, or started failing.
 
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 test:
   image: rust:latest
   script:
@@ -190,7 +187,6 @@ test:
     when: always
     reports:
       junit: results.xml
-~~~
 ```
 
 [serial-test]: https://docs.rs/serial_test/latest/serial_test/

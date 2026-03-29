@@ -39,7 +39,6 @@ entire workspace instead of only the crate you are currently located in.
 
 ### Examples
 
-````admonish example
 Here is an example of what a cargo workspace project looks like. You can see
 how the root `Cargo.toml` only contains the workspace definition, and there
 are several crates contained in it.
@@ -49,7 +48,6 @@ path = "cargo-workspace"
 git_ignore = true
 default_file = "Cargo.toml"
 ```
-````
 
 ## Dependencies
 

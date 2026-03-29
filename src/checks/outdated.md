@@ -29,12 +29,11 @@ cargo install cargo-upgrades
 cargo upgrades
 ```
 
-```admonish example title="Using cargo-upgrades to check for outdated dependencies in CI"
 You can add a periodic CI job that checks for outdated dependencies using
 `cargo-upgrades`. This example runs weekly and opens an issue if any
 dependencies have newer versions available:
 
-~~~yaml
+```yaml framed title=".github/workflows/outdated.yml"
 name: Check outdated dependencies
 on:
   schedule:
@@ -49,7 +48,6 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo install cargo-upgrades
       - run: cargo upgrades
-~~~
 ```
 
 ## `cargo-outdated`
@@ -67,11 +65,11 @@ cargo install cargo-outdated
 cargo outdated
 ```
 
-```admonish example title="Using cargo-outdated to check for outdated dependencies in CI"
 Similar to the `cargo-upgrades` example, but using `cargo-outdated` to also
-check transitive dependencies:
+check transitive dependencies. The `--exit-code 1` flag causes the job to fail
+if any outdated dependencies are found.
 
-~~~yaml
+```yaml framed title=".github/workflows/outdated.yml"
 name: Check outdated dependencies
 on:
   schedule:
@@ -86,10 +84,6 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo install cargo-outdated
       - run: cargo outdated --exit-code 1
-~~~
-
-The `--exit-code 1` flag causes the job to fail if any outdated dependencies
-are found.
 ```
 
 ## Reading

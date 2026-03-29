@@ -48,8 +48,7 @@ cargo minimal-versions check --workspace --direct
 
 ## CI Examples
 
-```admonish example title="Minimum version check in GitHub Actions"
-~~~yaml
+```yaml framed title=".github/workflows/minimal-versions.yml"
 name: Minimum versions
 on: [pull_request]
 
@@ -63,18 +62,15 @@ jobs:
         with:
           tool: cargo-hack,cargo-minimal-versions
       - run: cargo minimal-versions check --workspace --ignore-private --direct
-~~~
 ```
 
-```admonish example title="Minimum version check in GitLab CI"
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 minimal-versions:
   image: rust:latest
   script:
     - rustup toolchain install nightly
     - cargo install cargo-hack cargo-minimal-versions
     - cargo minimal-versions check --workspace --ignore-private --direct
-~~~
 ```
 
 ## Reading

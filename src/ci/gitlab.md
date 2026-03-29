@@ -257,7 +257,7 @@ example `docs.reponame.com` to it (or whatever domain or subdomain you want).
 Here's an example that builds both rustdoc code documentation and a
 mdbook-powered documentation:
 
-```yaml
+```yaml framed title=".gitlab-ci.yml"
 stages:
   - build
   - deploy
@@ -398,7 +398,7 @@ without storing additional secrets.
 The following `.gitlab-ci.yml` puts together the patterns from this chapter.
 Inline comments explain the choices made.
 
-```yaml
+```yaml framed title=".gitlab-ci.yml"
 # Set these globally so every job inherits them.
 variables:
   CARGO_HOME: ${CI_PROJECT_DIR}/.cargo

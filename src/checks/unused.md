@@ -67,8 +67,7 @@ not necessarily need to run on every pull request. Running them on a schedule
 (weekly, for example) or as a periodic maintenance task is a reasonable
 alternative.
 
-```admonish example title="Checking for unused dependencies in GitHub Actions"
-~~~yaml
+```yaml framed title=".github/workflows/machete.yml"
 name: Unused dependencies
 on:
   schedule:
@@ -84,11 +83,9 @@ jobs:
         with:
           tool: cargo-machete
       - run: cargo machete
-~~~
 ```
 
-```admonish example title="Checking for unused dependencies in GitLab CI"
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 machete:
   image: rust:latest
   rules:
@@ -96,7 +93,6 @@ machete:
   script:
     - cargo install cargo-machete
     - cargo machete
-~~~
 ```
 
 ## Reading

@@ -125,8 +125,7 @@ reduces compile times and binary size.
 
 ## CI Examples
 
-```admonish example title="Feature checking in GitHub Actions"
-~~~yaml
+```yaml framed title=".github/workflows/features.yml"
 name: Features
 on: [pull_request]
 
@@ -141,18 +140,15 @@ jobs:
           tool: cargo-hack
       - run: cargo hack check --feature-powerset --depth 2
       - run: cargo hack test --each-feature
-~~~
 ```
 
-```admonish example title="Feature checking in GitLab CI"
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 features:
   image: rust:latest
   script:
     - cargo install cargo-hack
     - cargo hack check --feature-powerset --depth 2
     - cargo hack test --each-feature
-~~~
 ```
 
 [cfg_if]: https://docs.rs/cfg-if/latest/cfg_if/

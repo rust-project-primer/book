@@ -98,8 +98,7 @@ flag for CI usage.
 
 ## CI Examples
 
-```admonish example title="Formatting check in GitHub Actions"
-~~~yaml
+```yaml framed title=".github/workflows/fmt.yml"
 name: Format
 on: [pull_request]
 
@@ -112,21 +111,18 @@ jobs:
         with:
           components: rustfmt
       - run: cargo +nightly fmt --check
-~~~
+```
 
 Using nightly `rustfmt` in CI ensures that unstable configuration options are
 applied. If you only use stable options, `dtolnay/rust-toolchain@stable` is
 sufficient.
-```
 
-```admonish example title="Formatting check in GitLab CI"
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 fmt:
   image: rust:latest
   script:
     - rustup component add rustfmt
     - cargo fmt --check
-~~~
 ```
 
 ## Reading

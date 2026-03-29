@@ -185,14 +185,13 @@ profiling pipeline.
 
 ## CI Examples
 
-```admonish example title="Coverage in GitHub Actions"
 This workflow generates test coverage and uploads it to
 [Codecov](https://codecov.io/), a service that tracks coverage over time,
 shows coverage diffs on pull requests, and can enforce minimum coverage
 thresholds. Codecov is free for open-source projects and integrates with
 GitHub, GitLab, and Bitbucket.
 
-~~~yaml
+```yaml framed title=".github/workflows/coverage.yml"
 name: Coverage
 on: [pull_request]
 
@@ -209,16 +208,14 @@ jobs:
       - uses: codecov/codecov-action@v4
         with:
           files: lcov.info
-~~~
 ```
 
-```admonish example title="Coverage in GitLab CI"
 GitLab can display coverage annotations inline in merge requests if you upload
 a Cobertura XML report. This allows GitLab to display changes in test coverage
 inline in merge requests, which is useful feedback for developers and during
 code review.
 
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 coverage:
   image: rust:latest
   script:
@@ -229,7 +226,6 @@ coverage:
       coverage_report:
         coverage_format: cobertura
         path: coverage.xml
-~~~
 ```
 
 ## Reading

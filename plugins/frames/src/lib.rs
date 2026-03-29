@@ -150,8 +150,12 @@ fn map_markdown(markdown: &str) -> Result<String> {
                     format!(r#" class="language-{language}""#)
                 };
 
+                // Leading newline ensures a blank line separates the HTML
+                // block from any preceding markdown element (e.g. a heading).
+                // Without it, the renderer may parse the div as inline content
+                // of the heading.
                 let html = format!(
-                    r#"<div class="mdbook-frames-window"><div class="mdbook-frames-titlebar">{title_html}<div class="mdbook-frames-buttons"><span class="mdbook-frames-button mdbook-frames-close"></span><span class="mdbook-frames-button mdbook-frames-minimize"></span><span class="mdbook-frames-button mdbook-frames-maximize"></span></div></div><div class="mdbook-frames-content"><pre><code{lang_attr}>{}</code></pre></div></div>"#,
+                    "\n<div class=\"mdbook-frames-window\"><div class=\"mdbook-frames-titlebar\">{title_html}<div class=\"mdbook-frames-buttons\"><span class=\"mdbook-frames-button mdbook-frames-close\"></span><span class=\"mdbook-frames-button mdbook-frames-minimize\"></span><span class=\"mdbook-frames-button mdbook-frames-maximize\"></span></div></div><div class=\"mdbook-frames-content\"><pre><code{lang_attr}>{}</code></pre></div></div>\n",
                     escape_html(&code),
                 );
 

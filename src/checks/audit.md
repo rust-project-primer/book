@@ -109,8 +109,7 @@ lacks an audit, prompting someone to review it before it can be merged.
 request. `cargo-vet` is typically run the same way but requires more initial
 setup to establish the audit baseline.
 
-```admonish example title="Dependency auditing in GitHub Actions"
-~~~yaml
+```yaml framed title=".github/workflows/deny.yml"
 name: Audit
 on: [pull_request]
 
@@ -123,32 +122,28 @@ jobs:
         with:
           tool: cargo-deny
       - run: cargo deny check
-~~~
+```
 
 Since `cargo-deny` includes advisory checking, it subsumes `cargo-audit`. If
 you only need advisory checks without license or ban policies, you can use
 `cargo-audit` directly instead:
 
-~~~yaml
+```yaml
       - uses: taiki-e/install-action@v2
         with:
           tool: cargo-audit
       - run: cargo audit
-~~~
 ```
 
-```admonish example title="Dependency auditing in GitLab CI"
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 deny:
   image: rust:latest
   script:
     - cargo install cargo-deny
     - cargo deny check
-~~~
 ```
 
-```admonish example title="<code>cargo-vet</code> in GitHub Actions"
-~~~yaml
+```yaml framed title=".github/workflows/vet.yml"
 name: Vet
 on: [pull_request]
 
@@ -162,7 +157,6 @@ jobs:
         with:
           tool: cargo-vet
       - run: cargo vet
-~~~
 ```
 
 ## Reading

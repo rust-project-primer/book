@@ -47,11 +47,10 @@ rustc-wrapper = "sccache"
 After a build, you can check the cache statistics with `sccache --show-stats` to
 see hit rates and how much time was saved.
 
-```admonish example title="Using sccache in GitHub Actions"
 This example uses sccache with a cloud storage bucket in GitHub Actions. The
 [Mozilla sccache action][sccache-action] handles setup and teardown:
 
-~~~yaml
+```yaml framed title=".github/workflows/build.yml"
 name: Build
 on: [push]
 
@@ -66,11 +65,10 @@ jobs:
         env:
           RUSTC_WRAPPER: sccache
           SCCACHE_GHA_ENABLED: "true"
-~~~
+```
 
 The `SCCACHE_GHA_ENABLED` flag tells sccache to use GitHub Actions' built-in
 cache as the storage backend, which requires no additional infrastructure.
-```
 
 For local development, sccache is most useful when you frequently switch between
 branches or work on multiple projects that share dependencies. The local disk

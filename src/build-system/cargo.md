@@ -197,7 +197,7 @@ you run any operations in the project.
 A minimal `rust-toolchain.toml` that pins the stable toolchain and ensures
 `rustfmt` and `clippy` are available looks like this:
 
-```toml
+```toml framed title="rust-toolchain.toml"
 [toolchain]
 channel = "1.75"
 components = ["rustfmt", "clippy"]
@@ -232,21 +232,19 @@ by telling them which version of Rust they need to use your library. You
 should always specify this.
 ```
 
-```admonish example title="Specifying the MSRV for library crates"
 Set the `rust-version` field in your `Cargo.toml`:
 
-~~~toml
+```toml framed title="Cargo.toml"
 [package]
 name = "my-library"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.74"
-~~~
+```
 
 Cargo will warn or error when someone tries to use your library with a
 toolchain older than this. See the [MSRV](../checks/msrv.md) chapter for how
 to verify this value is correct.
-```
 
 ## Common Commands
 

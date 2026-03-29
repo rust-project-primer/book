@@ -100,7 +100,9 @@ libraries:
 
 ### Examples
 
-```rust
+Here's an example of how to use metrics:
+
+```rust framed title="metrix-example/src/lib.rs"
 use metrics::{counter, histogram};
 
 pub fn process(query: &str) -> u64 {
@@ -143,9 +145,7 @@ default, global registry. When you want to expose them to Prometheus, you can
 use the `prometheus::gather()` function to gather all the metrics and then
 encode them using the `TextEncoder` struct.
 
-<!-- TODO: turn this into proper example. -->
-
-```rust
+```rust framed title="prometheus-example/src/lib.rs"
 use prometheus::{self, IntCounter, TextEncoder, Encoder, register_int_counter};
 use lazy_static::lazy_static;
 

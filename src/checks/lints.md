@@ -115,8 +115,7 @@ results to appear as code annotations rather than buried in CI logs.
 Both Clippy and typos are fast enough to run on every pull request. Below are
 examples for GitHub Actions and GitLab CI.
 
-```admonish example title="Clippy and typos in GitHub Actions"
-~~~yaml
+```yaml framed title=".github/workflows/lints.yml"
 name: Lints
 on: [pull_request]
 
@@ -135,11 +134,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: crate-ci/typos@master
-~~~
 ```
 
-```admonish example title="Clippy and typos in GitLab CI"
-~~~yaml
+```yaml framed title=".gitlab-ci.yml"
 clippy:
   image: rust:latest
   script:
@@ -151,7 +148,6 @@ typos:
   script:
     - cargo install typos-cli
     - typos
-~~~
 ```
 
 ## Reading

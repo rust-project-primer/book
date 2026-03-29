@@ -71,14 +71,14 @@ you can look into using [OnceLock][], which is thread-safe.
 
 For example, you might have a function like this:
 
-```rust
+```rust framed title="log-example/src/lib.rs"
 {{#include ../../examples/log-example/src/lib.rs}}
 ```
 
 You can use this function after registering your logging implementation, in this
 case `env_logger`:
 
-```rust
+```rust framed title="log-example/src/main.rs"
 {{#include ../../examples/log-example/src/main.rs}}
 ```
 
@@ -167,7 +167,7 @@ your application.
 The `#[instrument]` attribute macro is the most common way to create spans. It
 automatically creates a span for a function, recording its arguments:
 
-```rust
+```rust framed title="lib.rs"
 use tracing::{info, instrument};
 
 #[instrument]
@@ -185,7 +185,7 @@ hundreds of requests are being handled concurrently.
 To see any output, you need to register a subscriber. A minimal setup using
 `tracing-subscriber`:
 
-```rust
+```rust framed title="main.rs"
 fn main() {
     tracing_subscriber::fmt::init();
     // ...

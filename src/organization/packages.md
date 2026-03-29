@@ -65,7 +65,7 @@ of authors, license, and description. Finally, this file can also contain
 metadata for other tooling, some of which we will discuss in this book. An
 example file might look like this:
 
-```toml
+```toml framed title="Cargo.toml"
 {{#include ../../examples/example-crate/Cargo.toml}}
 ```
 
@@ -88,7 +88,7 @@ some issues around it will be covered in later chapters.
 
 Here is an example of what this looks like:
 
-```toml
+```toml framed title="Cargo.lock"
 {{#include ../../examples/example-crate/Cargo.lock}}
 ```
 

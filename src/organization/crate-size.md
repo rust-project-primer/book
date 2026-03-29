@@ -58,7 +58,7 @@ If you look at a lot of larger, complex Rust project, you will find that many of
 the are composed of smaller, purposeful crates which are pulled in by one
 project crate.
 
-*TODO: example project composed of small crates.*
+_TODO: example project composed of small crates._
 
 https://two-wrongs.com/decompose-into-larger-modules
 

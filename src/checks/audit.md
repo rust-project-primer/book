@@ -124,15 +124,15 @@ jobs:
       - run: cargo deny check
 ```
 
-Since `cargo-deny` includes advisory checking, it subsumes `cargo-audit`. If
-you only need advisory checks without license or ban policies, you can use
+Since `cargo-deny` includes advisory checking, it subsumes `cargo-audit`. If you
+only need advisory checks without license or ban policies, you can use
 `cargo-audit` directly instead:
 
 ```yaml
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-audit
-      - run: cargo audit
+- uses: taiki-e/install-action@v2
+  with:
+    tool: cargo-audit
+- run: cargo audit
 ```
 
 ```yaml framed title=".gitlab-ci.yml"

@@ -71,7 +71,7 @@ alternative.
 name: Unused dependencies
 on:
   schedule:
-    - cron: '0 9 * * 1'  # Every Monday at 9:00 UTC
+    - cron: "0 9 * * 1" # Every Monday at 9:00 UTC
   workflow_dispatch:
 
 jobs:

@@ -33,3 +33,6 @@ compress:
 
 serve:
   nix develop --command mdbook serve
+
+format:
+  nix run .#fmt

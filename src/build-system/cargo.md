@@ -242,9 +242,9 @@ edition = "2021"
 rust-version = "1.74"
 ```
 
-Cargo will warn or error when someone tries to use your library with a
-toolchain older than this. See the [MSRV](../checks/msrv.md) chapter for how
-to verify this value is correct.
+Cargo will warn or error when someone tries to use your library with a toolchain
+older than this. See the [MSRV](../checks/msrv.md) chapter for how to verify
+this value is correct.
 
 ## Common Commands
 

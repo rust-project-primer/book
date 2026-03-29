@@ -63,10 +63,11 @@ path = "crate_features"
 git_ignore = true
 ```
 
-A library containing data structures, which has an optional `serde` feature to enable
-serialization and deserialization with serde. Using `#[cfg(feature = "serde")]`, lines
-of the code can turned on conditionally. Using `#[cfg_attr(feature = "serde", ...)]`,
-derives can be made conditionally on the feature being enabled.
+A library containing data structures, which has an optional `serde` feature to
+enable serialization and deserialization with serde. Using
+`#[cfg(feature = "serde")]`, lines of the code can turned on conditionally.
+Using `#[cfg_attr(feature = "serde", ...)]`, derives can be made conditionally
+on the feature being enabled.
 
 ```files
 path = "optional-serde"

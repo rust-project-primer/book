@@ -306,19 +306,6 @@ The two main Rust crates for protobuf are:
 Protobuf is a good choice when you need cross-language interoperability with a
 well-defined schema, especially if you are already using gRPC.
 
-## Bincode
-
-[Bincode][bincode] is a binary serialization format designed for inter-process
-communication and storage. It is compact and fast, but not self-describing: both
-the serializer and deserializer must agree on the schema.
-
-Bincode is serde-compatible, so you can use it with any type that derives
-`Serialize` and `Deserialize`. It also provides its own `Encode` and `Decode`
-traits for cases where you want more control over the binary layout.
-
-Bincode is a good choice when you need fast, compact serialization between Rust
-processes and don't need human-readable output or cross-language compatibility.
-
 ## Facet
 
 [Facet][facet] takes a fundamentally different approach to serialization than
